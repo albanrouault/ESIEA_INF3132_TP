@@ -1,4 +1,4 @@
-package fr.esiea.inf3132tp2024.models.monsters.Types;
+package fr.esiea.inf3132tp2024.models.monsters.types;
 
 public class PlantMonsterType extends NormalMonsterType {
     
