@@ -12,10 +12,21 @@
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.mainClass>fr.esiea.inf3132tp2024.App</project.mainClass>
+        <project.mainClass>fr.esiea.inf3132tp2024.Main</project.mainClass>
     </properties>
 
     <dependencies>
+        <!-- Bibliothèque pour lire la console nativement sous Windows et Linux -->
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.15.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Bibliothèque pour faire des tests unitaires -->
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -247,6 +258,18 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>assets/music/**</exclude>
+                    <exclude>assets/sound/**</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/assets/music</directory>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/assets/sound</directory>
+                <filtering>false</filtering>
             </resource>
         </resources>
     </build>
