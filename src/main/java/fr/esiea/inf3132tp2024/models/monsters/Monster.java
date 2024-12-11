@@ -1,5 +1,6 @@
 package fr.esiea.inf3132tp2024.models.monsters;
 
+import fr.esiea.inf3132tp2024.models.attack.Attack;
 import fr.esiea.inf3132tp2024.models.monsters.Types.MonsterType;
 /**
  * This class represents a monster in the game.
