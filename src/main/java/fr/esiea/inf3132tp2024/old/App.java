@@ -4,12 +4,12 @@ import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.old.audio.SoundEffect;
 import fr.esiea.inf3132tp2024.old.game.Game;
 import fr.esiea.inf3132tp2024.old.game.Statistics;
-import fr.esiea.inf3132tp2024.old.gui.Console;
-import fr.esiea.inf3132tp2024.old.gui.dialog.DialogType;
-import fr.esiea.inf3132tp2024.old.gui.dialog.ErrorDialog;
-import fr.esiea.inf3132tp2024.old.gui.main.SplashScreen;
-import fr.esiea.inf3132tp2024.old.gui.main.menu.MainMenu;
-import fr.esiea.inf3132tp2024.old.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.view.console.Console;
+import fr.esiea.inf3132tp2024.view.console.api.dialog.DialogType;
+import fr.esiea.inf3132tp2024.view.console.api.dialog.ErrorDialog;
+import fr.esiea.inf3132tp2024.view.console.main.SplashScreen;
+import fr.esiea.inf3132tp2024.view.console.main.menu.MainMenu;
+import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;

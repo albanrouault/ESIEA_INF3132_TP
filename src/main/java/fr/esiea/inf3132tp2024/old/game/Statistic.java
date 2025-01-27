@@ -1,10 +1,10 @@
 package fr.esiea.inf3132tp2024.old.game;
 
-import fr.esiea.inf3132tp2024.old.gui.CColor;
-import fr.esiea.inf3132tp2024.old.gui.component.CLabel;
-import fr.esiea.inf3132tp2024.old.gui.component.CPanel;
-import fr.esiea.inf3132tp2024.old.gui.component.HorizontalAlignment;
-import fr.esiea.inf3132tp2024.old.utils.direction.Orientation;
+import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
+import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 public class Statistic extends CPanel implements Comparable<Statistic> {
     private final long seed;

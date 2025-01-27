@@ -2,12 +2,12 @@ package fr.esiea.inf3132tp2024.old.entity;
 
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.game.EntityDeadException;
-import fr.esiea.inf3132tp2024.old.gui.play.fight.Fight;
+import fr.esiea.inf3132tp2024.view.console.play.fight.Fight;
 import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.Key;
 import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
 import fr.esiea.inf3132tp2024.old.item.wearable.Wearable;
-import fr.esiea.inf3132tp2024.old.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
