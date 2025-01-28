@@ -1,24 +1,21 @@
 package fr.esiea.inf3132tp2024.view.console.play.fight.loot;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class TakeItemButton extends TButton {
-    private final App app;
     private final Player player;
     private final Entity enemy;
     private final LootMenu lootMenu;
 
-    public TakeItemButton(App app, Player player, Entity enemy, LootMenu lootMenu) {
-        super(app, "Prendre l'objet");
+    public TakeItemButton(Player player, Entity enemy, LootMenu lootMenu) {
+        super("Prendre l'objet");
 
-        this.app = app;
         this.player = player;
         this.enemy = enemy;
         this.lootMenu = lootMenu;
@@ -31,7 +28,7 @@ public class TakeItemButton extends TButton {
         if (player.hasItem() && player.getItem() instanceof Consumable consumable) {
             List<Entity> entities = new LinkedList<>();
             entities.add(player);
-            UseItemButton useItemButton = new UseItemButton(app, lootMenu, consumable, entities);
+            UseItemButton useItemButton = new UseItemButton(lootMenu, consumable, entities);
             useItemButton.setSelected(true);
             lootMenu.getButtons().replace(this, useItemButton);
         } else {

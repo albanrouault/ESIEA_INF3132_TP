@@ -1,15 +1,13 @@
 package fr.esiea.inf3132tp2024.view.console.play.fight.loot;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.console.api.component.*;
-import fr.esiea.inf3132tp2024.view.ui.console.api.component.*;
-import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
-import fr.esiea.inf3132tp2024.view.console.play.ItemStats;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
+import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.console.api.component.*;
+import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
+import fr.esiea.inf3132tp2024.view.console.play.ItemStats;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +23,7 @@ public class LootMenu extends TFrame implements DisplayableComponent {
 
     private boolean display = true;
 
-    public LootMenu(App app, Player player, Entity enemy) {
+    public LootMenu(Player player, Entity enemy) {
         super(0, 0, "Butin de " + enemy.getName());
 
         this.player = player;
@@ -45,31 +43,31 @@ public class LootMenu extends TFrame implements DisplayableComponent {
 
         // Panneau du centre
         // Boutons
-        this.buttons = new TChoices(app, 1);
+        this.buttons = new TChoices(1);
         // Bouton weapon
         if (enemy.hasWeapon()) {
             if (player.hasWeapon()) {
-                buttons.add(new ReplaceWeaponButton(app, player, enemy));
+                buttons.add(new ReplaceWeaponButton(player, enemy));
             } else {
-                buttons.add(new TakeWeaponButton(app, player, enemy, this));
+                buttons.add(new TakeWeaponButton(player, enemy, this));
             }
         }
         // Bouton item
         if (enemy.hasItem()) {
             if (player.hasItem()) {
-                buttons.add(new ReplaceItemButton(app, this, player, enemy));
+                buttons.add(new ReplaceItemButton(this, player, enemy));
             } else {
-                buttons.add(new TakeItemButton(app, player, enemy, this));
+                buttons.add(new TakeItemButton(player, enemy, this));
             }
         }
         // Bouton utiliser item
         if (player.hasItem() && player.getItem() instanceof Consumable consumable) {
             List<Entity> entities = new LinkedList<>();
             entities.add(player);
-            buttons.add(new UseItemButton(app, this, consumable, entities));
+            buttons.add(new UseItemButton(this, consumable, entities));
         }
         // Bouton quitter
-        this.leaveButton = new QuitComponentButton(app, this, "Quitter");
+        this.leaveButton = new QuitComponentButton(this, "Quitter");
         buttons.add(leaveButton);
 
         centerPanel.getComponents().add(buttons);

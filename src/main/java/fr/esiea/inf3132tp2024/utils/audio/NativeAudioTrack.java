@@ -2,8 +2,6 @@ package fr.esiea.inf3132tp2024.utils.audio;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -15,7 +13,7 @@ import java.io.IOException;
  */
 public class NativeAudioTrack implements AudioTrack {
     private final Clip clip;
-    private final File audioFile;
+    private final String filePath;
 
     // to store current position
     private Long currentFrame;
@@ -26,9 +24,9 @@ public class NativeAudioTrack implements AudioTrack {
     private float volume = 1f;
 
     // constructor to initialize streams and clip
-    public NativeAudioTrack(File audioFile) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public NativeAudioTrack(String filePath) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.clip = AudioSystem.getClip();
-        this.audioFile = audioFile;
+        this.filePath = filePath;
 
         resetAudioStream();
     }
@@ -152,7 +150,7 @@ public class NativeAudioTrack implements AudioTrack {
 
     // Method to reset audio stream
     private void resetAudioStream() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream(audioFile)));
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(NativeAudioTrack.class.getResourceAsStream(filePath)));
         clip.open(audioInputStream);
         if (loop) {
             clip.loop(Clip.LOOP_CONTINUOUSLY);

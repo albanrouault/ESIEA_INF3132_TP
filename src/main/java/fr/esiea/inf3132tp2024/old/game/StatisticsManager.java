@@ -6,7 +6,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class Statistics {
+public class StatisticsManager {
+    private static final StatisticsManager INSTANCE = new StatisticsManager();
+
+    public static StatisticsManager getInstance() {
+        return INSTANCE;
+    }
+
     private final List<Statistic> statistics = new ArrayList<>();
 
     /**

@@ -2,21 +2,17 @@ package fr.esiea.inf3132tp2024.view.console;
 
 import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
 import fr.esiea.inf3132tp2024.utils.direction.Direction;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionNotFoundException;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionUtils;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
 
 public class AdjustSizeFrame extends TFrame implements DisplayableComponent {
-    private final AppSettings settings;
-
     private boolean display = true;
 
-    public AdjustSizeFrame(AppSettings settings) {
+    public AdjustSizeFrame() {
         super(0, 0, "Réglage des dimensions de la console");
-
-        this.settings = settings;
 
         TLabel instructions_1 = new TLabel(new String[]{"Veuillez ajustez le cadre pour qu'il soit sur les bords de l'écran",
                 "Pour cela vous pouvez utiliser les flèches directionnelles ou les touches zqsd"});
@@ -37,6 +33,8 @@ public class AdjustSizeFrame extends TFrame implements DisplayableComponent {
             stopLoopingMode();
             return;
         }
+
+        AppSettings settings = AppSettings.getInstance();
 
         try {
             Direction direction = DirectionUtils.parseDirection(key, true);

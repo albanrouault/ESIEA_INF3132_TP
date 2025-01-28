@@ -1,26 +1,25 @@
 package fr.esiea.inf3132tp2024.view.console.settings.audio.music;
 
-import fr.esiea.inf3132tp2024.old.App;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.utils.direction.Orientation;
+import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
 import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
 import fr.esiea.inf3132tp2024.view.console.api.component.TSlider;
-import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
-import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 public class ConfigureMusicFrame extends TFrame implements DisplayableComponent {
     private boolean display = true;
 
-    public ConfigureMusicFrame(App app, NativeAudioTrack menuPlayer) {
+    public ConfigureMusicFrame(AudioTrack menuAudioTrack) {
         super(0, 0, "Configurer le niveau sonore de la musique");
 
-        TSlider gauge = new ConfigureMusicSlider(app.getSettings(), menuPlayer);
+        TSlider gauge = new ConfigureMusicSlider(menuAudioTrack);
 
-        TChoices buttons = new TChoices(app, Orientation.HORIZONTAL, 10);
-        buttons.add(new ConfigureMusicOkButton(app, this, gauge));
-        buttons.add(new ConfigureMusicCancelButton(app, this, menuPlayer));
+        TChoices buttons = new TChoices(Orientation.HORIZONTAL, 10);
+        buttons.add(new ConfigureMusicOkButton(this, gauge));
+        buttons.add(new ConfigureMusicCancelButton(this, menuAudioTrack));
 
-        TChoices choices = new TChoices(app, 5);
+        TChoices choices = new TChoices(5);
         choices.add(gauge);
         choices.add(buttons);
 

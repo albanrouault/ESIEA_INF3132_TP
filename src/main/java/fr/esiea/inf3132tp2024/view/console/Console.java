@@ -2,9 +2,9 @@ package fr.esiea.inf3132tp2024.view.console;
 
 import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.utils.console.RawConsoleInput;
 import fr.esiea.inf3132tp2024.view.console.api.component.TComponent;
 import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
-import fr.esiea.inf3132tp2024.utils.console.RawConsoleInput;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -16,12 +16,16 @@ import java.util.List;
 // https://en.wikipedia.org/wiki/ANSI_escape_code
 // https://github.com/htop-dev/htop/blob/d0d9f202c56c1fc8919548418b339d31a6b49c02/CRT.c#L944
 public class Console extends TPanel {
-    private final AppSettings settings;
+    private static final Console INSTANCE = new Console();
 
-    public Console(AppSettings settings) {
+    public static Console getInstance() {
+        return INSTANCE;
+    }
+
+    private final AppSettings settings = AppSettings.getInstance();
+
+    public Console() {
         super(0, 0);
-
-        this.settings = settings;
 
         // Rendre le curseur invisible
         System.out.print("\033[?25l");

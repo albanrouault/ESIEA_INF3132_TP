@@ -2,7 +2,7 @@ package fr.esiea.inf3132tp2024.view.console.api.component;
 
 import fr.esiea.inf3132tp2024.old.event.key.KeyListener;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.old.utils.Couple;
+import fr.esiea.inf3132tp2024.utils.Couple;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 import java.util.Iterator;

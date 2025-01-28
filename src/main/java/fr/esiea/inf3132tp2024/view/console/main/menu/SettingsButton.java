@@ -1,23 +1,21 @@
 package fr.esiea.inf3132tp2024.view.console.main.menu;
 
-import fr.esiea.inf3132tp2024.old.App;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.view.console.Console;
 import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.settings.menu.SettingsMenu;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
 public class SettingsButton extends TButton {
-    private final App app;
-    private final NativeAudioTrack menuPlayer;
+    private final AudioTrack menuAudioTrack;
 
-    public SettingsButton(App app, NativeAudioTrack menuPlayer) {
-        super(app, "Paramètres");
+    public SettingsButton(AudioTrack menuAudioTrack) {
+        super("Paramètres");
 
-        this.app = app;
-        this.menuPlayer = menuPlayer;
+        this.menuAudioTrack = menuAudioTrack;
     }
 
     @Override
     public void execute() {
-        app.getConsole().show(new SettingsMenu(app, menuPlayer));
+        Console.getInstance().show(new SettingsMenu(menuAudioTrack));
     }
 }

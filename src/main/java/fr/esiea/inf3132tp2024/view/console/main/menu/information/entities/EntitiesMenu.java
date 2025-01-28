@@ -1,16 +1,15 @@
 package fr.esiea.inf3132tp2024.view.console.main.menu.information.entities;
 
-import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.view.console.TColor;
+import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.console.TColor;
+import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
 import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
 import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
-import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
-import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 public class EntitiesMenu extends TFrame implements DisplayableComponent {
-    public EntitiesMenu(App app) {
+    public EntitiesMenu() {
         super(0, 0, "Les entités");
 
         // variables pour redéfinir proprement l'ajustement du texte

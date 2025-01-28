@@ -1,27 +1,23 @@
 package fr.esiea.inf3132tp2024.old.game;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.old.entity.Player;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.utils.StringUtils;
+import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.utils.direction.Orientation;
+import fr.esiea.inf3132tp2024.view.console.Console;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
 import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
 import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
-import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.view.console.play.EntityStats;
 import fr.esiea.inf3132tp2024.view.console.play.escape.EscapeMenu;
 import fr.esiea.inf3132tp2024.view.console.play.finish.FinishMenu;
-import fr.esiea.inf3132tp2024.utils.StringUtils;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
-import fr.esiea.inf3132tp2024.utils.direction.Orientation;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 
 public class Game extends TFrame implements DisplayableComponent {
-    private final App app;
     private final long seed;
     private final Player player;
     private final TLabel stageLevelLabel;
@@ -29,18 +25,16 @@ public class Game extends TFrame implements DisplayableComponent {
     private final EntityStats playerStats;
     private final TPanel otherInfos;
     private String infos;
-    private NativeAudioTrack audioPlayer;
+    private AudioTrack gameAudioTrack;
     private boolean display = true;
     private final Statistic statistic;
 
-    public Game(App app, long seed, String playerName) {
+    public Game(long seed, String playerName) {
         super(0, 0);
-
-        this.app = app;
 
         this.seed = seed;
 
-        this.player = new Player(app, playerName);
+        this.player = new Player(playerName);
 
         //this.getContentPane().getComponents().add(map);
 
@@ -68,14 +62,9 @@ public class Game extends TFrame implements DisplayableComponent {
 
         this.setFooter(footer);
 
-        try {
-            this.audioPlayer = app.createAudioPlayer(Music.GAME);
-            audioPlayer.setVolume(app.getSettings().getMusicVolume());
-            audioPlayer.setLoop(true);
-            audioPlayer.play();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |
-                 IllegalArgumentException ignored) {
-        }
+        this.gameAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.GAME);
+        gameAudioTrack.setLoop(true);
+        gameAudioTrack.play();
 
         this.statistic = new Statistic(seed, playerName);
     }
@@ -84,7 +73,7 @@ public class Game extends TFrame implements DisplayableComponent {
     public void onKeyPressed(KeyPressedEvent event) {
         // Touche échap = on ouvre le menu de pause
         if (event.getKey() == 27) {
-            app.getConsole().show(new EscapeMenu(app, this));
+            Console.getInstance().show(new EscapeMenu(this));
             return;
         }
 
@@ -103,19 +92,11 @@ public class Game extends TFrame implements DisplayableComponent {
         if (player.isDead()) {
             stopLoopingMode();
 
-            NativeAudioTrack deathAudioPlayer = null;
-            try {
-                deathAudioPlayer = app.createAudioPlayer(Music.DEATH);
-                deathAudioPlayer.setVolume(app.getSettings().getMusicVolume());
-                deathAudioPlayer.setLoop(true);
-                deathAudioPlayer.play();
-            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |
-                     IllegalArgumentException ignored) {
-            }
-            app.getConsole().show(new FinishMenu(app, this, false));
-            if (deathAudioPlayer != null) {
-                deathAudioPlayer.stop();
-            }
+            AudioTrack deathAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.DEATH);
+            deathAudioTrack.setLoop(true);
+            deathAudioTrack.play();
+            Console.getInstance().show(new FinishMenu(this, false));
+            deathAudioTrack.stop();
         }
 
         return display;
@@ -129,8 +110,8 @@ public class Game extends TFrame implements DisplayableComponent {
     @Override
     public void stopLoopingMode() {
         display = false;
-        if (audioPlayer != null) {
-            audioPlayer.stop();
+        if (gameAudioTrack != null) {
+            gameAudioTrack.stop();
         }
     }
 
@@ -191,8 +172,8 @@ public class Game extends TFrame implements DisplayableComponent {
         return player;
     }
 
-    public NativeAudioTrack getAudioPlayer() {
-        return audioPlayer;
+    public AudioTrack getGameAudioTrack() {
+        return gameAudioTrack;
     }
 
     public Statistic getStatistic() {

@@ -1,42 +1,54 @@
 package fr.esiea.inf3132tp2024.utils.audio;
 
+import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.old.audio.SoundEffect;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class AudioPlayer {
-    private static float defaultSoundEffectVolume = 1f;
-    private static float defaultMusicVolume = 1f;
+    private static final AudioPlayer INSTANCE = new AudioPlayer();
 
-    public static AudioTrack createAudioTrack(SoundEffect soundEffect) {
-        AudioTrack audioTrack = createAudioTrack(new File(soundEffect.getFilePath()));
-        audioTrack.setVolume(defaultSoundEffectVolume);
+    public static AudioPlayer getInstance() {
+        return INSTANCE;
+    }
+
+    private final AppSettings settings = AppSettings.getInstance();
+    private final List<AudioTrack> audioTracks = new LinkedList<>();
+
+    public AudioTrack createAudioTrack(SoundEffect soundEffect) {
+        AudioTrack audioTrack = createAudioTrack(soundEffect.getFilePath());
+        audioTrack.setVolume(settings.getSoundEffectsVolume());
         return audioTrack;
     }
 
-    public static AudioTrack createAudioTrack(Music music) {
-        AudioTrack audioTrack = createAudioTrack(new File(music.getFilePath()));
-        audioTrack.setVolume(defaultMusicVolume);
+    public AudioTrack createAudioTrack(Music music) {
+        AudioTrack audioTrack = createAudioTrack(music.getFilePath());
+        audioTrack.setVolume(settings.getMusicVolume());
         return audioTrack;
     }
 
-    public static void setDefaultSoundEffectVolume(float volume) {
-        defaultSoundEffectVolume = volume;
-    }
-
-    public static void setDefaultMusicVolume(float volume) {
-        defaultMusicVolume = volume;
-    }
-
-    private static AudioTrack createAudioTrack(File audioFile) {
+    private AudioTrack createAudioTrack(String filePath) {
         try {
-            return new NativeAudioTrack(audioFile);
+            NativeAudioTrack audioTrack = new NativeAudioTrack(filePath);
+            audioTracks.add(audioTrack);
+            return audioTrack;
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             return new DumbAudioTrack();
+        }
+    }
+
+    public void stopAllPlayers() {
+        Iterator<AudioTrack> iterator = audioTracks.iterator();
+        while (iterator.hasNext()) {
+            AudioTrack track = iterator.next();
+            track.stop();
+            iterator.remove();
         }
     }
 }

@@ -3,16 +3,22 @@ package fr.esiea.inf3132tp2024.old;
 import java.io.*;
 
 public class AppSettings {
+    private static final AppSettings INSTANCE = new AppSettings();
+
+    public static AppSettings getInstance() {
+        return INSTANCE;
+    }
+
     public static final int CONSOLE_MIN_LENGTH = 80;
     public static final int CONSOLE_MIN_HEIGHT = 25;
-    public static final int MUSIC_VOLUME = 50;
-    public static final int SOUND_VOLUME = 25;
+    public static final int MUSIC_DEFAULT_VOLUME = 50;
+    public static final int SOUND_DEFAULT_VOLUME = 25;
     public static final String DEFAULT_FILE_PATH = "settings.dat";
 
     private int consoleLength = CONSOLE_MIN_LENGTH;
     private int consoleHeight = CONSOLE_MIN_HEIGHT;
-    private float musicVolume = (float) MUSIC_VOLUME / 100;
-    private float soundEffectsVolume = (float) SOUND_VOLUME / 100;
+    private float musicVolume = (float) MUSIC_DEFAULT_VOLUME / 100;
+    private float soundEffectsVolume = (float) SOUND_DEFAULT_VOLUME / 100;
 
     /**
      * Méthode permettant de définir les paramètres de l'application.

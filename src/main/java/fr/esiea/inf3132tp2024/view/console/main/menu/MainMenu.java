@@ -1,41 +1,32 @@
 package fr.esiea.inf3132tp2024.view.console.main.menu;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.Music;
-import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
+import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
 import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
-import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
 import fr.esiea.inf3132tp2024.view.console.main.menu.information.InfoButton;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 
 public class MainMenu extends TFrame implements DisplayableComponent {
-    private NativeAudioTrack audioPlayer;
+    private final AudioTrack menuAudioTrack;
     private boolean display = true;
 
-    public MainMenu(App app) {
+    public MainMenu() {
         super(0, 0, "Menu principal");
 
-        try {
-            this.audioPlayer = app.createAudioPlayer(Music.MENU);
-            audioPlayer.setVolume(app.getSettings().getMusicVolume());
-            audioPlayer.setLoop(true);
-            audioPlayer.play();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |
-                 IllegalArgumentException ignored) {
-        }
+        this.menuAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.MENU);
+        menuAudioTrack.setLoop(true);
+        menuAudioTrack.play();
 
-        TChoices choices = new TChoices(app, 1);
+        TChoices choices = new TChoices(1);
 
-        choices.add(new PlayButton(app, this));
-        choices.add(new StatisticsButton(app, this));
-        choices.add(new InfoButton(app));
-        choices.add(new SettingsButton(app, audioPlayer));
-        choices.add(new QuitComponentButton(app, this, "Quitter"));
+        choices.add(new PlayButton(this));
+        choices.add(new StatisticsButton());
+        choices.add(new InfoButton());
+        choices.add(new SettingsButton(menuAudioTrack));
+        choices.add(new QuitComponentButton(this, "Quitter"));
 
         this.getContentPane().getComponents().add(choices);
     }
@@ -54,7 +45,7 @@ public class MainMenu extends TFrame implements DisplayableComponent {
         return true;
     }
 
-    public NativeAudioTrack getAudioPlayer() {
-        return audioPlayer;
+    public AudioTrack getMenuAudioTrack() {
+        return menuAudioTrack;
     }
 }

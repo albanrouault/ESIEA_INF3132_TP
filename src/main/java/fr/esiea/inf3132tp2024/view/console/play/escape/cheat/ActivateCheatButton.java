@@ -1,31 +1,26 @@
 package fr.esiea.inf3132tp2024.view.console.play.escape.cheat;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.old.entity.Player;
 import fr.esiea.inf3132tp2024.old.game.Game;
+import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
+import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.view.console.Console;
 import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.ErrorDialog;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.InfoDialog;
 import fr.esiea.inf3132tp2024.view.console.play.escape.EscapeMenu;
-import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 
 public class ActivateCheatButton extends TButton {
-    private final App app;
     private final CheatMenu menu;
     private final Game game;
     private final EscapeMenu escapeMenu;
 
-    public ActivateCheatButton(App app, CheatMenu menu, Game game, EscapeMenu escapeMenu) {
-        super(app, "Activer le code de triche");
+    public ActivateCheatButton(CheatMenu menu, Game game, EscapeMenu escapeMenu) {
+        super("Activer le code de triche");
 
-        this.app = app;
         this.menu = menu;
         this.game = game;
         this.escapeMenu = escapeMenu;
@@ -38,32 +33,28 @@ public class ActivateCheatButton extends TButton {
 
         switch (cheatCode) {
             case ("404") -> {
-                app.stopAllPlayers();
-                try {
-                    NativeAudioTrack audioPlayer = app.createAudioPlayer(Music.CHEAT);
-                    audioPlayer.setVolume(app.getSettings().getMusicVolume());
-                    audioPlayer.play();
-                } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |
-                         IllegalArgumentException ignored) {
-                }
-                app.getConsole().show(new InfoDialog(DialogType.INFO, "Vous avez activé une exception !"));
+                AudioPlayer audioPlayer = AudioPlayer.getInstance();
+                audioPlayer.stopAllPlayers();
+                AudioTrack audioTrack = audioPlayer.createAudioTrack(Music.CHEAT);
+                audioTrack.play();
+                Console.getInstance().show(new InfoDialog(DialogType.INFO, "Vous avez activé une exception !"));
                 throw new RuntimeException("Oups!");
             }
             case ("777") -> {
                 player.setWeapon(new Weapon("Damoclès", "L'épée ultime pour tricheur !", 35, 20, 20));
-                app.getConsole().show(new InfoDialog(DialogType.INFO, "Vous avez reçu l'épée de Damoclès !"));
+                Console.getInstance().show(new InfoDialog(DialogType.INFO, "Vous avez reçu l'épée de Damoclès !"));
             }
             case ("42") -> {
                 player.heal(player.getMaxHealth());
-                app.getConsole().show(new InfoDialog(DialogType.INFO, "Vous avez activé le cheat de récupération de vie !"));
+                Console.getInstance().show(new InfoDialog(DialogType.INFO, "Vous avez activé le cheat de récupération de vie !"));
             }
             case ("666") -> {
                 player.kill();
-                app.getConsole().show(new InfoDialog(DialogType.INFO, "Il y a parfois des courageux!\n \nMais il faut croire que vous n'en n'êtes pas un."));
+                Console.getInstance().show(new InfoDialog(DialogType.INFO, "Il y a parfois des courageux!\n \nMais il faut croire que vous n'en n'êtes pas un."));
                 escapeMenu.stopLoopingMode();
             }
             default -> {
-                app.getConsole().show(new ErrorDialog(DialogType.WARNING, "Code de triche invalide !"));
+                Console.getInstance().show(new ErrorDialog(DialogType.WARNING, "Code de triche invalide !"));
                 return;
             }
         }

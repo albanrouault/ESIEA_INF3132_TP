@@ -1,29 +1,26 @@
 package fr.esiea.inf3132tp2024.view.console.play.start;
 
 import fr.esiea.inf3132tp2024.old.App;
+import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.game.Game;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.view.console.Console;
 import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.InfoDialog;
 import fr.esiea.inf3132tp2024.view.console.main.menu.MainMenu;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.Random;
 
 public class OkButton extends TButton {
     private static final String[] randomPseudos = new String[]{"Aloy", "Joel", "Ellie", "Kratos", "Masterchief", "Sam Porter Bridges", "Claire Redfield", "Ada Wong", "Shepard", "Mason", "Capitaine Price", "Steve", "Conor", "Amicia", "Ezio", "Chell", "Tina", "Jesse Faden", "Carl Johnson", "Ulfric Sombrage", "Aerith", "Tifa", "Yuna", "Trevor", "Claudette", "Lara Croft", "Nancy", "Eleven", "Nathan Drake", "Peter Parker"};
 
-    private final App app;
     private final MainMenu mainMenu;
     private final PlayMenu playMenu;
 
-    public OkButton(App app, MainMenu mainMenu, PlayMenu playMenu) {
-        super(app, "Lancer la partie");
+    public OkButton(MainMenu mainMenu, PlayMenu playMenu) {
+        super("Lancer la partie");
 
-        this.app = app;
         this.mainMenu = mainMenu;
         this.playMenu = playMenu;
     }
@@ -37,7 +34,7 @@ public class OkButton extends TButton {
             playerName = playMenu.getPlayerNameField().getText();
         }
 
-        app.getConsole().show(new InfoDialog(DialogType.HISTORY,
+        Console.getInstance().show(new InfoDialog(DialogType.HISTORY,
                 "Après une soirée bien arrosée dans un camping avec des inconnus " + playerName + " " +
                         "se réveille, avec un léger mal de crâne dans un lieu totalement inconnu. \n \n " +
                         "Il pense alors à une farse et se rend très rapidement compte qu'il ne peut\npas sortir.\n \n" +
@@ -60,20 +57,17 @@ public class OkButton extends TButton {
             }
         }
         playMenu.stopLoopingMode();
-        NativeAudioTrack audioPlayer = mainMenu.getAudioPlayer();
-        if (audioPlayer != null) {
-            audioPlayer.stop();
+        AudioTrack menuAudioTrack = mainMenu.getMenuAudioTrack();
+        if (menuAudioTrack != null) {
+            menuAudioTrack.stop();
         }
-        Game game = new Game(app, seed, playerName);
-        app.setCurrentGame(game);
-        app.getConsole().show(game);
-        app.setCurrentGame(null);
-        if (audioPlayer != null) {
-            try {
-                audioPlayer.setVolume(app.getSettings().getMusicVolume());
-                audioPlayer.restart();
-            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ignored) {
-            }
+        Game game = new Game(seed, playerName);
+        App.getInstance().setCurrentGame(game);
+        Console.getInstance().show(game);
+        App.getInstance().setCurrentGame(null);
+        if (menuAudioTrack != null) {
+            menuAudioTrack.setVolume(AppSettings.getInstance().getMusicVolume());
+            menuAudioTrack.restart();
         }
     }
 }

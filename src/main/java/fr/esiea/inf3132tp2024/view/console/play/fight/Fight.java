@@ -1,26 +1,25 @@
 package fr.esiea.inf3132tp2024.view.console.play.fight;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
 import fr.esiea.inf3132tp2024.old.entity.enemy.Enemy;
 import fr.esiea.inf3132tp2024.old.game.EntityDeadException;
+import fr.esiea.inf3132tp2024.old.game.Game;
+import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.utils.direction.Orientation;
+import fr.esiea.inf3132tp2024.view.console.Console;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
 import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
 import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
 import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
 import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
+import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
 import fr.esiea.inf3132tp2024.view.console.play.EntityStats;
 import fr.esiea.inf3132tp2024.view.console.play.fight.loot.LootMenu;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
-import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -28,13 +27,13 @@ import java.util.Random;
 public class Fight extends TFrame implements DisplayableComponent {
     private static final int ACCURACY = 30;
 
-    private final App app;
+    private final Game game;
     private final Player player;
     private final Entity enemy;
     private final boolean runAway;
     private final Random random;
     private State state = State.FIGHTING;
-    private NativeAudioTrack audioPlayer;
+    private AudioTrack fightAudioTrack;
     private boolean display = true;
     private boolean over = false;
 
@@ -48,10 +47,10 @@ public class Fight extends TFrame implements DisplayableComponent {
 
     private EntityStats petStats;
 
-    public Fight(App app, Player player, Entity enemy, boolean runAway) {
+    public Fight(Game game, Player player, Entity enemy, boolean runAway) {
         super(0, 0, "Combat");
 
-        this.app = app;
+        this.game = game;
         this.player = player;
         this.enemy = enemy;
         this.runAway = runAway;
@@ -69,7 +68,7 @@ public class Fight extends TFrame implements DisplayableComponent {
 
         this.centerPanel = new TPanel(20, 0);
 
-        this.menu = new TChoices(app, 1);
+        this.menu = new TChoices(1);
         updateMenuButtons();
 
         centerPanel.getComponents().add(menu);
@@ -88,14 +87,9 @@ public class Fight extends TFrame implements DisplayableComponent {
 
         this.setFooter(footer);
 
-        try {
-            this.audioPlayer = app.createAudioPlayer(Music.FIGHT);
-            audioPlayer.setVolume(app.getSettings().getMusicVolume());
-            audioPlayer.setLoop(true);
-            audioPlayer.play();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |
-                 IllegalArgumentException ignored) {
-        }
+        this.fightAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.FIGHT);
+        fightAudioTrack.setLoop(true);
+        fightAudioTrack.play();
     }
 
     @Override
@@ -110,7 +104,7 @@ public class Fight extends TFrame implements DisplayableComponent {
                 if (enemy.isDead()) {
                     // On actualise les stats du joueur
                     if (enemy instanceof Enemy) {
-                        app.getCurrentGame().getStatistic().addAEnemyKill();
+                        game.getStatistic().addAEnemyKill();
                     }
 
                     // On affiche le menu de butin
@@ -134,7 +128,7 @@ public class Fight extends TFrame implements DisplayableComponent {
                     state = State.FINISHED;
                 }
             } else if (state.equals(State.LOOTING)) {
-                app.getConsole().show(new LootMenu(app, player, enemy));
+                Console.getInstance().show(new LootMenu(player, enemy));
                 playerStats.update();
                 enemyStats.update();
                 // Quitter le combat
@@ -159,14 +153,14 @@ public class Fight extends TFrame implements DisplayableComponent {
     @Override
     public void stopLoopingMode() {
         display = false;
-        if (audioPlayer != null) {
-            audioPlayer.stop();
+        if (fightAudioTrack != null) {
+            fightAudioTrack.stop();
         }
     }
 
     public void updateMenuButtons() {
         menu.removeAll();
-        menu.add(new AttackButton(app, this));
+        menu.add(new AttackButton(this));
         if (player.hasItem() && player.getItem() instanceof Consumable consumable) {
             List<Entity> fightEntities = new LinkedList<>();
             if (!enemy.isDead()) {
@@ -175,10 +169,10 @@ public class Fight extends TFrame implements DisplayableComponent {
             if (!player.isDead()) {
                 fightEntities.add(player);
             }
-            menu.add(new UseItemButton(app, this, consumable, fightEntities));
+            menu.add(new UseItemButton(this, consumable, fightEntities));
         }
         if (runAway) {
-            menu.add(new QuitComponentButton(app, this, "Fuir"));
+            menu.add(new QuitComponentButton(this, "Fuir"));
         }
         menu.setLength(20);
     }

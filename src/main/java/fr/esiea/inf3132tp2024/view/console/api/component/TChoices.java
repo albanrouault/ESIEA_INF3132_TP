@@ -1,44 +1,39 @@
 package fr.esiea.inf3132tp2024.view.console.api.component;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.SoundEffect;
 import fr.esiea.inf3132tp2024.old.event.key.KeyListener;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
+import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Direction;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionNotFoundException;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionUtils;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TChoices extends TPanel implements SelectableComponent, KeyListener {
-    private final App app;
     private final List<SelectableComponent> selectableComponents = new ArrayList<>();
     private final boolean edgeJump;
 
     private boolean selected = true;
 
-    public TChoices(App app) {
-        this(app, 0);
+    public TChoices() {
+        this(0);
     }
 
-    public TChoices(App app, int spacing) {
-        this(app, Orientation.VERTICAL, spacing);
+    public TChoices(int spacing) {
+        this(Orientation.VERTICAL, spacing);
     }
 
-    public TChoices(App app, Orientation orientation, int spacing) {
-        this(app, orientation, spacing, true);
+    public TChoices(Orientation orientation, int spacing) {
+        this(orientation, spacing, true);
     }
 
-    public TChoices(App app, Orientation orientation, int spacing, boolean edgeJump) {
+    public TChoices(Orientation orientation, int spacing, boolean edgeJump) {
         super(HorizontalAlignment.CENTER, orientation, spacing);
 
-        this.app = app;
         this.edgeJump = edgeJump;
     }
 
@@ -111,13 +106,9 @@ public class TChoices extends TPanel implements SelectableComponent, KeyListener
                     }
                 }
             }
-            try {
-                NativeAudioTrack audioPlayer = app.createAudioPlayer(SoundEffect.HOVER);
-                audioPlayer.setVolume(app.getSettings().getSoundEffectsVolume());
-                audioPlayer.play();
-            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |
-                     IllegalArgumentException ignored) {
-            }
+
+            AudioTrack audioTrack = AudioPlayer.getInstance().createAudioTrack(SoundEffect.HOVER);
+            audioTrack.play();
         } catch (DirectionNotFoundException ignored) {
         }
     }

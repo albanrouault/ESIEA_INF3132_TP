@@ -55,7 +55,7 @@ public abstract class TButton extends TLabel implements SelectableComponent, Key
 
         // 10 = Entrée dans netbeans ; 13 = Entrée dans un terminal ; 32 = Espace
         if (this.isSelected() && (key == 10 || key == 13 || key == 32)) {
-            AudioTrack audioTrack = AudioPlayer.createAudioTrack(SoundEffect.SELECT);
+            AudioTrack audioTrack = AudioPlayer.getInstance().createAudioTrack(SoundEffect.SELECT);
             audioTrack.play();
 
             this.execute();

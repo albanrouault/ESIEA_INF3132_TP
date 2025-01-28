@@ -1,7 +1,5 @@
 package fr.esiea.inf3132tp2024.old.entity.enemy;
 
-import fr.esiea.inf3132tp2024.old.App;
-
 import java.util.Random;
 
 public class Werewolf extends Enemy {
@@ -17,11 +15,10 @@ public class Werewolf extends Enemy {
     /**
      * Constructeur du Loup-Garou pour faire une entité avec des stats aléatoire.
      *
-     * @param app    L'application
      * @param random Le random permettant de générer l'aléatoire
      */
-    public Werewolf(App app, Random random) {
-        super(app, "Loup-garou",
+    public Werewolf(Random random) {
+        super("Loup-garou",
                 random.nextInt(MIN_HEALTH, MAX_HEALTH),
                 random.nextInt(MIN_STRENGTH, MAX_STRENGTH),
                 random.nextInt(MIN_ACCURACY, MAX_ACCURACY),
@@ -31,14 +28,13 @@ public class Werewolf extends Enemy {
     /**
      * Constructeur du Loup-Garou pour le générer de façon personnalisée
      *
-     * @param app      L'application
      * @param name     Le nom
      * @param health   La vie
      * @param strength La force
      * @param accuracy La précision
      * @param speed    La rapidité
      */
-    public Werewolf(App app, String name, int health, int strength, int accuracy, int speed) {
-        super(app, name, health, strength, accuracy, speed);
+    public Werewolf(String name, int health, int strength, int accuracy, int speed) {
+        super(name, health, strength, accuracy, speed);
     }
 }

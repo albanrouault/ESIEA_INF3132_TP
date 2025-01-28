@@ -1,17 +1,14 @@
 package fr.esiea.inf3132tp2024.old.entity;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.game.EntityDeadException;
-import fr.esiea.inf3132tp2024.view.console.play.fight.Fight;
+import fr.esiea.inf3132tp2024.old.game.Game;
 import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.Key;
 import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
 import fr.esiea.inf3132tp2024.old.item.wearable.Wearable;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.view.console.Console;
+import fr.esiea.inf3132tp2024.view.console.play.fight.Fight;
 
 /**
  * Classe d'une entité
@@ -22,7 +19,6 @@ public abstract class Entity {
     private static final int DEFAULT_ACCURACY = 10;
     private static final int DEFAULT_SPEED = 10;
 
-    private final App app;
     private String name;
     private Weapon weapon;
     private Item item;
@@ -38,15 +34,14 @@ public abstract class Entity {
     /**
      * Constructeur
      *
-     * @param app      L'application
      * @param name     Le nom
      * @param health   La santé
      * @param strength La force
      * @param accuracy La précision
      * @param speed    La rapidité
      */
-    public Entity(App app, String name, int health, int strength, int accuracy, int speed) {
-        this(app, name);
+    public Entity(String name, int health, int strength, int accuracy, int speed) {
+        this(name);
 
         this.health = health;
         this.maxHealth = health;
@@ -61,11 +56,9 @@ public abstract class Entity {
     /**
      * Constructeur
      *
-     * @param app  L'application
      * @param name Le nom de l'entité
      */
-    public Entity(App app, String name) {
-        this.app = app;
+    public Entity(String name) {
         this.name = name;
     }
 
@@ -118,22 +111,20 @@ public abstract class Entity {
     /**
      * Permet de déclencher un combat avec un joueur
      *
+     * @param game    La partie
      * @param player  Le joueur
      * @param runAway Si le joueur peut fuir le combat
      * @return Le combat terminé
      */
-    public Fight fight(Player player, boolean runAway) {
-        Fight fight = new Fight(app, player, this, runAway);
-        NativeAudioTrack gamePlayer = app.getCurrentGame().getAudioPlayer();
-        if (gamePlayer != null) {
-            gamePlayer.stop();
+    public Fight fight(Game game, Player player, boolean runAway) {
+        Fight fight = new Fight(game, player, this, runAway);
+        AudioTrack gameAudioTrack = game.getGameAudioTrack();
+        if (gameAudioTrack != null) {
+            gameAudioTrack.stop();
         }
-        app.getConsole().show(fight);
-        if (!player.isDead() && gamePlayer != null) {
-            try {
-                gamePlayer.restart();
-            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ignored) {
-            }
+        Console.getInstance().show(fight);
+        if (!player.isDead() && gameAudioTrack != null) {
+            gameAudioTrack.restart();
         }
         return fight;
     }

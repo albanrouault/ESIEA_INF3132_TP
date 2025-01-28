@@ -1,6 +1,5 @@
 package fr.esiea.inf3132tp2024.view.console.play.fight.loot;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
 import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
@@ -10,8 +9,8 @@ public class TakeWeaponButton extends TButton {
     private final Entity enemy;
     private final LootMenu lootMenu;
 
-    public TakeWeaponButton(App app, Player player, Entity enemy, LootMenu lootMenu) {
-        super(app, "Prendre l'arme");
+    public TakeWeaponButton(Player player, Entity enemy, LootMenu lootMenu) {
+        super("Prendre l'arme");
 
         this.player = player;
         this.enemy = enemy;

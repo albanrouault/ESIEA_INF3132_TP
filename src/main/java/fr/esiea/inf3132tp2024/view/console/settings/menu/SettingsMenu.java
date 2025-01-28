@@ -1,26 +1,25 @@
 package fr.esiea.inf3132tp2024.view.console.settings.menu;
 
-import fr.esiea.inf3132tp2024.old.App;
+import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
+import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
 import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
-import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
 public class SettingsMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
 
-    public SettingsMenu(App app, NativeAudioTrack menuPlayer) {
+    public SettingsMenu(AudioTrack menuAudioTrack) {
         super(0, 0, "Paramètres");
 
-        TButton saveButton = new SaveButton(app, this);
+        TButton saveButton = new SaveButton(this);
 
-        TChoices choices = new TChoices(app, 1);
-        choices.add(new ConfigureScreenButton(app));
-        choices.add(new ConfigureMusicButton(app, menuPlayer));
-        choices.add(new ConfigureSoundEffectsButton(app));
+        TChoices choices = new TChoices(1);
+        choices.add(new ConfigureScreenButton());
+        choices.add(new ConfigureMusicButton(menuAudioTrack));
+        choices.add(new ConfigureSoundEffectsButton());
         choices.add(saveButton);
-        //choices.add(new DebugKeysButton(app));
+        //choices.add(new DebugKeysButton());
         choices.select(saveButton);
 
         this.getContentPane().getComponents().add(choices);

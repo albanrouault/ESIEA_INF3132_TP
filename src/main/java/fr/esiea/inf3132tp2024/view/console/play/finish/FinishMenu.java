@@ -1,16 +1,15 @@
 package fr.esiea.inf3132tp2024.view.console.play.finish;
 
-import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.game.Game;
 import fr.esiea.inf3132tp2024.old.game.Statistic;
-import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
 import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
 import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
 import fr.esiea.inf3132tp2024.view.console.api.component.TTextField;
+import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
 
 public class FinishMenu extends TFrame implements DisplayableComponent {
     private final TChoices buttons;
@@ -24,7 +23,7 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
     // afficher les scores
     // Changer de nom pour les scores
     // bouton continuer
-    public FinishMenu(App app, Game game, boolean won) {
+    public FinishMenu(Game game, boolean won) {
         super(0, 0, "Fin de la partie");
 
         // Texte
@@ -46,7 +45,7 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(game.getStatistic());
 
         // Boutons
-        this.buttons = new TChoices(app, 1);
+        this.buttons = new TChoices(1);
 
         // On propose de changer de nom seulement si les cheats sont désactivés
         if (!game.getStatistic().isCheatModeActivated()) {
@@ -56,9 +55,9 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
 
             this.nameField = new TTextField("Pseudo pour enregistrer les statistiques", AppSettings.CONSOLE_MIN_LENGTH - 10, game.getPlayer().getName());
             buttons.add(nameField);
-            buttons.add(new SaveStatsButton(app, game, this));
+            buttons.add(new SaveStatsButton(game, this));
         }
-        this.quitButton = new QuitComponentButton(app, this, "Quitter la partie");
+        this.quitButton = new QuitComponentButton(this, "Quitter la partie");
         buttons.add(quitButton);
         this.getContentPane().getComponents().add(buttons);
     }
