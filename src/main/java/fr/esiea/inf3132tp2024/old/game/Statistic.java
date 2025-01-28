@@ -1,9 +1,9 @@
 package fr.esiea.inf3132tp2024.old.game;
 
-import fr.esiea.inf3132tp2024.view.console.TColor;
-import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
-import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
+import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
+import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 public class Statistic extends TPanel implements Comparable<Statistic> {

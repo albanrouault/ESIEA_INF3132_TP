@@ -7,15 +7,15 @@ import fr.esiea.inf3132tp2024.utils.StringUtils;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
-import fr.esiea.inf3132tp2024.view.console.Console;
-import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
-import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
-import fr.esiea.inf3132tp2024.view.console.play.EntityStats;
-import fr.esiea.inf3132tp2024.view.console.play.escape.EscapeMenu;
-import fr.esiea.inf3132tp2024.view.console.play.finish.FinishMenu;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
+import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
+import fr.esiea.inf3132tp2024.view.play.EntityStats;
+import fr.esiea.inf3132tp2024.view.play.escape.EscapeMenu;
+import fr.esiea.inf3132tp2024.view.play.finish.FinishMenu;
 
 public class Game extends TFrame implements DisplayableComponent {
     private final long seed;
@@ -73,7 +73,7 @@ public class Game extends TFrame implements DisplayableComponent {
     public void onKeyPressed(KeyPressedEvent event) {
         // Touche échap = on ouvre le menu de pause
         if (event.getKey() == 27) {
-            Console.getInstance().show(new EscapeMenu(this));
+            Terminal.getInstance().show(new EscapeMenu(this));
             return;
         }
 
@@ -95,7 +95,7 @@ public class Game extends TFrame implements DisplayableComponent {
             AudioTrack deathAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.DEATH);
             deathAudioTrack.setLoop(true);
             deathAudioTrack.play();
-            Console.getInstance().show(new FinishMenu(this, false));
+            Terminal.getInstance().show(new FinishMenu(this, false));
             deathAudioTrack.stop();
         }
 

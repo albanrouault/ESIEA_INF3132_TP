@@ -7,8 +7,8 @@ import fr.esiea.inf3132tp2024.old.item.Key;
 import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
 import fr.esiea.inf3132tp2024.old.item.wearable.Wearable;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
-import fr.esiea.inf3132tp2024.view.console.Console;
-import fr.esiea.inf3132tp2024.view.console.play.fight.Fight;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
+import fr.esiea.inf3132tp2024.view.play.fight.Fight;
 
 /**
  * Classe d'une entité
@@ -122,7 +122,7 @@ public abstract class Entity {
         if (gameAudioTrack != null) {
             gameAudioTrack.stop();
         }
-        Console.getInstance().show(fight);
+        Terminal.getInstance().show(fight);
         if (!player.isDead() && gameAudioTrack != null) {
             gameAudioTrack.restart();
         }
