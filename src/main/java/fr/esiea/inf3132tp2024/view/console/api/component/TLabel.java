@@ -1,60 +1,60 @@
 package fr.esiea.inf3132tp2024.view.console.api.component;
 
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class CLabel extends CComponent {
-    private final List<CColor> colors = new LinkedList<>();
+public class TLabel extends TComponent {
+    private final List<TColor> colors = new LinkedList<>();
     private String[] textLines;
 
-    public CLabel(String text) {
+    public TLabel(String text) {
         this(HorizontalAlignment.CENTER, text);
     }
 
-    public CLabel(HorizontalAlignment horizontalAlignment, String text) {
+    public TLabel(HorizontalAlignment horizontalAlignment, String text) {
         this(horizontalAlignment, StringUtils.convertStringToStringArray(text), StringUtils.getMaximumLength(StringUtils.convertStringToStringArray(text)), StringUtils.convertStringToStringArray(text).length);
     }
 
-    public CLabel(String text, int length) {
+    public TLabel(String text, int length) {
         this(HorizontalAlignment.CENTER, text, length);
     }
 
-    public CLabel(HorizontalAlignment horizontalAlignment, String text, int length) {
+    public TLabel(HorizontalAlignment horizontalAlignment, String text, int length) {
         this(horizontalAlignment, formatLines(StringUtils.convertStringToStringArray(text), length), length, formatLines(StringUtils.convertStringToStringArray(text), length).length);
     }
 
-    public CLabel(String text, int length, int height) {
+    public TLabel(String text, int length, int height) {
         this(HorizontalAlignment.CENTER, text, length, height);
     }
 
-    public CLabel(HorizontalAlignment horizontalAlignment, String text, int length, int height) {
+    public TLabel(HorizontalAlignment horizontalAlignment, String text, int length, int height) {
         this(horizontalAlignment, StringUtils.convertStringToStringArray(text), length, height);
     }
 
-    public CLabel(String[] lines) {
+    public TLabel(String[] lines) {
         this(HorizontalAlignment.CENTER, lines);
     }
 
-    public CLabel(HorizontalAlignment horizontalAlignment, String[] lines) {
+    public TLabel(HorizontalAlignment horizontalAlignment, String[] lines) {
         this(horizontalAlignment, lines, StringUtils.getMaximumLength(lines), lines.length);
     }
 
-    public CLabel(String[] lines, int length) {
+    public TLabel(String[] lines, int length) {
         this(HorizontalAlignment.CENTER, lines, length);
     }
 
-    public CLabel(HorizontalAlignment horizontalAlignment, String[] lines, int length) {
+    public TLabel(HorizontalAlignment horizontalAlignment, String[] lines, int length) {
         this(horizontalAlignment, formatLines(lines, length), length, formatLines(lines, length).length);
     }
 
-    public CLabel(String[] lines, int length, int height) {
+    public TLabel(String[] lines, int length, int height) {
         this(HorizontalAlignment.CENTER, lines, length, height);
     }
 
-    public CLabel(HorizontalAlignment horizontalAlignment, String[] lines, int length, int height) {
+    public TLabel(HorizontalAlignment horizontalAlignment, String[] lines, int length, int height) {
         super(horizontalAlignment, length, height);
 
         this.textLines = lines;
@@ -104,7 +104,7 @@ public class CLabel extends CComponent {
                 }
             }
 
-            for (CColor color : colors) {
+            for (TColor color : colors) {
                 textLine = color.getForeground() + textLine + color.getForegroundReset();
             }
 
@@ -123,7 +123,7 @@ public class CLabel extends CComponent {
         return result;
     }
 
-    public List<CColor> getColors() {
+    public List<TColor> getColors() {
         return colors;
     }
 

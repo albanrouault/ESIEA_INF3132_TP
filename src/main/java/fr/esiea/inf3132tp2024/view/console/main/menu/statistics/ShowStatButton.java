@@ -2,9 +2,9 @@ package fr.esiea.inf3132tp2024.view.console.main.menu.statistics;
 
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.game.Statistic;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 
-public class ShowStatButton extends CButton {
+public class ShowStatButton extends TButton {
     private final App app;
     private final Statistic statistic;
 

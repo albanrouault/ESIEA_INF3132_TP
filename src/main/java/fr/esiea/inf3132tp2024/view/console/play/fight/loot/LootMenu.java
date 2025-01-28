@@ -5,6 +5,7 @@ import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.api.component.*;
+import fr.esiea.inf3132tp2024.view.ui.console.api.component.*;
 import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
 import fr.esiea.inf3132tp2024.view.console.play.ItemStats;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
@@ -13,13 +14,13 @@ import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LootMenu extends CFrame implements DisplayableComponent {
+public class LootMenu extends TFrame implements DisplayableComponent {
     private final Player player;
     private final Entity entity;
-    private final CPanel leftPanel;
-    private final CPanel centerPanel;
-    private final CPanel rightPanel;
-    private final CChoices buttons;
+    private final TPanel leftPanel;
+    private final TPanel centerPanel;
+    private final TPanel rightPanel;
+    private final TChoices buttons;
     private final QuitComponentButton leaveButton;
 
     private boolean display = true;
@@ -35,16 +36,16 @@ public class LootMenu extends CFrame implements DisplayableComponent {
         this.getContentPane().setRenderingMainPadding(false);
 
         // Panneaux de gauche à droite
-        this.leftPanel = new CPanel(0, 0);
-        this.centerPanel = new CPanel(0, 0);
-        this.rightPanel = new CPanel(0, 0);
+        this.leftPanel = new TPanel(0, 0);
+        this.centerPanel = new TPanel(0, 0);
+        this.rightPanel = new TPanel(0, 0);
         this.getContentPane().getComponents().add(this.leftPanel);
         this.getContentPane().getComponents().add(this.centerPanel);
         this.getContentPane().getComponents().add(this.rightPanel);
 
         // Panneau du centre
         // Boutons
-        this.buttons = new CChoices(app, 1);
+        this.buttons = new TChoices(app, 1);
         // Bouton weapon
         if (enemy.hasWeapon()) {
             if (player.hasWeapon()) {
@@ -98,13 +99,13 @@ public class LootMenu extends CFrame implements DisplayableComponent {
         int statsLength = this.getContentPane().getLength() - this.centerPanel.getLength() - 2;
         this.leftPanel.setLength(statsLength / 2);
         this.rightPanel.setLength(statsLength / 2);
-        for (CComponent component : this.leftPanel.getComponents()) {
+        for (TComponent component : this.leftPanel.getComponents()) {
             component.setLength(statsLength / 2);
             if (component instanceof ItemStats itemStats) {
                 itemStats.update();
             }
         }
-        for (CComponent component : this.rightPanel.getComponents()) {
+        for (TComponent component : this.rightPanel.getComponents()) {
             component.setLength(statsLength / 2);
             if (component instanceof ItemStats itemStats) {
                 itemStats.update();
@@ -136,7 +137,7 @@ public class LootMenu extends CFrame implements DisplayableComponent {
         }
 
         // On ajoute les bonnes stats en fonction du bouton sélectionné
-        CComponent selectedComponent = (CComponent) selectableComponent;
+        TComponent selectedComponent = (TComponent) selectableComponent;
         // 24 = 20 (boutons) + 2 (Cadre frame) + 2 (Séparateur entre menu stats)
         int statsLength = this.getContentPane().getLength() - this.buttons.getLength() - 2;
         if (selectedComponent instanceof ReplaceWeaponButton replaceWeaponButton) {
@@ -170,7 +171,7 @@ public class LootMenu extends CFrame implements DisplayableComponent {
         display = false;
     }
 
-    public CChoices getButtons() {
+    public TChoices getButtons() {
         return buttons;
     }
 

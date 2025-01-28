@@ -7,7 +7,7 @@ import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.Key;
 import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
 import fr.esiea.inf3132tp2024.old.item.wearable.Wearable;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -124,7 +124,7 @@ public abstract class Entity {
      */
     public Fight fight(Player player, boolean runAway) {
         Fight fight = new Fight(app, player, this, runAway);
-        SimpleAudioPlayer gamePlayer = app.getCurrentGame().getAudioPlayer();
+        NativeAudioTrack gamePlayer = app.getCurrentGame().getAudioPlayer();
         if (gamePlayer != null) {
             gamePlayer.stop();
         }

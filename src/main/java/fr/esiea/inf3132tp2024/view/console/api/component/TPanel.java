@@ -9,38 +9,38 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CPanel extends CComponent implements KeyListener {
-    private final List<CComponent> components = new LinkedList<>();
+public class TPanel extends TComponent implements KeyListener {
+    private final List<TComponent> components = new LinkedList<>();
 
     private final int spacing;
     private Orientation renderOrientation;
     private boolean renderMainPadding;
 
-    public CPanel(int length, int height) {
+    public TPanel(int length, int height) {
         this(HorizontalAlignment.CENTER, length, height);
     }
 
-    public CPanel(HorizontalAlignment horizontalAlignment, int length, int height) {
+    public TPanel(HorizontalAlignment horizontalAlignment, int length, int height) {
         this(horizontalAlignment, length, height, Orientation.VERTICAL, true);
     }
 
-    public CPanel(int length, int height, Orientation renderOrientation, boolean renderMainPadding) {
+    public TPanel(int length, int height, Orientation renderOrientation, boolean renderMainPadding) {
         this(HorizontalAlignment.CENTER, length, height, renderOrientation, renderMainPadding);
     }
 
-    public CPanel(HorizontalAlignment horizontalAlignment, int length, int height, Orientation renderOrientation, boolean renderMainPadding) {
+    public TPanel(HorizontalAlignment horizontalAlignment, int length, int height, Orientation renderOrientation, boolean renderMainPadding) {
         this(horizontalAlignment, length, height, renderOrientation, renderMainPadding, -1);
     }
 
-    public CPanel(HorizontalAlignment horizontalAlignment, Orientation renderOrientation, int spacing) {
+    public TPanel(HorizontalAlignment horizontalAlignment, Orientation renderOrientation, int spacing) {
         this(horizontalAlignment, 0, 0, renderOrientation, false, spacing);
     }
 
-    public CPanel(HorizontalAlignment horizontalAlignment, int length, int height, Orientation renderOrientation, int spacing) {
+    public TPanel(HorizontalAlignment horizontalAlignment, int length, int height, Orientation renderOrientation, int spacing) {
         this(horizontalAlignment, length, height, renderOrientation, false, spacing);
     }
 
-    private CPanel(HorizontalAlignment horizontalAlignment, int length, int height, Orientation renderOrientation, boolean renderMainPadding, int spacing) {
+    private TPanel(HorizontalAlignment horizontalAlignment, int length, int height, Orientation renderOrientation, boolean renderMainPadding, int spacing) {
         super(horizontalAlignment, length, height);
 
         this.renderOrientation = renderOrientation;
@@ -59,7 +59,7 @@ public class CPanel extends CComponent implements KeyListener {
                 String emptyLine = " ".repeat(this.getLength());
 
                 int contentLines = 0;
-                for (CComponent component : this.getComponents()) {
+                for (TComponent component : this.getComponents()) {
                     contentLines += component.getHeight();
                 }
 
@@ -70,10 +70,10 @@ public class CPanel extends CComponent implements KeyListener {
                     paddingNb += 2;
                 }
 
-                Iterator<CComponent> componentsIterator = this.getComponents().iterator();
+                Iterator<TComponent> componentsIterator = this.getComponents().iterator();
                 mainLoop:
                 for (int i = 0; componentsIterator.hasNext(); i++) {
-                    CComponent component = componentsIterator.next();
+                    TComponent component = componentsIterator.next();
 
                     // Espace de padding
                     // + 1 pour le padding automatique (bourrage) de fin
@@ -116,9 +116,9 @@ public class CPanel extends CComponent implements KeyListener {
                 }
             }
             case HORIZONTAL -> {
-                LinkedList<Couple<CComponent, String[]>> componentsLines = new LinkedList<>();
+                LinkedList<Couple<TComponent, String[]>> componentsLines = new LinkedList<>();
                 int contentLength = 0;
-                for (CComponent component : this.getComponents()) {
+                for (TComponent component : this.getComponents()) {
                     String[] render = component.render();
                     if (component.getHeight() < 1 || component.getLength() < 1) {
                         continue;
@@ -151,9 +151,9 @@ public class CPanel extends CComponent implements KeyListener {
                     }
 
                     // Rendu des composants
-                    Iterator<Couple<CComponent, String[]>> iterator = componentsLines.iterator();
+                    Iterator<Couple<TComponent, String[]>> iterator = componentsLines.iterator();
                     for (int j = 0; iterator.hasNext(); j++) {
-                        Couple<CComponent, String[]> renderedComponent = iterator.next();
+                        Couple<TComponent, String[]> renderedComponent = iterator.next();
                         int componentLength = renderedComponent.getElemOne().getLength();
                         String[] componentLines = renderedComponent.getElemTwo();
                         if (i < componentLines.length) {
@@ -186,7 +186,7 @@ public class CPanel extends CComponent implements KeyListener {
 
     @Override
     public void onKeyPressed(KeyPressedEvent event) {
-        for (CComponent component : this.getComponents()) {
+        for (TComponent component : this.getComponents()) {
             if (component instanceof KeyListener componentListener) {
                 componentListener.onKeyPressed(event);
             }
@@ -198,7 +198,7 @@ public class CPanel extends CComponent implements KeyListener {
             case VERTICAL -> {
                 // Calcul de la hauteur
                 int height = 0;
-                for (CComponent component : components) {
+                for (TComponent component : components) {
                     height += component.getHeight();
                 }
                 if (components.size() != 0 && spacing > 0) {
@@ -208,7 +208,7 @@ public class CPanel extends CComponent implements KeyListener {
 
                 // Calcul de la longueur
                 int length = 0;
-                for (CComponent component : components) {
+                for (TComponent component : components) {
                     if (component.getLength() > length) {
                         length = component.getLength();
                     }
@@ -221,7 +221,7 @@ public class CPanel extends CComponent implements KeyListener {
 
                 // Calcul de la longueur
                 int length = 0;
-                for (CComponent component : components) {
+                for (TComponent component : components) {
                     length += component.getLength();
                 }
                 if (components.size() != 0 && spacing > 0) {
@@ -232,7 +232,7 @@ public class CPanel extends CComponent implements KeyListener {
         }
     }
 
-    public List<CComponent> getComponents() {
+    public List<TComponent> getComponents() {
         return components;
     }
 

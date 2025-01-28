@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.console.play;
 
-import fr.esiea.inf3132tp2024.view.console.CColor;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.TColor;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.consumable.AttackPotion;
@@ -11,7 +11,7 @@ import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
 import fr.esiea.inf3132tp2024.old.item.wearable.Wearable;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
-public class ItemStats extends CPanel {
+public class ItemStats extends TPanel {
     private final String title;
     private final Item item;
 
@@ -35,21 +35,21 @@ public class ItemStats extends CPanel {
 
         // Titre
         if (title != null) {
-            CLabel titleLabel = new CLabel(title);
+            TLabel titleLabel = new TLabel(title);
             if (title.contains("(Vous)")) {
-                titleLabel.getColors().add(CColor.BRIGHT_BLUE);
+                titleLabel.getColors().add(TColor.BRIGHT_BLUE);
             }
-            titleLabel.getColors().add(CColor.BOLD);
+            titleLabel.getColors().add(TColor.BOLD);
             this.getComponents().add(titleLabel);
             panelMaxLength = titleLabel.getLength();
         }
 
         // Nom
-        CPanel namePanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-        CLabel nameLabel = new CLabel("Nom");
-        nameLabel.getColors().add(CColor.BOLD);
-        CLabel nameValue = new CLabel(item.getName());
-        nameValue.getColors().add(CColor.GREEN);
+        TPanel namePanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+        TLabel nameLabel = new TLabel("Nom");
+        nameLabel.getColors().add(TColor.BOLD);
+        TLabel nameValue = new TLabel(item.getName());
+        nameValue.getColors().add(TColor.GREEN);
         namePanel.getComponents().add(nameLabel);
         namePanel.getComponents().add(nameValue);
         namePanel.autoResize();
@@ -59,11 +59,11 @@ public class ItemStats extends CPanel {
         this.getComponents().add(namePanel);
 
         // Description
-        CPanel descriptionPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-        CLabel descriptionLabel = new CLabel("Description");
-        descriptionLabel.getColors().add(CColor.BOLD);
-        CLabel descriptionValue = new CLabel(item.getDescription(), this.getLength());
-        descriptionValue.getColors().add(CColor.GREEN);
+        TPanel descriptionPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+        TLabel descriptionLabel = new TLabel("Description");
+        descriptionLabel.getColors().add(TColor.BOLD);
+        TLabel descriptionValue = new TLabel(item.getDescription(), this.getLength());
+        descriptionValue.getColors().add(TColor.GREEN);
         descriptionPanel.getComponents().add(descriptionLabel);
         descriptionPanel.getComponents().add(descriptionValue);
         descriptionPanel.autoResize();
@@ -74,11 +74,11 @@ public class ItemStats extends CPanel {
 
         if (item instanceof Weapon weapon) {
             // Force
-            CPanel strengthPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel strengthLabel = new CLabel("Force");
-            strengthLabel.getColors().add(CColor.BOLD);
-            CLabel strengthValue = new CLabel(String.valueOf(weapon.getStrength()));
-            strengthValue.getColors().add(CColor.GREEN);
+            TPanel strengthPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel strengthLabel = new TLabel("Force");
+            strengthLabel.getColors().add(TColor.BOLD);
+            TLabel strengthValue = new TLabel(String.valueOf(weapon.getStrength()));
+            strengthValue.getColors().add(TColor.GREEN);
             strengthPanel.getComponents().add(strengthLabel);
             strengthPanel.getComponents().add(strengthValue);
             strengthPanel.autoResize();
@@ -88,11 +88,11 @@ public class ItemStats extends CPanel {
             this.getComponents().add(strengthPanel);
 
             // Précision
-            CPanel accuracyPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel accuracyLabel = new CLabel("Précision");
-            accuracyLabel.getColors().add(CColor.BOLD);
-            CLabel accuracyValue = new CLabel(String.valueOf(weapon.getAccuracy()));
-            accuracyValue.getColors().add(CColor.GREEN);
+            TPanel accuracyPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel accuracyLabel = new TLabel("Précision");
+            accuracyLabel.getColors().add(TColor.BOLD);
+            TLabel accuracyValue = new TLabel(String.valueOf(weapon.getAccuracy()));
+            accuracyValue.getColors().add(TColor.GREEN);
             accuracyPanel.getComponents().add(accuracyLabel);
             accuracyPanel.getComponents().add(accuracyValue);
             accuracyPanel.autoResize();
@@ -102,11 +102,11 @@ public class ItemStats extends CPanel {
             this.getComponents().add(accuracyPanel);
 
             // Rapidité
-            CPanel speedPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel speedLabel = new CLabel("Rapidité");
-            speedLabel.getColors().add(CColor.BOLD);
-            CLabel speedValue = new CLabel(String.valueOf(weapon.getSpeed()));
-            speedValue.getColors().add(CColor.GREEN);
+            TPanel speedPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel speedLabel = new TLabel("Rapidité");
+            speedLabel.getColors().add(TColor.BOLD);
+            TLabel speedValue = new TLabel(String.valueOf(weapon.getSpeed()));
+            speedValue.getColors().add(TColor.GREEN);
             speedPanel.getComponents().add(speedLabel);
             speedPanel.getComponents().add(speedValue);
             speedPanel.autoResize();
@@ -120,11 +120,11 @@ public class ItemStats extends CPanel {
             speedPanel.setLength(panelMaxLength);
         } else if (item instanceof Wearable wearable) {
             // Force
-            CPanel strengthPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel strengthLabel = new CLabel("Force");
-            strengthLabel.getColors().add(CColor.BOLD);
-            CLabel strengthValue = new CLabel(String.valueOf(wearable.getStrength()));
-            strengthValue.getColors().add(CColor.GREEN);
+            TPanel strengthPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel strengthLabel = new TLabel("Force");
+            strengthLabel.getColors().add(TColor.BOLD);
+            TLabel strengthValue = new TLabel(String.valueOf(wearable.getStrength()));
+            strengthValue.getColors().add(TColor.GREEN);
             strengthPanel.getComponents().add(strengthLabel);
             strengthPanel.getComponents().add(strengthValue);
             strengthPanel.autoResize();
@@ -134,11 +134,11 @@ public class ItemStats extends CPanel {
             this.getComponents().add(strengthPanel);
 
             // Précision
-            CPanel accuracyPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel accuracyLabel = new CLabel("Précision");
-            accuracyLabel.getColors().add(CColor.BOLD);
-            CLabel accuracyValue = new CLabel(String.valueOf(wearable.getAccuracy()));
-            accuracyValue.getColors().add(CColor.GREEN);
+            TPanel accuracyPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel accuracyLabel = new TLabel("Précision");
+            accuracyLabel.getColors().add(TColor.BOLD);
+            TLabel accuracyValue = new TLabel(String.valueOf(wearable.getAccuracy()));
+            accuracyValue.getColors().add(TColor.GREEN);
             accuracyPanel.getComponents().add(accuracyLabel);
             accuracyPanel.getComponents().add(accuracyValue);
             accuracyPanel.autoResize();
@@ -148,11 +148,11 @@ public class ItemStats extends CPanel {
             this.getComponents().add(accuracyPanel);
 
             // Rapidité
-            CPanel speedPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel speedLabel = new CLabel("Rapidité");
-            speedLabel.getColors().add(CColor.BOLD);
-            CLabel speedValue = new CLabel(String.valueOf(wearable.getSpeed()));
-            speedValue.getColors().add(CColor.GREEN);
+            TPanel speedPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel speedLabel = new TLabel("Rapidité");
+            speedLabel.getColors().add(TColor.BOLD);
+            TLabel speedValue = new TLabel(String.valueOf(wearable.getSpeed()));
+            speedValue.getColors().add(TColor.GREEN);
             speedPanel.getComponents().add(speedLabel);
             speedPanel.getComponents().add(speedValue);
             speedPanel.autoResize();
@@ -166,11 +166,11 @@ public class ItemStats extends CPanel {
             speedPanel.setLength(panelMaxLength);
         } else if (item instanceof AttackPotion attackPotion) {
             // Dégâts
-            CPanel damagePanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel damageLabel = new CLabel("Dégâts");
-            damageLabel.getColors().add(CColor.BOLD);
-            CLabel damageValue = new CLabel(String.valueOf(attackPotion.getDamage()));
-            damageValue.getColors().add(CColor.GREEN);
+            TPanel damagePanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel damageLabel = new TLabel("Dégâts");
+            damageLabel.getColors().add(TColor.BOLD);
+            TLabel damageValue = new TLabel(String.valueOf(attackPotion.getDamage()));
+            damageValue.getColors().add(TColor.GREEN);
             damagePanel.getComponents().add(damageLabel);
             damagePanel.getComponents().add(damageValue);
             damagePanel.autoResize();
@@ -182,11 +182,11 @@ public class ItemStats extends CPanel {
             damagePanel.setLength(panelMaxLength);
         } else if (item instanceof HealPotion healPotion) {
             // Soins
-            CPanel healPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
-            CLabel healLabel = new CLabel("Soins");
-            healLabel.getColors().add(CColor.BOLD);
-            CLabel healValue = new CLabel(String.valueOf(healPotion.getHeal()));
-            healValue.getColors().add(CColor.GREEN);
+            TPanel healPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
+            TLabel healLabel = new TLabel("Soins");
+            healLabel.getColors().add(TColor.BOLD);
+            TLabel healValue = new TLabel(String.valueOf(healPotion.getHeal()));
+            healValue.getColors().add(TColor.GREEN);
             healPanel.getComponents().add(healLabel);
             healPanel.getComponents().add(healValue);
             healPanel.autoResize();

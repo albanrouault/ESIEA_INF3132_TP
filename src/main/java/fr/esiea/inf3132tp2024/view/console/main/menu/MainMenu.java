@@ -3,18 +3,18 @@ package fr.esiea.inf3132tp2024.view.console.main.menu;
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CChoices;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.main.menu.information.InfoButton;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
-public class MainMenu extends CFrame implements DisplayableComponent {
-    private SimpleAudioPlayer audioPlayer;
+public class MainMenu extends TFrame implements DisplayableComponent {
+    private NativeAudioTrack audioPlayer;
     private boolean display = true;
 
     public MainMenu(App app) {
@@ -29,7 +29,7 @@ public class MainMenu extends CFrame implements DisplayableComponent {
                  IllegalArgumentException ignored) {
         }
 
-        CChoices choices = new CChoices(app, 1);
+        TChoices choices = new TChoices(app, 1);
 
         choices.add(new PlayButton(app, this));
         choices.add(new StatisticsButton(app, this));
@@ -54,7 +54,7 @@ public class MainMenu extends CFrame implements DisplayableComponent {
         return true;
     }
 
-    public SimpleAudioPlayer getAudioPlayer() {
+    public NativeAudioTrack getAudioPlayer() {
         return audioPlayer;
     }
 }

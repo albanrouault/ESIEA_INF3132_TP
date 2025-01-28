@@ -5,20 +5,20 @@ import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.old.game.Game;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CChoices;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.main.menu.information.InfoButton;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
 
-public class EscapeMenu extends CFrame implements DisplayableComponent {
+public class EscapeMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
 
     public EscapeMenu(App app, Game game) {
         super(0, 0, "Pause");
 
-        CChoices choices = new CChoices(app, 1);
+        TChoices choices = new TChoices(app, 1);
         choices.add(new QuitComponentButton(app, this, "Reprendre la partie"));
         if (game.getPlayer().hasItem() && game.getPlayer().getItem() instanceof Consumable) {
             choices.add(new UseItemButton(app, this, game.getPlayer()));
@@ -30,8 +30,8 @@ public class EscapeMenu extends CFrame implements DisplayableComponent {
 
         this.getContentPane().getComponents().add(choices);
 
-        CPanel footer = new CPanel(0, 1);
-        CLabel seedLabel = new CLabel("Seed : " + game.getSeed());
+        TPanel footer = new TPanel(0, 1);
+        TLabel seedLabel = new TLabel("Seed : " + game.getSeed());
         footer.getComponents().add(seedLabel);
         this.setFooter(footer);
     }

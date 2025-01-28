@@ -3,15 +3,15 @@ package fr.esiea.inf3132tp2024.view.console.play.fight.loot;
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CComponent;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TComponent;
 import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class ReplaceItemButton extends CButton {
+public class ReplaceItemButton extends TButton {
     private final App app;
     private final LootMenu lootMenu;
     private final Player player;
@@ -38,7 +38,7 @@ public class ReplaceItemButton extends CButton {
             entities.add(player);
 
             // Si un bouton utiliser l'item est déjà présent, on le remplace par un nouveau bouton
-            for (CComponent component : lootMenu.getButtons().getComponents()) {
+            for (TComponent component : lootMenu.getButtons().getComponents()) {
                 if (component instanceof UseItemButton useItemButton) {
                     UseItemButton newUseItemButton = new UseItemButton(app, lootMenu, consumable, entities);
                     lootMenu.getButtons().replace(useItemButton, newUseItemButton);
@@ -52,7 +52,7 @@ public class ReplaceItemButton extends CButton {
 
             // Sinon l'item du joueur n'est pas consommable, on supprime le bouton consommer l'item
         } else {
-            for (CComponent component : lootMenu.getButtons().getComponents()) {
+            for (TComponent component : lootMenu.getButtons().getComponents()) {
                 if (component instanceof UseItemButton useItemButton) {
                     lootMenu.getButtons().remove(useItemButton);
                     break;

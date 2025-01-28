@@ -9,7 +9,7 @@ import fr.esiea.inf3132tp2024.view.console.api.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.ErrorDialog;
 import fr.esiea.inf3132tp2024.view.console.main.SplashScreen;
 import fr.esiea.inf3132tp2024.view.console.main.menu.MainMenu;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -22,7 +22,7 @@ public class App {
     private final AppSettings settings;
     private final Console console;
     private final Statistics statistics;
-    private final List<SimpleAudioPlayer> audioPlayers = new LinkedList<>();
+    private final List<NativeAudioTrack> audioPlayers = new LinkedList<>();
     private Game currentGame;
 
     /**
@@ -61,7 +61,7 @@ public class App {
             }
             stopAllPlayers();
             try {
-                SimpleAudioPlayer errorSound = createAudioPlayer(Music.ERROR);
+                NativeAudioTrack errorSound = createAudioPlayer(Music.ERROR);
                 errorSound.setVolume(settings.getMusicVolume());
                 errorSound.play();
             } catch (UnsupportedAudioFileException | LineUnavailableException | IOException |
@@ -73,18 +73,18 @@ public class App {
         audioPlayers.clear();
     }
 
-    public SimpleAudioPlayer createAudioPlayer(Music music) throws UnsupportedAudioFileException, LineUnavailableException, IOException, IllegalArgumentException {
-        SimpleAudioPlayer player = new SimpleAudioPlayer(music.getFilePath());
+    public NativeAudioTrack createAudioPlayer(Music music) throws UnsupportedAudioFileException, LineUnavailableException, IOException, IllegalArgumentException {
+        NativeAudioTrack player = new NativeAudioTrack(music.getFilePath());
         audioPlayers.add(player);
         return player;
     }
 
-    public SimpleAudioPlayer createAudioPlayer(SoundEffect soundEffect) throws UnsupportedAudioFileException, LineUnavailableException, IOException, IllegalArgumentException {
-        return new SimpleAudioPlayer(soundEffect.getFilePath());
+    public NativeAudioTrack createAudioPlayer(SoundEffect soundEffect) throws UnsupportedAudioFileException, LineUnavailableException, IOException, IllegalArgumentException {
+        return new NativeAudioTrack(soundEffect.getFilePath());
     }
 
     public void stopAllPlayers() {
-        for (SimpleAudioPlayer player : audioPlayers) {
+        for (NativeAudioTrack player : audioPlayers) {
             player.stop();
         }
 

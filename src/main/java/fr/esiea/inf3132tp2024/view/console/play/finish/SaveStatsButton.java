@@ -3,10 +3,10 @@ package fr.esiea.inf3132tp2024.view.console.play.finish;
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.game.Game;
 import fr.esiea.inf3132tp2024.old.game.Statistic;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CTextField;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TTextField;
 
-public class SaveStatsButton extends CButton {
+public class SaveStatsButton extends TButton {
     private final App app;
     private final Game game;
     private final FinishMenu finishMenu;
@@ -21,7 +21,7 @@ public class SaveStatsButton extends CButton {
 
     @Override
     public void execute() {
-        CTextField nameField = finishMenu.getNameField();
+        TTextField nameField = finishMenu.getNameField();
 
         // Sauvegarde des statistiques
         Statistic statistic = game.getStatistic();

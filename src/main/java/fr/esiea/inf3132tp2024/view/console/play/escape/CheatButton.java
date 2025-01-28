@@ -2,12 +2,12 @@ package fr.esiea.inf3132tp2024.view.console.play.escape;
 
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.InfoDialog;
 import fr.esiea.inf3132tp2024.view.console.play.escape.cheat.CheatMenu;
 
-public class CheatButton extends CButton {
+public class CheatButton extends TButton {
     private final App app;
     private final Game game;
     private final EscapeMenu escapeMenu;

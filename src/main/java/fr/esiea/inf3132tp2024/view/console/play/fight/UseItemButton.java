@@ -2,14 +2,14 @@ package fr.esiea.inf3132tp2024.view.console.play.fight;
 
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.play.item.consumable.ConsumableItemMenu;
 import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
 
 import java.util.List;
 
-public class UseItemButton extends CButton {
+public class UseItemButton extends TButton {
     private final App app;
     private final Fight fight;
     private final Consumable item;

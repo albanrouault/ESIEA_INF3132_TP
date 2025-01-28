@@ -1,12 +1,12 @@
 package fr.esiea.inf3132tp2024.old.game;
 
-import fr.esiea.inf3132tp2024.view.console.CColor;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.TColor;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
-public class Statistic extends CPanel implements Comparable<Statistic> {
+public class Statistic extends TPanel implements Comparable<Statistic> {
     private final long seed;
     private String playerName;
     private int nbEnemyKilled;
@@ -41,23 +41,23 @@ public class Statistic extends CPanel implements Comparable<Statistic> {
         int valueLength = 0;
 
         // Nom des valeurs
-        CLabel playerNameLabel = new CLabel(HorizontalAlignment.RIGHT, "Nom du joueur:");
-        playerNameLabel.getColors().add(CColor.GREEN);
+        TLabel playerNameLabel = new TLabel(HorizontalAlignment.RIGHT, "Nom du joueur:");
+        playerNameLabel.getColors().add(TColor.GREEN);
         if (playerNameLabel.getLength() > labelLength) {
             labelLength = playerNameLabel.getLength();
         }
-        CLabel scoreLabel = new CLabel(HorizontalAlignment.RIGHT, "Score:");
-        scoreLabel.getColors().add(CColor.GREEN);
+        TLabel scoreLabel = new TLabel(HorizontalAlignment.RIGHT, "Score:");
+        scoreLabel.getColors().add(TColor.GREEN);
         if (scoreLabel.getLength() > labelLength) {
             labelLength = scoreLabel.getLength();
         }
-        CLabel nbEnemyKilledLabel = new CLabel(HorizontalAlignment.RIGHT, "Nombre d'ennemis tués:");
-        nbEnemyKilledLabel.getColors().add(CColor.GREEN);
+        TLabel nbEnemyKilledLabel = new TLabel(HorizontalAlignment.RIGHT, "Nombre d'ennemis tués:");
+        nbEnemyKilledLabel.getColors().add(TColor.GREEN);
         if (nbEnemyKilledLabel.getLength() > labelLength) {
             labelLength = nbEnemyKilledLabel.getLength();
         }
-        CLabel seedLabel = new CLabel(HorizontalAlignment.RIGHT, "Graine utilisée:");
-        seedLabel.getColors().add(CColor.GREEN);
+        TLabel seedLabel = new TLabel(HorizontalAlignment.RIGHT, "Graine utilisée:");
+        seedLabel.getColors().add(TColor.GREEN);
         if (seedLabel.getLength() > labelLength) {
             labelLength = seedLabel.getLength();
         }
@@ -67,23 +67,23 @@ public class Statistic extends CPanel implements Comparable<Statistic> {
         seedLabel.setLength(labelLength);
 
         // Valeurs
-        CLabel playerNameValue = new CLabel(HorizontalAlignment.LEFT, this.playerName);
-        playerNameValue.getColors().add(CColor.YELLOW);
+        TLabel playerNameValue = new TLabel(HorizontalAlignment.LEFT, this.playerName);
+        playerNameValue.getColors().add(TColor.YELLOW);
         if (playerNameValue.getLength() > valueLength) {
             valueLength = playerNameValue.getLength();
         }
-        CLabel scoreValue = new CLabel(HorizontalAlignment.LEFT, String.valueOf(this.score));
-        scoreValue.getColors().add(CColor.YELLOW);
+        TLabel scoreValue = new TLabel(HorizontalAlignment.LEFT, String.valueOf(this.score));
+        scoreValue.getColors().add(TColor.YELLOW);
         if (scoreValue.getLength() > valueLength) {
             valueLength = scoreValue.getLength();
         }
-        CLabel nbEnemyKilledValue = new CLabel(HorizontalAlignment.LEFT, String.valueOf(this.nbEnemyKilled));
-        nbEnemyKilledValue.getColors().add(CColor.YELLOW);
+        TLabel nbEnemyKilledValue = new TLabel(HorizontalAlignment.LEFT, String.valueOf(this.nbEnemyKilled));
+        nbEnemyKilledValue.getColors().add(TColor.YELLOW);
         if (nbEnemyKilledValue.getLength() > valueLength) {
             valueLength = nbEnemyKilledValue.getLength();
         }
-        CLabel seedValue = new CLabel(HorizontalAlignment.LEFT, String.valueOf(this.seed));
-        seedValue.getColors().add(CColor.YELLOW);
+        TLabel seedValue = new TLabel(HorizontalAlignment.LEFT, String.valueOf(this.seed));
+        seedValue.getColors().add(TColor.YELLOW);
         if (seedValue.getLength() > valueLength) {
             valueLength = seedValue.getLength();
         }
@@ -93,25 +93,25 @@ public class Statistic extends CPanel implements Comparable<Statistic> {
         seedValue.setLength(valueLength);
 
         // Panels pour chaque champ
-        CPanel playerNamePanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel playerNamePanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         playerNamePanel.getComponents().add(playerNameLabel);
         playerNamePanel.getComponents().add(playerNameValue);
         playerNamePanel.autoResize();
         this.getComponents().add(playerNamePanel);
 
-        CPanel scorePanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel scorePanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         scorePanel.getComponents().add(scoreLabel);
         scorePanel.getComponents().add(scoreValue);
         scorePanel.autoResize();
         this.getComponents().add(scorePanel);
 
-        CPanel nbEnemyKilledPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel nbEnemyKilledPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         nbEnemyKilledPanel.getComponents().add(nbEnemyKilledLabel);
         nbEnemyKilledPanel.getComponents().add(nbEnemyKilledValue);
         nbEnemyKilledPanel.autoResize();
         this.getComponents().add(nbEnemyKilledPanel);
 
-        CPanel seedPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel seedPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         seedPanel.getComponents().add(seedLabel);
         seedPanel.getComponents().add(seedValue);
         seedPanel.autoResize();

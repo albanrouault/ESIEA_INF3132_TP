@@ -5,25 +5,25 @@ import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
 
 // ┌┐└┘├┤─│┴┯
-public class CFrame extends CComponent implements KeyListener {
-    private CPanel header;
-    private CPanel contentPane;
-    private CPanel footer;
+public class TFrame extends TComponent implements KeyListener {
+    private TPanel header;
+    private TPanel contentPane;
+    private TPanel footer;
 
-    public CFrame(int length, int height) {
+    public TFrame(int length, int height) {
         super(null, length, height);
 
-        this.contentPane = new CPanel(0, 0);
+        this.contentPane = new TPanel(0, 0);
 
         autoResize();
     }
 
-    public CFrame(int length, int height, String title) {
+    public TFrame(int length, int height, String title) {
         this(length, height);
 
         String[] titleLines = StringUtils.convertStringToStringArray(title);
-        CPanel header = new CPanel(0, titleLines.length);
-        header.getComponents().add(new CLabel(titleLines));
+        TPanel header = new TPanel(0, titleLines.length);
+        header.getComponents().add(new TLabel(titleLines));
 
         setHeader(header);
     }
@@ -83,31 +83,31 @@ public class CFrame extends CComponent implements KeyListener {
         }
     }
 
-    public CPanel getHeader() {
+    public TPanel getHeader() {
         return header;
     }
 
-    public void setHeader(CPanel header) {
+    public void setHeader(TPanel header) {
         this.header = header;
 
         autoResize();
     }
 
-    public CPanel getContentPane() {
+    public TPanel getContentPane() {
         return contentPane;
     }
 
-    public void setContentPane(CPanel contentPane) {
+    public void setContentPane(TPanel contentPane) {
         this.contentPane = contentPane;
 
         autoResize();
     }
 
-    public CPanel getFooter() {
+    public TPanel getFooter() {
         return footer;
     }
 
-    public void setFooter(CPanel footer) {
+    public void setFooter(TPanel footer) {
         this.footer = footer;
 
         autoResize();

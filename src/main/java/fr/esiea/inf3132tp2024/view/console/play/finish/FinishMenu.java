@@ -4,19 +4,19 @@ import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.game.Game;
 import fr.esiea.inf3132tp2024.old.game.Statistic;
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CChoices;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CTextField;
+import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TTextField;
 
-public class FinishMenu extends CFrame implements DisplayableComponent {
-    private final CChoices buttons;
+public class FinishMenu extends TFrame implements DisplayableComponent {
+    private final TChoices buttons;
     private final QuitComponentButton quitButton;
-    private CLabel nameLabel;
-    private CTextField nameField;
+    private TLabel nameLabel;
+    private TTextField nameField;
 
     private boolean display = true;
 
@@ -28,15 +28,15 @@ public class FinishMenu extends CFrame implements DisplayableComponent {
         super(0, 0, "Fin de la partie");
 
         // Texte
-        CLabel result;
+        TLabel result;
         if (won) {
-            result = new CLabel("Bravo !\n \nVous avez réussi à sortir du château !");
-            result.getColors().add(CColor.BRIGHT_GREEN);
+            result = new TLabel("Bravo !\n \nVous avez réussi à sortir du château !");
+            result.getColors().add(TColor.BRIGHT_GREEN);
         } else {
-            result = new CLabel("Dommage !\n \nVous êtes mort !");
-            result.getColors().add(CColor.RED);
+            result = new TLabel("Dommage !\n \nVous êtes mort !");
+            result.getColors().add(TColor.RED);
         }
-        result.getColors().add(CColor.BOLD);
+        result.getColors().add(TColor.BOLD);
         this.getContentPane().getComponents().add(result);
 
         // Statistiques
@@ -46,15 +46,15 @@ public class FinishMenu extends CFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(game.getStatistic());
 
         // Boutons
-        this.buttons = new CChoices(app, 1);
+        this.buttons = new TChoices(app, 1);
 
         // On propose de changer de nom seulement si les cheats sont désactivés
         if (!game.getStatistic().isCheatModeActivated()) {
             // Label pseudo
-            this.nameLabel = new CLabel("Entrez un pseudo:");
+            this.nameLabel = new TLabel("Entrez un pseudo:");
             this.getContentPane().getComponents().add(nameLabel);
 
-            this.nameField = new CTextField("Pseudo pour enregistrer les statistiques", AppSettings.CONSOLE_MIN_LENGTH - 10, game.getPlayer().getName());
+            this.nameField = new TTextField("Pseudo pour enregistrer les statistiques", AppSettings.CONSOLE_MIN_LENGTH - 10, game.getPlayer().getName());
             buttons.add(nameField);
             buttons.add(new SaveStatsButton(app, game, this));
         }
@@ -77,15 +77,15 @@ public class FinishMenu extends CFrame implements DisplayableComponent {
         display = false;
     }
 
-    public CChoices getButtons() {
+    public TChoices getButtons() {
         return buttons;
     }
 
-    public CLabel getNameLabel() {
+    public TLabel getNameLabel() {
         return nameLabel;
     }
 
-    public CTextField getNameField() {
+    public TTextField getNameField() {
         return nameField;
     }
 

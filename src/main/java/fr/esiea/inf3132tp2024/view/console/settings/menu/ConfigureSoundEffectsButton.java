@@ -1,10 +1,10 @@
 package fr.esiea.inf3132tp2024.view.console.settings.menu;
 
 import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.settings.audio.soundeffects.ConfigureSoundEffectsFrame;
 
-public class ConfigureSoundEffectsButton extends CButton {
+public class ConfigureSoundEffectsButton extends TButton {
     private final App app;
 
     public ConfigureSoundEffectsButton(App app) {

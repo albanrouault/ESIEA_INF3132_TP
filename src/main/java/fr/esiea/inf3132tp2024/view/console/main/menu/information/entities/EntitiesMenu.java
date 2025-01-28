@@ -1,15 +1,15 @@
 package fr.esiea.inf3132tp2024.view.console.main.menu.information.entities;
 
 import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
-public class EntitiesMenu extends CFrame implements DisplayableComponent {
+public class EntitiesMenu extends TFrame implements DisplayableComponent {
     public EntitiesMenu(App app) {
         super(0, 0, "Les entités");
 
@@ -17,59 +17,59 @@ public class EntitiesMenu extends CFrame implements DisplayableComponent {
         int labelLength = 0;
         int valueLength = 0;
 
-        CPanel panel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 1);
+        TPanel panel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 1);
 
         // Ajout des textes qui seront sur la partie gauche de l'écran
-        CLabel demogorgonLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "D");
-        demogorgonLetterLabel.getColors().add(CColor.BRIGHT_RED);
+        TLabel demogorgonLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "D");
+        demogorgonLetterLabel.getColors().add(TColor.BRIGHT_RED);
         if (demogorgonLetterLabel.getLength() > labelLength) {
             labelLength = demogorgonLetterLabel.getLength();
         }
 
-        CLabel harpyLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "H");
-        harpyLetterLabel.getColors().add(CColor.BRIGHT_RED);
+        TLabel harpyLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "H");
+        harpyLetterLabel.getColors().add(TColor.BRIGHT_RED);
         if (harpyLetterLabel.getLength() > labelLength) {
             labelLength = harpyLetterLabel.getLength();
         }
 
-        CLabel headlessKnightLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "K");
-        headlessKnightLetterLabel.getColors().add(CColor.BRIGHT_RED);
+        TLabel headlessKnightLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "K");
+        headlessKnightLetterLabel.getColors().add(TColor.BRIGHT_RED);
         if (headlessKnightLetterLabel.getLength() > labelLength) {
             labelLength = headlessKnightLetterLabel.getLength();
         }
 
-        CLabel morbolLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "M");
-        morbolLetterLabel.getColors().add(CColor.BRIGHT_RED);
+        TLabel morbolLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "M");
+        morbolLetterLabel.getColors().add(TColor.BRIGHT_RED);
         if (morbolLetterLabel.getLength() > labelLength) {
             labelLength = morbolLetterLabel.getLength();
         }
 
-        CLabel spiderLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "S");
-        spiderLetterLabel.getColors().add(CColor.BRIGHT_RED);
+        TLabel spiderLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "S");
+        spiderLetterLabel.getColors().add(TColor.BRIGHT_RED);
         if (spiderLetterLabel.getLength() > labelLength) {
             labelLength = spiderLetterLabel.getLength();
         }
 
-        CLabel werewolfLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "W");
-        werewolfLetterLabel.getColors().add(CColor.BRIGHT_RED);
+        TLabel werewolfLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "W");
+        werewolfLetterLabel.getColors().add(TColor.BRIGHT_RED);
         if (werewolfLetterLabel.getLength() > labelLength) {
             labelLength = werewolfLetterLabel.getLength();
         }
 
-        CLabel zombieLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "Z");
-        zombieLetterLabel.getColors().add(CColor.BRIGHT_RED);
+        TLabel zombieLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "Z");
+        zombieLetterLabel.getColors().add(TColor.BRIGHT_RED);
         if (zombieLetterLabel.getLength() > labelLength) {
             labelLength = zombieLetterLabel.getLength();
         }
 
-        CLabel petLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "P");
-        petLetterLabel.getColors().add(CColor.BRIGHT_BLUE);
+        TLabel petLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "P");
+        petLetterLabel.getColors().add(TColor.BRIGHT_BLUE);
         if (petLetterLabel.getLength() > labelLength) {
             labelLength = petLetterLabel.getLength();
         }
 
-        CLabel sageLetterLabel = new CLabel(HorizontalAlignment.RIGHT, "S");
-        sageLetterLabel.getColors().add(CColor.RED);
+        TLabel sageLetterLabel = new TLabel(HorizontalAlignment.RIGHT, "S");
+        sageLetterLabel.getColors().add(TColor.RED);
         if (sageLetterLabel.getLength() > labelLength) {
             labelLength = sageLetterLabel.getLength();
         }
@@ -86,56 +86,56 @@ public class EntitiesMenu extends CFrame implements DisplayableComponent {
         sageLetterLabel.setLength(labelLength);
 
         // Ajout des textes qui seront sur la partie droite de l'écran
-        CLabel demogorgonDescLabel = new CLabel(HorizontalAlignment.LEFT, "Demogorgon");
-        demogorgonDescLabel.getColors().add(CColor.YELLOW);
+        TLabel demogorgonDescLabel = new TLabel(HorizontalAlignment.LEFT, "Demogorgon");
+        demogorgonDescLabel.getColors().add(TColor.YELLOW);
         if (demogorgonDescLabel.getLength() > valueLength) {
             valueLength = demogorgonDescLabel.getLength();
         }
 
-        CLabel harpyDescLabel = new CLabel(HorizontalAlignment.LEFT, "Harpie");
-        harpyDescLabel.getColors().add(CColor.YELLOW);
+        TLabel harpyDescLabel = new TLabel(HorizontalAlignment.LEFT, "Harpie");
+        harpyDescLabel.getColors().add(TColor.YELLOW);
         if (harpyDescLabel.getLength() > valueLength) {
             valueLength = harpyDescLabel.getLength();
         }
 
-        CLabel headlessKnightDescLabel = new CLabel(HorizontalAlignment.LEFT, "Cavalier sans tête");
-        headlessKnightDescLabel.getColors().add(CColor.YELLOW);
+        TLabel headlessKnightDescLabel = new TLabel(HorizontalAlignment.LEFT, "Cavalier sans tête");
+        headlessKnightDescLabel.getColors().add(TColor.YELLOW);
         if (headlessKnightDescLabel.getLength() > valueLength) {
             valueLength = headlessKnightDescLabel.getLength();
         }
 
-        CLabel morbolDescLabel = new CLabel(HorizontalAlignment.LEFT, "Morbol");
-        morbolDescLabel.getColors().add(CColor.YELLOW);
+        TLabel morbolDescLabel = new TLabel(HorizontalAlignment.LEFT, "Morbol");
+        morbolDescLabel.getColors().add(TColor.YELLOW);
         if (morbolDescLabel.getLength() > valueLength) {
             valueLength = morbolDescLabel.getLength();
         }
 
-        CLabel spiderDescLabel = new CLabel(HorizontalAlignment.LEFT, "Araignée");
-        spiderDescLabel.getColors().add(CColor.YELLOW);
+        TLabel spiderDescLabel = new TLabel(HorizontalAlignment.LEFT, "Araignée");
+        spiderDescLabel.getColors().add(TColor.YELLOW);
         if (spiderDescLabel.getLength() > valueLength) {
             valueLength = spiderDescLabel.getLength();
         }
 
-        CLabel werewolfDescLabel = new CLabel(HorizontalAlignment.LEFT, "Loup-Garou");
-        werewolfDescLabel.getColors().add(CColor.YELLOW);
+        TLabel werewolfDescLabel = new TLabel(HorizontalAlignment.LEFT, "Loup-Garou");
+        werewolfDescLabel.getColors().add(TColor.YELLOW);
         if (werewolfDescLabel.getLength() > valueLength) {
             valueLength = werewolfDescLabel.getLength();
         }
 
-        CLabel zombieDescLabel = new CLabel(HorizontalAlignment.LEFT, "Zombie");
-        zombieDescLabel.getColors().add(CColor.YELLOW);
+        TLabel zombieDescLabel = new TLabel(HorizontalAlignment.LEFT, "Zombie");
+        zombieDescLabel.getColors().add(TColor.YELLOW);
         if (zombieDescLabel.getLength() > valueLength) {
             valueLength = zombieDescLabel.getLength();
         }
 
-        CLabel petDescLabel = new CLabel(HorizontalAlignment.LEFT, "Familier");
-        petDescLabel.getColors().add(CColor.YELLOW);
+        TLabel petDescLabel = new TLabel(HorizontalAlignment.LEFT, "Familier");
+        petDescLabel.getColors().add(TColor.YELLOW);
         if (petDescLabel.getLength() > valueLength) {
             valueLength = petDescLabel.getLength();
         }
 
-        CLabel sageDescLabel = new CLabel(HorizontalAlignment.LEFT, "Sage bloquant un passage");
-        sageDescLabel.getColors().add(CColor.YELLOW);
+        TLabel sageDescLabel = new TLabel(HorizontalAlignment.LEFT, "Sage bloquant un passage");
+        sageDescLabel.getColors().add(TColor.YELLOW);
         if (sageDescLabel.getLength() > valueLength) {
             valueLength = sageDescLabel.getLength();
         }
@@ -151,57 +151,57 @@ public class EntitiesMenu extends CFrame implements DisplayableComponent {
         petDescLabel.setLength(valueLength);
         sageDescLabel.setLength(valueLength);
 
-        CLabel separatorLabel = new CLabel(HorizontalAlignment.LEFT, "-");
+        TLabel separatorLabel = new TLabel(HorizontalAlignment.LEFT, "-");
 
-        CPanel demogorgonPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel demogorgonPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         demogorgonPanel.getComponents().add(demogorgonLetterLabel);
         demogorgonPanel.getComponents().add(separatorLabel);
         demogorgonPanel.getComponents().add(demogorgonDescLabel);
         demogorgonPanel.autoResize();
 
-        CPanel harpyPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel harpyPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         harpyPanel.getComponents().add(harpyLetterLabel);
         harpyPanel.getComponents().add(separatorLabel);
         harpyPanel.getComponents().add(harpyDescLabel);
         harpyPanel.autoResize();
 
-        CPanel headlessKnightPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel headlessKnightPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         headlessKnightPanel.getComponents().add(headlessKnightLetterLabel);
         headlessKnightPanel.getComponents().add(separatorLabel);
         headlessKnightPanel.getComponents().add(headlessKnightDescLabel);
         headlessKnightPanel.autoResize();
 
-        CPanel morbolPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel morbolPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         morbolPanel.getComponents().add(morbolLetterLabel);
         morbolPanel.getComponents().add(separatorLabel);
         morbolPanel.getComponents().add(morbolDescLabel);
         morbolPanel.autoResize();
 
-        CPanel spiderPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel spiderPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         spiderPanel.getComponents().add(spiderLetterLabel);
         spiderPanel.getComponents().add(separatorLabel);
         spiderPanel.getComponents().add(spiderDescLabel);
         spiderPanel.autoResize();
 
-        CPanel werewolfPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel werewolfPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         werewolfPanel.getComponents().add(werewolfLetterLabel);
         werewolfPanel.getComponents().add(separatorLabel);
         werewolfPanel.getComponents().add(werewolfDescLabel);
         werewolfPanel.autoResize();
 
-        CPanel zombiePanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel zombiePanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         zombiePanel.getComponents().add(zombieLetterLabel);
         zombiePanel.getComponents().add(separatorLabel);
         zombiePanel.getComponents().add(zombieDescLabel);
         zombiePanel.autoResize();
 
-        CPanel petPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel petPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         petPanel.getComponents().add(petLetterLabel);
         petPanel.getComponents().add(separatorLabel);
         petPanel.getComponents().add(petDescLabel);
         petPanel.autoResize();
 
-        CPanel sagePanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel sagePanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         sagePanel.getComponents().add(sageLetterLabel);
         sagePanel.getComponents().add(separatorLabel);
         sagePanel.getComponents().add(sageDescLabel);

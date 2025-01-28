@@ -1,13 +1,13 @@
 package fr.esiea.inf3132tp2024.view.console.settings.audio.music;
 
 import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.view.console.api.component.CSlider;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.view.console.api.component.TSlider;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
-public class ConfigureMusicSlider extends CSlider {
-    private final SimpleAudioPlayer menuPlayer;
+public class ConfigureMusicSlider extends TSlider {
+    private final NativeAudioTrack menuPlayer;
 
-    public ConfigureMusicSlider(AppSettings settings, SimpleAudioPlayer menuPlayer) {
+    public ConfigureMusicSlider(AppSettings settings, NativeAudioTrack menuPlayer) {
         super(AppSettings.CONSOLE_MIN_LENGTH - 10, 1, (int) (settings.getMusicVolume() * 20), 20, "%PERCENT%");
 
         this.menuPlayer = menuPlayer;

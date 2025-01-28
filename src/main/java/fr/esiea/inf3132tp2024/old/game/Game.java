@@ -5,31 +5,31 @@ import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.old.entity.Player;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.view.console.play.EntityStats;
 import fr.esiea.inf3132tp2024.view.console.play.escape.EscapeMenu;
 import fr.esiea.inf3132tp2024.view.console.play.finish.FinishMenu;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
-public class Game extends CFrame implements DisplayableComponent {
+public class Game extends TFrame implements DisplayableComponent {
     private final App app;
     private final long seed;
     private final Player player;
-    private final CLabel stageLevelLabel;
-    private final CLabel blockNameLabel;
+    private final TLabel stageLevelLabel;
+    private final TLabel blockNameLabel;
     private final EntityStats playerStats;
-    private final CPanel otherInfos;
+    private final TPanel otherInfos;
     private String infos;
-    private SimpleAudioPlayer audioPlayer;
+    private NativeAudioTrack audioPlayer;
     private boolean display = true;
     private final Statistic statistic;
 
@@ -44,25 +44,25 @@ public class Game extends CFrame implements DisplayableComponent {
 
         //this.getContentPane().getComponents().add(map);
 
-        CPanel header = new CPanel(0, 1, Orientation.HORIZONTAL, false);
-        this.stageLevelLabel = new CLabel(HorizontalAlignment.LEFT, "Étage 1");
+        TPanel header = new TPanel(0, 1, Orientation.HORIZONTAL, false);
+        this.stageLevelLabel = new TLabel(HorizontalAlignment.LEFT, "Étage 1");
         header.getComponents().add(stageLevelLabel);
-        CLabel title = new CLabel("Partie");
+        TLabel title = new TLabel("Partie");
         header.getComponents().add(title);
-        this.blockNameLabel = new CLabel(HorizontalAlignment.RIGHT, " ");
+        this.blockNameLabel = new TLabel(HorizontalAlignment.RIGHT, " ");
         header.getComponents().add(blockNameLabel);
         this.setHeader(header);
 
-        CPanel footer = new CPanel(0, 4, Orientation.HORIZONTAL, false);
+        TPanel footer = new TPanel(0, 4, Orientation.HORIZONTAL, false);
 
         this.playerStats = new EntityStats(player, Orientation.HORIZONTAL);
         playerStats.setHeight(4);
         footer.getComponents().add(playerStats);
 
-        this.otherInfos = new CPanel(0, 4, Orientation.VERTICAL, false);
+        this.otherInfos = new TPanel(0, 4, Orientation.VERTICAL, false);
         this.infos = "Échap - Menu de pause";
-        CLabel otherInfosLabel = new CLabel(infos);
-        this.otherInfos.getComponents().add(new CLabel(""));
+        TLabel otherInfosLabel = new TLabel(infos);
+        this.otherInfos.getComponents().add(new TLabel(""));
         this.otherInfos.getComponents().add(otherInfosLabel);
         footer.getComponents().add(otherInfos);
 
@@ -103,7 +103,7 @@ public class Game extends CFrame implements DisplayableComponent {
         if (player.isDead()) {
             stopLoopingMode();
 
-            SimpleAudioPlayer deathAudioPlayer = null;
+            NativeAudioTrack deathAudioPlayer = null;
             try {
                 deathAudioPlayer = app.createAudioPlayer(Music.DEATH);
                 deathAudioPlayer.setVolume(app.getSettings().getMusicVolume());
@@ -160,9 +160,9 @@ public class Game extends CFrame implements DisplayableComponent {
         this.getFooter().getComponents().add(this.playerStats);
 
         this.otherInfos.getComponents().clear();
-        this.otherInfos.getComponents().add(new CLabel(""));
+        this.otherInfos.getComponents().add(new TLabel(""));
 
-        this.otherInfos.getComponents().add(new CLabel(infos, footerStatsLength / 2));
+        this.otherInfos.getComponents().add(new TLabel(infos, footerStatsLength / 2));
         this.otherInfos.setLength(footerStatsLength / 2);
         this.getFooter().getComponents().add(this.otherInfos);
 
@@ -191,7 +191,7 @@ public class Game extends CFrame implements DisplayableComponent {
         return player;
     }
 
-    public SimpleAudioPlayer getAudioPlayer() {
+    public NativeAudioTrack getAudioPlayer() {
         return audioPlayer;
     }
 

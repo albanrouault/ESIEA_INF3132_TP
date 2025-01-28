@@ -2,18 +2,18 @@ package fr.esiea.inf3132tp2024.view.console.play.start;
 
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.InfoDialog;
 import fr.esiea.inf3132tp2024.view.console.main.menu.MainMenu;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.Random;
 
-public class OkButton extends CButton {
+public class OkButton extends TButton {
     private static final String[] randomPseudos = new String[]{"Aloy", "Joel", "Ellie", "Kratos", "Masterchief", "Sam Porter Bridges", "Claire Redfield", "Ada Wong", "Shepard", "Mason", "Capitaine Price", "Steve", "Conor", "Amicia", "Ezio", "Chell", "Tina", "Jesse Faden", "Carl Johnson", "Ulfric Sombrage", "Aerith", "Tifa", "Yuna", "Trevor", "Claudette", "Lara Croft", "Nancy", "Eleven", "Nathan Drake", "Peter Parker"};
 
     private final App app;
@@ -60,7 +60,7 @@ public class OkButton extends CButton {
             }
         }
         playMenu.stopLoopingMode();
-        SimpleAudioPlayer audioPlayer = mainMenu.getAudioPlayer();
+        NativeAudioTrack audioPlayer = mainMenu.getAudioPlayer();
         if (audioPlayer != null) {
             audioPlayer.stop();
         }

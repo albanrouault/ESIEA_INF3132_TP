@@ -2,20 +2,21 @@ package fr.esiea.inf3132tp2024.view.console.play;
 
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.view.console.api.component.*;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
+import fr.esiea.inf3132tp2024.view.ui.console.api.component.*;
 
-public class EntityStats extends CPanel {
+public class EntityStats extends TPanel {
     private Orientation renderOrientation;
     private final Entity entity;
-    private final CPanel head;
-    private final CLabel name;
-    private final CProgressBar hpBar;
-    private CPanel weapon;
-    private CLabel weaponName;
-    private CPanel item;
-    private CLabel itemName;
+    private final TPanel head;
+    private final TLabel name;
+    private final TProgressBar hpBar;
+    private TPanel weapon;
+    private TLabel weaponName;
+    private TPanel item;
+    private TLabel itemName;
 
     public EntityStats(Entity entity, Orientation orientation) {
         super(0, 0, Orientation.VERTICAL, false);
@@ -27,20 +28,20 @@ public class EntityStats extends CPanel {
 
         // Nom de l'entité
         if (entity instanceof Player) {
-            this.name = new CLabel(entity.getName() + " (Vous)");
-            this.name.getColors().add(CColor.BRIGHT_BLUE);
+            this.name = new TLabel(entity.getName() + " (Vous)");
+            this.name.getColors().add(TColor.BRIGHT_BLUE);
         } else {
-            this.name = new CLabel(entity.getName());
+            this.name = new TLabel(entity.getName());
         }
-        this.name.getColors().add(CColor.BOLD);
+        this.name.getColors().add(TColor.BOLD);
 
         // Barre de vie
-        this.hpBar = new CProgressBar(0, 1, entity.getHealth(), entity.getMaxHealth(), "%VALUE%/%MAX_VALUE% pv");
-        hpBar.getProgressedColors().add(CColor.RED);
-        hpBar.getUnProgressedColors().add(CColor.BRIGHT_BLACK);
+        this.hpBar = new TProgressBar(0, 1, entity.getHealth(), entity.getMaxHealth(), "%VALUE%/%MAX_VALUE% pv");
+        hpBar.getProgressedColors().add(TColor.RED);
+        hpBar.getUnProgressedColors().add(TColor.BRIGHT_BLACK);
 
         // Head (nom + barre de vie)
-        this.head = new CPanel(0, 2, Orientation.VERTICAL, false);
+        this.head = new TPanel(0, 2, Orientation.VERTICAL, false);
         head.getComponents().add(name);
         head.getComponents().add(hpBar);
         this.getComponents().add(head);
@@ -48,19 +49,19 @@ public class EntityStats extends CPanel {
         int objectMaxLength = 0;
 
         // Arme
-        CLabel weaponLabel = new CLabel(HorizontalAlignment.RIGHT, "Arme");
-        weaponLabel.getColors().add(CColor.BOLD);
+        TLabel weaponLabel = new TLabel(HorizontalAlignment.RIGHT, "Arme");
+        weaponLabel.getColors().add(TColor.BOLD);
         if (orientation == Orientation.HORIZONTAL) {
             weaponLabel.setLength(5);
         }
 
         // Nom de l'arme
         if (entity.hasWeapon()) {
-            this.weaponName = new CLabel(HorizontalAlignment.LEFT, entity.getWeapon().getName());
+            this.weaponName = new TLabel(HorizontalAlignment.LEFT, entity.getWeapon().getName());
         } else {
-            this.weaponName = new CLabel(HorizontalAlignment.LEFT, "Poings");
+            this.weaponName = new TLabel(HorizontalAlignment.LEFT, "Poings");
         }
-        this.weaponName.getColors().add(CColor.YELLOW);
+        this.weaponName.getColors().add(TColor.YELLOW);
 
         if (weaponName.getLength() > objectMaxLength) {
             objectMaxLength = weaponName.getLength();
@@ -68,9 +69,9 @@ public class EntityStats extends CPanel {
 
         // Panel de l'arme
         if (orientation == Orientation.VERTICAL) {
-            this.weapon = new CPanel(0, 2, Orientation.VERTICAL, false);
+            this.weapon = new TPanel(0, 2, Orientation.VERTICAL, false);
         } else {
-            this.weapon = new CPanel(HorizontalAlignment.CENTER, 0, 1, Orientation.HORIZONTAL, 1);
+            this.weapon = new TPanel(HorizontalAlignment.CENTER, 0, 1, Orientation.HORIZONTAL, 1);
         }
         weapon.getComponents().add(weaponLabel);
         weapon.getComponents().add(weaponName);
@@ -78,19 +79,19 @@ public class EntityStats extends CPanel {
 
         if (entity instanceof Player) {
             // Objet
-            CLabel itemLabel = new CLabel(HorizontalAlignment.RIGHT, "Objet");
-            itemLabel.getColors().add(CColor.BOLD);
+            TLabel itemLabel = new TLabel(HorizontalAlignment.RIGHT, "Objet");
+            itemLabel.getColors().add(TColor.BOLD);
             if (orientation == Orientation.HORIZONTAL) {
                 itemLabel.setLength(5);
             }
 
             // Nom de l'objet
             if (entity.hasItem()) {
-                this.itemName = new CLabel(HorizontalAlignment.LEFT, entity.getItem().getName());
+                this.itemName = new TLabel(HorizontalAlignment.LEFT, entity.getItem().getName());
             } else {
-                this.itemName = new CLabel(HorizontalAlignment.LEFT, "Aucun");
+                this.itemName = new TLabel(HorizontalAlignment.LEFT, "Aucun");
             }
-            itemName.getColors().add(CColor.GREEN);
+            itemName.getColors().add(TColor.GREEN);
 
             if (itemName.getLength() > objectMaxLength) {
                 objectMaxLength = itemName.getLength();
@@ -98,9 +99,9 @@ public class EntityStats extends CPanel {
 
             // Panel de l'objet
             if (orientation == Orientation.VERTICAL) {
-                this.item = new CPanel(0, 2, Orientation.VERTICAL, false);
+                this.item = new TPanel(0, 2, Orientation.VERTICAL, false);
             } else {
-                this.item = new CPanel(HorizontalAlignment.CENTER, 0, 1, Orientation.HORIZONTAL, 1);
+                this.item = new TPanel(HorizontalAlignment.CENTER, 0, 1, Orientation.HORIZONTAL, 1);
             }
             item.getComponents().add(itemLabel);
             item.getComponents().add(itemName);
@@ -121,12 +122,12 @@ public class EntityStats extends CPanel {
 
         if (orientation == Orientation.VERTICAL) {
             for (int i = 0; i < emptySpace; i++) {
-                this.getComponents().add(new CLabel(" \n "));
+                this.getComponents().add(new TLabel(" \n "));
             }
         }
 
         int height = -1;
-        for (CComponent component : this.getComponents()) {
+        for (TComponent component : this.getComponents()) {
             height += component.getHeight();
             height++;
         }

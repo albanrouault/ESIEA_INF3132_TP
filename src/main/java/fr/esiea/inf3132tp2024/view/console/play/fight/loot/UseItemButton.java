@@ -3,15 +3,15 @@ package fr.esiea.inf3132tp2024.view.console.play.fight.loot;
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CComponent;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TComponent;
 import fr.esiea.inf3132tp2024.view.console.play.item.consumable.ConsumableItemMenu;
 import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
 
 import java.util.List;
 
-public class UseItemButton extends CButton {
+public class UseItemButton extends TButton {
     private final App app;
     private final LootMenu lootMenu;
     private final Consumable item;
@@ -34,7 +34,7 @@ public class UseItemButton extends CButton {
         if (!player.hasItem()) {
             Entity enemy = lootMenu.getEntity();
             // Si l'ennemi à encore un item, on remplace le bouton "échanger les items" par un bouton "prendre l'item"
-            for (CComponent component : lootMenu.getButtons().getComponents()) {
+            for (TComponent component : lootMenu.getButtons().getComponents()) {
                 if (component instanceof ReplaceItemButton replaceItemButton) {
                     TakeItemButton takeItemButton = new TakeItemButton(app, player, enemy, lootMenu);
                     lootMenu.getButtons().replace(replaceItemButton, takeItemButton);

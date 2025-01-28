@@ -4,7 +4,7 @@ import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.SoundEffect;
 import fr.esiea.inf3132tp2024.old.event.key.KeyListener;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Direction;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionNotFoundException;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionUtils;
@@ -16,26 +16,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CChoices extends CPanel implements SelectableComponent, KeyListener {
+public class TChoices extends TPanel implements SelectableComponent, KeyListener {
     private final App app;
     private final List<SelectableComponent> selectableComponents = new ArrayList<>();
     private final boolean edgeJump;
 
     private boolean selected = true;
 
-    public CChoices(App app) {
+    public TChoices(App app) {
         this(app, 0);
     }
 
-    public CChoices(App app, int spacing) {
+    public TChoices(App app, int spacing) {
         this(app, Orientation.VERTICAL, spacing);
     }
 
-    public CChoices(App app, Orientation orientation, int spacing) {
+    public TChoices(App app, Orientation orientation, int spacing) {
         this(app, orientation, spacing, true);
     }
 
-    public CChoices(App app, Orientation orientation, int spacing, boolean edgeJump) {
+    public TChoices(App app, Orientation orientation, int spacing, boolean edgeJump) {
         super(HorizontalAlignment.CENTER, orientation, spacing);
 
         this.app = app;
@@ -112,7 +112,7 @@ public class CChoices extends CPanel implements SelectableComponent, KeyListener
                 }
             }
             try {
-                SimpleAudioPlayer audioPlayer = app.createAudioPlayer(SoundEffect.HOVER);
+                NativeAudioTrack audioPlayer = app.createAudioPlayer(SoundEffect.HOVER);
                 audioPlayer.setVolume(app.getSettings().getSoundEffectsVolume());
                 audioPlayer.play();
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |
@@ -174,7 +174,7 @@ public class CChoices extends CPanel implements SelectableComponent, KeyListener
             }
         }
         selectableComponents.add(selectableComponent);
-        CComponent component = (CComponent) selectableComponent;
+        TComponent component = (TComponent) selectableComponent;
         this.getComponents().add(component);
         this.autoResize();
     }
@@ -185,8 +185,8 @@ public class CChoices extends CPanel implements SelectableComponent, KeyListener
         }
         int index = selectableComponents.indexOf(after);
         selectableComponents.add(index + 1, selectableComponent);
-        CComponent component = (CComponent) selectableComponent;
-        index = this.getComponents().indexOf((CComponent) after);
+        TComponent component = (TComponent) selectableComponent;
+        index = this.getComponents().indexOf((TComponent) after);
         this.getComponents().add(index + 1, component);
         this.autoResize();
     }
@@ -197,7 +197,7 @@ public class CChoices extends CPanel implements SelectableComponent, KeyListener
         }
         int index = selectableComponents.indexOf(selectableComponent);
         selectableComponents.set(index, newSelectableComponent);
-        CComponent component = (CComponent) newSelectableComponent;
+        TComponent component = (TComponent) newSelectableComponent;
         this.getComponents().set(index, component);
         this.autoResize();
     }
@@ -205,7 +205,7 @@ public class CChoices extends CPanel implements SelectableComponent, KeyListener
     public void remove(SelectableComponent selectableComponent) {
         if (selectableComponents.contains(selectableComponent)) {
             selectableComponents.remove(selectableComponent);
-            CComponent component = (CComponent) selectableComponent;
+            TComponent component = (TComponent) selectableComponent;
             this.getComponents().remove(component);
         }
         this.autoResize();
@@ -213,7 +213,7 @@ public class CChoices extends CPanel implements SelectableComponent, KeyListener
 
     public void removeAll() {
         for (SelectableComponent component : selectableComponents) {
-            this.getComponents().remove((CComponent) component);
+            this.getComponents().remove((TComponent) component);
         }
         selectableComponents.clear();
     }

@@ -3,10 +3,10 @@ package fr.esiea.inf3132tp2024.view.console.play.fight.loot;
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
 
-public class ReplaceWeaponButton extends CButton {
+public class ReplaceWeaponButton extends TButton {
     private final Player player;
     private final Entity enemy;
 

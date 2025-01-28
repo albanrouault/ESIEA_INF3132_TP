@@ -8,14 +8,14 @@ import fr.esiea.inf3132tp2024.old.entity.enemy.Enemy;
 import fr.esiea.inf3132tp2024.old.game.EntityDeadException;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CChoices;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.play.EntityStats;
 import fr.esiea.inf3132tp2024.view.console.play.fight.loot.LootMenu;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -25,7 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Fight extends CFrame implements DisplayableComponent {
+public class Fight extends TFrame implements DisplayableComponent {
     private static final int ACCURACY = 30;
 
     private final App app;
@@ -34,17 +34,17 @@ public class Fight extends CFrame implements DisplayableComponent {
     private final boolean runAway;
     private final Random random;
     private State state = State.FIGHTING;
-    private SimpleAudioPlayer audioPlayer;
+    private NativeAudioTrack audioPlayer;
     private boolean display = true;
     private boolean over = false;
 
-    private final CPanel leftPanel;
+    private final TPanel leftPanel;
     private final EntityStats playerStats;
-    private final CPanel centerPanel;
-    private final CChoices menu;
-    private final CPanel rightPanel;
+    private final TPanel centerPanel;
+    private final TChoices menu;
+    private final TPanel rightPanel;
     private final EntityStats enemyStats;
-    private final CLabel logs;
+    private final TLabel logs;
 
     private EntityStats petStats;
 
@@ -60,29 +60,29 @@ public class Fight extends CFrame implements DisplayableComponent {
         this.getContentPane().setRenderingMainPadding(false);
         this.getContentPane().setRenderingOrientation(Orientation.HORIZONTAL);
 
-        this.leftPanel = new CPanel(0, 0);
+        this.leftPanel = new TPanel(0, 0);
 
         this.playerStats = new EntityStats(player, Orientation.VERTICAL);
         leftPanel.getComponents().add(playerStats);
 
         this.getContentPane().getComponents().add(leftPanel);
 
-        this.centerPanel = new CPanel(20, 0);
+        this.centerPanel = new TPanel(20, 0);
 
-        this.menu = new CChoices(app, 1);
+        this.menu = new TChoices(app, 1);
         updateMenuButtons();
 
         centerPanel.getComponents().add(menu);
         this.getContentPane().getComponents().add(centerPanel);
 
-        this.rightPanel = new CPanel(0, 0);
+        this.rightPanel = new TPanel(0, 0);
         this.enemyStats = new EntityStats(enemy, Orientation.VERTICAL);
         rightPanel.getComponents().add(enemyStats);
         this.getContentPane().getComponents().add(rightPanel);
 
-        CPanel footer = new CPanel(0, 0, Orientation.HORIZONTAL, false);
+        TPanel footer = new TPanel(0, 0, Orientation.HORIZONTAL, false);
 
-        this.logs = new CLabel("");
+        this.logs = new TLabel("");
         logs.setHeight(0);
         footer.getComponents().add(logs);
 
@@ -116,20 +116,20 @@ public class Fight extends CFrame implements DisplayableComponent {
                     // On affiche le menu de butin
                     if (enemy.hasWeapon() || enemy.hasItem()) {
                         menu.getComponents().clear();
-                        menu.getComponents().add(new CLabel("Appuyez sur\nune touche\npour le pilier..."));
+                        menu.getComponents().add(new TLabel("Appuyez sur\nune touche\npour le pilier..."));
                         menu.setHeight(3);
                         state = State.LOOTING;
                     } else {
                         // Quitter le combat
                         menu.getComponents().clear();
-                        menu.getComponents().add(new CLabel("Appuyez sur\nune touche\npour continuer..."));
+                        menu.getComponents().add(new TLabel("Appuyez sur\nune touche\npour continuer..."));
                         menu.setHeight(3);
                         state = State.FINISHED;
                     }
                 } else {
                     // Quitter le combat
                     menu.getComponents().clear();
-                    menu.getComponents().add(new CLabel("Appuyez sur\nune touche\npour continuer..."));
+                    menu.getComponents().add(new TLabel("Appuyez sur\nune touche\npour continuer..."));
                     menu.setHeight(3);
                     state = State.FINISHED;
                 }
@@ -139,7 +139,7 @@ public class Fight extends CFrame implements DisplayableComponent {
                 enemyStats.update();
                 // Quitter le combat
                 menu.getComponents().clear();
-                menu.getComponents().add(new CLabel("Appuyez sur\nune touche\npour continuer..."));
+                menu.getComponents().add(new TLabel("Appuyez sur\nune touche\npour continuer..."));
                 menu.setHeight(3);
                 state = State.FINISHED;
             }

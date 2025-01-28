@@ -1,14 +1,14 @@
 package fr.esiea.inf3132tp2024.view.console.api.dialog;
 
 import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.view.console.CColor;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.TColor;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
 
-public class InfoDialog extends CFrame implements DisplayableComponent {
+public class InfoDialog extends TFrame implements DisplayableComponent {
     public InfoDialog(DialogType type, String text) {
         this(type, StringUtils.convertStringToStringArray(text));
     }
@@ -16,25 +16,25 @@ public class InfoDialog extends CFrame implements DisplayableComponent {
     public InfoDialog(DialogType type, String[] text) {
         super(AppSettings.CONSOLE_MIN_LENGTH, AppSettings.CONSOLE_MIN_HEIGHT);
 
-        CLabel title = new CLabel("Message");
-        title.getColors().add(CColor.BOLD);
-        title.getColors().add(CColor.YELLOW);
-        CPanel header = new CPanel(0, title.getHeight());
+        TLabel title = new TLabel("Message");
+        title.getColors().add(TColor.BOLD);
+        title.getColors().add(TColor.YELLOW);
+        TPanel header = new TPanel(0, title.getHeight());
         header.getComponents().add(title);
         this.setHeader(header);
 
-        CLabel introMessage = new CLabel(type.getTitle(), this.getLength() - 2);
-        introMessage.getColors().add(CColor.BOLD);
-        introMessage.getColors().add(CColor.BLINKING);
-        introMessage.getColors().add(CColor.YELLOW);
+        TLabel introMessage = new TLabel(type.getTitle(), this.getLength() - 2);
+        introMessage.getColors().add(TColor.BOLD);
+        introMessage.getColors().add(TColor.BLINKING);
+        introMessage.getColors().add(TColor.YELLOW);
         this.getContentPane().getComponents().add(introMessage);
 
-        CLabel errorMessage = new CLabel(text, this.getLength() - 2);
-        errorMessage.getColors().add(CColor.YELLOW);
+        TLabel errorMessage = new TLabel(text, this.getLength() - 2);
+        errorMessage.getColors().add(TColor.YELLOW);
         this.getContentPane().getComponents().add(errorMessage);
 
-        CLabel exitMessage = new CLabel(type.getFooter(), this.getLength() - 2);
-        exitMessage.getColors().add(CColor.BLINKING);
+        TLabel exitMessage = new TLabel(type.getFooter(), this.getLength() - 2);
+        exitMessage.getColors().add(TColor.BLINKING);
         this.getContentPane().getComponents().add(exitMessage);
     }
 

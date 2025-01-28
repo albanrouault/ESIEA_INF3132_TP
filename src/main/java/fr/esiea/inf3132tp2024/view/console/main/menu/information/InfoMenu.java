@@ -4,16 +4,16 @@ import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CChoices;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
 
-public class InfoMenu extends CFrame implements DisplayableComponent {
+public class InfoMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
 
     public InfoMenu(App app) {
         super(0, 0, "Informations");
 
-        CChoices choices = new CChoices(app, 1);
+        TChoices choices = new TChoices(app, 1);
 
         choices.add(new EntityButton(app));
         choices.add(new CommandButton(app));

@@ -2,10 +2,10 @@ package fr.esiea.inf3132tp2024.view.console.play.escape;
 
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.settings.menu.SettingsMenu;
 
-public class SettingsButton extends CButton {
+public class SettingsButton extends TButton {
     private final App app;
     private final Game game;
 

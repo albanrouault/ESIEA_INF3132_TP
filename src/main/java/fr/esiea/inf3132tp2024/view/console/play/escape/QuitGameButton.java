@@ -1,9 +1,9 @@
 package fr.esiea.inf3132tp2024.view.console.play.escape;
 
 import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 
-public class QuitGameButton extends CButton {
+public class QuitGameButton extends TButton {
     private final App app;
     private final EscapeMenu escapeMenu;
 

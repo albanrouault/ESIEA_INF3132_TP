@@ -1,10 +1,10 @@
 package fr.esiea.inf3132tp2024.view.console.main.menu;
 
 import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.play.start.PlayMenu;
 
-public class PlayButton extends CButton {
+public class PlayButton extends TButton {
     private final App app;
     private final MainMenu mainMenu;
 

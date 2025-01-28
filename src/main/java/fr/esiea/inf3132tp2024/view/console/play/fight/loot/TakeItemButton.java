@@ -3,13 +3,13 @@ package fr.esiea.inf3132tp2024.view.console.play.fight.loot;
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
 import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class TakeItemButton extends CButton {
+public class TakeItemButton extends TButton {
     private final App app;
     private final Player player;
     private final Entity enemy;

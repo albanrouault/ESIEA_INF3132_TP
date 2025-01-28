@@ -1,10 +1,10 @@
 package fr.esiea.inf3132tp2024.view.console.main.menu.information;
 
 import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.main.menu.information.credits.CreditsMenu;
 
-public class CreditButton extends CButton {
+public class CreditButton extends TButton {
 
     private final App app;
 

@@ -2,34 +2,34 @@ package fr.esiea.inf3132tp2024.view.console.api.component;
 
 import fr.esiea.inf3132tp2024.old.event.key.KeyListener;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.utils.direction.Direction;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionNotFoundException;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionUtils;
 
-public class CTextField extends CComponent implements SelectableComponent, KeyListener {
+public class TTextField extends TComponent implements SelectableComponent, KeyListener {
     private boolean selected = true;
     private String text;
     private String hint;
     private int pointer;
 
-    public CTextField(int length) {
+    public TTextField(int length) {
         this(HorizontalAlignment.CENTER, length);
     }
 
-    public CTextField(HorizontalAlignment horizontalAlignment, int length) {
+    public TTextField(HorizontalAlignment horizontalAlignment, int length) {
         this(horizontalAlignment, "", length, null);
     }
 
-    public CTextField(String hint, int length) {
+    public TTextField(String hint, int length) {
         this(HorizontalAlignment.CENTER, hint, length, null);
     }
 
-    public CTextField(String hint, int length, String text) {
+    public TTextField(String hint, int length, String text) {
         this(HorizontalAlignment.CENTER, hint, length, text);
     }
 
-    public CTextField(HorizontalAlignment horizontalAlignment, String hint, int length, String text) {
+    public TTextField(HorizontalAlignment horizontalAlignment, String hint, int length, String text) {
         super(horizontalAlignment, length, 1);
 
         this.hint = hint;
@@ -68,7 +68,7 @@ public class CTextField extends CComponent implements SelectableComponent, KeyLi
                 hintText = hintText.substring(0, finalLength);
             }
             int toFill = finalLength - hintText.length();
-            hintText = "" + CColor.BRIGHT_BLACK + CColor.ITALIC + hintText + CColor.ITALIC.getForegroundReset() + CColor.BRIGHT_BLACK.getForegroundReset();
+            hintText = "" + TColor.BRIGHT_BLACK + TColor.ITALIC + hintText + TColor.ITALIC.getForegroundReset() + TColor.BRIGHT_BLACK.getForegroundReset();
             switch (this.getHorizontalAlignment()) {
                 case LEFT -> line = hintText + " ".repeat(toFill);
                 case CENTER -> line = " ".repeat(toFill / 2) + hintText + " ".repeat(toFill / 2 + toFill % 2);
@@ -100,7 +100,7 @@ public class CTextField extends CComponent implements SelectableComponent, KeyLi
 
         if (selected) {
             line = line.substring(0, pointerIndex)
-                    + CColor.BLINKING + CColor.REVERSE + " " + CColor.REVERSE.getForegroundReset() + CColor.BLINKING.getForegroundReset()
+                    + TColor.BLINKING + TColor.REVERSE + " " + TColor.REVERSE.getForegroundReset() + TColor.BLINKING.getForegroundReset()
                     + line.substring(pointerIndex);
         }
 

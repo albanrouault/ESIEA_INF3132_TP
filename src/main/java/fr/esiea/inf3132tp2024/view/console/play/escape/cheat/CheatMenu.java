@@ -4,21 +4,21 @@ import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.game.Game;
 import fr.esiea.inf3132tp2024.view.console.component.common.QuitComponentButton;
-import fr.esiea.inf3132tp2024.view.console.api.component.CChoices;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CTextField;
+import fr.esiea.inf3132tp2024.view.console.api.component.TChoices;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TTextField;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.console.play.escape.EscapeMenu;
 
-public class CheatMenu extends CFrame implements DisplayableComponent {
+public class CheatMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
-    private final CTextField cheatCodeField;
+    private final TTextField cheatCodeField;
 
     public CheatMenu(App app, Game game, EscapeMenu escapeMenu) {
         super(0, 0, "Menu de triche");
 
-        CChoices choices = new CChoices(app, 1);
-        this.cheatCodeField = new CTextField("Entrez le code de triche", AppSettings.CONSOLE_MIN_LENGTH - 10, "");
+        TChoices choices = new TChoices(app, 1);
+        this.cheatCodeField = new TTextField("Entrez le code de triche", AppSettings.CONSOLE_MIN_LENGTH - 10, "");
         choices.add(cheatCodeField);
         choices.add(new ActivateCheatButton(app, this, game, escapeMenu));
         choices.add(new QuitComponentButton(app, this, "Retour"));
@@ -41,7 +41,7 @@ public class CheatMenu extends CFrame implements DisplayableComponent {
         display = false;
     }
 
-    public CTextField getCheatCodeField() {
+    public TTextField getCheatCodeField() {
         return this.cheatCodeField;
     }
 }

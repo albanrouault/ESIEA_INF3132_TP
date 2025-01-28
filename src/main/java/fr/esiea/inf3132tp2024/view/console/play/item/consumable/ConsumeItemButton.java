@@ -2,11 +2,11 @@ package fr.esiea.inf3132tp2024.view.console.play.item.consumable;
 
 import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.old.item.Item;
 import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
 
-public class ConsumeItemButton extends CButton {
+public class ConsumeItemButton extends TButton {
     private final App app;
     private final ConsumableItemMenu consumableItemMenu;
     private final Item item;

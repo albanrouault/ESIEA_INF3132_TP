@@ -2,8 +2,8 @@ package fr.esiea.inf3132tp2024.view.console;
 
 import fr.esiea.inf3132tp2024.old.AppSettings;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.view.console.api.component.CComponent;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TComponent;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.utils.console.RawConsoleInput;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.util.List;
 // https://askubuntu.com/questions/558280/changing-colour-of-text-and-background-of-terminal
 // https://en.wikipedia.org/wiki/ANSI_escape_code
 // https://github.com/htop-dev/htop/blob/d0d9f202c56c1fc8919548418b339d31a6b49c02/CRT.c#L944
-public class Console extends CPanel {
+public class Console extends TPanel {
     private final AppSettings settings;
 
     public Console(AppSettings settings) {
@@ -28,8 +28,8 @@ public class Console extends CPanel {
     }
 
     public void show(DisplayableComponent displayableComponent) {
-        if (displayableComponent instanceof CComponent component) {
-            List<CComponent> save = new LinkedList<>(this.getComponents());
+        if (displayableComponent instanceof TComponent component) {
+            List<TComponent> save = new LinkedList<>(this.getComponents());
             this.getComponents().clear();
 
             this.getComponents().add(component);
@@ -43,7 +43,7 @@ public class Console extends CPanel {
                 if (settings.getConsoleHeight() != this.getHeight()) {
                     this.setHeight(settings.getConsoleHeight());
                 }
-                for (CComponent comp : this.getComponents()) {
+                for (TComponent comp : this.getComponents()) {
                     if (!displayableComponent.isInFullScreenMode()) {
                         continue;
                     }

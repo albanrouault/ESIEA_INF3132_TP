@@ -4,19 +4,19 @@ import fr.esiea.inf3132tp2024.old.App;
 import fr.esiea.inf3132tp2024.old.audio.Music;
 import fr.esiea.inf3132tp2024.old.entity.Player;
 import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.view.console.api.component.CButton;
+import fr.esiea.inf3132tp2024.view.console.api.component.TButton;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.ErrorDialog;
 import fr.esiea.inf3132tp2024.view.console.api.dialog.InfoDialog;
 import fr.esiea.inf3132tp2024.view.console.play.escape.EscapeMenu;
 import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
-import fr.esiea.inf3132tp2024.utils.audio.SimpleAudioPlayer;
+import fr.esiea.inf3132tp2024.utils.audio.NativeAudioTrack;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
-public class ActivateCheatButton extends CButton {
+public class ActivateCheatButton extends TButton {
     private final App app;
     private final CheatMenu menu;
     private final Game game;
@@ -40,7 +40,7 @@ public class ActivateCheatButton extends CButton {
             case ("404") -> {
                 app.stopAllPlayers();
                 try {
-                    SimpleAudioPlayer audioPlayer = app.createAudioPlayer(Music.CHEAT);
+                    NativeAudioTrack audioPlayer = app.createAudioPlayer(Music.CHEAT);
                     audioPlayer.setVolume(app.getSettings().getMusicVolume());
                     audioPlayer.play();
                 } catch (UnsupportedAudioFileException | IOException | LineUnavailableException |

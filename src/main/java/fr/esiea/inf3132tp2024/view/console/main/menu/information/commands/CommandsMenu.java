@@ -1,14 +1,14 @@
 package fr.esiea.inf3132tp2024.view.console.main.menu.information.commands;
 
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.view.console.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.console.api.component.CFrame;
-import fr.esiea.inf3132tp2024.view.console.api.component.CLabel;
-import fr.esiea.inf3132tp2024.view.console.api.component.CPanel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TFrame;
+import fr.esiea.inf3132tp2024.view.console.api.component.TLabel;
+import fr.esiea.inf3132tp2024.view.console.api.component.TPanel;
 import fr.esiea.inf3132tp2024.view.console.api.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
-public class CommandsMenu extends CFrame implements DisplayableComponent {
+public class CommandsMenu extends TFrame implements DisplayableComponent {
     public CommandsMenu() {
         super(0, 0, "Les commandes");
 
@@ -16,29 +16,29 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
         int labelLength = 0;
         int valueLength = 0;
 
-        CPanel panel = new CPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 1);
+        TPanel panel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 1);
 
         // Ajout des textes qui seront sur la partie gauche de l'écran
-        CLabel upLabel = new CLabel(HorizontalAlignment.RIGHT, "Monter :");
-        upLabel.getColors().add(CColor.GREEN);
+        TLabel upLabel = new TLabel(HorizontalAlignment.RIGHT, "Monter :");
+        upLabel.getColors().add(TColor.GREEN);
         if (upLabel.getLength() > labelLength) {
             labelLength = upLabel.getLength();
         }
 
-        CLabel downLabel = new CLabel(HorizontalAlignment.RIGHT, "Descendre :");
-        downLabel.getColors().add(CColor.GREEN);
+        TLabel downLabel = new TLabel(HorizontalAlignment.RIGHT, "Descendre :");
+        downLabel.getColors().add(TColor.GREEN);
         if (downLabel.getLength() > labelLength) {
             labelLength = downLabel.getLength();
         }
 
-        CLabel leftLabel = new CLabel(HorizontalAlignment.RIGHT, "Gauche :");
-        leftLabel.getColors().add(CColor.GREEN);
+        TLabel leftLabel = new TLabel(HorizontalAlignment.RIGHT, "Gauche :");
+        leftLabel.getColors().add(TColor.GREEN);
         if (leftLabel.getLength() > labelLength) {
             labelLength = leftLabel.getLength();
         }
 
-        CLabel rightLabel = new CLabel(HorizontalAlignment.RIGHT, "Droite :");
-        rightLabel.getColors().add(CColor.GREEN);
+        TLabel rightLabel = new TLabel(HorizontalAlignment.RIGHT, "Droite :");
+        rightLabel.getColors().add(TColor.GREEN);
         if (rightLabel.getLength() > labelLength) {
             labelLength = rightLabel.getLength();
         }
@@ -51,16 +51,16 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
 
         // Ajout des textes qui seront sur la partie droite de l'écran
         // première commande (haut)
-        CLabel upDescOne = new CLabel(HorizontalAlignment.LEFT, "Flèche haut");
-        upDescOne.getColors().add(CColor.RED);
+        TLabel upDescOne = new TLabel(HorizontalAlignment.LEFT, "Flèche haut");
+        upDescOne.getColors().add(TColor.RED);
 
-        CLabel upDescTwo = new CLabel(HorizontalAlignment.LEFT, "ou");
-        upDescTwo.getColors().add(CColor.YELLOW);
+        TLabel upDescTwo = new TLabel(HorizontalAlignment.LEFT, "ou");
+        upDescTwo.getColors().add(TColor.YELLOW);
 
-        CLabel upDescThree = new CLabel(HorizontalAlignment.LEFT, "Z");
-        upDescThree.getColors().add(CColor.RED);
+        TLabel upDescThree = new TLabel(HorizontalAlignment.LEFT, "Z");
+        upDescThree.getColors().add(TColor.RED);
 
-        CPanel upDescription = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel upDescription = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         upDescription.getComponents().add(upDescOne);
         upDescription.getComponents().add(upDescTwo);
         upDescription.getComponents().add(upDescThree);
@@ -69,21 +69,21 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
             valueLength = upDescription.getLength();
         }
 
-        CPanel upValue = new CPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
+        TPanel upValue = new TPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
         upValue.getComponents().add(upDescription);
         upValue.autoResize();
 
         // deuxième commande (bas)
-        CLabel downDescOne = new CLabel(HorizontalAlignment.LEFT, "Flèche bas");
-        downDescOne.getColors().add(CColor.RED);
+        TLabel downDescOne = new TLabel(HorizontalAlignment.LEFT, "Flèche bas");
+        downDescOne.getColors().add(TColor.RED);
 
-        CLabel downDescTwo = new CLabel(HorizontalAlignment.LEFT, "ou");
-        downDescTwo.getColors().add(CColor.YELLOW);
+        TLabel downDescTwo = new TLabel(HorizontalAlignment.LEFT, "ou");
+        downDescTwo.getColors().add(TColor.YELLOW);
 
-        CLabel downDescThree = new CLabel(HorizontalAlignment.LEFT, "S");
-        downDescThree.getColors().add(CColor.RED);
+        TLabel downDescThree = new TLabel(HorizontalAlignment.LEFT, "S");
+        downDescThree.getColors().add(TColor.RED);
 
-        CPanel downDescription = new CPanel(HorizontalAlignment.LEFT, Orientation.HORIZONTAL, 1);
+        TPanel downDescription = new TPanel(HorizontalAlignment.LEFT, Orientation.HORIZONTAL, 1);
         downDescription.getComponents().add(downDescOne);
         downDescription.getComponents().add(downDescTwo);
         downDescription.getComponents().add(downDescThree);
@@ -92,21 +92,21 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
             valueLength = downDescription.getLength();
         }
 
-        CPanel downValue = new CPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
+        TPanel downValue = new TPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
         downValue.getComponents().add(downDescription);
         downValue.autoResize();
 
         // troisième commande (gauche)
-        CLabel leftDescOne = new CLabel(HorizontalAlignment.LEFT, "Flèche gauche");
-        leftDescOne.getColors().add(CColor.RED);
+        TLabel leftDescOne = new TLabel(HorizontalAlignment.LEFT, "Flèche gauche");
+        leftDescOne.getColors().add(TColor.RED);
 
-        CLabel leftDescTwo = new CLabel(HorizontalAlignment.LEFT, "ou");
-        leftDescTwo.getColors().add(CColor.YELLOW);
+        TLabel leftDescTwo = new TLabel(HorizontalAlignment.LEFT, "ou");
+        leftDescTwo.getColors().add(TColor.YELLOW);
 
-        CLabel leftDescThree = new CLabel(HorizontalAlignment.LEFT, "Q");
-        leftDescThree.getColors().add(CColor.RED);
+        TLabel leftDescThree = new TLabel(HorizontalAlignment.LEFT, "Q");
+        leftDescThree.getColors().add(TColor.RED);
 
-        CPanel leftDescription = new CPanel(HorizontalAlignment.LEFT, Orientation.HORIZONTAL, 1);
+        TPanel leftDescription = new TPanel(HorizontalAlignment.LEFT, Orientation.HORIZONTAL, 1);
         leftDescription.getComponents().add(leftDescOne);
         leftDescription.getComponents().add(leftDescTwo);
         leftDescription.getComponents().add(leftDescThree);
@@ -115,21 +115,21 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
             valueLength = leftDescription.getLength();
         }
 
-        CPanel leftValue = new CPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
+        TPanel leftValue = new TPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
         leftValue.getComponents().add(leftDescription);
         leftValue.autoResize();
 
         // quatrième commande (droite)
-        CLabel rightDescOne = new CLabel(HorizontalAlignment.LEFT, "Flèche droite");
-        rightDescOne.getColors().add(CColor.RED);
+        TLabel rightDescOne = new TLabel(HorizontalAlignment.LEFT, "Flèche droite");
+        rightDescOne.getColors().add(TColor.RED);
 
-        CLabel rightDescTwo = new CLabel(HorizontalAlignment.LEFT, "ou");
-        rightDescTwo.getColors().add(CColor.YELLOW);
+        TLabel rightDescTwo = new TLabel(HorizontalAlignment.LEFT, "ou");
+        rightDescTwo.getColors().add(TColor.YELLOW);
 
-        CLabel rightDescThree = new CLabel(HorizontalAlignment.LEFT, "D");
-        rightDescThree.getColors().add(CColor.RED);
+        TLabel rightDescThree = new TLabel(HorizontalAlignment.LEFT, "D");
+        rightDescThree.getColors().add(TColor.RED);
 
-        CPanel rightDescription = new CPanel(HorizontalAlignment.LEFT, Orientation.HORIZONTAL, 1);
+        TPanel rightDescription = new TPanel(HorizontalAlignment.LEFT, Orientation.HORIZONTAL, 1);
         rightDescription.getComponents().add(rightDescOne);
         rightDescription.getComponents().add(rightDescTwo);
         rightDescription.getComponents().add(rightDescThree);
@@ -138,7 +138,7 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
             valueLength = rightDescription.getLength();
         }
 
-        CPanel rightValue = new CPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
+        TPanel rightValue = new TPanel(HorizontalAlignment.LEFT, 0, 0, Orientation.HORIZONTAL, false);
         rightValue.getComponents().add(rightDescription);
         rightValue.autoResize();
 
@@ -148,22 +148,22 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
         leftValue.setLength(valueLength);
         rightValue.setLength(valueLength);
 
-        CPanel upPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel upPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         upPanel.getComponents().add(upLabel);
         upPanel.getComponents().add(upValue);
         upPanel.autoResize();
 
-        CPanel downPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel downPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         downPanel.getComponents().add(downLabel);
         downPanel.getComponents().add(downValue);
         downPanel.autoResize();
 
-        CPanel leftPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel leftPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         leftPanel.getComponents().add(leftLabel);
         leftPanel.getComponents().add(leftValue);
         leftPanel.autoResize();
 
-        CPanel rightPanel = new CPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
+        TPanel rightPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.HORIZONTAL, 1);
         rightPanel.getComponents().add(rightLabel);
         rightPanel.getComponents().add(rightValue);
         rightPanel.autoResize();
@@ -175,7 +175,7 @@ public class CommandsMenu extends CFrame implements DisplayableComponent {
         panel.getComponents().add(rightPanel);
         panel.autoResize();
 
-        this.getContentPane().getComponents().add(new CLabel(HorizontalAlignment.CENTER, "Les commandes:"));
+        this.getContentPane().getComponents().add(new TLabel(HorizontalAlignment.CENTER, "Les commandes:"));
         this.getContentPane().getComponents().add(panel);
     }
 

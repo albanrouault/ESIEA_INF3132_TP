@@ -4,7 +4,7 @@ package fr.esiea.inf3132tp2024.view.console;
 // https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
 // https://askubuntu.com/questions/558280/changing-colour-of-text-and-background-of-terminal
 // https://en.wikipedia.org/wiki/ANSI_escape_code
-public enum CColor {
+public enum TColor {
     RESET(0, 0, 0, 0),
     BOLD(1, 1, 22, 22),
     DIM(2, 2, 22, 22),
@@ -41,15 +41,15 @@ public enum CColor {
     private final int foregroundResetCode;
     private final int backgroundResetCode;
 
-    CColor(int foregroundCode) {
+    TColor(int foregroundCode) {
         this(foregroundCode, foregroundCode + 10);
     }
 
-    CColor(int foregroundCode, int backgroundCode) {
+    TColor(int foregroundCode, int backgroundCode) {
         this(foregroundCode, backgroundCode, FOREGROUND_RESET_CODE, BACKGROUND_RESET_CODE);
     }
 
-    CColor(int foregroundCode, int backgroundCode, int foregroundResetCode, int backgroundResetCode) {
+    TColor(int foregroundCode, int backgroundCode, int foregroundResetCode, int backgroundResetCode) {
         this.foregroundCode = foregroundCode;
         this.backgroundCode = backgroundCode;
         this.foregroundResetCode = foregroundResetCode;

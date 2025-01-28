@@ -1,29 +1,29 @@
 package fr.esiea.inf3132tp2024.view.console.api.component;
 
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class CProgressBar extends CComponent {
-    private final List<CColor> textColors = new LinkedList<>();
-    private final List<CColor> progressedColors = new LinkedList<>();
-    private final List<CColor> unProgressedColors = new LinkedList<>();
+public class TProgressBar extends TComponent {
+    private final List<TColor> textColors = new LinkedList<>();
+    private final List<TColor> progressedColors = new LinkedList<>();
+    private final List<TColor> unProgressedColors = new LinkedList<>();
     private final String text;
     private int value;
     private int minValue;
     private int maxValue;
 
-    public CProgressBar(int length, int height) {
+    public TProgressBar(int length, int height) {
         this(length, height, 0, 100, null);
     }
 
-    public CProgressBar(int length, int height, int value, int maxValue, String text) {
+    public TProgressBar(int length, int height, int value, int maxValue, String text) {
         this(length, height, value, 0, maxValue, text);
     }
 
-    public CProgressBar(int length, int height, int value, int minValue, int maxValue, String text) {
+    public TProgressBar(int length, int height, int value, int minValue, int maxValue, String text) {
         super(HorizontalAlignment.CENTER, length, height);
 
         this.value = value;
@@ -86,12 +86,12 @@ public class CProgressBar extends CComponent {
 
             StringBuilder line = new StringBuilder();
 
-            ListIterator<CColor> textColorsIterator = textColors.listIterator();
+            ListIterator<TColor> textColorsIterator = textColors.listIterator();
             while (textColorsIterator.hasNext()) {
                 line.append(textColorsIterator.next().getForeground());
             }
 
-            ListIterator<CColor> progressedColorIterator = progressedColors.listIterator();
+            ListIterator<TColor> progressedColorIterator = progressedColors.listIterator();
             while (progressedColorIterator.hasNext()) {
                 line.append(progressedColorIterator.next().getBackground());
             }
@@ -100,7 +100,7 @@ public class CProgressBar extends CComponent {
                 line.append(progressedColorIterator.previous().getBackgroundReset());
             }
 
-            ListIterator<CColor> unProgressedColorIterator = unProgressedColors.listIterator();
+            ListIterator<TColor> unProgressedColorIterator = unProgressedColors.listIterator();
             while (unProgressedColorIterator.hasNext()) {
                 line.append(unProgressedColorIterator.next().getBackground());
             }
@@ -119,15 +119,15 @@ public class CProgressBar extends CComponent {
         return result;
     }
 
-    public List<CColor> getTextColors() {
+    public List<TColor> getTextColors() {
         return textColors;
     }
 
-    public List<CColor> getProgressedColors() {
+    public List<TColor> getProgressedColors() {
         return progressedColors;
     }
 
-    public List<CColor> getUnProgressedColors() {
+    public List<TColor> getUnProgressedColors() {
         return unProgressedColors;
     }
 

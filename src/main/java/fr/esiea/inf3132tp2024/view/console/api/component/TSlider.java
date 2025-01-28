@@ -2,24 +2,24 @@ package fr.esiea.inf3132tp2024.view.console.api.component;
 
 import fr.esiea.inf3132tp2024.old.event.key.KeyListener;
 import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.view.console.CColor;
+import fr.esiea.inf3132tp2024.view.console.TColor;
 import fr.esiea.inf3132tp2024.utils.direction.Direction;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionNotFoundException;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionUtils;
 
-public class CSlider extends CProgressBar implements SelectableComponent, KeyListener {
+public class TSlider extends TProgressBar implements SelectableComponent, KeyListener {
     private boolean selected = false;
 
-    public CSlider(int length, int height, int value, int maxValue, String text) {
+    public TSlider(int length, int height, int value, int maxValue, String text) {
         this(length, height, value, 0, maxValue, text);
     }
 
-    public CSlider(int length, int height, int value, int minValue, int maxValue, String text) {
+    public TSlider(int length, int height, int value, int minValue, int maxValue, String text) {
         super(length, height, value, minValue, maxValue, text);
 
-        this.getTextColors().add(CColor.BLACK);
-        this.getProgressedColors().add(CColor.BRIGHT_BLACK);
-        this.getUnProgressedColors().add(CColor.WHITE);
+        this.getTextColors().add(TColor.BLACK);
+        this.getProgressedColors().add(TColor.BRIGHT_BLACK);
+        this.getUnProgressedColors().add(TColor.WHITE);
     }
 
     @Override
@@ -56,15 +56,15 @@ public class CSlider extends CProgressBar implements SelectableComponent, KeyLis
     @Override
     public String[] render() {
         if (isSelected()) {
-            if (!this.getProgressedColors().contains(CColor.YELLOW)) {
-                this.getProgressedColors().add(CColor.YELLOW);
+            if (!this.getProgressedColors().contains(TColor.YELLOW)) {
+                this.getProgressedColors().add(TColor.YELLOW);
             }
-            if (!this.getUnProgressedColors().contains(CColor.BRIGHT_YELLOW)) {
-                this.getUnProgressedColors().add(CColor.BRIGHT_YELLOW);
+            if (!this.getUnProgressedColors().contains(TColor.BRIGHT_YELLOW)) {
+                this.getUnProgressedColors().add(TColor.BRIGHT_YELLOW);
             }
         } else {
-            this.getProgressedColors().remove(CColor.YELLOW);
-            this.getUnProgressedColors().remove(CColor.BRIGHT_YELLOW);
+            this.getProgressedColors().remove(TColor.YELLOW);
+            this.getUnProgressedColors().remove(TColor.BRIGHT_YELLOW);
         }
 
         return super.render();
