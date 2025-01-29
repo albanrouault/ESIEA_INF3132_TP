@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.play.consumable;
 
-import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.consumable.Consumable;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
@@ -12,7 +12,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 public class ConsumableItemMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
 
-    public ConsumableItemMenu(Player player, Consumable consumable, Monster[] monsters) {
+    public ConsumableItemMenu(Terrain terrain, Consumable consumable, Monster[] monsters) {
         super(0, 0, "Utiliser " + consumable.getName());
 
         TLabel label = new TLabel("Sur quelle entité voulez-vous utiliser " + consumable.getName() + " ?");
@@ -20,7 +20,7 @@ public class ConsumableItemMenu extends TFrame implements DisplayableComponent {
 
         TChoices choices = new TChoices(1);
         for (Monster monster : monsters) {
-            choices.add(new ConsumeItemButton(this, player, consumable, monster));
+            choices.add(new ConsumeItemButton(this, consumable, terrain, monster));
         }
 
         choices.add(new TQuitComponentButton(this, "Retour"));
