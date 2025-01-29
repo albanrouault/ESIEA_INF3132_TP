@@ -12,15 +12,15 @@ public abstract class Monster {
     private final Types type;
     private final String name;
     private final int maxHealth;
-    private final int attack;
-    private final int speed;
-    private final int defense;
     private final SpecialAttack specialAttack;
     private final float specialCapacityChance;
     private final Attack[] attacks;
 
     private MonsterState state;
     private int health;
+    private int attack;
+    private int speed;
+    private int defense;
 
     /***
      * Constructor of the Monster class
@@ -180,5 +180,14 @@ public abstract class Monster {
      */
     public boolean isAlive() {
         return health > 0;
+    }
+
+    /**
+     * Heal the monster
+     *
+     * @param health the amount of health to heal
+     */
+    public void heal(int health) {
+        this.health = Math.min(this.health + health, maxHealth);
     }
 }
