@@ -47,7 +47,7 @@ public class StatisticsManager {
                 // On ajoute à chaque itération dans la liste un nouvel objet statistic récupéré sur le csv
                 this.gameStatistics.add(new GameStatistic(
                         token.nextToken(),
-                        Integer.parseInt(token.nextToken()),
+                        token.nextToken(),
                         Integer.parseInt(token.nextToken()),
                         Long.parseLong(token.nextToken())));
 
@@ -75,9 +75,9 @@ public class StatisticsManager {
             do {
                 stat = gameStatistics.get(compteur);
                 out.println("" +
-                        stat.getPlayerName() + ";" +
+                        stat.getPlayerOneName() + ";" +
+                        stat.getPlayerTwoName() + ";" +
                         stat.getScore() + ";" +
-                        stat.getNbEnemyKilled() + ";" +
                         stat.getSeed());
                 compteur++;
             } while (compteur < this.gameStatistics.size());

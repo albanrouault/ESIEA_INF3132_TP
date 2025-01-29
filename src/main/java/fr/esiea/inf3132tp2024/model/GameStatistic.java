@@ -23,10 +23,10 @@ public class GameStatistic extends TPanel implements Comparable<GameStatistic> {
      * @param playerTwoName le nom du deuxième joueur de la partie
      */
     public GameStatistic(long seed, String playerOneName, String playerTwoName) {
-        this(seed, playerOneName, playerTwoName, 0);
+        this(playerOneName, playerTwoName, 0, seed);
     }
 
-    public GameStatistic(long seed, String playerOneName, String playerTwoName, int score) {
+    public GameStatistic(String playerOneName, String playerTwoName, int score, long seed) {
         super(HorizontalAlignment.CENTER, Orientation.VERTICAL, 0);
 
         this.seed = seed;

@@ -8,7 +8,7 @@ public class ShowStatButton extends TButton {
     private final GameStatistic gameStatistic;
 
     public ShowStatButton(GameStatistic gameStatistic, int placement) {
-        super(placement + ". " + gameStatistic.getPlayerName() + " " + gameStatistic.getScore());
+        super(placement + ". " + gameStatistic.getPlayerOneName() + " VS " + gameStatistic.getPlayerTwoName() + " " + gameStatistic.getScore());
 
         this.gameStatistic = gameStatistic;
     }
