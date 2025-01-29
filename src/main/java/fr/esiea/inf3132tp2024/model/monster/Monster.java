@@ -94,6 +94,15 @@ public abstract class Monster {
     }
 
     /**
+     * Check if the monster has a state
+     *
+     * @return true if the monster has a state, false otherwise
+     */
+    public boolean hasState() {
+        return state != null;
+    }
+
+    /**
      * Getter for the state of the monster
      *
      * @return the state of the monster
@@ -109,5 +118,17 @@ public abstract class Monster {
      */
     public void setState(MonsterState state) {
         this.state = state;
+    }
+
+    /**
+     * Update the state of the monster if it has one and decrement the number of turns left
+     */
+    public void updateState() {
+        if (state != null) {
+            state.decrementTurnsLeft();
+            if (state.getTurnsLeft() == 0) {
+                state = null;
+            }
+        }
     }
 }
