@@ -13,7 +13,7 @@ public class PlantMonster extends NatureMonster {
      * @param defense
      * @param attacks
      */
-    public PlantMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) {
+    public PlantMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) throws MonsterTooManyAttacks {
         super(name, health, attack, speed, defense, attacks);
     }
 }

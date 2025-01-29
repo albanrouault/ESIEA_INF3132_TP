@@ -13,7 +13,7 @@ public class ElectricMonster extends Monster {
      * @param defense
      * @param attacks
      */
-    public ElectricMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) {
+    public ElectricMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) throws MonsterTooManyAttacks {
         super(name, health, attack, speed, defense, attacks);
     }
 }

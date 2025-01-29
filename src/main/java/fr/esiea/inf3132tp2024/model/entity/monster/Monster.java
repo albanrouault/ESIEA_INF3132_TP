@@ -11,7 +11,7 @@ public abstract class Monster {
     private int attack;
     private int speed;
     private int defense;
-    private Attack[] attacks = new Attack[4];
+    private Attack[] attacks;
 
     /***
      * Constructor of the Monster class
@@ -22,13 +22,17 @@ public abstract class Monster {
      * @param defense
      * @param attacks
      */
-    protected Monster(String name, int health, int attack, int speed, int defense, Attack[] attacks) {
+    protected Monster(String name, int health, int attack, int speed, int defense, Attack... attacks) throws MonsterTooManyAttacks {
         this.name = name;
         this.health = health;
         this.attack = attack;
         this.speed = speed;
         this.defense = defense;
         this.attacks = attacks;
+        // Limit the number of attacks to 4
+        if (attacks.length > 4) {
+            throw new MonsterTooManyAttacks("Un monstre ne peut pas avoir plus de 4 attaques");
+        }
     }
 
     /**
