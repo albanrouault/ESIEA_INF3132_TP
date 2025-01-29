@@ -99,7 +99,7 @@ public class FileMonster {
         return maxHealth;
     }
 
-    public int getRandomHealth(Random random){
+    public int getRandomHealth(Random random) {
         return random.nextInt(maxHealth - minHealth + 1) + minHealth;
     }
 
@@ -111,7 +111,7 @@ public class FileMonster {
         return maxSpeed;
     }
 
-    public int getRandomSpeed(Random random){
+    public int getRandomSpeed(Random random) {
         return random.nextInt(maxSpeed - minSpeed + 1) + minSpeed;
     }
 
@@ -123,7 +123,7 @@ public class FileMonster {
         return maxAttack;
     }
 
-    public int getRandomAttack(Random random){
+    public int getRandomAttack(Random random) {
         return random.nextInt(maxAttack - minAttack + 1) + minAttack;
     }
 
@@ -135,9 +135,65 @@ public class FileMonster {
         return maxDefense;
     }
 
-    public int getRandomDefense(Random random){
+    public int getRandomDefense(Random random) {
         return random.nextInt(maxDefense - minDefense + 1) + minDefense;
     }
 
+    public int getMinCustomInt(String propertyName) {
+        if (!customProperties.containsKey(propertyName)) {
+            return 0;
+        }
+        return Integer.parseInt(customProperties.get(propertyName)[0]);
+    }
 
+    public int getMaxCustomInt(String propertyName) {
+        if (!customProperties.containsKey(propertyName)) {
+            return 0;
+        }
+        if (customProperties.get(propertyName).length < 2) {
+            return Integer.parseInt(customProperties.get(propertyName)[0]);
+        } else {
+            return Integer.parseInt(customProperties.get(propertyName)[1]);
+        }
+    }
+
+    public int getRandomCustomInt(String propertyName, Random random) {
+        if (!customProperties.containsKey(propertyName)) {
+            return 0;
+        }
+        if (customProperties.get(propertyName).length < 2) {
+            return Integer.parseInt(customProperties.get(propertyName)[0]);
+        } else {
+            return random.nextInt(Integer.parseInt(customProperties.get(propertyName)[1]) - Integer.parseInt(customProperties.get(propertyName)[0]) + 1) + Integer.parseInt(customProperties.get(propertyName)[0]);
+        }
+    }
+
+    public float getMinCustomFloat(String propertyName) {
+        if (!customProperties.containsKey(propertyName)) {
+            return 0;
+        }
+        return Float.parseFloat(customProperties.get(propertyName)[0]);
+    }
+
+    public float getMaxCustomFloat(String propertyName) {
+        if (!customProperties.containsKey(propertyName)) {
+            return 0;
+        }
+        if (customProperties.get(propertyName).length < 2) {
+            return Float.parseFloat(customProperties.get(propertyName)[0]);
+        } else {
+            return Float.parseFloat(customProperties.get(propertyName)[1]);
+        }
+    }
+
+    public float getRandomCustomFloat(String propertyName, Random random) {
+        if (!customProperties.containsKey(propertyName)) {
+            return 0;
+        }
+        if (customProperties.get(propertyName).length < 2) {
+            return Float.parseFloat(customProperties.get(propertyName)[0]);
+        } else {
+            return random.nextFloat() * (Float.parseFloat(customProperties.get(propertyName)[1]) - Float.parseFloat(customProperties.get(propertyName)[0])) + Float.parseFloat(customProperties.get(propertyName)[0]);
+        }
+    }
 }
