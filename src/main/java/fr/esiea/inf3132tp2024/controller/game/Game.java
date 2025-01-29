@@ -32,13 +32,13 @@ public class Game extends TFrame implements DisplayableComponent {
     private boolean display = true;
     private final GameStatistic gameStatistic;
 
-    public Game(long seed, String playerOneName, String playerTwoName) {
+    public Game(long seed, Player playerOne, Player playerTwo) {
         super(0, 0);
 
         this.seed = seed;
 
-        this.playerOne = new Player(playerOneName);
-        this.playerTwo = new Player(playerTwoName);
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
 
         //this.getContentPane().getComponents().add(map);
 
@@ -74,7 +74,7 @@ public class Game extends TFrame implements DisplayableComponent {
         gameAudioTrack.setLoop(true);
         gameAudioTrack.play();
 
-        this.gameStatistic = new GameStatistic(seed, playerOneName, playerTwoName);
+        this.gameStatistic = new GameStatistic(seed, playerOne.getName(), playerTwo.getName());
     }
 
     @Override
