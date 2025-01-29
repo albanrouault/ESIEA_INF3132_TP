@@ -1,11 +1,19 @@
 package fr.esiea.inf3132tp2024.model.entity.monster;
 
-public class PlantMonster extends Monster {
-    public PlantMonster() {
-    }
+import fr.esiea.inf3132tp2024.model.attack.Attack;
 
-    @Override
-    public void effect() {
-        System.out.println("Effet Plant appliqué au monstre.");
+public class PlantMonster extends NatureMonster {
+    /***
+     * Constructeur d'un monstre de type Plante
+     *
+     * @param name
+     * @param health
+     * @param attack
+     * @param speed
+     * @param defense
+     * @param attacks
+     */
+    public PlantMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) {
+        super(name, health, attack, speed, defense, attacks);
     }
 }

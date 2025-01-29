@@ -2,12 +2,9 @@ package fr.esiea.inf3132tp2024.model.entity.monster;
 
 import fr.esiea.inf3132tp2024.model.attack.Attack;
 
-/**
- * Cette classe représente le type de monstre Eau.
- */
-public class WaterMonster extends Monster {
+public class NatureMonster extends Monster {
     /***
-     * Constructeur d'un monstre de type Eau
+     * Constructeur d'un monstre de type Nature
      *
      * @param name
      * @param health
@@ -16,7 +13,7 @@ public class WaterMonster extends Monster {
      * @param defense
      * @param attacks
      */
-    public WaterMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) {
+    public NatureMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) {
         super(name, health, attack, speed, defense, attacks);
     }
 }

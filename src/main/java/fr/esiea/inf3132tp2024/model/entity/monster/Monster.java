@@ -1,7 +1,6 @@
 package fr.esiea.inf3132tp2024.model.entity.monster;
 
 import fr.esiea.inf3132tp2024.model.attack.Attack;
-import fr.esiea.inf3132tp2024.model.entity.Entity;
 
 /**
  * This class represents a monster in the game.
@@ -9,23 +8,26 @@ import fr.esiea.inf3132tp2024.model.entity.Entity;
 public abstract class Monster {
     private String name;
     private int health;
-    private int defense;
+    private int attack;
     private int speed;
+    private int defense;
     private Attack[] attacks = new Attack[4];
 
     /***
      * Constructor of the Monster class
      * @param name
      * @param health
-     * @param defense
+     * @param attack
      * @param speed
+     * @param defense
      * @param attacks
      */
-    public Monster(String name, int health, int defense, int speed, Attack[] attacks) {
+    protected Monster(String name, int health, int attack, int speed, int defense, Attack[] attacks) {
         this.name = name;
         this.health = health;
-        this.defense = defense;
+        this.attack = attack;
         this.speed = speed;
+        this.defense = defense;
         this.attacks = attacks;
     }
 
@@ -48,12 +50,12 @@ public abstract class Monster {
     }
 
     /**
-     * Getter for the defense of the monster
+     * Getter for the attack of the monster
      *
-     * @return the defense of the monster
+     * @return the attack of the monster
      */
-    public int getDefense() {
-        return defense;
+    public int getAttack() {
+        return attack;
     }
 
     /**
@@ -63,6 +65,15 @@ public abstract class Monster {
      */
     public int getSpeed() {
         return speed;
+    }
+
+    /**
+     * Getter for the defense of the monster
+     *
+     * @return the defense of the monster
+     */
+    public int getDefense() {
+        return defense;
     }
 
     /**
