@@ -1,6 +1,7 @@
 package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.attack.Attack;
+import fr.esiea.inf3132tp2024.model.capacity.SpecialCapacity;
 
 public class LightningMonster extends Monster {
     private final float paralyzeChance;
@@ -14,11 +15,11 @@ public class LightningMonster extends Monster {
      * @param speed
      * @param defense
      * @param paralyzeChance
-     * @param specialAttack
+     * @param specialCapacity
      * @param attacks
      */
-    public LightningMonster(String name, int health, int attack, int speed, int defense, float paralyzeChance, Attack specialAttack, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, specialAttack, attacks);
+    public LightningMonster(String name, int health, int attack, int speed, int defense, float paralyzeChance, SpecialCapacity specialCapacity, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(name, health, attack, speed, defense, specialCapacity, attacks);
 
         this.paralyzeChance = paralyzeChance;
     }

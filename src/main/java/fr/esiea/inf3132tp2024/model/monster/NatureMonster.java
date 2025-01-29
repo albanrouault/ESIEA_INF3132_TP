@@ -1,6 +1,7 @@
 package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.attack.Attack;
+import fr.esiea.inf3132tp2024.model.capacity.SpecialCapacity;
 
 public class NatureMonster extends Monster {
     /***
@@ -11,10 +12,10 @@ public class NatureMonster extends Monster {
      * @param attack
      * @param speed
      * @param defense
-     * @param specialAttack
+     * @param specialCapacity
      * @param attacks
      */
-    public NatureMonster(String name, int health, int attack, int speed, int defense, Attack specialAttack, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, specialAttack, attacks);
+    public NatureMonster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(name, health, attack, speed, defense, specialCapacity, attacks);
     }
 }
