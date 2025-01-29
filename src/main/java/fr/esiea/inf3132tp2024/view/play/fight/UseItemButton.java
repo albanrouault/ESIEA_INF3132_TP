@@ -1,30 +1,30 @@
 package fr.esiea.inf3132tp2024.view.play.fight;
 
-import fr.esiea.inf3132tp2024.model.entity.Entity;
-import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.Item;
-import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.Player;
+import fr.esiea.inf3132tp2024.model.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
-import fr.esiea.inf3132tp2024.view.play.item.consumable.ConsumableItemMenu;
-
-import java.util.List;
+import fr.esiea.inf3132tp2024.view.play.consumable.ConsumableItemMenu;
 
 public class UseItemButton extends TButton {
     private final Fight fight;
-    private final Consumable item;
-    private final List<Entity> entities;
+    private final Player player;
+    private final Consumable consumable;
+    private final Monster[] monsters;
 
-    public UseItemButton(Fight fight, Consumable item, List<Entity> fightEntities) {
-        super("Utiliser\n" + ((Item) item).getName());
+    public UseItemButton(Fight fight, Player player, Consumable consumable, Monster[] monsters) {
+        super("Utiliser\n" + consumable.getName());
 
         this.fight = fight;
-        this.item = item;
-        this.entities = fightEntities;
+        this.player = player;
+        this.consumable = consumable;
+        this.monsters = monsters;
     }
 
     @Override
     public void execute() {
-        Terminal.getInstance().show(new ConsumableItemMenu(item, entities));
+        Terminal.getInstance().show(new ConsumableItemMenu(player, consumable, monsters));
         fight.updateMenuButtons();
     }
 }

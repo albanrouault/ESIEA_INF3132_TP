@@ -1,30 +1,26 @@
-package fr.esiea.inf3132tp2024.view.play.item.consumable;
+package fr.esiea.inf3132tp2024.view.play.consumable;
 
-import fr.esiea.inf3132tp2024.model.entity.Entity;
-import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.Item;
-import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.Player;
+import fr.esiea.inf3132tp2024.model.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
-import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
-
-import java.util.List;
 
 public class ConsumableItemMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
 
-    public ConsumableItemMenu(Consumable consumable, List<Entity> entities) {
-        super(0, 0, "Utiliser " + ((Item) consumable).getName());
+    public ConsumableItemMenu(Player player, Consumable consumable, Monster[] monsters) {
+        super(0, 0, "Utiliser " + consumable.getName());
 
-        Item item = (Item) consumable;
-
-        TLabel label = new TLabel("Sur quelle entité voulez-vous utiliser " + item.getName() + " ?");
+        TLabel label = new TLabel("Sur quelle entité voulez-vous utiliser " + consumable.getName() + " ?");
         this.getContentPane().getComponents().add(label);
 
         TChoices choices = new TChoices(1);
-        for (Entity entity : entities) {
-            choices.add(new ConsumeItemButton(this, item, entity));
+        for (Monster monster : monsters) {
+            choices.add(new ConsumeItemButton(this, player, consumable, monster));
         }
 
         choices.add(new TQuitComponentButton(this, "Retour"));
