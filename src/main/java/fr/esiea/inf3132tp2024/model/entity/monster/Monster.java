@@ -6,12 +6,12 @@ import fr.esiea.inf3132tp2024.model.attack.Attack;
  * This class represents a monster in the game.
  */
 public abstract class Monster {
-    private String name;
-    private int health;
-    private int attack;
-    private int speed;
-    private int defense;
-    private Attack[] attacks;
+    private final String name;
+    private final int health;
+    private final int attack;
+    private final int speed;
+    private final int defense;
+    private final Attack[] attacks;
 
     /***
      * Constructor of the Monster class
@@ -86,6 +86,7 @@ public abstract class Monster {
      * @return the attacks of the monster
      */
     public Attack[] getAttacks() {
-        return attacks;
+        // Return a copy of the array to prevent modification
+        return attacks.clone();
     }
 }
