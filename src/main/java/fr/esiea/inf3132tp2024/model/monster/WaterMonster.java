@@ -1,5 +1,6 @@
 package fr.esiea.inf3132tp2024.model.monster;
 
+import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
 import fr.esiea.inf3132tp2024.model.capacity.SpecialCapacity;
 
@@ -25,7 +26,7 @@ public class WaterMonster extends Monster {
      * @param attacks
      */
     public WaterMonster(String name, int health, int attack, int speed, int defense, float floodChance, float opponentFloodedFallChance, SpecialCapacity specialCapacity, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, specialCapacity, specialCapacityChance, attacks);
+        super(Types.WATER, name, health, attack, speed, defense, specialCapacity, specialCapacityChance, attacks);
 
         this.floodChance = floodChance;
         this.opponentFloodedFallChance = opponentFloodedFallChance;

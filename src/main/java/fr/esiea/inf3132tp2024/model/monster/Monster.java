@@ -1,5 +1,6 @@
 package fr.esiea.inf3132tp2024.model.monster;
 
+import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
 import fr.esiea.inf3132tp2024.model.capacity.SpecialCapacity;
 import fr.esiea.inf3132tp2024.model.monster.state.MonsterState;
@@ -8,6 +9,7 @@ import fr.esiea.inf3132tp2024.model.monster.state.MonsterState;
  * This class represents a monster in the game.
  */
 public abstract class Monster {
+    private final Types type;
     private final String name;
     private final int health;
     private final int attack;
@@ -22,6 +24,7 @@ public abstract class Monster {
     /***
      * Constructor of the Monster class
      *
+     * @param type
      * @param name
      * @param health
      * @param attack
@@ -31,7 +34,8 @@ public abstract class Monster {
      * @param specialCapacityChance
      * @param attacks
      */
-    protected Monster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, float specialCapacityChance, Attack... attacks) throws MonsterTooManyAttacks {
+    protected Monster(Types type, String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, float specialCapacityChance, Attack... attacks) throws MonsterTooManyAttacks {
+        this.type = type;
         this.name = name;
         this.health = health;
         this.attack = attack;
@@ -44,6 +48,15 @@ public abstract class Monster {
         if (attacks.length > 4) {
             throw new MonsterTooManyAttacks("Un monstre ne peut pas avoir plus de 4 attaques");
         }
+    }
+
+    /**
+     * Getter for the type of the monster
+     *
+     * @return the type of the monster
+     */
+    public Types getType() {
+        return type;
     }
 
     /**
