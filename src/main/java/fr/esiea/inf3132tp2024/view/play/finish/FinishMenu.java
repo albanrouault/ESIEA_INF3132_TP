@@ -2,7 +2,7 @@ package fr.esiea.inf3132tp2024.view.play.finish;
 
 import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.controller.game.Game;
-import fr.esiea.inf3132tp2024.controller.game.Statistic;
+import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
@@ -40,8 +40,8 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
 
         // Statistiques
         // On actualise les statistiques
-        Statistic statistic = game.getStatistic();
-        statistic.calculScore();
+        GameStatistic gameStatistic = game.getStatistic();
+        gameStatistic.calculScore();
         this.getContentPane().getComponents().add(game.getStatistic());
 
         // Boutons

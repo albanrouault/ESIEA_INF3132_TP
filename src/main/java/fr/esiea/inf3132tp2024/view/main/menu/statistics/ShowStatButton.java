@@ -1,20 +1,20 @@
 package fr.esiea.inf3132tp2024.view.main.menu.statistics;
 
-import fr.esiea.inf3132tp2024.controller.game.Statistic;
+import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 
 public class ShowStatButton extends TButton {
-    private final Statistic statistic;
+    private final GameStatistic gameStatistic;
 
-    public ShowStatButton(Statistic statistic, int placement) {
-        super(placement + ". " + statistic.getPlayerName() + " " + statistic.getScore());
+    public ShowStatButton(GameStatistic gameStatistic, int placement) {
+        super(placement + ". " + gameStatistic.getPlayerName() + " " + gameStatistic.getScore());
 
-        this.statistic = statistic;
+        this.gameStatistic = gameStatistic;
     }
 
     @Override
     public void execute() {
-        Terminal.getInstance().show(new ViewStatisticMenu(statistic));
+        Terminal.getInstance().show(new ViewStatisticMenu(gameStatistic));
     }
 }

@@ -11,7 +11,7 @@ import fr.esiea.inf3132tp2024.model.monster.state.MonsterState;
 public abstract class Monster {
     private final Types type;
     private final String name;
-    private final int health;
+    private final int maxHealth;
     private final int attack;
     private final int speed;
     private final int defense;
@@ -20,6 +20,7 @@ public abstract class Monster {
     private final Attack[] attacks;
 
     private MonsterState state;
+    private int health;
 
     /***
      * Constructor of the Monster class
@@ -38,6 +39,7 @@ public abstract class Monster {
         this.type = type;
         this.name = name;
         this.health = health;
+        this.maxHealth = health;
         this.attack = attack;
         this.speed = speed;
         this.defense = defense;
@@ -75,6 +77,15 @@ public abstract class Monster {
      */
     public int getHealth() {
         return health;
+    }
+
+    /**
+     * Getter for the max health of the monster
+     *
+     * @return the max health of the monster
+     */
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
     /**
@@ -160,5 +171,14 @@ public abstract class Monster {
             throw new MonsterHasAlreadyAState("Le monstre a déjà un état");
         }
         this.state = state;
+    }
+
+    /**
+     * Check if the monster is alive
+     *
+     * @return true if the monster is alive, false otherwise
+     */
+    public boolean isAlive() {
+        return health > 0;
     }
 }

@@ -1,40 +1,44 @@
 package fr.esiea.inf3132tp2024.controller.game;
 
-import fr.esiea.inf3132tp2024.model.audio.Music;
+import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.model.Player;
-import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
-import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.play.EntityStats;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.view.play.PlayerStats;
 import fr.esiea.inf3132tp2024.view.play.escape.EscapeMenu;
 import fr.esiea.inf3132tp2024.view.play.finish.FinishMenu;
 
 public class Game extends TFrame implements DisplayableComponent {
     private final long seed;
-    private final Player player;
+    private final Player playerOne;
+    private final Player playerTwo;
     private final TLabel stageLevelLabel;
     private final TLabel blockNameLabel;
-    private final EntityStats playerStats;
+    private final PlayerStats playerOneStats;
+    private final PlayerStats playerTwoStats;
     private final TPanel otherInfos;
     private String infos;
     private AudioTrack gameAudioTrack;
     private boolean display = true;
-    private final Statistic statistic;
+    private final GameStatistic gameStatistic;
 
-    public Game(long seed, String playerName) {
+    public Game(long seed, String playerOneName, String playerTwoName) {
         super(0, 0);
 
         this.seed = seed;
 
-        this.player = new Player(playerName);
+        this.playerOne = new Player(playerOneName);
+        this.playerTwo = new Player(playerTwoName);
 
         //this.getContentPane().getComponents().add(map);
 
@@ -49,9 +53,13 @@ public class Game extends TFrame implements DisplayableComponent {
 
         TPanel footer = new TPanel(0, 4, Orientation.HORIZONTAL, false);
 
-        this.playerStats = new EntityStats(player, Orientation.HORIZONTAL);
-        playerStats.setHeight(4);
-        footer.getComponents().add(playerStats);
+        this.playerOneStats = new PlayerStats(playerOne, Orientation.HORIZONTAL);
+        playerOneStats.setHeight(1);
+        footer.getComponents().add(playerOneStats);
+
+        this.playerTwoStats = new PlayerStats(playerTwo, Orientation.HORIZONTAL);
+        playerTwoStats.setHeight(1);
+        footer.getComponents().add(playerTwoStats);
 
         this.otherInfos = new TPanel(0, 4, Orientation.VERTICAL, false);
         this.infos = "Échap - Menu de pause";
@@ -66,7 +74,7 @@ public class Game extends TFrame implements DisplayableComponent {
         gameAudioTrack.setLoop(true);
         gameAudioTrack.play();
 
-        this.statistic = new Statistic(seed, playerName);
+        this.gameStatistic = new GameStatistic(seed, playerOneName, playerTwoName);
     }
 
     @Override
@@ -89,7 +97,7 @@ public class Game extends TFrame implements DisplayableComponent {
     @Override
     public boolean isInLoopingMode() {
         // Si le joueur est mort, on arrête le jeu
-        if (player.isDead()) {
+        if (playerOne.hasLost() || playerTwo.hasLost()) {
             stopLoopingMode();
 
             AudioTrack deathAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.DEATH);
@@ -137,8 +145,7 @@ public class Game extends TFrame implements DisplayableComponent {
         int footerStatsLength = this.getContentPane().getLength();
 
         this.getFooter().getComponents().clear();
-        this.playerStats.setLength(footerStatsLength / 2);
-        this.getFooter().getComponents().add(this.playerStats);
+        this.getFooter().getComponents().add(new TLabel(""));
 
         this.otherInfos.getComponents().clear();
         this.otherInfos.getComponents().add(new TLabel(""));
@@ -168,15 +175,19 @@ public class Game extends TFrame implements DisplayableComponent {
         return seed;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Player getPlayerOne() {
+        return playerOne;
+    }
+
+    public Player getPlayerTwo() {
+        return playerTwo;
     }
 
     public AudioTrack getGameAudioTrack() {
         return gameAudioTrack;
     }
 
-    public Statistic getStatistic() {
-        return statistic;
+    public GameStatistic getStatistic() {
+        return gameStatistic;
     }
 }

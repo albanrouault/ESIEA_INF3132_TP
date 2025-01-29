@@ -4,7 +4,7 @@ import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.model.entity.Entity;
 import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.olddeprecatedtodelete.entity.enemy.Enemy;
-import fr.esiea.inf3132tp2024.controller.game.EntityDeadException;
+import fr.esiea.inf3132tp2024.model.monster.MonsterDeadException;
 import fr.esiea.inf3132tp2024.controller.game.Game;
 import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
@@ -17,7 +17,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
 import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
-import fr.esiea.inf3132tp2024.view.play.EntityStats;
+import fr.esiea.inf3132tp2024.view.play.MonsterStats;
 import fr.esiea.inf3132tp2024.view.play.fight.loot.LootMenu;
 
 import java.util.LinkedList;
@@ -38,14 +38,14 @@ public class Fight extends TFrame implements DisplayableComponent {
     private boolean over = false;
 
     private final TPanel leftPanel;
-    private final EntityStats playerStats;
+    private final MonsterStats playerStats;
     private final TPanel centerPanel;
     private final TChoices menu;
     private final TPanel rightPanel;
-    private final EntityStats enemyStats;
+    private final MonsterStats enemyStats;
     private final TLabel logs;
 
-    private EntityStats petStats;
+    private MonsterStats petStats;
 
     public Fight(Game game, Player player, Entity enemy, boolean runAway) {
         super(0, 0, "Combat");
@@ -61,7 +61,7 @@ public class Fight extends TFrame implements DisplayableComponent {
 
         this.leftPanel = new TPanel(0, 0);
 
-        this.playerStats = new EntityStats(player, Orientation.VERTICAL);
+        this.playerStats = new MonsterStats(player, Orientation.VERTICAL);
         leftPanel.getComponents().add(playerStats);
 
         this.getContentPane().getComponents().add(leftPanel);
@@ -75,7 +75,7 @@ public class Fight extends TFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(centerPanel);
 
         this.rightPanel = new TPanel(0, 0);
-        this.enemyStats = new EntityStats(enemy, Orientation.VERTICAL);
+        this.enemyStats = new MonsterStats(enemy, Orientation.VERTICAL);
         rightPanel.getComponents().add(enemyStats);
         this.getContentPane().getComponents().add(rightPanel);
 
@@ -265,7 +265,7 @@ public class Fight extends TFrame implements DisplayableComponent {
 
             try {
                 attacked.damage(attacker.getStrength());
-            } catch (EntityDeadException e) {
+            } catch (MonsterDeadException e) {
                 if (attacker == player) {
                     logs.add("Vous avez tué " + attacked.getName() + ".");
                 } else if (attacked == player) {

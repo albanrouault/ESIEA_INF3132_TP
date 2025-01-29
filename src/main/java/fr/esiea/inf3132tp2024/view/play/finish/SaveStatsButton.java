@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view.play.finish;
 
 import fr.esiea.inf3132tp2024.controller.game.Game;
-import fr.esiea.inf3132tp2024.controller.game.Statistic;
+import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.controller.game.StatisticsManager;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TTextField;
@@ -22,9 +22,9 @@ public class SaveStatsButton extends TButton {
         TTextField nameField = finishMenu.getNameField();
 
         // Sauvegarde des statistiques
-        Statistic statistic = game.getStatistic();
-        statistic.setPlayerName(nameField.getText());
-        StatisticsManager.getInstance().addStatistic(statistic);
+        GameStatistic gameStatistic = game.getStatistic();
+        gameStatistic.setPlayerName(nameField.getText());
+        StatisticsManager.getInstance().addStatistic(gameStatistic);
 
         // On enlève les boutons
         finishMenu.getContentPane().getComponents().remove(finishMenu.getNameLabel());

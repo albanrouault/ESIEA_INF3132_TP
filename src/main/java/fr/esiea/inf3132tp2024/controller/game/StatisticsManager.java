@@ -1,5 +1,7 @@
 package fr.esiea.inf3132tp2024.controller.game;
 
+import fr.esiea.inf3132tp2024.model.GameStatistic;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +15,7 @@ public class StatisticsManager {
         return INSTANCE;
     }
 
-    private final List<Statistic> statistics = new ArrayList<>();
+    private final List<GameStatistic> gameStatistics = new ArrayList<>();
 
     /**
      * Méthode permettant de récupérer les meilleurs stats (si elles existent).
@@ -43,7 +45,7 @@ public class StatisticsManager {
                 }
 
                 // On ajoute à chaque itération dans la liste un nouvel objet statistic récupéré sur le csv
-                this.statistics.add(new Statistic(
+                this.gameStatistics.add(new GameStatistic(
                         token.nextToken(),
                         Integer.parseInt(token.nextToken()),
                         Integer.parseInt(token.nextToken()),
@@ -55,7 +57,7 @@ public class StatisticsManager {
 
         } catch (IOException ignored) {
         }
-        Collections.sort(this.statistics);
+        Collections.sort(this.gameStatistics);
     }
 
     /**
@@ -68,17 +70,17 @@ public class StatisticsManager {
             FileWriter fileWriter = new FileWriter("stats.csv");
             PrintWriter out = new PrintWriter(fileWriter);
 
-            Statistic stat;
+            GameStatistic stat;
             int compteur = 0;
             do {
-                stat = statistics.get(compteur);
+                stat = gameStatistics.get(compteur);
                 out.println("" +
                         stat.getPlayerName() + ";" +
                         stat.getScore() + ";" +
                         stat.getNbEnemyKilled() + ";" +
                         stat.getSeed());
                 compteur++;
-            } while (compteur < this.statistics.size());
+            } while (compteur < this.gameStatistics.size());
 
             out.close();
         } catch (IOException ignored) {
@@ -90,22 +92,22 @@ public class StatisticsManager {
      *
      * @param stat la statistique à ajouter
      */
-    public void addStatistic(Statistic stat) {
+    public void addStatistic(GameStatistic stat) {
         if (stat.isCheatModeActivated()) {
             return;
         }
-        this.statistics.add(stat);
+        this.gameStatistics.add(stat);
         // On trie et on remet la liste à la bonne taille pour écrire seulement les 10 meilleurs scores
-        Collections.sort(this.statistics);
-        while (statistics.size() > 10) {
-            this.statistics.remove(this.statistics.size() - 1);
+        Collections.sort(this.gameStatistics);
+        while (gameStatistics.size() > 10) {
+            this.gameStatistics.remove(this.gameStatistics.size() - 1);
         }
 
         // On sauvegarde les statistiques sur le csv
         writeStatistics();
     }
 
-    public List<Statistic> getStatistics() {
-        return statistics;
+    public List<GameStatistic> getStatistics() {
+        return gameStatistics;
     }
 }

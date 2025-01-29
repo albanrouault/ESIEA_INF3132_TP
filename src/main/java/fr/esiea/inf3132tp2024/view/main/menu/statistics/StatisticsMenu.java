@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.main.menu.statistics;
 
-import fr.esiea.inf3132tp2024.controller.game.Statistic;
+import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.controller.game.StatisticsManager;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
@@ -16,7 +16,7 @@ public class StatisticsMenu extends TFrame implements DisplayableComponent {
     public StatisticsMenu() {
         super(0, 0, "Statistiques");
 
-        List<Statistic> stats = StatisticsManager.getInstance().getStatistics();
+        List<GameStatistic> stats = StatisticsManager.getInstance().getStatistics();
         if (stats.isEmpty()) {
             this.getContentPane().getComponents().add(new TLabel("Aucune statistique répertoriée !"));
         }
