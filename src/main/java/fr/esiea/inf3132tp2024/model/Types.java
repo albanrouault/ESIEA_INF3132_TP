@@ -1,6 +1,7 @@
 package fr.esiea.inf3132tp2024.model;
 
 public enum Types {
+    NORMAL("Normal"),
     EARTH("Terre"),
     LIGHTNING("Foudre"),
     WATER("Eau"),
@@ -10,8 +11,32 @@ public enum Types {
     NATURE_INSECT(NATURE, "Insecte"),
     ;
 
-    private Types parent;
-    private String name;
+    static {
+        // Terre
+        EARTH.setStrongAgainst(LIGHTNING);
+        EARTH.setWeakAgainst(NATURE);
+
+        // Foudre
+        LIGHTNING.setStrongAgainst(WATER);
+        LIGHTNING.setWeakAgainst(EARTH);
+
+        // Eau
+        WATER.setStrongAgainst(FIRE);
+        WATER.setWeakAgainst(LIGHTNING);
+
+        // Feu
+        FIRE.setStrongAgainst(NATURE);
+        FIRE.setWeakAgainst(WATER);
+
+        // Nature
+        NATURE.setStrongAgainst(EARTH);
+        NATURE.setWeakAgainst(FIRE);
+    }
+
+    private final Types parent;
+    private final String name;
+    private Types strongAgainst;
+    private Types weakAgainst;
 
     Types(String name) {
         this(null, name);
@@ -26,9 +51,44 @@ public enum Types {
         return parent;
     }
 
+    public Types getMainType() {
+        if (parent == null) {
+            return this;
+        }
+        return parent.getMainType();
+    }
+
     public String getName() {
         return name;
     }
 
+    public Types getStrongAgainst() {
+        if (strongAgainst == null) {
+            return parent.getStrongAgainst();
+        }
+        return strongAgainst;
+    }
 
+    private void setStrongAgainst(Types strongAgainst) {
+        this.strongAgainst = strongAgainst;
+    }
+
+    public Types getWeakAgainst() {
+        if (weakAgainst == null) {
+            return parent.getWeakAgainst();
+        }
+        return weakAgainst;
+    }
+
+    private void setWeakAgainst(Types weakAgainst) {
+        this.weakAgainst = weakAgainst;
+    }
+
+    public boolean isStrongAgainst(Types type) {
+        return type.getMainType() == getStrongAgainst().getMainType();
+    }
+
+    public boolean isWeakAgainst(Types type) {
+        return type.getMainType() == getWeakAgainst().getMainType();
+    }
 }

@@ -2,7 +2,7 @@ package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
-import fr.esiea.inf3132tp2024.model.capacity.SpecialCapacity;
+import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttack;
 
 /**
  * Cette classe représente le type de monstre Eau.
@@ -21,12 +21,12 @@ public class WaterMonster extends Monster {
      * @param defense
      * @param floodChance
      * @param opponentFloodedFallChance
-     * @param specialCapacity
+     * @param specialAttack
      * @param specialCapacityChance
      * @param attacks
      */
-    public WaterMonster(String name, int health, int attack, int speed, int defense, float floodChance, float opponentFloodedFallChance, SpecialCapacity specialCapacity, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(Types.WATER, name, health, attack, speed, defense, specialCapacity, specialCapacityChance, attacks);
+    public WaterMonster(String name, int health, int attack, int speed, int defense, float floodChance, float opponentFloodedFallChance, SpecialAttack specialAttack, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(Types.WATER, name, health, attack, speed, defense, specialAttack, specialCapacityChance, attacks);
 
         this.floodChance = floodChance;
         this.opponentFloodedFallChance = opponentFloodedFallChance;

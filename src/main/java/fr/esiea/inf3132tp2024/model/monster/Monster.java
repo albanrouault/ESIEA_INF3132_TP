@@ -2,7 +2,7 @@ package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
-import fr.esiea.inf3132tp2024.model.capacity.SpecialCapacity;
+import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttack;
 import fr.esiea.inf3132tp2024.model.monster.state.MonsterState;
 
 /**
@@ -15,7 +15,7 @@ public abstract class Monster {
     private final int attack;
     private final int speed;
     private final int defense;
-    private final SpecialCapacity specialCapacity;
+    private final SpecialAttack specialAttack;
     private final float specialCapacityChance;
     private final Attack[] attacks;
 
@@ -30,18 +30,18 @@ public abstract class Monster {
      * @param attack
      * @param speed
      * @param defense
-     * @param specialCapacity
+     * @param specialAttack
      * @param specialCapacityChance
      * @param attacks
      */
-    protected Monster(Types type, String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, float specialCapacityChance, Attack... attacks) throws MonsterTooManyAttacks {
+    protected Monster(Types type, String name, int health, int attack, int speed, int defense, SpecialAttack specialAttack, float specialCapacityChance, Attack... attacks) throws MonsterTooManyAttacks {
         this.type = type;
         this.name = name;
         this.health = health;
         this.attack = attack;
         this.speed = speed;
         this.defense = defense;
-        this.specialCapacity = specialCapacity;
+        this.specialAttack = specialAttack;
         this.specialCapacityChance = specialCapacityChance;
         this.attacks = attacks;
         // Limit the number of attacks to 4
@@ -109,8 +109,8 @@ public abstract class Monster {
      *
      * @return the special capacity of the monster
      */
-    public SpecialCapacity getSpecialCapacity() {
-        return specialCapacity;
+    public SpecialAttack getSpecialCapacity() {
+        return specialAttack;
     }
 
     /**
