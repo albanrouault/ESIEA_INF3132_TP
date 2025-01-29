@@ -8,9 +8,10 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
 
 public class GameStatistic extends TPanel implements Comparable<GameStatistic> {
     private final long seed;
-    private final String playerOneName;
-    private final String playerTwoName;
-    private final int score;
+
+    private String playerOneName;
+    private String playerTwoName;
+    private int score;
 
     private boolean cheatModeActivated = false;
 
@@ -131,6 +132,35 @@ public class GameStatistic extends TPanel implements Comparable<GameStatistic> {
     public boolean isCheatModeActivated() {
         return this.cheatModeActivated;
     }
+
+    /**
+     * Setter pour changer le nom du joueur 1 défini dans les statistiques.
+     *
+     * @param playerName le nouveau nom à mettre
+     */
+    public void setPlayerOneName(String playerName) {
+        this.playerOneName = playerName;
+        this.update();
+    }
+
+    /**
+     * Setter pour changer le nom du joueur 2 défini dans les statistiques.
+     *
+     * @param playerName le nouveau nom à mettre
+     */
+    public void setPlayerTwoName(String playerName) {
+        this.playerTwoName = playerName;
+        this.update();
+    }
+
+    /**
+     * Méthode pour simuler un calcul de score non exhaustif.
+     */
+    public void calculScore() {
+        this.score = 0;
+        this.update();
+    }
+
 
     public long getSeed() {
         return seed;
