@@ -14,9 +14,10 @@ public class EarthMonster extends Monster {
      * @param attack
      * @param speed
      * @param defense
+     * @param specialAttack
      * @param attacks
      */
-    public EarthMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, attacks);
+    public EarthMonster(String name, int health, int attack, int speed, int defense, Attack specialAttack, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(name, health, attack, speed, defense, specialAttack, attacks);
     }
 }

@@ -13,8 +13,8 @@ public class InsectMonster extends NatureMonster {
      * @param defense
      * @param attacks
      */
-    public InsectMonster(String name, int health, int attack, int speed, int defense, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, attacks);
+    public InsectMonster(String name, int health, int attack, int speed, int defense, Attack specialAttack, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(name, health, attack, speed, defense, specialAttack, attacks);
     }
 }
 

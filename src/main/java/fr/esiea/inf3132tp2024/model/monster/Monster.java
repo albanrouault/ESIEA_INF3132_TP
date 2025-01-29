@@ -12,25 +12,29 @@ public abstract class Monster {
     private final int attack;
     private final int speed;
     private final int defense;
+    private final Attack specialAttack;
     private final Attack[] attacks;
 
     private MonsterState state;
 
     /***
      * Constructor of the Monster class
+     *
      * @param name
      * @param health
      * @param attack
      * @param speed
      * @param defense
+     * @param specialAttack
      * @param attacks
      */
-    protected Monster(String name, int health, int attack, int speed, int defense, Attack... attacks) throws MonsterTooManyAttacks {
+    protected Monster(String name, int health, int attack, int speed, int defense, Attack specialAttack, Attack... attacks) throws MonsterTooManyAttacks {
         this.name = name;
         this.health = health;
         this.attack = attack;
         this.speed = speed;
         this.defense = defense;
+        this.specialAttack = specialAttack;
         this.attacks = attacks;
         // Limit the number of attacks to 4
         if (attacks.length > 4) {
@@ -81,6 +85,15 @@ public abstract class Monster {
      */
     public int getDefense() {
         return defense;
+    }
+
+    /**
+     * Getter for the special attack of the monster
+     *
+     * @return the special attack of the monster
+     */
+    public Attack getSpecialAttack() {
+        return specialAttack;
     }
 
     /**
