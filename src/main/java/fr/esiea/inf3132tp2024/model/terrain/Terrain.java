@@ -5,10 +5,6 @@ import fr.esiea.inf3132tp2024.model.terrain.effect.TerrainEffect;
 public class Terrain {
     private TerrainEffect effect;
 
-    public Terrain(TerrainEffect effect) {
-        this.effect = effect;
-    }
-
     /**
      * Vérifie si le terrain a un effet actif
      *

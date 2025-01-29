@@ -3,6 +3,7 @@ package fr.esiea.inf3132tp2024.controller.game;
 import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.audio.Music;
+import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
@@ -22,14 +23,18 @@ public class Game extends TFrame implements DisplayableComponent {
     private final long seed;
     private final Player playerOne;
     private final Player playerTwo;
+    private final Terrain terrain;
+
+    private String infos;
+    private AudioTrack gameAudioTrack;
+
+    // Éléments graphiques
+    private boolean display = true;
     private final TLabel stageLevelLabel;
     private final TLabel blockNameLabel;
     private final PlayerStats playerOneStats;
     private final PlayerStats playerTwoStats;
     private final TPanel otherInfos;
-    private String infos;
-    private AudioTrack gameAudioTrack;
-    private boolean display = true;
     private final GameStatistic gameStatistic;
 
     public Game(long seed, Player playerOne, Player playerTwo) {
@@ -39,6 +44,8 @@ public class Game extends TFrame implements DisplayableComponent {
 
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+
+        this.terrain = new Terrain();
 
         //this.getContentPane().getComponents().add(map);
 
@@ -181,6 +188,10 @@ public class Game extends TFrame implements DisplayableComponent {
 
     public Player getPlayerTwo() {
         return playerTwo;
+    }
+
+    public Terrain getTerrain() {
+        return terrain;
     }
 
     public AudioTrack getGameAudioTrack() {

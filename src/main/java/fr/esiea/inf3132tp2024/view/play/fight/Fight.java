@@ -1,42 +1,41 @@
 package fr.esiea.inf3132tp2024.view.play.fight;
 
-import fr.esiea.inf3132tp2024.model.audio.Music;
-import fr.esiea.inf3132tp2024.model.entity.Entity;
-import fr.esiea.inf3132tp2024.model.Player;
-import fr.esiea.inf3132tp2024.olddeprecatedtodelete.entity.enemy.Enemy;
-import fr.esiea.inf3132tp2024.model.monster.MonsterDeadException;
 import fr.esiea.inf3132tp2024.controller.game.Game;
-import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.Player;
+import fr.esiea.inf3132tp2024.model.audio.Music;
+import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.model.monster.MonsterDeadException;
+import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
-import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
 import fr.esiea.inf3132tp2024.view.play.MonsterStats;
-import fr.esiea.inf3132tp2024.view.play.fight.loot.LootMenu;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 public class Fight extends TFrame implements DisplayableComponent {
-    private static final int ACCURACY = 30;
-
-    private final Game game;
-    private final Player player;
-    private final Entity enemy;
-    private final boolean runAway;
     private final Random random;
+    private final Game game;
+    private final Terrain terrain;
+    private final Player playerOne;
+    private final Player playerTwo;
+    private final Monster monsterPlayerOne;
+    private final Monster monsterPlayerTwo;
     private State state = State.FIGHTING;
     private AudioTrack fightAudioTrack;
     private boolean display = true;
     private boolean over = false;
 
+    // Éléments graphiques
     private final TPanel leftPanel;
     private final MonsterStats playerStats;
     private final TPanel centerPanel;
@@ -44,8 +43,6 @@ public class Fight extends TFrame implements DisplayableComponent {
     private final TPanel rightPanel;
     private final MonsterStats enemyStats;
     private final TLabel logs;
-
-    private MonsterStats petStats;
 
     public Fight(Game game, Player player, Entity enemy, boolean runAway) {
         super(0, 0, "Combat");
@@ -107,19 +104,11 @@ public class Fight extends TFrame implements DisplayableComponent {
                         game.getStatistic().addAEnemyKill();
                     }
 
-                    // On affiche le menu de butin
-                    if (enemy.hasWeapon() || enemy.hasItem()) {
-                        menu.getComponents().clear();
-                        menu.getComponents().add(new TLabel("Appuyez sur\nune touche\npour le pilier..."));
-                        menu.setHeight(3);
-                        state = State.LOOTING;
-                    } else {
-                        // Quitter le combat
-                        menu.getComponents().clear();
-                        menu.getComponents().add(new TLabel("Appuyez sur\nune touche\npour continuer..."));
-                        menu.setHeight(3);
-                        state = State.FINISHED;
-                    }
+                    // Quitter le combat
+                    menu.getComponents().clear();
+                    menu.getComponents().add(new TLabel("Appuyez sur\nune touche\npour continuer..."));
+                    menu.setHeight(3);
+                    state = State.FINISHED;
                 } else {
                     // Quitter le combat
                     menu.getComponents().clear();
@@ -287,11 +276,5 @@ public class Fight extends TFrame implements DisplayableComponent {
 
     private boolean canAttack(Entity entity) {
         return random.nextInt(0, ACCURACY) < entity.getAccuracy();
-    }
-
-    private enum State {
-        FIGHTING,
-        LOOTING,
-        FINISHED
     }
 }

@@ -13,6 +13,8 @@ public class Player {
     // 5 objets max
     private final Consumable[] consumable;
 
+    private int currentMonsterIndex = -1;
+
     /**
      * Constructeur
      *
@@ -51,6 +53,33 @@ public class Player {
     public Monster[] getMonsters() {
         // Return copy of the array to avoid modification
         return monsters.clone();
+    }
+
+    /**
+     * Méthode permettant de récupérer le monstre actuel du joueur
+     *
+     * @return le monstre actuel du joueur
+     */
+    public Monster getCurrentMonster() {
+        if (currentMonsterIndex == -1) {
+            return null;
+        }
+        return monsters[currentMonsterIndex];
+    }
+
+    /**
+     * Méthode permettant de changer le monstre actuel du joueur
+     *
+     * @param monster le monstre à changer
+     */
+    public void setCurrentMonster(Monster monster) {
+        for (int i = 0; i < monsters.length; i++) {
+            if (monsters[i] == monster) {
+                currentMonsterIndex = i;
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Le monstre n'appartient pas au joueur");
     }
 
     /**
