@@ -12,10 +12,12 @@ public class InsectMonster extends NatureMonster {
      * @param attack
      * @param speed
      * @param defense
+     * @param specialCapacity
+     * @param specialCapacityChance
      * @param attacks
      */
-    public InsectMonster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, specialCapacity, attacks);
+    public InsectMonster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(name, health, attack, speed, defense, specialCapacity, specialCapacityChance, attacks);
     }
 }
 

@@ -14,6 +14,7 @@ public abstract class Monster {
     private final int speed;
     private final int defense;
     private final SpecialCapacity specialCapacity;
+    private final float specialCapacityChance;
     private final Attack[] attacks;
 
     private MonsterState state;
@@ -27,15 +28,17 @@ public abstract class Monster {
      * @param speed
      * @param defense
      * @param specialCapacity
+     * @param specialCapacityChance
      * @param attacks
      */
-    protected Monster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, Attack... attacks) throws MonsterTooManyAttacks {
+    protected Monster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, float specialCapacityChance, Attack... attacks) throws MonsterTooManyAttacks {
         this.name = name;
         this.health = health;
         this.attack = attack;
         this.speed = speed;
         this.defense = defense;
         this.specialCapacity = specialCapacity;
+        this.specialCapacityChance = specialCapacityChance;
         this.attacks = attacks;
         // Limit the number of attacks to 4
         if (attacks.length > 4) {
@@ -95,6 +98,15 @@ public abstract class Monster {
      */
     public SpecialCapacity getSpecialCapacity() {
         return specialCapacity;
+    }
+
+    /**
+     * Getter for the special capacity chance of the monster
+     *
+     * @return the special capacity chance of the monster
+     */
+    public float getSpecialCapacityChance() {
+        return specialCapacityChance;
     }
 
     /**

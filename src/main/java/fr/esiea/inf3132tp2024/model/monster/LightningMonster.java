@@ -16,10 +16,11 @@ public class LightningMonster extends Monster {
      * @param defense
      * @param paralyzeChance
      * @param specialCapacity
+     * @param specialCapacityChance
      * @param attacks
      */
-    public LightningMonster(String name, int health, int attack, int speed, int defense, float paralyzeChance, SpecialCapacity specialCapacity, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, specialCapacity, attacks);
+    public LightningMonster(String name, int health, int attack, int speed, int defense, float paralyzeChance, SpecialCapacity specialCapacity, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(name, health, attack, speed, defense, specialCapacity, specialCapacityChance, attacks);
 
         this.paralyzeChance = paralyzeChance;
     }

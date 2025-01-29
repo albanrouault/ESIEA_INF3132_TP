@@ -16,9 +16,10 @@ public class FireMonster extends Monster {
      * @param speed
      * @param defense
      * @param specialCapacity
+     * @param specialCapacityChance
      * @param attacks
      */
-    public FireMonster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(name, health, attack, speed, defense, specialCapacity, attacks);
+    public FireMonster(String name, int health, int attack, int speed, int defense, SpecialCapacity specialCapacity, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(name, health, attack, speed, defense, specialCapacity, specialCapacityChance, attacks);
     }
 }
