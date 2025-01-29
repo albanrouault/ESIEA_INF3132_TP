@@ -1,8 +1,12 @@
 package fr.esiea.inf3132tp2024.model.consumable;
 
+import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.model.terrain.Terrain;
+
 public abstract class Consumable {
     private String name;
     private String description;
+    private boolean isConsumed = false;
 
     /**
      * Constructeur
@@ -50,4 +54,29 @@ public abstract class Consumable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    /**
+     * Méthode permettant de savoir si l'objet a été consommé.
+     *
+     * @return true si l'objet a été consommé, false sinon
+     */
+    public boolean isConsumed() {
+        return isConsumed;
+    }
+
+    /**
+     * Méthode permettant de consommer l'objet.
+     */
+    protected void setConsumed() {
+        isConsumed = true;
+    }
+
+    /**
+     * Méthode abstraite permettant de consommer l'objet.
+     *
+     * @param terrain Terrain sur lequel se trouve le monstre
+     * @param monster Monstre qui consomme l'objet
+     * @return true si l'objet a été consommé, false sinon
+     */
+    public abstract boolean consume(Terrain terrain, Monster monster);
 }

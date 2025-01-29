@@ -24,6 +24,5 @@ public class ConsumeItemButton extends TButton {
     public void execute() {
         consumable.consume(monster);
         consumableItemMenu.stopLoopingMode();
-        player.removeConsumable(consumable);
     }
 }

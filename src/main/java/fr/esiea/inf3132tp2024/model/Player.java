@@ -88,8 +88,22 @@ public class Player {
      * @return les objets du joueur
      */
     public Consumable[] getConsumable() {
-        // Return copy of the array to avoid modification
-        return consumable.clone();
+        // Returner tous les consommables qui ne sont pas consommés
+        int count = 0;
+        for (Consumable consumable : consumable) {
+            if (!consumable.isConsumed()) {
+                count++;
+            }
+        }
+        Consumable[] result = new Consumable[count];
+        count = 0;
+        for (Consumable consumable : consumable) {
+            if (!consumable.isConsumed()) {
+                result[count] = consumable;
+                count++;
+            }
+        }
+        return result;
     }
 
     /**
