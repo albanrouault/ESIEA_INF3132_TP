@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.play.finish;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.old.game.Statistic;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
+import fr.esiea.inf3132tp2024.controller.game.Game;
+import fr.esiea.inf3132tp2024.controller.game.Statistic;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;

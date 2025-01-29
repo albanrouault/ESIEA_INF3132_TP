@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.escape;
 
-import fr.esiea.inf3132tp2024.old.game.Game;
+import fr.esiea.inf3132tp2024.controller.game.Game;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.common.dialog.DialogType;

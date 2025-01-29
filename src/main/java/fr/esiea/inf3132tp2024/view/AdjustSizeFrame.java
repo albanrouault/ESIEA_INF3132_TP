@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
+import fr.esiea.inf3132tp2024.model.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.utils.direction.Direction;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionNotFoundException;
 import fr.esiea.inf3132tp2024.utils.direction.DirectionUtils;

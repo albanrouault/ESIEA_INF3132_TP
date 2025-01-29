@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.utils.audio;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.old.audio.Music;
-import fr.esiea.inf3132tp2024.old.audio.SoundEffect;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
+import fr.esiea.inf3132tp2024.model.audio.Music;
+import fr.esiea.inf3132tp2024.model.audio.SoundEffect;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;

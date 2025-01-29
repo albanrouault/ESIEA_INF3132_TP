@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.settings.menu;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.common.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TErrorDialog;

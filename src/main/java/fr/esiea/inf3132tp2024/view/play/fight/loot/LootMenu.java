@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.play.fight.loot;
 
-import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.entity.Entity;
+import fr.esiea.inf3132tp2024.model.entity.Player;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.SelectableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
@@ -65,7 +65,7 @@ public class LootMenu extends TFrame implements DisplayableComponent {
             }
         }
         // Bouton utiliser item
-        if (player.hasItem() && player.getItem() instanceof Consumable consumable) {
+        if (player.hasItem() && player.getConsumable() instanceof Consumable consumable) {
             List<Entity> entities = new LinkedList<>();
             entities.add(player);
             buttons.add(new UseItemButton(this, consumable, entities));
@@ -156,7 +156,7 @@ public class LootMenu extends TFrame implements DisplayableComponent {
             this.rightPanel.getComponents().add(enemyWeaponStats);
         } else if (selectedComponent instanceof ReplaceItemButton replaceItemButton) {
             Player player = replaceItemButton.getPlayer();
-            ItemStats playerItemStats = new ItemStats(player.getItem(), player.getName() + " (Vous)", statsLength / 2);
+            ItemStats playerItemStats = new ItemStats(player.getConsumable(), player.getName() + " (Vous)", statsLength / 2);
             this.leftPanel.getComponents().add(playerItemStats);
 
             Entity enemy = replaceItemButton.getEnemy();

@@ -4,11 +4,11 @@ import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
 import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;
-import fr.esiea.inf3132tp2024.old.item.Item;
-import fr.esiea.inf3132tp2024.old.item.consumable.AttackPotion;
-import fr.esiea.inf3132tp2024.old.item.consumable.HealPotion;
-import fr.esiea.inf3132tp2024.old.item.weapon.Weapon;
-import fr.esiea.inf3132tp2024.old.item.wearable.Wearable;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.Item;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.AttackPotion;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.HealPotion;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.weapon.Weapon;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.wearable.Wearable;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 
 public class ItemStats extends TPanel {

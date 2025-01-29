@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view.play.escape.cheat;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.old.game.Game;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
+import fr.esiea.inf3132tp2024.controller.game.Game;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;

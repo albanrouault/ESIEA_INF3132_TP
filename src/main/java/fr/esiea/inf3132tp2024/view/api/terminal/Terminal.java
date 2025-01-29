@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view.api.terminal;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
+import fr.esiea.inf3132tp2024.model.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.utils.console.RawConsoleInput;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TComponent;

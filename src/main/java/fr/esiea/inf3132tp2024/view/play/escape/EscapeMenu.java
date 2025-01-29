@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.play.escape;
 
-import fr.esiea.inf3132tp2024.old.event.key.KeyPressedEvent;
-import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.controller.game.Game;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
@@ -19,7 +19,7 @@ public class EscapeMenu extends TFrame implements DisplayableComponent {
 
         TChoices choices = new TChoices(1);
         choices.add(new TQuitComponentButton(this, "Reprendre la partie"));
-        if (game.getPlayer().hasItem() && game.getPlayer().getItem() instanceof Consumable) {
+        if (game.getPlayer().hasItem() && game.getPlayer().getConsumable() instanceof Consumable) {
             choices.add(new UseItemButton(this, game.getPlayer()));
         }
         choices.add(new InfoButton());

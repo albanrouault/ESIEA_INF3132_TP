@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.play.finish;
 
-import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.old.game.Statistic;
-import fr.esiea.inf3132tp2024.old.game.StatisticsManager;
+import fr.esiea.inf3132tp2024.controller.game.Game;
+import fr.esiea.inf3132tp2024.controller.game.Statistic;
+import fr.esiea.inf3132tp2024.controller.game.StatisticsManager;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TTextField;
 

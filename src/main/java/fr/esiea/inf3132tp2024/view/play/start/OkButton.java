@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.play.start;
 
-import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.old.AppSettings;
-import fr.esiea.inf3132tp2024.old.game.Game;
+import fr.esiea.inf3132tp2024.controller.App;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
+import fr.esiea.inf3132tp2024.controller.game.Game;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;

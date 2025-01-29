@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.escape;
 
-import fr.esiea.inf3132tp2024.old.App;
+import fr.esiea.inf3132tp2024.controller.App;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 
 public class QuitGameButton extends TButton {

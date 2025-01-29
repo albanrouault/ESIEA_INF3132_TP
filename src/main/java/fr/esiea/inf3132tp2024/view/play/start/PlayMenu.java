@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.start;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;

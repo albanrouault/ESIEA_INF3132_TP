@@ -1,9 +1,9 @@
 package fr.esiea.inf3132tp2024.view.play.item.consumable;
 
-import fr.esiea.inf3132tp2024.old.App;
-import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.old.item.Item;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.controller.App;
+import fr.esiea.inf3132tp2024.model.entity.Entity;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.Item;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 
 public class ConsumeItemButton extends TButton {
@@ -23,6 +23,6 @@ public class ConsumeItemButton extends TButton {
     public void execute() {
         ((Consumable) item).consume(entity);
         consumableItemMenu.stopLoopingMode();
-        App.getInstance().getCurrentGame().getPlayer().setItem(null);
+        App.getInstance().getCurrentGame().getPlayer().setConsumable(null);
     }
 }

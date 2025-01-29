@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.settings.audio.music;
 
-import fr.esiea.inf3132tp2024.old.AppSettings;
+import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TSlider;
 

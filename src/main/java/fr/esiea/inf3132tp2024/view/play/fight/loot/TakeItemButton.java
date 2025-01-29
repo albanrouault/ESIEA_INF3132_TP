@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.play.fight.loot;
 
-import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.entity.Entity;
+import fr.esiea.inf3132tp2024.model.entity.Player;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 
 import java.util.LinkedList;
@@ -23,9 +23,9 @@ public class TakeItemButton extends TButton {
 
     @Override
     public void execute() {
-        player.setItem(enemy.getItem());
+        player.setConsumable(enemy.getItem());
         enemy.setItem(null);
-        if (player.hasItem() && player.getItem() instanceof Consumable consumable) {
+        if (player.hasItem() && player.getConsumable() instanceof Consumable consumable) {
             List<Entity> entities = new LinkedList<>();
             entities.add(player);
             UseItemButton useItemButton = new UseItemButton(lootMenu, consumable, entities);

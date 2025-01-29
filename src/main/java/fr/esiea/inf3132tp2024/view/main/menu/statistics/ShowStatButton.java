@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.main.menu.statistics;
 
-import fr.esiea.inf3132tp2024.old.game.Statistic;
+import fr.esiea.inf3132tp2024.controller.game.Statistic;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 

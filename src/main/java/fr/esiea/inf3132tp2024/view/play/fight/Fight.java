@@ -1,12 +1,12 @@
 package fr.esiea.inf3132tp2024.view.play.fight;
 
-import fr.esiea.inf3132tp2024.old.audio.Music;
-import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.old.entity.enemy.Enemy;
-import fr.esiea.inf3132tp2024.old.game.EntityDeadException;
-import fr.esiea.inf3132tp2024.old.game.Game;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.audio.Music;
+import fr.esiea.inf3132tp2024.model.entity.Entity;
+import fr.esiea.inf3132tp2024.model.entity.Player;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.entity.enemy.Enemy;
+import fr.esiea.inf3132tp2024.controller.game.EntityDeadException;
+import fr.esiea.inf3132tp2024.controller.game.Game;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
@@ -161,7 +161,7 @@ public class Fight extends TFrame implements DisplayableComponent {
     public void updateMenuButtons() {
         menu.removeAll();
         menu.add(new AttackButton(this));
-        if (player.hasItem() && player.getItem() instanceof Consumable consumable) {
+        if (player.hasItem() && player.getConsumable() instanceof Consumable consumable) {
             List<Entity> fightEntities = new LinkedList<>();
             if (!enemy.isDead()) {
                 fightEntities.add(enemy);

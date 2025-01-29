@@ -1,9 +1,9 @@
 package fr.esiea.inf3132tp2024.view.play.fight.loot;
 
-import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.old.item.Item;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.entity.Entity;
+import fr.esiea.inf3132tp2024.model.entity.Player;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.Item;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TComponent;

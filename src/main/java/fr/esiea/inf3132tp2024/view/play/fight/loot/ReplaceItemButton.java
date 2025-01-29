@@ -1,9 +1,9 @@
 package fr.esiea.inf3132tp2024.view.play.fight.loot;
 
-import fr.esiea.inf3132tp2024.old.entity.Entity;
-import fr.esiea.inf3132tp2024.old.entity.Player;
-import fr.esiea.inf3132tp2024.old.item.Item;
-import fr.esiea.inf3132tp2024.old.item.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.entity.Entity;
+import fr.esiea.inf3132tp2024.model.entity.Player;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.Item;
+import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TComponent;
 
@@ -25,12 +25,12 @@ public class ReplaceItemButton extends TButton {
 
     @Override
     public void execute() {
-        Item playerItem = player.getItem();
-        player.setItem(enemy.getItem());
+        Item playerItem = player.getConsumable();
+        player.setConsumable(enemy.getItem());
         enemy.setItem(playerItem);
 
         // Si l'item du joueur est consommable
-        if (player.hasItem() && player.getItem() instanceof Consumable consumable) {
+        if (player.hasItem() && player.getConsumable() instanceof Consumable consumable) {
             List<Entity> entities = new LinkedList<>();
             entities.add(player);
 
