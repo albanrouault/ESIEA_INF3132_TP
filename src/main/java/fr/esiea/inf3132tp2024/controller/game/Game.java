@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.controller.game;
 
 import fr.esiea.inf3132tp2024.model.audio.Music;
-import fr.esiea.inf3132tp2024.model.entity.Player;
-import fr.esiea.inf3132tp2024.model.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.model.Player;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;

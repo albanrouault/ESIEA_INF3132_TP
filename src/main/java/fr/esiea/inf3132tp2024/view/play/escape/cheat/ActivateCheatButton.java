@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view.play.escape.cheat;
 
 import fr.esiea.inf3132tp2024.model.audio.Music;
-import fr.esiea.inf3132tp2024.model.entity.Player;
+import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.controller.game.Game;
 import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.weapon.Weapon;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;

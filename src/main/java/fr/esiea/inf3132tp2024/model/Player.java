@@ -1,4 +1,4 @@
-package fr.esiea.inf3132tp2024.model.entity;
+package fr.esiea.inf3132tp2024.model;
 
 import fr.esiea.inf3132tp2024.model.consumable.Consumable;
 

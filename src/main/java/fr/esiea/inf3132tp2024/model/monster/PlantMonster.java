@@ -1,4 +1,4 @@
-package fr.esiea.inf3132tp2024.model.entity.monster;
+package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.attack.Attack;
 

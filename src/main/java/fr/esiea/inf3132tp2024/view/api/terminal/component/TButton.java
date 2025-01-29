@@ -1,8 +1,8 @@
 package fr.esiea.inf3132tp2024.view.api.terminal.component;
 
 import fr.esiea.inf3132tp2024.model.audio.SoundEffect;
-import fr.esiea.inf3132tp2024.model.event.key.KeyListener;
-import fr.esiea.inf3132tp2024.model.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyListener;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;

@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.main.menu.information;
 
-import fr.esiea.inf3132tp2024.model.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;

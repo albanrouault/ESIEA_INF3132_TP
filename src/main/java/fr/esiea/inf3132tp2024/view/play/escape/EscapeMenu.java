@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.escape;
 
-import fr.esiea.inf3132tp2024.model.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.controller.game.Game;
 import fr.esiea.inf3132tp2024.olddeprecatedtodelete.item.consumable.Consumable;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;

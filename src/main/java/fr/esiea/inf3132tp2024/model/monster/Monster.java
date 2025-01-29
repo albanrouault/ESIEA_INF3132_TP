@@ -1,4 +1,4 @@
-package fr.esiea.inf3132tp2024.model.entity.monster;
+package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.attack.Attack;
 
@@ -12,6 +12,8 @@ public abstract class Monster {
     private final int speed;
     private final int defense;
     private final Attack[] attacks;
+
+    private MonsterState state;
 
     /***
      * Constructor of the Monster class
@@ -88,5 +90,23 @@ public abstract class Monster {
     public Attack[] getAttacks() {
         // Return a copy of the array to prevent modification
         return attacks.clone();
+    }
+
+    /**
+     * Getter for the state of the monster
+     *
+     * @return the state of the monster
+     */
+    public MonsterState getState() {
+        return state;
+    }
+
+    /**
+     * Setter for the state of the monster
+     *
+     * @param state the state of the monster
+     */
+    public void setState(MonsterState state) {
+        this.state = state;
     }
 }

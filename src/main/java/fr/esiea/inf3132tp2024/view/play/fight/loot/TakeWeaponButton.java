@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view.play.fight.loot;
 
 import fr.esiea.inf3132tp2024.model.entity.Entity;
-import fr.esiea.inf3132tp2024.model.entity.Player;
+import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 
 public class TakeWeaponButton extends TButton {
