@@ -1,9 +1,11 @@
 package fr.esiea.inf3132tp2024.model.monster.state;
 
 public abstract class MonsterState {
+    private final int initialTurnsLeft;
     private int turnsLeft;
 
     protected MonsterState(int turnsLeft) {
+        this.initialTurnsLeft = turnsLeft;
         this.turnsLeft = turnsLeft;
     }
 
@@ -21,5 +23,12 @@ public abstract class MonsterState {
      */
     public void decrementTurnsLeft() {
         turnsLeft--;
+    }
+
+    /**
+     * Reset the number of turns left for the state
+     */
+    public void resetTurnsLeft() {
+        turnsLeft = initialTurnsLeft;
     }
 }
