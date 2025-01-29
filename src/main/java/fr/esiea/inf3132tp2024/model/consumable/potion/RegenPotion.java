@@ -1,5 +1,8 @@
 package fr.esiea.inf3132tp2024.model.consumable.potion;
 
+import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.model.terrain.Terrain;
+
 public class RegenPotion extends Potion {
     private final int regenAmount;
 
@@ -19,5 +22,15 @@ public class RegenPotion extends Potion {
      */
     public int getRegenAmount() {
         return regenAmount;
+    }
+
+    @Override
+    public boolean consume(Terrain terrain, Monster monster) {
+        if (!super.isConsumed()) {
+            monster.heal(regenAmount);
+            super.setConsumed();
+            return true;
+        }
+        return false;
     }
 }

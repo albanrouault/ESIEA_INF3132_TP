@@ -190,4 +190,13 @@ public abstract class Monster {
     public void heal(int health) {
         this.health = Math.min(this.health + health, maxHealth);
     }
+
+    /**
+     * Strengthen the monster
+     *
+     * @param attack the amount of attack to strengthen
+     */
+    public void strengthen(int attack) {
+        this.attack += attack;
+    }
 }

@@ -1,5 +1,8 @@
 package fr.esiea.inf3132tp2024.model.consumable.potion;
 
+import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.model.terrain.Terrain;
+
 public class PowerPotion extends Potion {
     private final int attackBoost;
 
@@ -19,5 +22,15 @@ public class PowerPotion extends Potion {
      */
     public int getAttackBoost() {
         return attackBoost;
+    }
+
+    @Override
+    public boolean consume(Terrain terrain, Monster monster) {
+        if (!super.isConsumed()) {
+            monster.strengthen(attackBoost);
+            super.setConsumed();
+            return true;
+        }
+        return false;
     }
 }
