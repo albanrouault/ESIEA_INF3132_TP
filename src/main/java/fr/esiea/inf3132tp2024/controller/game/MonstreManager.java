@@ -11,6 +11,9 @@ import fr.esiea.inf3132tp2024.model.monster.file.FileMonster;
 import fr.esiea.inf3132tp2024.model.Types;
 
 public class MonstreManager {
+    private final List<FileMonster> monstres = new ArrayList<>();
+    private final Map<File, List<FileMonster>> fileToMonstresMap = new HashMap<>();
+
     private static final MonstreManager INSTANCE = new MonstreManager();
 
     /**
@@ -20,34 +23,33 @@ public class MonstreManager {
         return INSTANCE;
     }
 
-    private final List<FileMonster> monstres = new ArrayList<>();
-    private final Map<File, List<FileMonster>> fileToMonstresMap = new HashMap<>();
-
     /**
-     * Méthode permettant d'ajouter un fichier de monstres.
+     * Méthode permettant d'ajouter un fichier de monstres dans le répertoire resources/game/monster.
      * @param file Le fichier à ajouter.
      */
     public void addFile(File file) {
         if (isFileValid(file)) {
-            List<FileMonster> monstersFromFile = loadMonstres(file);
-            monstres.addAll(monstersFromFile);
-            fileToMonstresMap.put(file, monstersFromFile);
+            // Ajout le fichier dans le répertoire resources/game/monster
+            File monsterFolder = new File("src/main/resources/game/monster");
+            if (!monsterFolder.exists()) {
+                monsterFolder.mkdirs();
+            } 
+            File newFile = new File(monsterFolder, file.getName());
+            file.renameTo(newFile);
         } else {
             System.out.println("Fichier invalide: " + file.getName());
         }
     }
 
     /**
-     * Méthode permettant de supprimer un fichier de monstres.
+     * Méthode permettant de supprimer un fichier de monstres dans le répertoire resources/game/monster.
      * @param file Le fichier à supprimer.
      */
     public void removeFile(File file) {
-        if (fileToMonstresMap.containsKey(file)) {
-            List<FileMonster> monstersToRemove = fileToMonstresMap.get(file);
-            monstres.removeAll(monstersToRemove);
-            fileToMonstresMap.remove(file);
+        if (file.exists()) {
+            file.delete();
         } else {
-            System.out.println("Aucun monstre associé au fichier: " + file.getName());
+            System.out.println("Fichier inexistant: " + file.getName());
         }
     }
 
@@ -153,34 +155,5 @@ public class MonstreManager {
         return monstres.stream()
                 .map(FileMonster::getType)
                 .collect(Collectors.toSet());
-    }
-
-    /**
-     * Méthode pour afficher tous les monstres chargés.
-     */
-    public void afficherMonstres() {
-        monstres.forEach(monster -> {
-            System.out.println("Nom: " + monster.getName());
-            System.out.println("Type: " + monster.getType());
-            System.out.println("HP: " + monster.getMinHealth() + "-" + monster.getMaxHealth());
-            System.out.println("Speed: " + monster.getMinSpeed() + "-" + monster.getMaxSpeed());
-            System.out.println("Attack: " + monster.getMinAttack() + "-" + monster.getMaxAttack());
-            System.out.println("Defense: " + monster.getMinDefense() + "-" + monster.getMaxDefense());
-            // Afficher les propriétés personnalisées
-            monster.getCustomProperties().forEach((key, values) -> {
-                System.out.println(capitalize(key) + ": " + String.join(", ", values));
-            });
-            System.out.println("---------------------------");
-        });
-    }
-
-    /**
-     * Méthode utilitaire pour capitaliser la première lettre d'une chaîne.
-     * @param str La chaîne à capitaliser.
-     * @return La chaîne avec la première lettre en majuscule.
-     */
-    private String capitalize(String str) {
-        if (str == null || str.isEmpty()) return str;
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }
