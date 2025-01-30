@@ -19,7 +19,7 @@ public class FileMonster {
     private int minDefense;
     private int maxDefense;
 
-    private FileMonster(String[][] customProperties) {
+    public FileMonster(String[][] customProperties) {
         this.customProperties = new HashMap<>();
 
         for (String[] property : customProperties) {
