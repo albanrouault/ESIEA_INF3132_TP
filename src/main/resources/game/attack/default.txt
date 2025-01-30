@@ -37,3 +37,165 @@ Attack
     NbUse   25
     Fail    0.05
 EndAttack
+
+Attack
+    Name    ThunderShock
+    Type    Electric
+    Power   50
+    NbUse   15
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    Spark
+    Type    Electric
+    Power   60
+    NbUse   20
+    Fail    0.08
+EndAttack
+
+Attack
+    Name    QuickAttack
+    Type    Normal
+    Power   40
+    NbUse   30
+    Fail    0.02
+EndAttack
+
+Attack
+    Name    HyperBeam
+    Type    Normal
+    Power   150
+    NbUse   5
+    Fail    0.2
+EndAttack
+
+Attack
+    Name    FireBlast
+    Type    Fire
+    Power   110
+    NbUse   5
+    Fail    0.15
+EndAttack
+
+Attack
+    Name    Ember
+    Type    Fire
+    Power   40
+    NbUse   25
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    HydroPump
+    Type    Water
+    Power   110
+    NbUse   5
+    Fail    0.15
+EndAttack
+
+Attack
+    Name    Surf
+    Type    Water
+    Power   90
+    NbUse   15
+    Fail    0.1
+EndAttack
+
+Attack
+    Name    Earthquake
+    Type    Earth
+    Power   100
+    NbUse   10
+    Fail    0.1
+EndAttack
+
+Attack
+    Name    MudSlap
+    Type    Earth
+    Power   20
+    NbUse   30
+    Fail    0.05
+EndAttack
+
+// ... existing code ...
+
+Attack
+    Name    Thunderbolt
+    Type    Electric
+    Power   90
+    NbUse   10
+    Fail    0.1
+EndAttack
+
+Attack
+    Name    VoltSwitch
+    Type    Electric
+    Power   70
+    NbUse   20
+    Fail    0.07
+EndAttack
+
+Attack
+    Name    BodySlam
+    Type    Normal
+    Power   85
+    NbUse   15
+    Fail    0.1
+EndAttack
+
+Attack
+    Name    DoubleEdge
+    Type    Normal
+    Power   120
+    NbUse   10
+    Fail    0.15
+EndAttack
+
+Attack
+    Name    Flamethrower
+    Type    Fire
+    Power   90
+    NbUse   15
+    Fail    0.1
+EndAttack
+
+Attack
+    Name    FireSpin
+    Type    Fire
+    Power   35
+    NbUse   25
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    Waterfall
+    Type    Water
+    Power   80
+    NbUse   15
+    Fail    0.1
+EndAttack
+
+Attack
+    Name    AquaJet
+    Type    Water
+    Power   40
+    NbUse   20
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    RockSlide
+    Type    Earth
+    Power   75
+    NbUse   15
+    Fail    0.1
+EndAttack
+
+Attack
+    Name    SandTomb
+    Type    Earth
+    Power   35
+    NbUse   20
+    Fail    0.08
+EndAttack

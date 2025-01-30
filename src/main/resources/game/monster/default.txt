@@ -39,3 +39,182 @@ Monster
     Paralysis   0.2
 EndMonster
 
+Monster
+    Name        Thunderbolt
+    Type        Electric
+    HP          100 130
+    Speed       120 150
+    Attack      90  120
+    Defense     60  90
+    Paralysis   0.3
+EndMonster
+
+Monster
+    Name        Earthquake
+    Type        Earth
+    HP          130 160
+    Speed       70  100
+    Attack      100 130
+    Defense     90  120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        AquaSplash
+    Type        Water
+    HP          110 140
+    Speed       80  110
+    Attack      85  115
+    Defense     70  100
+    Fall        0.2
+EndMonster
+
+Monster
+    Name        FlameTail
+    Type        Fire
+    HP          120 150
+    Speed       100 130
+    Attack      95  125
+    Defense     65  95
+    Burn        0.3
+EndMonster
+
+Monster
+    Name        LeafWhisper
+    Type        Grass
+    HP          115 145
+    Speed       90  120
+    Attack      80  110
+    Defense     75  105
+    Health      0.2
+EndMonster
+
+Monster
+    Name        BugBite
+    Type        Insect
+    HP          105 135
+    Speed       85  115
+    Attack      75  105
+    Defense     60  90
+    Poison      0.25
+EndMonster
+
+Monster
+    Name        ElectricStrike
+    Type        Electric
+    HP          95  125
+    Speed       130 160
+    Attack      85  115
+    Defense     55  85
+    Paralysis   0.35
+EndMonster
+
+Monster
+    Name        StoneGuard
+    Type        Earth
+    HP          140 170
+    Speed       60  90
+    Attack      110 140
+    Defense     100 130
+    Hide        0.3
+EndMonster
+
+Monster
+    Name        WaterWave
+    Type        Water
+    HP          115 145
+    Speed       75  105
+    Attack      90  120
+    Defense     80  110
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        EmberFlare
+    Type        Fire
+    HP          125 155
+    Speed       95  125
+    Attack      100 130
+    Defense     70  100
+    Burn        0.35
+EndMonster
+
+Monster
+    Name        VineCreeper
+    Type        Grass
+    HP          120 150
+    Speed       85  115
+    Attack      85  115
+    Defense     80  110
+    Health      0.25
+EndMonster
+
+Monster
+    Name        BeetleSting
+    Type        Insect
+    HP          110 140
+    Speed       80  110
+    Attack      70  100
+    Defense     65  95
+    Poison      0.3
+EndMonster
+
+Monster
+    Name        MewFire
+    Type        Fire
+    HP          100 130
+    Speed       120 150
+    Attack      110 140
+    Defense     90  120
+    Burn        0.35
+EndMonster
+
+Monster
+    Name        MewWater
+    Type        Water
+    HP          100 130
+    Speed       120 150
+    Attack      110 140
+    Defense     90  120
+    Fall        0.35
+EndMonster
+
+Monster
+    Name        MewEarth
+    Type        Earth
+    HP          100 130
+    Speed       120 150
+    Attack      110 140
+    Defense     90  120
+    Hide        0.35
+EndMonster
+
+Monster
+    Name        MewElectric
+    Type        Electric
+    HP          100 130
+    Speed       120 150
+    Attack      110 140
+    Defense     90  120
+    Paralysis   0.35
+EndMonster
+
+Monster
+    Name        MewInsect
+    Type        Insect
+    HP          100 130
+    Speed       120 150
+    Attack      110 140
+    Defense     90  120
+    Poison      0.35
+EndMonster
+
+Monster
+    Name        MewGrass
+    Type        Grass
+    HP          100 130
+    Speed       120 150
+    Attack      110 140
+    Defense     90  120
+    Health      0.35
+EndMonster
