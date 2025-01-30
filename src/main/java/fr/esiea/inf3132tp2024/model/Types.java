@@ -3,7 +3,7 @@ package fr.esiea.inf3132tp2024.model;
 public enum Types {
     NORMAL("Normal"),
     EARTH("Terre"),
-    LIGHTNING("Foudre"),
+    ELECTRIC("Électrique"),
     WATER("Eau"),
     FIRE("Feu"),
     NATURE("Nature"),
@@ -13,16 +13,16 @@ public enum Types {
 
     static {
         // Terre
-        EARTH.setStrongAgainst(LIGHTNING);
+        EARTH.setStrongAgainst(ELECTRIC);
         EARTH.setWeakAgainst(NATURE);
 
-        // Foudre
-        LIGHTNING.setStrongAgainst(WATER);
-        LIGHTNING.setWeakAgainst(EARTH);
+        // Électrique
+        ELECTRIC.setStrongAgainst(WATER);
+        ELECTRIC.setWeakAgainst(EARTH);
 
         // Eau
         WATER.setStrongAgainst(FIRE);
-        WATER.setWeakAgainst(LIGHTNING);
+        WATER.setWeakAgainst(ELECTRIC);
 
         // Feu
         FIRE.setStrongAgainst(NATURE);

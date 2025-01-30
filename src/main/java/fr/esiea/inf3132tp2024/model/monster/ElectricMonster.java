@@ -2,13 +2,13 @@ package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
-import fr.esiea.inf3132tp2024.model.attack.special.LightningSpecialAttack;
+import fr.esiea.inf3132tp2024.model.attack.special.ElectricSpecialAttack;
 
-public class LightningMonster extends Monster {
+public class ElectricMonster extends Monster {
     private final float paralyzeChance;
 
     /***
-     * Constructeur d'un monstre de type Foudre
+     * Constructeur d'un monstre de type Électrique
      *
      * @param name
      * @param health
@@ -19,8 +19,8 @@ public class LightningMonster extends Monster {
      * @param specialCapacityChance
      * @param attacks
      */
-    public LightningMonster(String name, int health, int attack, int speed, int defense, float paralyzeChance, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(Types.LIGHTNING, name, health, attack, speed, defense, new LightningSpecialAttack(), specialCapacityChance, attacks);
+    public ElectricMonster(String name, int health, int attack, int speed, int defense, float paralyzeChance, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(Types.ELECTRIC, name, health, attack, speed, defense, new ElectricSpecialAttack(), specialCapacityChance, attacks);
 
         this.paralyzeChance = paralyzeChance;
     }
