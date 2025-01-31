@@ -257,19 +257,6 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>assets/music/**</exclude>
-                    <exclude>assets/sound/**</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources/assets/music</directory>
-                <filtering>false</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources/assets/sound</directory>
-                <filtering>false</filtering>
             </resource>
         </resources>
     </build>
