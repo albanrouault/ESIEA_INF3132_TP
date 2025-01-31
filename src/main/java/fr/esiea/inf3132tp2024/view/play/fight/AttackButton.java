@@ -32,7 +32,6 @@ public class AttackButton extends TButton {
 
     @Override
     public void execute() {
-
         ChooseAttackView chooseAttackView = new ChooseAttackView(monster, monster.getAttacks());
 
         Terminal.getInstance().show(chooseAttackView);

@@ -73,19 +73,19 @@ public class FightView extends TFrame implements DisplayableComponent {
 
     private void updateGameActions() {
         gameActions.removeAll();
-        SelectableComponent attackButtonPlayerOne = new AttackButton(this, fight, fight.getPlayerOne(), fight.getMonsterPlayerOne(), fight.getMonsterPlayerTwo());
+        SelectableComponent attackButtonPlayerOne = new AttackButton(this, fight, fight.getPlayerOne(), fight.getPlayerOne().getCurrentMonster(), fight.getPlayerTwo().getCurrentMonster());
         gameActions.add(attackButtonPlayerOne);
         playerButtons.get(fight.getPlayerOne()).add(attackButtonPlayerOne);
-        SelectableComponent attackButtonPlayerTwo = new AttackButton(this, fight, fight.getPlayerTwo(), fight.getMonsterPlayerTwo(), fight.getMonsterPlayerOne());
+        SelectableComponent attackButtonPlayerTwo = new AttackButton(this, fight, fight.getPlayerTwo(), fight.getPlayerTwo().getCurrentMonster(), fight.getPlayerOne().getCurrentMonster());
         gameActions.add(attackButtonPlayerTwo);
         playerButtons.get(fight.getPlayerTwo()).add(attackButtonPlayerTwo);
         for (Consumable consumable : fight.getPlayerOne().getConsumables()) {
-            SelectableComponent useItemButtonPlayerOne = new UseItemButton(this, fight, fight.getPlayerOne(), consumable, fight.getMonsterPlayerOne(), fight.getMonsterPlayerTwo());
+            SelectableComponent useItemButtonPlayerOne = new UseItemButton(this, fight, fight.getPlayerOne(), consumable, fight.getPlayerOne().getCurrentMonster(), fight.getPlayerTwo().getCurrentMonster());
             gameActions.add(useItemButtonPlayerOne);
             playerButtons.get(fight.getPlayerOne()).add(useItemButtonPlayerOne);
         }
         for (Consumable consumable : fight.getPlayerTwo().getConsumables()) {
-            SelectableComponent useItemButtonPlayerTwo = new UseItemButton(this, fight, fight.getPlayerTwo(), consumable, fight.getMonsterPlayerTwo(), fight.getMonsterPlayerOne());
+            SelectableComponent useItemButtonPlayerTwo = new UseItemButton(this, fight, fight.getPlayerTwo(), consumable, fight.getPlayerTwo().getCurrentMonster(), fight.getPlayerOne().getCurrentMonster());
             gameActions.add(useItemButtonPlayerTwo);
             playerButtons.get(fight.getPlayerTwo()).add(useItemButtonPlayerTwo);
         }
