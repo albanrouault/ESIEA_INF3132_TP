@@ -34,7 +34,7 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(result);
 
         // Statistiques
-        GameStatistic gameStatistic = gameView.getStatistic();
+        GameStatistic gameStatistic = gameView.getGame().getGameStatistic();
 //        gameStatistic.setXX();
         gameStatistic.calculScore();
         //this.getContentPane().getComponents().add(gameStatistic);
@@ -43,7 +43,7 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
         this.buttons = new TChoices(1);
 
         // Vérification du mode triche pour changer de nom
-        if (!gameView.getStatistic().isCheatModeActivated()) {
+        if (!gameView.getGame().getGameStatistic().isCheatModeActivated()) {
             // Label et champs pour le joueur 1
             this.nameLabel1 = new TLabel("Entrez un pseudo pour Joueur 1:");
             this.getContentPane().getComponents().add(nameLabel1);
