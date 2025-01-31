@@ -47,11 +47,11 @@ public class AttackTemplate {
                     break;
                 case "fail":
                     if (property.length < 3) {
-                        this.minFail = Integer.parseInt(property[1]);
+                        this.minFail = Float.parseFloat(property[1]);
                         this.maxFail = this.minFail;
                     } else {
-                        this.minFail = Integer.parseInt(property[1]);
-                        this.maxFail = Integer.parseInt(property[2]);
+                        this.minFail = Float.parseFloat(property[1]);
+                        this.maxFail = Float.parseFloat(property[2]);
                     }
                     break;
                 default:
