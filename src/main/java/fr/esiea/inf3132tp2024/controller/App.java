@@ -1,6 +1,5 @@
 package fr.esiea.inf3132tp2024.controller;
 
-import fr.esiea.inf3132tp2024.model.Game;
 import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
@@ -23,8 +22,6 @@ public class App {
     // Bloquer l'instanciation de la classe (pattern Singleton)
     private App() {
     }
-
-    private Game game;
 
     /**
      * Méthode permettant de démarrer l'application.
@@ -76,13 +73,5 @@ public class App {
             terminal.show(new TErrorDialog(DialogType.EXCEPTION, lines));
             terminal.finalClear(false);
         }
-    }
-
-    public Game getCurrentGame() {
-        return game;
-    }
-
-    public void setCurrentGame(Game game) {
-        this.game = game;
     }
 }

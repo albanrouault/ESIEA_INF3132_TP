@@ -1,6 +1,5 @@
 package fr.esiea.inf3132tp2024.view.play.start;
 
-import fr.esiea.inf3132tp2024.controller.App;
 import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.controller.AttackManager;
 import fr.esiea.inf3132tp2024.controller.MonstreManager;
@@ -70,9 +69,7 @@ public class OkButton extends TButton {
                 generateRandomMonster(random)}, new Consumable[0]);
 
         Game game = new Game(seed, random, playerOne, playerTwo);
-        App.getInstance().setCurrentGame(game);
         Terminal.getInstance().show(new GameView(game));
-        App.getInstance().setCurrentGame(null);
 
         if (menuAudioTrack != null) {
             menuAudioTrack.setVolume(AppSettings.getInstance().getMusicVolume());

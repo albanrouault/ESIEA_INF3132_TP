@@ -30,10 +30,6 @@ public class ActivateCheatButton extends TButton {
 
         switch (cheatCode) {
             case ("123") -> {
-                AudioPlayer audioPlayer = AudioPlayer.getInstance();
-                audioPlayer.stopAllPlayers();
-                AudioTrack audioTrack = audioPlayer.createAudioTrack(Music.CHEAT);
-                audioTrack.play();
                 Terminal.getInstance().show(new TInfoDialog(DialogType.INFO, "Vous avez activé un code de triche !"));
             }
             case ("404") -> {

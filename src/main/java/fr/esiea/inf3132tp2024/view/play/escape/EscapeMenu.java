@@ -20,7 +20,7 @@ public class EscapeMenu extends TFrame implements DisplayableComponent {
         choices.add(new TQuitComponentButton(this, "Reprendre la partie"));
         choices.add(new InfoButton());
         choices.add(new CheatButton(gameView, this));
-        choices.add(new QuitGameButton(this));
+        choices.add(new QuitGameButton(this, gameView));
 
         this.getContentPane().getComponents().add(choices);
 
