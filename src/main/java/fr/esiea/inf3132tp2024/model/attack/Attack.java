@@ -60,6 +60,15 @@ public class Attack {
     }
 
     /**
+     * Savoir si l'attaque est utilisable
+     *
+     * @return true si l'attaque est utilisable, false sinon
+     */
+    public boolean isUsable() {
+        return nbUses > 0;
+    }
+
+    /**
      * Récupérer le nombre d'utilisations restantes de l'attaque
      */
     public int getNbUses() {
