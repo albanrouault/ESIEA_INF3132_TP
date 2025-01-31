@@ -10,7 +10,7 @@ public class AppSettings {
     }
 
     public static final int CONSOLE_MIN_LENGTH = 130;
-    public static final int CONSOLE_MIN_HEIGHT = 25;
+    public static final int CONSOLE_MIN_HEIGHT = 35;
     public static final int MUSIC_DEFAULT_VOLUME = 50;
     public static final int SOUND_DEFAULT_VOLUME = 25;
     public static final String DEFAULT_FILE_PATH = "settings.dat";
