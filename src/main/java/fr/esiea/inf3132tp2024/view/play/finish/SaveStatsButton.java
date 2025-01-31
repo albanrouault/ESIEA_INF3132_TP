@@ -22,7 +22,7 @@ public class SaveStatsButton extends TButton {
         TTextField nameFieldPlayer2 = finishMenu.getNameField2();
 
         // Récupération et sauvegarde des statistiques de la partie
-        GameStatistic gameStatistic = gameView.getStatistic();
+        GameStatistic gameStatistic = gameView.getGame().getGameStatistic();
         gameStatistic.setPlayerOneName(nameFieldPlayer1.getText());
         gameStatistic.setPlayerTwoName(nameFieldPlayer2.getText());
         StatisticsManager.getInstance().addStatistic(gameStatistic);

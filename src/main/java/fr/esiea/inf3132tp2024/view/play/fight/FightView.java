@@ -39,7 +39,7 @@ public class FightView extends TFrame implements DisplayableComponent {
 
         this.leftPanel = new TPanel(0, 0);
 
-        this.playerStats = new MonsterStats(fight.getMonsterPlayerOne(), Orientation.VERTICAL);
+        this.playerStats = new MonsterStats(fight.getMonsterPlayerOne());
         leftPanel.getComponents().add(playerStats);
 
         this.getContentPane().getComponents().add(leftPanel);
@@ -53,7 +53,7 @@ public class FightView extends TFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(centerPanel);
 
         this.rightPanel = new TPanel(0, 0);
-        this.enemyStats = new MonsterStats(fight.getMonsterPlayerTwo(), Orientation.VERTICAL);
+        this.enemyStats = new MonsterStats(fight.getMonsterPlayerTwo());
         rightPanel.getComponents().add(enemyStats);
         this.getContentPane().getComponents().add(rightPanel);
 

@@ -45,7 +45,7 @@ public class ActivateCheatButton extends TButton {
                 return;
             }
         }
-        gameView.getStatistic().activeCheat();
+        gameView.getGame().getGameStatistic().activeCheat();
         menu.stopLoopingMode();
     }
 }

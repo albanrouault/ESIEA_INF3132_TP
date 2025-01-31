@@ -20,7 +20,7 @@ public class CheatButton extends TButton {
 
     @Override
     public void execute() {
-        if (!gameView.getStatistic().isCheatModeActivated()) {
+        if (!gameView.getGame().getGameStatistic().isCheatModeActivated()) {
             Terminal.getInstance().show(new TInfoDialog(DialogType.WARNING, "Une fois la triche activée, vos statistiques ne seront pas sauvegardées."));
         }
         Terminal.getInstance().show(new CheatMenu(gameView, escapeMenu));
