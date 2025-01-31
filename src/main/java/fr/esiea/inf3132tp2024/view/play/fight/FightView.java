@@ -96,7 +96,6 @@ public class FightView extends TFrame implements DisplayableComponent {
     @Override
     public void onKeyPressed(KeyPressedEvent event) {
         super.onKeyPressed(event);
-        gameActions.onKeyPressed(event);
     }
 
     @Override
@@ -137,10 +136,6 @@ public class FightView extends TFrame implements DisplayableComponent {
         return fight;
     }
 
-    public void removeButton(SelectableComponent button) {
-        gameActions.remove(button);
-    }
-
     public void removeButtons(Player player) {
         List<SelectableComponent> buttons = playerButtons.get(player);
         if (buttons != null) {
@@ -148,5 +143,6 @@ public class FightView extends TFrame implements DisplayableComponent {
                 gameActions.remove(button);
             }
         }
+        updateGameActions();
     }
 }
