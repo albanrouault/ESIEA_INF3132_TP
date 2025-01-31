@@ -5,15 +5,15 @@ import fr.esiea.inf3132tp2024.model.attack.Attack;
 import java.util.Random;
 
 public class AttackFactory {
-    public static Attack createAttack(Random random, FileAttack fileAttack) {
+    public static Attack createAttack(Random random, AttackTemplate attackTemplate) {
         // Mapping des propriétés
-        int damage = fileAttack.getRandomPower(random);
-        float chanceOfSuccess = 1.0f - fileAttack.getRandomMaxFail(random);
-        int nbUses = fileAttack.getRandomNbUse(random);
+        int damage = attackTemplate.getRandomPower(random);
+        float chanceOfSuccess = 1.0f - attackTemplate.getRandomMaxFail(random);
+        int nbUses = attackTemplate.getRandomNbUse(random);
 
         return new Attack(
-                fileAttack.getType(),
-                fileAttack.getName(),
+                attackTemplate.getType(),
+                attackTemplate.getName(),
                 damage,
                 chanceOfSuccess,
                 nbUses

@@ -26,7 +26,7 @@ public class EscapeMenu extends TFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(choices);
 
         TPanel footer = new TPanel(0, 1);
-        TLabel seedLabel = new TLabel("Seed : " + gameView.getSeed());
+        TLabel seedLabel = new TLabel("Seed : " + gameView.getGame().getSeed());
         footer.getComponents().add(seedLabel);
         this.setFooter(footer);
     }

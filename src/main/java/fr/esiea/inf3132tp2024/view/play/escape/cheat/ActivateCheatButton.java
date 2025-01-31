@@ -1,6 +1,5 @@
 package fr.esiea.inf3132tp2024.view.play.escape.cheat;
 
-import fr.esiea.inf3132tp2024.view.play.game.GameView;
 import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
@@ -10,6 +9,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TErrorDialog;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TInfoDialog;
 import fr.esiea.inf3132tp2024.view.play.escape.EscapeMenu;
+import fr.esiea.inf3132tp2024.view.play.game.GameView;
 
 public class ActivateCheatButton extends TButton {
     private final CheatMenu menu;
@@ -29,6 +29,13 @@ public class ActivateCheatButton extends TButton {
         String cheatCode = menu.getCheatCodeField().getText();
 
         switch (cheatCode) {
+            case ("123") -> {
+                AudioPlayer audioPlayer = AudioPlayer.getInstance();
+                audioPlayer.stopAllPlayers();
+                AudioTrack audioTrack = audioPlayer.createAudioTrack(Music.CHEAT);
+                audioTrack.play();
+                Terminal.getInstance().show(new TInfoDialog(DialogType.INFO, "Vous avez activé un code de triche !"));
+            }
             case ("404") -> {
                 AudioPlayer audioPlayer = AudioPlayer.getInstance();
                 audioPlayer.stopAllPlayers();

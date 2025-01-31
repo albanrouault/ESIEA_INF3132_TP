@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.controller;
 
 import fr.esiea.inf3132tp2024.model.Types;
-import fr.esiea.inf3132tp2024.model.monster.file.FileMonster;
+import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,8 +24,8 @@ public class MonstreManager {
     private MonstreManager() {
     }
 
-    private final List<FileMonster> monstres = new LinkedList<>();
-    private final Map<File, List<FileMonster>> fileToMonstresMap = new HashMap<>();
+    private final List<MonsterTemplate> monstres = new LinkedList<>();
+    private final Map<File, List<MonsterTemplate>> fileToMonstresMap = new HashMap<>();
 
     /**
      * Méthode permettant d'ajouter un fichier de monstres dans le répertoire resources/game/monster.
@@ -65,8 +65,8 @@ public class MonstreManager {
      * @param file Le fichier contenant les monstres.
      * @return La liste des monstres chargés depuis le fichier.
      */
-    private List<FileMonster> loadMonstres(File file) {
-        List<FileMonster> loadedMonsters = new ArrayList<>();
+    private List<MonsterTemplate> loadMonstres(File file) {
+        List<MonsterTemplate> loadedMonsters = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             List<String[]> currentMonsterProperties = new ArrayList<>();
@@ -81,7 +81,7 @@ public class MonstreManager {
                     if (isMonsterBlock && !currentMonsterProperties.isEmpty()) {
                         // Convert List<String[]> to String[][]
                         String[][] propertiesArray = currentMonsterProperties.toArray(new String[0][]);
-                        FileMonster monster = new FileMonster(propertiesArray);
+                        MonsterTemplate monster = new MonsterTemplate(propertiesArray);
                         loadedMonsters.add(monster);
                     }
                     isMonsterBlock = false;
@@ -115,7 +115,7 @@ public class MonstreManager {
      *
      * @return Les modèles de monstres.
      */
-    public List<FileMonster> getMonstresModels() {
+    public List<MonsterTemplate> getMonstresModels() {
         return Collections.unmodifiableList(monstres);
     }
 
@@ -125,7 +125,7 @@ public class MonstreManager {
      * @param type Le type de monstre recherché.
      * @return La liste des monstres du type spécifié.
      */
-    public List<FileMonster> getMonstresModelsByType(Types type) {
+    public List<MonsterTemplate> getMonstresModelsByType(Types type) {
         return monstres.stream()
                 .filter(monster -> monster.getType() == type)
                 .collect(Collectors.toList());
@@ -136,7 +136,7 @@ public class MonstreManager {
      *
      * @return Un modèle de monstre aléatoire, ou null si aucun modèle n'est disponible.
      */
-    public FileMonster getRandomMonstreModel(Random random) {
+    public MonsterTemplate getRandomMonstreModel(Random random) {
         if (monstres.isEmpty()) {
             return null;
         }
@@ -149,8 +149,8 @@ public class MonstreManager {
      * @param type Le type de monstre.
      * @return Un monstre aléatoire du type spécifié, ou null si aucun monstre n'est disponible.
      */
-    public FileMonster getRandomMonstreModelByType(Random random, Types type) {
-        List<FileMonster> filteredMonstres = getMonstresModelsByType(type);
+    public MonsterTemplate getRandomMonstreModelByType(Random random, Types type) {
+        List<MonsterTemplate> filteredMonstres = getMonstresModelsByType(type);
         if (filteredMonstres.isEmpty()) {
             return null;
         }
@@ -164,7 +164,7 @@ public class MonstreManager {
      */
     public Set<Types> getAllTypes() {
         return monstres.stream()
-                .map(FileMonster::getType)
+                .map(MonsterTemplate::getType)
                 .collect(Collectors.toSet());
     }
 }

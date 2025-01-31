@@ -4,7 +4,7 @@ import fr.esiea.inf3132tp2024.model.Types;
 
 import java.util.Random;
 
-public class FileAttack {
+public class AttackTemplate {
     private String name;
     private Types type;
     private int minPower;
@@ -14,7 +14,7 @@ public class FileAttack {
     private float minFail;
     private float maxFail;
 
-    public FileAttack(String[][] customProperties) {
+    public AttackTemplate(String[][] customProperties) {
         for (String[] property : customProperties) {
             if (property.length < 2) {
                 continue;

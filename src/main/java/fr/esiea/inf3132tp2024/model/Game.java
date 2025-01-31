@@ -2,6 +2,7 @@ package fr.esiea.inf3132tp2024.model;
 
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Game {
@@ -11,9 +12,9 @@ public class Game {
     private final Player playerTwo;
     private final Terrain terrain;
 
-    public Game(long seed, Player playerOne, Player playerTwo) {
+    public Game(long seed, Random random, Player playerOne, Player playerTwo) {
         this.seed = seed;
-        this.random = new Random(seed);
+        this.random = Objects.requireNonNullElseGet(random, () -> new Random(seed));
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         this.terrain = new Terrain();

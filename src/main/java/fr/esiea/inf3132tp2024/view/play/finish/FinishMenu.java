@@ -47,13 +47,13 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
             // Label et champs pour le joueur 1
             this.nameLabel1 = new TLabel("Entrez un pseudo pour Joueur 1:");
             this.getContentPane().getComponents().add(nameLabel1);
-            this.nameField1 = new TTextField("Pseudo Joueur 1", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getPlayerOne().getName());
+            this.nameField1 = new TTextField("Pseudo Joueur 1", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getGame().getPlayerOne().getName());
             buttons.add(nameField1);
 
             // Label et champs pour le joueur 2
             this.nameLabel2 = new TLabel("Entrez un pseudo pour Joueur 2:");
             this.getContentPane().getComponents().add(nameLabel2);
-            this.nameField2 = new TTextField("Pseudo Joueur 2", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getPlayerTwo().getName());
+            this.nameField2 = new TTextField("Pseudo Joueur 2", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getGame().getPlayerTwo().getName());
             buttons.add(nameField2);
 
             // Bouton de sauvegarde des stats

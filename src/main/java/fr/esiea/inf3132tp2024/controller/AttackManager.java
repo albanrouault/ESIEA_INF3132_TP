@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.controller;
 
 import fr.esiea.inf3132tp2024.model.Types;
-import fr.esiea.inf3132tp2024.model.attack.file.FileAttack;
+import fr.esiea.inf3132tp2024.model.attack.file.AttackTemplate;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,8 +21,8 @@ public class AttackManager {
     private AttackManager() {
     }
 
-    private final List<FileAttack> attacks = new LinkedList<>();
-    private final Map<File, List<FileAttack>> fileToAttacksMap = new HashMap<>();
+    private final List<AttackTemplate> attacks = new LinkedList<>();
+    private final Map<File, List<AttackTemplate>> fileToAttacksMap = new HashMap<>();
 
     public void addFile(File file) {
         if (isFileValid(file)) {
@@ -45,8 +45,8 @@ public class AttackManager {
         }
     }
 
-    private List<FileAttack> loadAttacks(File file) {
-        List<FileAttack> loadedAttacks = new ArrayList<>();
+    private List<AttackTemplate> loadAttacks(File file) {
+        List<AttackTemplate> loadedAttacks = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             List<String[]> currentAttackProperties = new ArrayList<>();
@@ -60,7 +60,7 @@ public class AttackManager {
                 } else if (line.equalsIgnoreCase("EndAttack")) {
                     if (isAttackBlock && !currentAttackProperties.isEmpty()) {
                         String[][] propertiesArray = currentAttackProperties.toArray(new String[0][]);
-                        FileAttack attack = new FileAttack(propertiesArray);
+                        AttackTemplate attack = new AttackTemplate(propertiesArray);
                         loadedAttacks.add(attack);
                     }
                     isAttackBlock = false;
@@ -81,25 +81,25 @@ public class AttackManager {
         return file.exists() && file.isFile() && file.canRead() && file.getName().endsWith(".txt");
     }
 
-    public List<FileAttack> getAttackModels() {
+    public List<AttackTemplate> getAttackModels() {
         return Collections.unmodifiableList(attacks);
     }
 
-    public List<FileAttack> getAttackModelsByType(Types type) {
+    public List<AttackTemplate> getAttackModelsByType(Types type) {
         return attacks.stream()
                 .filter(attack -> attack.getType() == type)
                 .collect(Collectors.toList());
     }
 
-    public FileAttack getRandomAttackModel(Random random) {
+    public AttackTemplate getRandomAttackModel(Random random) {
         if (attacks.isEmpty()) {
             return null;
         }
         return attacks.get(random.nextInt(attacks.size()));
     }
 
-    public FileAttack getRandomAttackModelByType(Random random, Types type) {
-        List<FileAttack> filteredAttacks = getAttackModelsByType(type);
+    public AttackTemplate getRandomAttackModelByType(Random random, Types type) {
+        List<AttackTemplate> filteredAttacks = getAttackModelsByType(type);
         if (filteredAttacks.isEmpty()) {
             return null;
         }
@@ -108,7 +108,7 @@ public class AttackManager {
 
     public Set<Types> getAllTypes() {
         return attacks.stream()
-                .map(FileAttack::getType)
+                .map(AttackTemplate::getType)
                 .collect(Collectors.toSet());
     }
 }

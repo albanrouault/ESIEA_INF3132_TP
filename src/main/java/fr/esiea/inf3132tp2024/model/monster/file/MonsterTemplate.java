@@ -5,7 +5,7 @@ import fr.esiea.inf3132tp2024.model.Types;
 import java.util.HashMap;
 import java.util.Random;
 
-public class FileMonster {
+public class MonsterTemplate {
     private final HashMap<String, String[]> customProperties;
 
     private String name;
@@ -19,7 +19,7 @@ public class FileMonster {
     private int minDefense;
     private int maxDefense;
 
-    public FileMonster(String[][] customProperties) {
+    public MonsterTemplate(String[][] customProperties) {
         this.customProperties = new HashMap<>();
 
         for (String[] property : customProperties) {

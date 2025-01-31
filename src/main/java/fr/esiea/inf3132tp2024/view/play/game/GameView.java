@@ -2,9 +2,7 @@ package fr.esiea.inf3132tp2024.view.play.game;
 
 import fr.esiea.inf3132tp2024.model.Game;
 import fr.esiea.inf3132tp2024.model.GameStatistic;
-import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.audio.Music;
-import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 import fr.esiea.inf3132tp2024.utils.StringUtils;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
@@ -53,11 +51,11 @@ public class GameView extends TFrame implements DisplayableComponent {
 
         TPanel footer = new TPanel(0, 4, Orientation.HORIZONTAL, false);
 
-        this.playerOneStats = new PlayerStats(playerOne, Orientation.HORIZONTAL);
+        this.playerOneStats = new PlayerStats(game.getPlayerOne(), Orientation.HORIZONTAL);
         playerOneStats.setHeight(1);
         footer.getComponents().add(playerOneStats);
 
-        this.playerTwoStats = new PlayerStats(playerTwo, Orientation.HORIZONTAL);
+        this.playerTwoStats = new PlayerStats(game.getPlayerTwo(), Orientation.HORIZONTAL);
         playerTwoStats.setHeight(1);
         footer.getComponents().add(playerTwoStats);
 
@@ -74,7 +72,7 @@ public class GameView extends TFrame implements DisplayableComponent {
         gameAudioTrack.setLoop(true);
         gameAudioTrack.play();
 
-        this.gameStatistic = new GameStatistic(seed, playerOne.getName(), playerTwo.getName());
+        this.gameStatistic = new GameStatistic(game.getSeed(), game.getPlayerOne().getName(), game.getPlayerTwo().getName());
     }
 
     @Override
@@ -97,7 +95,7 @@ public class GameView extends TFrame implements DisplayableComponent {
     @Override
     public boolean isInLoopingMode() {
         // Si le joueur est mort, on arrête le jeu
-        if (playerOne.hasLost() || playerTwo.hasLost()) {
+        if (game.getPlayerOne().hasLost() || game.getPlayerTwo().hasLost()) {
             stopLoopingMode();
 
             AudioTrack deathAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.DEATH);
@@ -171,20 +169,8 @@ public class GameView extends TFrame implements DisplayableComponent {
         //this.map.setLength(this.getContentPane().getLength());
     }
 
-    public long getSeed() {
-        return seed;
-    }
-
-    public Player getPlayerOne() {
-        return playerOne;
-    }
-
-    public Player getPlayerTwo() {
-        return playerTwo;
-    }
-
-    public Terrain getTerrain() {
-        return terrain;
+    public Game getGame() {
+        return game;
     }
 
     public AudioTrack getGameAudioTrack() {

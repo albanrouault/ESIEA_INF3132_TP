@@ -2,11 +2,18 @@ package fr.esiea.inf3132tp2024.view.play.start;
 
 import fr.esiea.inf3132tp2024.controller.App;
 import fr.esiea.inf3132tp2024.controller.AppSettings;
+import fr.esiea.inf3132tp2024.controller.AttackManager;
 import fr.esiea.inf3132tp2024.controller.MonstreManager;
 import fr.esiea.inf3132tp2024.model.Game;
 import fr.esiea.inf3132tp2024.model.Player;
+import fr.esiea.inf3132tp2024.model.Types;
+import fr.esiea.inf3132tp2024.model.attack.Attack;
+import fr.esiea.inf3132tp2024.model.attack.file.AttackFactory;
+import fr.esiea.inf3132tp2024.model.attack.file.AttackTemplate;
 import fr.esiea.inf3132tp2024.model.consumable.Consumable;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.model.monster.file.GlobalMonsterFactory;
+import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.view.api.common.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
@@ -50,12 +57,19 @@ public class OkButton extends TButton {
             menuAudioTrack.stop();
         }
 
-        MonstreManager mM = MonstreManager.getInstance();
+        Random random = new Random(seed);
 
-        Player playerOne = new Player(playerOneName, new Monster[]{mM.getRandomMonstreModel(), mM.getRandomMonstreModel(), mM.getRandomMonstreModel()}, new Consumable[]{});
-        Player playerTwo = new Player(playerTwoName, new Monster[]{mM.getRandomMonstreModel(), mM.getRandomMonstreModel(), mM.getRandomMonstreModel()}, new Consumable[]{});
+        Player playerOne = new Player(playerOneName, new Monster[]{
+                generateRandomMonster(random),
+                generateRandomMonster(random),
+                generateRandomMonster(random)}, new Consumable[0]);
 
-        Game game = new Game(seed, playerOne, playerTwo);
+        Player playerTwo = new Player(playerTwoName, new Monster[]{
+                generateRandomMonster(random),
+                generateRandomMonster(random),
+                generateRandomMonster(random)}, new Consumable[0]);
+
+        Game game = new Game(seed, random, playerOne, playerTwo);
         App.getInstance().setCurrentGame(game);
         Terminal.getInstance().show(new GameView(game));
         App.getInstance().setCurrentGame(null);
@@ -87,5 +101,22 @@ public class OkButton extends TButton {
                 return seed;
             }
         }
+    }
+
+    private static Monster generateRandomMonster(Random random) {
+        MonsterTemplate monsterTemplate = MonstreManager.getInstance().getRandomMonstreModel(random);
+        return GlobalMonsterFactory.createMonster(random, monsterTemplate, new Attack[]{
+                generateRandomAttackNormalOrType(random, monsterTemplate.getType()),
+                generateRandomAttackNormalOrType(random, monsterTemplate.getType()),
+                generateRandomAttackNormalOrType(random, monsterTemplate.getType()),
+                generateRandomAttackNormalOrType(random, monsterTemplate.getType())});
+    }
+
+    private static Attack generateRandomAttackNormalOrType(Random random, Types type) {
+        AttackTemplate attackTemplate = AttackManager.getInstance().getRandomAttackModel(random);
+        if (attackTemplate.getType() == type || attackTemplate.getType() == Types.NORMAL) {
+            return AttackFactory.createAttack(random, attackTemplate);
+        }
+        return generateRandomAttackNormalOrType(random, type);
     }
 }

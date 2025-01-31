@@ -4,7 +4,7 @@ import fr.esiea.inf3132tp2024.model.attack.Attack;
 import fr.esiea.inf3132tp2024.model.monster.EarthMonster;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.monster.MonsterTooManyAttacks;
-import fr.esiea.inf3132tp2024.model.monster.file.FileMonster;
+import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
 import fr.esiea.inf3132tp2024.model.monster.file.MonsterFactory;
 
 import java.util.Random;
@@ -13,7 +13,7 @@ public class EarthMonsterFactory extends MonsterFactory {
     @Override
     protected Monster buildMonster(Random random,
                                    String name, int health, int attack, int speed, int defense,
-                                   Attack[] attacks, FileMonster fileMonster
+                                   Attack[] attacks, MonsterTemplate monsterTemplate
     ) {
         try {
             return new EarthMonster(

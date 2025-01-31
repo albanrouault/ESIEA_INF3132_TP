@@ -26,11 +26,11 @@ public class GlobalMonsterFactory {
         monsterFactories.put(Types.NATURE, new NatureMonsterFactory());
     }
 
-    public static Monster createMonster(Random random, FileMonster fileMonster, Attack[] attacks) {
-        MonsterFactory factory = monsterFactories.get(fileMonster.getType());
+    public static Monster createMonster(Random random, MonsterTemplate monsterTemplate, Attack[] attacks) {
+        MonsterFactory factory = monsterFactories.get(monsterTemplate.getType());
         if (factory == null) {
-            throw new IllegalArgumentException("Type non supporté: " + fileMonster.getType());
+            throw new IllegalArgumentException("Type non supporté: " + monsterTemplate.getType());
         }
-        return factory.createMonster(random, fileMonster, attacks);
+        return factory.createMonster(random, monsterTemplate, attacks);
     }
 }
