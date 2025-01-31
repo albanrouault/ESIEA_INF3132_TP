@@ -9,7 +9,7 @@ public class ViewStatisticMenu extends TFrame implements DisplayableComponent {
     public ViewStatisticMenu(GameStatistic gameStatistic) {
         super(0, 0, "Statistique");
 
-        this.getContentPane().getComponents().add(gameStatistic);
+        //this.getContentPane().getComponents().add(gameStatistic);
 
         this.getContentPane().getComponents().add(new TLabel("Appuyez sur une touche pour continuer..."));
     }

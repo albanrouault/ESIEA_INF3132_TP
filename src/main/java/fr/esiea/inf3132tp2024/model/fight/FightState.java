@@ -1,4 +1,4 @@
-package fr.esiea.inf3132tp2024.model;
+package fr.esiea.inf3132tp2024.model.fight;
 
 public enum FightState {
     STARTING,

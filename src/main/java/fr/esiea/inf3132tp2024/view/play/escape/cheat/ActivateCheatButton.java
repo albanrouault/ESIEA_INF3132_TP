@@ -1,6 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.escape.cheat;
 
-import fr.esiea.inf3132tp2024.view.play.game.Game;
+import fr.esiea.inf3132tp2024.view.play.game.GameView;
 import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
@@ -13,14 +13,14 @@ import fr.esiea.inf3132tp2024.view.play.escape.EscapeMenu;
 
 public class ActivateCheatButton extends TButton {
     private final CheatMenu menu;
-    private final Game game;
+    private final GameView gameView;
     private final EscapeMenu escapeMenu;
 
-    public ActivateCheatButton(CheatMenu menu, Game game, EscapeMenu escapeMenu) {
+    public ActivateCheatButton(CheatMenu menu, GameView gameView, EscapeMenu escapeMenu) {
         super("Activer le code de triche");
 
         this.menu = menu;
-        this.game = game;
+        this.gameView = gameView;
         this.escapeMenu = escapeMenu;
     }
 
@@ -42,7 +42,7 @@ public class ActivateCheatButton extends TButton {
                 return;
             }
         }
-        game.getStatistic().activeCheat();
+        gameView.getStatistic().activeCheat();
         menu.stopLoopingMode();
     }
 }

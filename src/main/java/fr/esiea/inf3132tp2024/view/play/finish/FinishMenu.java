@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view.play.finish;
 
 import fr.esiea.inf3132tp2024.controller.AppSettings;
-import fr.esiea.inf3132tp2024.view.play.game.Game;
+import fr.esiea.inf3132tp2024.view.play.game.GameView;
 import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
@@ -18,7 +18,7 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
     private TTextField nameField1, nameField2;
     private boolean display = true;
 
-    public FinishMenu(Game game, boolean won) {
+    public FinishMenu(GameView gameView, boolean won) {
         super(0, 0, "Fin de la partie");
 
         // Texte de résultat
@@ -34,30 +34,30 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(result);
 
         // Statistiques
-        GameStatistic gameStatistic = game.getStatistic();
+        GameStatistic gameStatistic = gameView.getStatistic();
 //        gameStatistic.setXX();
         gameStatistic.calculScore();
-        this.getContentPane().getComponents().add(gameStatistic);
+        //this.getContentPane().getComponents().add(gameStatistic);
 
         // Boutons
         this.buttons = new TChoices(1);
 
         // Vérification du mode triche pour changer de nom
-        if (!game.getStatistic().isCheatModeActivated()) {
+        if (!gameView.getStatistic().isCheatModeActivated()) {
             // Label et champs pour le joueur 1
             this.nameLabel1 = new TLabel("Entrez un pseudo pour Joueur 1:");
             this.getContentPane().getComponents().add(nameLabel1);
-            this.nameField1 = new TTextField("Pseudo Joueur 1", AppSettings.CONSOLE_MIN_LENGTH - 10, game.getPlayerOne().getName());
+            this.nameField1 = new TTextField("Pseudo Joueur 1", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getPlayerOne().getName());
             buttons.add(nameField1);
 
             // Label et champs pour le joueur 2
             this.nameLabel2 = new TLabel("Entrez un pseudo pour Joueur 2:");
             this.getContentPane().getComponents().add(nameLabel2);
-            this.nameField2 = new TTextField("Pseudo Joueur 2", AppSettings.CONSOLE_MIN_LENGTH - 10, game.getPlayerTwo().getName());
+            this.nameField2 = new TTextField("Pseudo Joueur 2", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getPlayerTwo().getName());
             buttons.add(nameField2);
 
             // Bouton de sauvegarde des stats
-            buttons.add(new SaveStatsButton(game, this));
+            buttons.add(new SaveStatsButton(gameView, this));
         }
 
         this.quitButton = new TQuitComponentButton(this, "Quitter la partie");

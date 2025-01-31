@@ -1,5 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.game;
 
+import fr.esiea.inf3132tp2024.model.Game;
 import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.audio.Music;
@@ -19,14 +20,8 @@ import fr.esiea.inf3132tp2024.view.play.PlayerStats;
 import fr.esiea.inf3132tp2024.view.play.escape.EscapeMenu;
 import fr.esiea.inf3132tp2024.view.play.finish.FinishMenu;
 
-import java.util.Random;
-
-public class Game extends TFrame implements DisplayableComponent {
-    private final long seed;
-    private final Random random;
-    private final Player playerOne;
-    private final Player playerTwo;
-    private final Terrain terrain;
+public class GameView extends TFrame implements DisplayableComponent {
+    private final Game game;
 
     private String infos;
     private AudioTrack gameAudioTrack;
@@ -40,16 +35,10 @@ public class Game extends TFrame implements DisplayableComponent {
     private final TPanel otherInfos;
     private final GameStatistic gameStatistic;
 
-    public Game(long seed, Player playerOne, Player playerTwo) {
+    public GameView(Game game) {
         super(0, 0);
 
-        this.seed = seed;
-        this.random = new Random(seed);
-
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-
-        this.terrain = new Terrain();
+        this.game = game;
 
         //this.getContentPane().getComponents().add(map);
 

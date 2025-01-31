@@ -19,6 +19,8 @@ public class Player {
      * Constructeur
      *
      * @param name Le nom de l'entité
+     * @param monsters Les monstres du joueur (3 max)
+     * @param consumable Les objets du joueur (5 max)
      */
     public Player(String name, Monster[] monsters, Consumable[] consumable) {
         this.name = name;

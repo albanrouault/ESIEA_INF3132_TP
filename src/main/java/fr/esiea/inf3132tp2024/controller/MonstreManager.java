@@ -11,9 +11,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class MonstreManager {
-    private final List<FileMonster> monstres = new ArrayList<>();
-    private final Map<File, List<FileMonster>> fileToMonstresMap = new HashMap<>();
-
     private static final MonstreManager INSTANCE = new MonstreManager();
 
     /**
@@ -26,6 +23,9 @@ public class MonstreManager {
     // Bloquer l'instanciation de la classe (pattern Singleton)
     private MonstreManager() {
     }
+
+    private final List<FileMonster> monstres = new LinkedList<>();
+    private final Map<File, List<FileMonster>> fileToMonstresMap = new HashMap<>();
 
     /**
      * Méthode permettant d'ajouter un fichier de monstres dans le répertoire resources/game/monster.
@@ -111,51 +111,49 @@ public class MonstreManager {
     }
 
     /**
-     * Méthode permettant de récupérer tous les monstres.
+     * Méthode permettant de récupérer tous les modèles de monstres.
      *
-     * @return La liste de tous les monstres.
+     * @return Les modèles de monstres.
      */
-    public List<FileMonster> getMonstres() {
+    public List<FileMonster> getMonstresModels() {
         return Collections.unmodifiableList(monstres);
     }
 
     /**
-     * Méthode pour récupérer les monstres par type.
+     * Méthode pour récupérer les modèles de monstres par type.
      *
      * @param type Le type de monstre recherché.
-     * @return La liste des monstres correspondant au type spécifié.
+     * @return La liste des monstres du type spécifié.
      */
-    public List<FileMonster> getMonstresByType(Types type) {
+    public List<FileMonster> getMonstresModelsByType(Types type) {
         return monstres.stream()
                 .filter(monster -> monster.getType() == type)
                 .collect(Collectors.toList());
     }
 
     /**
-     * Méthode pour obtenir un monstre aléatoire.
+     * Méthode pour obtenir un modèle de monstre aléatoire.
      *
-     * @return Un monstre choisi aléatoirement, ou null si aucun monstre n'est disponible.
+     * @return Un modèle de monstre aléatoire, ou null si aucun modèle n'est disponible.
      */
-    public FileMonster getRandomMonstre() {
+    public FileMonster getRandomMonstreModel(Random random) {
         if (monstres.isEmpty()) {
             return null;
         }
-        Random random = new Random();
         return monstres.get(random.nextInt(monstres.size()));
     }
 
     /**
-     * Méthode pour obtenir un monstre aléatoire par type.
+     * Méthode pour obtenir un modèle de monstre aléatoire du type spécifié.
      *
      * @param type Le type de monstre.
-     * @return Un monstre aléatoire du type spécifié, ou null si aucun monstre de ce type n'est disponible.
+     * @return Un monstre aléatoire du type spécifié, ou null si aucun monstre n'est disponible.
      */
-    public FileMonster getRandomMonstreByType(Types type) {
-        List<FileMonster> filteredMonstres = getMonstresByType(type);
+    public FileMonster getRandomMonstreModelByType(Random random, Types type) {
+        List<FileMonster> filteredMonstres = getMonstresModelsByType(type);
         if (filteredMonstres.isEmpty()) {
             return null;
         }
-        Random random = new Random();
         return filteredMonstres.get(random.nextInt(filteredMonstres.size()));
     }
 

@@ -1,5 +1,7 @@
-package fr.esiea.inf3132tp2024.model;
+package fr.esiea.inf3132tp2024.model.fight;
 
+import fr.esiea.inf3132tp2024.model.Game;
+import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 

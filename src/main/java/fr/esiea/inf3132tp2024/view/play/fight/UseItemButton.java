@@ -9,16 +9,16 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.play.consumable.ConsumableItemMenu;
 
 public class UseItemButton extends TButton {
-    private final Fight fight;
+    private final FightView fightView;
     private final Terrain terrain;
     private final Player player;
     private final Consumable consumable;
     private final Monster[] monsters;
 
-    public UseItemButton(Fight fight, Terrain terrain, Player player, Consumable consumable, Monster[] monsters) {
+    public UseItemButton(FightView fightView, Terrain terrain, Player player, Consumable consumable, Monster[] monsters) {
         super("Utiliser\n" + consumable.getName());
 
-        this.fight = fight;
+        this.fightView = fightView;
         this.terrain = terrain;
         this.player = player;
         this.consumable = consumable;
@@ -28,6 +28,6 @@ public class UseItemButton extends TButton {
     @Override
     public void execute() {
         Terminal.getInstance().show(new ConsumableItemMenu(terrain, consumable, monsters));
-        fight.updateMenuButtons();
+        fightView.updateMenuButtons();
     }
 }

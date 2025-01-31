@@ -3,16 +3,16 @@ package fr.esiea.inf3132tp2024.view.play.fight;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 
 public class AttackButton extends TButton {
-    private final Fight fight;
+    private final FightView fightView;
 
-    public AttackButton(Fight fight) {
+    public AttackButton(FightView fightView) {
         super("Attaquer");
 
-        this.fight = fight;
+        this.fightView = fightView;
     }
 
     @Override
     public void execute() {
-        fight.attack();
+        fightView.attack();
     }
 }

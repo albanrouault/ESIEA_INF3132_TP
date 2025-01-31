@@ -1,18 +1,18 @@
 package fr.esiea.inf3132tp2024.view.play.finish;
 
-import fr.esiea.inf3132tp2024.view.play.game.Game;
+import fr.esiea.inf3132tp2024.view.play.game.GameView;
 import fr.esiea.inf3132tp2024.controller.StatisticsManager;
 import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TTextField;
 
 public class SaveStatsButton extends TButton {
-    private final Game game;
+    private final GameView gameView;
     private final FinishMenu finishMenu;
 
-    public SaveStatsButton(Game game, FinishMenu finishMenu) {
+    public SaveStatsButton(GameView gameView, FinishMenu finishMenu) {
         super("Sauvegarder les statistiques");
-        this.game = game;
+        this.gameView = gameView;
         this.finishMenu = finishMenu;
     }
 
@@ -22,7 +22,7 @@ public class SaveStatsButton extends TButton {
         TTextField nameFieldPlayer2 = finishMenu.getNameField2();
 
         // Récupération et sauvegarde des statistiques de la partie
-        GameStatistic gameStatistic = game.getStatistic();
+        GameStatistic gameStatistic = gameView.getStatistic();
         gameStatistic.setPlayerOneName(nameFieldPlayer1.getText());
         gameStatistic.setPlayerTwoName(nameFieldPlayer2.getText());
         StatisticsManager.getInstance().addStatistic(gameStatistic);

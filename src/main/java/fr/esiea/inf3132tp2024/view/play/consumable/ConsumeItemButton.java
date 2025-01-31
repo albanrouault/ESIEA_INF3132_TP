@@ -22,7 +22,7 @@ public class ConsumeItemButton extends TButton {
 
     @Override
     public void execute() {
-        consumable.consume(terrain, monster);
+        //consumable.consume(terrain, monster);
         consumableItemMenu.stopLoopingMode();
     }
 }

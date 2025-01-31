@@ -2,13 +2,18 @@ package fr.esiea.inf3132tp2024.view.play.start;
 
 import fr.esiea.inf3132tp2024.controller.App;
 import fr.esiea.inf3132tp2024.controller.AppSettings;
-import fr.esiea.inf3132tp2024.view.play.game.Game;
+import fr.esiea.inf3132tp2024.controller.MonstreManager;
+import fr.esiea.inf3132tp2024.model.Game;
+import fr.esiea.inf3132tp2024.model.Player;
+import fr.esiea.inf3132tp2024.model.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.view.api.common.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TInfoDialog;
 import fr.esiea.inf3132tp2024.view.main.menu.MainMenu;
+import fr.esiea.inf3132tp2024.view.play.game.GameView;
 
 import java.util.Random;
 
@@ -45,9 +50,14 @@ public class OkButton extends TButton {
             menuAudioTrack.stop();
         }
 
-        Game game = new Game(seed, playerOneName, playerTwoName);
+        MonstreManager mM = MonstreManager.getInstance();
+
+        Player playerOne = new Player(playerOneName, new Monster[]{mM.getRandomMonstreModel(), mM.getRandomMonstreModel(), mM.getRandomMonstreModel()}, new Consumable[]{});
+        Player playerTwo = new Player(playerTwoName, new Monster[]{mM.getRandomMonstreModel(), mM.getRandomMonstreModel(), mM.getRandomMonstreModel()}, new Consumable[]{});
+
+        Game game = new Game(seed, playerOne, playerTwo);
         App.getInstance().setCurrentGame(game);
-        Terminal.getInstance().show(game);
+        Terminal.getInstance().show(new GameView(game));
         App.getInstance().setCurrentGame(null);
 
         if (menuAudioTrack != null) {

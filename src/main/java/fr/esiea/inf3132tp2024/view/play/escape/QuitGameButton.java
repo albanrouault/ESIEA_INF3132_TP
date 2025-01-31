@@ -15,6 +15,6 @@ public class QuitGameButton extends TButton {
     @Override
     public void execute() {
         escapeMenu.stopLoopingMode();
-        App.getInstance().getCurrentGame().stopLoopingMode();
+        //App.getInstance().getCurrentGame().stopLoopingMode();
     }
 }
