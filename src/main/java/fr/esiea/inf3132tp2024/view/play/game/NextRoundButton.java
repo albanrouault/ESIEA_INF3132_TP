@@ -27,12 +27,12 @@ public class NextRoundButton extends TButton {
         Player playerTwo = game.getGame().getPlayerTwo();
         // Choose default monster
         do {
-            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerOne);
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerOne, false);
             Terminal.getInstance().show(chooseMonsterView);
         } while (playerOne.getCurrentMonster() == null);
         // Player two
         do {
-            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerTwo);
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerTwo, false);
             Terminal.getInstance().show(chooseMonsterView);
         } while (playerTwo.getCurrentMonster() == null);
 

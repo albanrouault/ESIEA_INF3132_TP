@@ -19,10 +19,12 @@ public class ChangeMonsterButton extends TButton {
 
     @Override
     public void execute() {
-        ChooseMonsterView chooseMonsterView = new ChooseMonsterView(player);
+        ChooseMonsterView chooseMonsterView = new ChooseMonsterView(player, true);
 
         Terminal.getInstance().show(chooseMonsterView);
 
-        fightView.removeButtons(player);
+        if (chooseMonsterView.isChoiceMade()) {
+            fightView.removeButtons(player);
+        }
     }
 }

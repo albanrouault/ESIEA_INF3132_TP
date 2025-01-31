@@ -18,13 +18,15 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
     private final TChoices monstersChoices;
     private final Player currentPlayer;
     private boolean display = true;
+    private boolean choiceMade = false;
 
     /**
      * Constructeur de la vue de sélection du monstre.
      *
      * @param currentPlayer le joueur qui veut choisir un monstre
+     * @param back          true si un bouton de retour doit être affiché
      */
-    public ChooseMonsterView(Player currentPlayer) {
+    public ChooseMonsterView(Player currentPlayer, boolean back) {
         super(0, 0, currentPlayer.getName() + " - Choisir un monstre");
         this.currentPlayer = currentPlayer;
 
@@ -43,9 +45,11 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
         }
 
         // Ajout du bouton de retour
-        ReturnButton returnBtn = new ReturnButton();
-        monstersChoices.add(returnBtn);
-        monstersChoices.autoResize();
+        if (back) {
+            ReturnButton returnBtn = new ReturnButton();
+            monstersChoices.add(returnBtn);
+            monstersChoices.autoResize();
+        }
 
         // Ajout du panneau de choix de monstre au panneau principal
         monstersPanel.getComponents().add(monstersChoices);
@@ -70,6 +74,10 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
         display = false;
     }
 
+    public boolean isChoiceMade() {
+        return choiceMade;
+    }
+
     /**
      * Bouton interne représentant un monstre sélectionnable.
      */
@@ -87,6 +95,8 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
             // Lors de la sélection, on informe la GameView du choix effectué.
             // On suppose que GameView dispose d'une méthode selectMonster(Monster monster)
             currentPlayer.setCurrentMonster(monster);
+
+            choiceMade = true;
 
             // Arrêter le mode looping pour clore cette vue
             stopLoopingMode();
