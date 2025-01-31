@@ -94,11 +94,6 @@ public class FightView extends TFrame implements DisplayableComponent {
     }
 
     @Override
-    public void onKeyPressed(KeyPressedEvent event) {
-        super.onKeyPressed(event);
-    }
-
-    @Override
     public boolean isInFullScreenMode() {
         return true;
     }
@@ -118,9 +113,11 @@ public class FightView extends TFrame implements DisplayableComponent {
         super.setLength(length);
         int contentWidth = length - 2;
         leftPanel.setLength((int) (contentWidth * 0.4));
+        playerOneStats.setLength((int) (contentWidth * 0.4));
         centerPanel.setLength((int) (contentWidth * 0.2));
         gameActions.setLength((int) (contentWidth * 0.2));
         rightPanel.setLength((int) (contentWidth * 0.4));
+        playerTwoStats.setLength((int) (contentWidth * 0.4));
     }
 
     @Override

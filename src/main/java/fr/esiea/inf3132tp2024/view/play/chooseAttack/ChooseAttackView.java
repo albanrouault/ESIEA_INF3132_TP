@@ -4,13 +4,14 @@ import fr.esiea.inf3132tp2024.model.attack.Attack;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
-import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
 
 public class ChooseAttackView extends TFrame implements DisplayableComponent {
     private final TPanel attackPanel;
+    private final TChoices attackChoices;
     private boolean display = true;
 
     /**
@@ -22,17 +23,23 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
         super(0, 0, "Choisir une attaque");
 
         // Initialisation du panneau pour les boutons d'attaque
-        attackPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 1);
+        attackPanel = new TPanel(0, 0);
+        attackChoices = new TChoices(Orientation.VERTICAL, 1);
 
         // Création d'un bouton pour chaque attaque
         for (Attack attack2 : attacks) {
             AttackButton btn = new AttackButton(monster, attack2);
-            attackPanel.getComponents().add(btn);
+            attackChoices.getComponents().add(btn);
         }
 
         // Ajout du bouton de retour
         ReturnButton returnBtn = new ReturnButton();
-        attackPanel.getComponents().add(returnBtn);
+        attackChoices.getComponents().add(returnBtn);
+        attackChoices.autoResize();
+
+        // Ajout du panneau de choix d'attaque au panneau principal
+        attackPanel.getComponents().add(attackChoices);
+        attackPanel.autoResize();
 
         // Ajout du panneau au content pane
         this.getContentPane().getComponents().add(attackPanel);
