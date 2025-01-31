@@ -98,6 +98,76 @@ Voici une structure typique d'un projet Maven :
 
 ---
 
+## Ajout de monstres et d'attaques
+
+Pour ajouter des monstres et des attaques il faut créer un dossier game là ou il y a le jar puis un dossier monster et attack et mettre le ou les fichiers txt dedans.
+
+donc : 
+```
+game/monster/fichier.txt
+game/attack/fichier.txt
+```
+
+Les fichiers doivent être au format suivant pour les monstres :
+```
+Monster
+    Name        <Nom du monstre>
+    Type        <Type du monstre> (voir ci-dessous)
+    HP          <Valeur de l'HP MIN - entier> <Valeur de l'HP MAX - entier>
+    Speed       <Valeur de la vitesse MIN - entier> <Valeur de la vitesse MAX - entier>
+    Attack      <Valeur de l'attaque MIN - entier> <Valeur de l'attaque MAX - entier>
+    Defense     <Valeur de la défense MIN - entier> <Valeur de la défense MAX - entier>
+    Burn        <Valeur du burn - réel>
+EndMonster
+```
+
+Les fichiers doivent être au format suivant pour les attaques :
+```
+Attack
+    Name        <Nom de l'attaque>
+    Type        <Type de l'attaque> (voir ci-dessous)
+    Power       <Valeur de la puissance - entier>
+    NbUse       <Valeur du nombre d'utilisation - entier>
+    Fail        <Valeur du pourcentage de réussite - réel>
+EndAttack
+```
+
+Attention, si votre fichier est nommé `default.txt`, il remplacera le fichier par défaut que nous avons fourni.
+
+Concernant les types, il faut mettre les types pour les monstres ils sont : 
+- Fire
+- Water
+- Electric
+- Earth
+- Nature_Plant
+- Nature_Insect
+
+Pour les attaques, il faut mettre les types des attaques, ils sont :
+- Fire
+- Water
+- Electric
+- Earth
+- Nature_Plant
+- Nature_Insect
+- Normal
+
+---
+
+## Remarques
+
+### Fichiers default
+- Le fichier `default.txt` dans `src/main/resources/game/monster/` contient les monstres de la génération 1 de pokemon remaniés.
+- Le fichier `default.txt` dans `src/main/resources/game/attack/` contient les attaques de pokemon remaniées.
+
+### Musique
+- Nous avons utilisé des musiques (OST de Pokemon Let's Go) pour embellir le jeu.
+- Il est possible qu'il y ait des problèmes de compatibilité avec certains systèmes d'exploitation. Nous avons essayé sur Windows 11 et Ubuntu 24.04. (LTS)
+
+### Développement
+Nous vous prions de nous excuser pour le projet. Nous n’avons pas pu le finaliser ni retravailler le code comme prévu. Plutôt que de trouver des excuses, nous admettons avoir sous-estimé la complexité du projet et avoir été débordés par d’autres priorités. Nous espérons tout de même que vous apprécierez le travail que nous avons fait. Bon jeu !
+
+---
+
 ## Auteurs
 
 - **Alban ROUAULT**
