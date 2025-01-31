@@ -14,6 +14,7 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
     private final TPanel attackPanel;
     private final TChoices attackChoices;
     private boolean display = true;
+    private boolean choiceMade = false;
 
     /**
      * Constructeur de la vue de sélection d'attaque.
@@ -61,6 +62,10 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
         display = false;
     }
 
+    public boolean isChoiceMade() {
+        return choiceMade;
+    }
+
     /**
      * Bouton interne représentant une attaque sélectionnable.
      */
@@ -81,6 +86,7 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
             // Pour l'exemple, on affiche simplement un message dans la console
             // On arrête le mode looping après la sélection
             this.monster.setCurrentAttack(this.attack);
+            choiceMade = true;
             stopLoopingMode();
         }
     }

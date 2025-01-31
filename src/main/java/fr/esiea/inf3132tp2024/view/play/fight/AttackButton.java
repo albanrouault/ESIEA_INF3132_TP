@@ -35,18 +35,21 @@ public class AttackButton extends TButton {
         ChooseAttackView chooseAttackView = new ChooseAttackView(player, monster, monster.getAttacks());
 
         Terminal.getInstance().show(chooseAttackView);
-        Attack attack = monster.getCurrentAttack();
 
-        AttackProcessor.processAttack(fightView.getFight().getRandom(), monster, attack, opponentMonster, terrain);
+        if (chooseAttackView.isChoiceMade()) {
+            Attack attack = monster.getCurrentAttack();
 
-        // Effet spécial
-        if (attack != null && attack.getType() != Types.NORMAL && attack.getType() == monster.getType()) {
-            SpecialAttackEffect effect = SpecialAttackFactory.getSpecialAttackEffect(monster.getType());
-            if (effect != null) {
-                effect.apply(fightView.getFight().getRandom(), terrain, monster, opponentMonster);
+            AttackProcessor.processAttack(fightView.getFight().getRandom(), monster, attack, opponentMonster, terrain);
+
+            // Effet spécial
+            if (attack != null && attack.getType() != Types.NORMAL && attack.getType() == monster.getType()) {
+                SpecialAttackEffect effect = SpecialAttackFactory.getSpecialAttackEffect(monster.getType());
+                if (effect != null) {
+                    effect.apply(fightView.getFight().getRandom(), terrain, monster, opponentMonster);
+                }
             }
-        }
 
-        fightView.removeButtons(player);
+            fightView.removeButtons(player);
+        }
     }
 }
