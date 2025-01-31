@@ -21,7 +21,7 @@ public class PlayMenu extends TFrame implements DisplayableComponent {
 
         this.playerOneNameField = new TTextField("Nom du joueur 1 (aléatoire si vide)", AppSettings.CONSOLE_MIN_LENGTH - 10);
         this.playerTwoNameField = new TTextField("Nom du joueur 2 (aléatoire si vide)", AppSettings.CONSOLE_MIN_LENGTH - 10);
-        this.seedField = new TTextField("Graine de la carte à générer (aléatoire si vide)", AppSettings.CONSOLE_MIN_LENGTH - 10);
+        this.seedField = new TTextField("Graine pour générer les monstres, ect. (aléatoire si vide)", AppSettings.CONSOLE_MIN_LENGTH - 10);
 
         TButton okButton = new OkButton(mainMenu, this);
         TQuitComponentButton backButton = new TQuitComponentButton(this, "Retour");
