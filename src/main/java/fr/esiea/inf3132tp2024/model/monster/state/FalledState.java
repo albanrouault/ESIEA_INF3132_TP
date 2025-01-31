@@ -7,6 +7,13 @@ public class FalledState extends MonsterState {
      * @param turnsLeft the number of turns left for the state
      */
     public FalledState(int turnsLeft) {
-        super(turnsLeft);
+        super("Par terre", turnsLeft);
+    }
+
+    /**
+     * Constructor of the FalledState class
+     */
+    public FalledState() {
+        super("Par terre");
     }
 }

@@ -7,6 +7,13 @@ public class BurntState extends MonsterState {
      * @param turnsLeft the number of turns left for the state
      */
     public BurntState(int turnsLeft) {
-        super(turnsLeft);
+        super("Brûlé", turnsLeft);
+    }
+
+    /**
+     * Constructor of the BurntState class
+     */
+    public BurntState() {
+        super("Brûlé");
     }
 }

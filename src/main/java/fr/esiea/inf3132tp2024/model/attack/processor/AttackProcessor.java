@@ -21,7 +21,7 @@ public class AttackProcessor {
             return;
         }
 
-        // Vérification utilisabilité de l'attaque spéciale
+        // Vérification utilisabilité de l'attaque
         if (!attack.isUsable()) return;
 
         // Calcul des dégâts selon le type d'attaque

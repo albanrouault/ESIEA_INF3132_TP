@@ -7,6 +7,13 @@ public class ParalysedState extends MonsterState {
      * @param turnsLeft the number of turns left for the state
      */
     public ParalysedState(int turnsLeft) {
-        super(turnsLeft);
+        super("Paralysé", turnsLeft);
+    }
+
+    /**
+     * Constructor of the ParalysedState class
+     */
+    public ParalysedState() {
+        super("Paralysé");
     }
 }

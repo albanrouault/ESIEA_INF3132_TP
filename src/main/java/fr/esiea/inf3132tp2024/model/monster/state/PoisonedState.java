@@ -7,6 +7,13 @@ public class PoisonedState extends MonsterState {
      * @param turnsLeft the number of turns left for the state
      */
     public PoisonedState(int turnsLeft) {
-        super(turnsLeft);
+        super("Empoisonné", turnsLeft);
+    }
+
+    /**
+     * Constructor of the PoisonedState class
+     */
+    public PoisonedState() {
+        super("Empoisonné");
     }
 }

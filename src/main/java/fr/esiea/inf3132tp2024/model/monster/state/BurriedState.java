@@ -7,6 +7,13 @@ public class BurriedState extends MonsterState {
      * @param turnsLeft the number of turns left for the state
      */
     public BurriedState(int turnsLeft) {
-        super(turnsLeft);
+        super("Enterré", turnsLeft);
+    }
+
+    /**
+     * Constructor of the BurriedState class
+     */
+    public BurriedState() {
+        super("Enterré");
     }
 }
