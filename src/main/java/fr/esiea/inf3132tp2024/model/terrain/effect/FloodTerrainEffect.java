@@ -13,7 +13,7 @@ public class FloodTerrainEffect extends TerrainEffect {
      * @param turnsLeft the number of turns left for the effect
      */
     public FloodTerrainEffect(WaterMonster author, int turnsLeft) {
-        super(turnsLeft);
+        super("Terrain inondé", turnsLeft);
 
         this.author = author;
         this.opponentFloodedFallChance = author.getOpponentFloodedFallChance();
