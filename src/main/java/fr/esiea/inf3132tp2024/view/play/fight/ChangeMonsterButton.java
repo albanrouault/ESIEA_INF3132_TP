@@ -7,9 +7,11 @@ import fr.esiea.inf3132tp2024.model.consumable.ConsumableEffectFactory;
 import fr.esiea.inf3132tp2024.model.fight.Fight;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
+import fr.esiea.inf3132tp2024.view.play.chooseMonster.ChooseMonsterView;
 
-public class UseItemButton extends TButton {
+public class ChangeMonsterButton extends TButton {
     private final FightView fightView;
     private final Player player;
     private final Terrain terrain;
@@ -17,8 +19,8 @@ public class UseItemButton extends TButton {
     private final Monster monster;
     private final Monster opponentMonster;
 
-    public UseItemButton(FightView fightView, Fight fight, Player player, Consumable consumable, Monster monster, Monster opponentMonster) {
-        super(player.getName() + " utilise\n" + consumable.getName());
+    public ChangeMonsterButton(FightView fightView, Fight fight, Player player, Consumable consumable, Monster monster, Monster opponentMonster) {
+        super(player.getName() + "\nchanger de monstre");
 
         this.fightView = fightView;
         this.player = player;
@@ -30,12 +32,10 @@ public class UseItemButton extends TButton {
 
     @Override
     public void execute() {
-        if (!consumable.isConsumed()) {
-            ConsumableEffect effect = ConsumableEffectFactory.createEffect(consumable);
-            if (effect.apply(terrain, monster)) {
-                consumable.consume();
-            }
-        }
+        ChooseMonsterView chooseMonsterView = new ChooseMonsterView(fightView, player);
+
+        Terminal.getInstance().show(chooseMonsterView);
+
         fightView.removeButtons(player);
     }
 }
