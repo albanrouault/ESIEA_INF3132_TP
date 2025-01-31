@@ -200,6 +200,10 @@ public class TChoices extends TPanel implements SelectableComponent, KeyListener
             selectableComponents.remove(selectableComponent);
             TComponent component = (TComponent) selectableComponent;
             this.getComponents().remove(component);
+            // Select the next component if the removed component was selected
+            if (selectableComponent.isSelected() && !selectableComponents.isEmpty()) {
+                selectableComponents.get(0).setSelected(true);
+            }
         }
         this.autoResize();
     }

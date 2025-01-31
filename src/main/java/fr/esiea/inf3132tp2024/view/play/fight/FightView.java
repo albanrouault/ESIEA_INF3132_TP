@@ -10,7 +10,6 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.view.play.PlayerStats;
 
 import java.util.HashMap;
@@ -57,22 +56,6 @@ public class FightView extends TFrame implements DisplayableComponent {
         // Panel central - Actions du jeu
         this.centerPanel = new TPanel(0, 0);
         this.gameActions = new TChoices(Orientation.VERTICAL, 1);
-        updateGameActions();
-        centerPanel.getComponents().add(gameActions);
-
-        // Panel droit - Stats Joueur 2
-        this.rightPanel = new TPanel(0, 0);
-        this.playerTwoStats = new PlayerStats(fight.getPlayerTwo(), true);
-        rightPanel.getComponents().add(playerTwoStats);
-
-        // Ajout des panels au contentPane
-        this.getContentPane().getComponents().add(leftPanel);
-        this.getContentPane().getComponents().add(centerPanel);
-        this.getContentPane().getComponents().add(rightPanel);
-    }
-
-    private void updateGameActions() {
-        gameActions.removeAll();
         SelectableComponent attackButtonPlayerOne = new AttackButton(this, fight, fight.getPlayerOne(), fight.getPlayerOne().getCurrentMonster(), fight.getPlayerTwo().getCurrentMonster());
         gameActions.add(attackButtonPlayerOne);
         playerButtons.get(fight.getPlayerOne()).add(attackButtonPlayerOne);
@@ -96,7 +79,18 @@ public class FightView extends TFrame implements DisplayableComponent {
             playerButtons.get(fight.getPlayerTwo()).add(useItemButtonPlayerTwo);
         }
         gameActions.add(new EndFightButton(this));
-        gameActions.autoResize();
+        //gameActions.autoResize();
+        centerPanel.getComponents().add(gameActions);
+
+        // Panel droit - Stats Joueur 2
+        this.rightPanel = new TPanel(0, 0);
+        this.playerTwoStats = new PlayerStats(fight.getPlayerTwo(), true);
+        rightPanel.getComponents().add(playerTwoStats);
+
+        // Ajout des panels au contentPane
+        this.getContentPane().getComponents().add(leftPanel);
+        this.getContentPane().getComponents().add(centerPanel);
+        this.getContentPane().getComponents().add(rightPanel);
     }
 
     @Override
@@ -146,6 +140,7 @@ public class FightView extends TFrame implements DisplayableComponent {
                 gameActions.remove(button);
             }
         }
-        updateGameActions();
+        gameActions.autoResize();
+        setLength(getLength());
     }
 }
