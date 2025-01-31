@@ -2,8 +2,6 @@ package fr.esiea.inf3132tp2024.model.attack.processor;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
-import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttackEffect;
-import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttackFactory;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 
@@ -24,13 +22,10 @@ public class AttackProcessor {
         // Vérification utilisabilité de l'attaque
         if (!attack.isUsable()) return;
 
-        // Calcul des dégâts selon le type d'attaque
-        int damage = calculateDamage(random, attacker, attack, defender);
+        // Calcul des dégâts selon l'attaque
+        int damage = calculateAttackDamage(random, attacker, attack, defender);
         defender.damage(damage);
         attack.use();
-
-        // Application des effets spéciaux
-        applySpecialEffects(random, attacker, attack, defender, terrain);
     }
 
     private static int calculateBasicAttackDamage(Random random, Monster attacker, Monster defender) {
@@ -42,7 +37,7 @@ public class AttackProcessor {
         return (int) Math.round(damage);
     }
 
-    private static int calculateDamage(Random random, Monster attacker, Attack attack, Monster defender) {
+    private static int calculateAttackDamage(Random random, Monster attacker, Attack attack, Monster defender) {
         float advantage = calculateTypeAdvantage(attacker.getType(), defender.getType());
         float coef = BASE_ATTACK_COEF + random.nextFloat() * (1 - BASE_ATTACK_COEF);
 
@@ -57,15 +52,5 @@ public class AttackProcessor {
         if (attackType.isStrongAgainst(defenderType)) return 2.0f;
         if (attackType.isWeakAgainst(defenderType)) return 0.5f;
         return 1.0f;
-    }
-
-    private static void applySpecialEffects(Random random, Monster attacker, Attack attack,
-                                            Monster defender, Terrain terrain) {
-        if (attack.getType() != Types.NORMAL && attack.getType() == attacker.getType()) {
-            SpecialAttackEffect effect = SpecialAttackFactory.getSpecialAttackEffect(attacker.getType());
-            if (effect != null) {
-                effect.apply(random, terrain, attacker, defender);
-            }
-        }
     }
 }
