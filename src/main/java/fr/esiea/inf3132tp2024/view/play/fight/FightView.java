@@ -60,6 +60,7 @@ public class FightView extends TFrame implements DisplayableComponent {
 
     private void updateGameActions() {
         gameActions.removeAll();
+        // BOUTON A AJOUTER ICI
         gameActions.autoResize();
     }
 
@@ -88,16 +89,16 @@ public class FightView extends TFrame implements DisplayableComponent {
     public void setLength(int length) {
         super.setLength(length);
         int contentWidth = length - 2;
-        leftPanel.setLength(contentWidth / 3);
-        centerPanel.setLength(contentWidth / 3);
-        rightPanel.setLength(contentWidth / 3);
-        gameActions.setLength(contentWidth / 3);
+        leftPanel.setLength((int) (contentWidth * 0.4));
+        centerPanel.setLength((int) (contentWidth * 0.2));
+        gameActions.setLength((int) (contentWidth * 0.2));
+        rightPanel.setLength((int) (contentWidth * 0.4));
     }
 
     @Override
     public void setHeight(int height) {
         super.setHeight(height);
-        int contentHeight = height - 2;
+        int contentHeight = height - 4;
         leftPanel.setHeight(contentHeight);
         centerPanel.setHeight(contentHeight);
         rightPanel.setHeight(contentHeight);
