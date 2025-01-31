@@ -1,10 +1,10 @@
 package fr.esiea.inf3132tp2024.view.main.menu.information;
 
-import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
-import fr.esiea.inf3132tp2024.view.api.terminal.TQuitComponentButton;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 
 public class InfoMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
@@ -14,8 +14,6 @@ public class InfoMenu extends TFrame implements DisplayableComponent {
 
         TChoices choices = new TChoices(1);
 
-        choices.add(new EntityButton());
-        choices.add(new CommandButton());
         choices.add(new CreditButton());
         choices.add(new TQuitComponentButton(this, "Retour"));
 

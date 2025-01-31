@@ -36,13 +36,13 @@ public class CreditsMenu extends TFrame implements DisplayableComponent {
         creatorTwoName.setLength(labelLength);
 
         // Ajout des textes qui seront sur la partie droite de l'écran
-        TLabel creatorOneRole = new TLabel(HorizontalAlignment.LEFT, "Le développeur fou !");
+        TLabel creatorOneRole = new TLabel(HorizontalAlignment.LEFT, "Le dev 1 !");
         creatorOneRole.getColors().add(TColor.YELLOW);
         if (creatorOneRole.getLength() > valueLength) {
             valueLength = creatorOneRole.getLength();
         }
 
-        TLabel creatorTwoRole = new TLabel(HorizontalAlignment.LEFT, "L'apprenti développeur !");
+        TLabel creatorTwoRole = new TLabel(HorizontalAlignment.LEFT, "Le dev 2 !");
         creatorTwoRole.getColors().add(TColor.YELLOW);
         if (creatorTwoRole.getLength() > valueLength) {
             valueLength = creatorTwoRole.getLength();
