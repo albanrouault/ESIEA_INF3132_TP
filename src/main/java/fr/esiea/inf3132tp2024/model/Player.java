@@ -89,7 +89,7 @@ public class Player {
      *
      * @return les objets du joueur
      */
-    public Consumable[] getConsumable() {
+    public Consumable[] getConsumables() {
         // Returner tous les consommables qui ne sont pas consommés
         int count = 0;
         for (Consumable consumable : consumable) {
