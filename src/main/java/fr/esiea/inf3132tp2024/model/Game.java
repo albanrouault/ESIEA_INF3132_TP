@@ -52,7 +52,7 @@ public class Game {
         return round;
     }
 
-    public void setRound(int round) {
-        this.round = round;
+    public void nextRound() {
+        round++;
     }
 }

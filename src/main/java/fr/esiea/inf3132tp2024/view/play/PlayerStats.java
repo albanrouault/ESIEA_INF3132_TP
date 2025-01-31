@@ -11,17 +11,19 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
 import java.util.*;
 
 public class PlayerStats extends TPanel {
+    private final boolean showOnlyActiveMonster;
     private final Player player;
     private final TPanel header;
     private final TLabel name;
     private final TPanel monstersPanel;
     private final List<MonsterStats> monsterStats = new LinkedList<>();
 
-    public PlayerStats(Player player) {
+    public PlayerStats(Player player, boolean showOnlyActiveMonster) {
         super(HorizontalAlignment.CENTER, Orientation.VERTICAL, 2);
         this.player = player;
+        this.showOnlyActiveMonster = showOnlyActiveMonster;
 
-        // Header avec nom du joueur
+        // Header avec le nom du joueur
         this.name = new TLabel(player.getName());
         this.name.getColors().addAll(List.of(TColor.BRIGHT_BLUE, TColor.BOLD));
 
@@ -52,7 +54,7 @@ public class PlayerStats extends TPanel {
             monstersPanel.getComponents().add(stats);
         }
 
-        // Cas aucun monstre valide
+        // Cas d'aucun monstre valide
         if (orderedMonsters.isEmpty()) {
             TLabel emptyLabel = new TLabel("Aucun monstre valide !");
             emptyLabel.getColors().add(TColor.RED);
@@ -62,14 +64,25 @@ public class PlayerStats extends TPanel {
         monstersPanel.autoResize();
     }
 
+    /**
+     * Renvoie la liste des monstres à afficher.
+     * Si showOnlyActiveMonster est vrai, seul le monstre actif est renvoyé (s'il existe).
+     * Sinon, tous les monstres sont renvoyés, avec le monstre actif trié en premier.
+     */
     private List<Monster> getOrderedMonsters() {
+        if (showOnlyActiveMonster) {
+            Monster activeMonster = player.getCurrentMonster();
+            if (activeMonster != null) {
+                return Collections.singletonList(activeMonster);
+            } else {
+                return Collections.emptyList();
+            }
+        }
         List<Monster> monsters = new ArrayList<>(Arrays.asList(player.getMonsters()));
-
-        // Trier avec le monstre actif en premier
+        // Trier pour mettre le monstre actif en premier
         monsters.sort(Comparator.comparingInt(m ->
                 m == player.getCurrentMonster() ? 0 : 1
         ));
-
         return monsters;
     }
 
@@ -96,14 +109,12 @@ public class PlayerStats extends TPanel {
     @Override
     public String[] render() {
         update();
-
         return super.render();
     }
 
     @Override
     public void setLength(int length) {
         super.setLength(length);
-
         header.setLength(length);
         monstersPanel.setLength(length);
         for (MonsterStats stats : monsterStats) {

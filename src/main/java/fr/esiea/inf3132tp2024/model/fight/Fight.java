@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class Fight {
     private final Random random;
+    private final int round;
     private final Game game;
     private final Terrain terrain;
     private final Player playerOne;
@@ -19,6 +20,7 @@ public class Fight {
 
     public Fight(Game game) {
         this.random = game.getRandom();
+        this.round = game.getRound();
         this.game = game;
         this.terrain = game.getTerrain();
         this.playerOne = game.getPlayerOne();
@@ -27,6 +29,10 @@ public class Fight {
 
     public Random getRandom() {
         return random;
+    }
+
+    public int getRound() {
+        return round;
     }
 
     public Game getGame() {

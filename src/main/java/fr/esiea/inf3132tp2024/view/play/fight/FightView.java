@@ -1,69 +1,77 @@
 package fr.esiea.inf3132tp2024.view.play.fight;
 
-import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.model.fight.Fight;
-import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
-import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.play.MonsterStats;
-
-import java.util.LinkedList;
-import java.util.List;
+import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.view.play.PlayerStats;
 
 public class FightView extends TFrame implements DisplayableComponent {
     private final Fight fight;
     private boolean display = true;
-    private boolean over = false;
 
-    // Éléments graphiques
+    // Composants graphiques
+    private final PlayerStats playerOneStats;
+    private final PlayerStats playerTwoStats;
+    private final TChoices gameActions;
     private final TPanel leftPanel;
-    private final MonsterStats playerStats;
     private final TPanel centerPanel;
-    private final TChoices menu;
     private final TPanel rightPanel;
-    private final MonsterStats enemyStats;
-    private final TLabel logs;
 
     public FightView(Fight fight) {
-        super(0, 0, "Combat");
-
+        super(0, 0);
         this.fight = fight;
 
-        this.getContentPane().setRenderingMainPadding(false);
+        // Configuration du header
+        TPanel header = new TPanel(0, 1);
+        TLabel title = new TLabel("Round n°" + fight.getRound());
+        header.getComponents().add(title);
+        this.setHeader(header);
+
+        // Configuration du contentPane
         this.getContentPane().setRenderingOrientation(Orientation.HORIZONTAL);
+        this.getContentPane().setRenderingMainPadding(true);
 
+        // Panel gauche - Stats Joueur 1
         this.leftPanel = new TPanel(0, 0);
+        this.playerOneStats = new PlayerStats(fight.getPlayerOne(), true);
+        leftPanel.getComponents().add(playerOneStats);
 
-        this.playerStats = new MonsterStats(fight.getMonsterPlayerOne());
-        leftPanel.getComponents().add(playerStats);
+        // Panel central - Actions du jeu
+        this.centerPanel = new TPanel(0, 0);
+        this.gameActions = new TChoices(Orientation.VERTICAL, 1);
+        updateGameActions();
+        centerPanel.getComponents().add(gameActions);
 
-        this.getContentPane().getComponents().add(leftPanel);
-
-        this.centerPanel = new TPanel(20, 0);
-
-        this.menu = new TChoices(1);
-        updateMenuButtons();
-
-        centerPanel.getComponents().add(menu);
-        this.getContentPane().getComponents().add(centerPanel);
-
+        // Panel droit - Stats Joueur 2
         this.rightPanel = new TPanel(0, 0);
-        this.enemyStats = new MonsterStats(fight.getMonsterPlayerTwo());
-        rightPanel.getComponents().add(enemyStats);
+        this.playerTwoStats = new PlayerStats(fight.getPlayerTwo(), true);
+        rightPanel.getComponents().add(playerTwoStats);
+
+        // Ajout des panels au contentPane
+        this.getContentPane().getComponents().add(leftPanel);
+        this.getContentPane().getComponents().add(centerPanel);
         this.getContentPane().getComponents().add(rightPanel);
+    }
 
-        TPanel footer = new TPanel(0, 0, Orientation.HORIZONTAL, false);
+    private void updateGameActions() {
+        gameActions.removeAll();
+        gameActions.autoResize();
+    }
 
-        this.logs = new TLabel("");
-        logs.setHeight(0);
-        footer.getComponents().add(logs);
+    @Override
+    public void onKeyPressed(KeyPressedEvent event) {
+        super.onKeyPressed(event);
+        gameActions.onKeyPressed(event);
+    }
 
-        this.setFooter(footer);
+    @Override
+    public boolean isInFullScreenMode() {
+        return true;
     }
 
     @Override
@@ -72,59 +80,38 @@ public class FightView extends TFrame implements DisplayableComponent {
     }
 
     @Override
-    public boolean isInFullScreenMode() {
-        return true;
-    }
-
-    public boolean isOver() {
-        return over;
-    }
-
-    @Override
     public void stopLoopingMode() {
         display = false;
-    }
-
-    public void updateMenuButtons() {
-        menu.removeAll();
-        menu.add(new AttackButton(this));
-        menu.setLength(20);
     }
 
     @Override
     public void setLength(int length) {
         super.setLength(length);
-        int statsLength = this.getContentPane().getLength() - this.menu.getLength() - 2;
-        this.leftPanel.setLength(statsLength / 2);
-        this.playerStats.setLength(statsLength / 2);
-        this.rightPanel.setLength(statsLength / 2);
-        this.enemyStats.setLength(statsLength / 2);
-        this.logs.setLength(this.getContentPane().getLength());
+        int contentWidth = length - 2;
+        leftPanel.setLength(contentWidth / 3);
+        centerPanel.setLength(contentWidth / 3);
+        rightPanel.setLength(contentWidth / 3);
+        gameActions.setLength(contentWidth / 3);
     }
 
     @Override
     public void setHeight(int height) {
-        this.getFooter().setHeight(this.logs.getHeight());
         super.setHeight(height);
-        this.leftPanel.setHeight(this.getContentPane().getHeight());
-        this.centerPanel.setHeight(this.getContentPane().getHeight());
-        this.rightPanel.setHeight(this.getContentPane().getHeight());
+        int contentHeight = height - 2;
+        leftPanel.setHeight(contentHeight);
+        centerPanel.setHeight(contentHeight);
+        rightPanel.setHeight(contentHeight);
+    }
+
+    public Fight getFight() {
+        return fight;
     }
 
     public void attack() {
-        List<String> logs = new LinkedList<>();
 
-        // On affiche les logs du combat
-        this.logs.setHeight(logs.size());
-        StringBuilder text = new StringBuilder();
-        for (String log : logs) {
-            text.append("\n").append(log);
-        }
-        this.logs.setText(text.toString().replaceFirst("\n", ""));
-        this.setHeight(this.getHeight());
+    }
 
-        // On actualise les stats
-        playerStats.update();
-        enemyStats.update();
+    public void updateMenuButtons() {
+
     }
 }
