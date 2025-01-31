@@ -4,9 +4,6 @@ import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.model.audio.SoundEffect;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,7 +35,7 @@ public class AudioPlayer {
             NativeAudioTrack audioTrack = new NativeAudioTrack(filePath);
             audioTracks.add(audioTrack);
             return audioTrack;
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+        } catch (Exception e) {
             return new DumbAudioTrack();
         }
     }
