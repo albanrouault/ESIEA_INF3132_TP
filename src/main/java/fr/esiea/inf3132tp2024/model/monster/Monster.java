@@ -14,6 +14,7 @@ public abstract class Monster {
     private final Attack[] attacks;
 
     private MonsterState state;
+    private Attack currentAttack;
     private int health;
     private int attack;
     private int speed;
@@ -183,4 +184,14 @@ public abstract class Monster {
     public void strengthen(int attack) {
         this.attack += attack;
     }
+
+    public void setCurrentAttack(Attack attack) {
+        this.currentAttack = attack;
+    }
+
+    public Attack getCurrentAttack() {
+        return currentAttack;
+    }
+
+
 }

@@ -10,6 +10,7 @@ import fr.esiea.inf3132tp2024.model.attack.Attack;
 import fr.esiea.inf3132tp2024.model.attack.file.AttackFactory;
 import fr.esiea.inf3132tp2024.model.attack.file.AttackTemplate;
 import fr.esiea.inf3132tp2024.model.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.consumable.ConsumableGen;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.monster.file.GlobalMonsterFactory;
 import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
@@ -42,15 +43,15 @@ public class OkButton extends TButton {
 
         Terminal.getInstance().show(new TInfoDialog(DialogType.HISTORY,
                 playerOneName + " et " + playerTwoName + " marchaient tranquillement sur la route 42 quand soudain, un Magicarpe surgit hors d'un étang… pour s'écraser misérablement sur le sol.\n\n" +
-                playerOneName + " éclata de rire :\n" +
-                "- HA ! Magicarpe est vraiment le Pokémon le plus inutile !\n\n" +
-                playerTwoName + ", rouge de colère, pointa un doigt accusateur :\n" +
-                "- Retire immédiatement ce blasphème ! Magicarpe deviendra un puissant Léviator !\n\n" +
-                playerOneName + " croisa les bras en haussant un sourcil :\n" +
-                "- Ouais, bah en attendant, il fait juste des plouf.\n\n" +
-                playerTwoName + " dégaina une Poké Ball, furieux :\n" +
-                "- Tu vas payer cet affront !\n\n" +
-                "Ainsi débuta un combat légendaire… pour l'honneur d'un Magicarpe."));
+                        playerOneName + " éclata de rire :\n" +
+                        "- HA ! Magicarpe est vraiment le Pokémon le plus inutile !\n\n" +
+                        playerTwoName + ", rouge de colère, pointa un doigt accusateur :\n" +
+                        "- Retire immédiatement ce blasphème ! Magicarpe deviendra un puissant Léviator !\n\n" +
+                        playerOneName + " croisa les bras en haussant un sourcil :\n" +
+                        "- Ouais, bah en attendant, il fait juste des plouf.\n\n" +
+                        playerTwoName + " dégaina une Poké Ball, furieux :\n" +
+                        "- Tu vas payer cet affront !\n\n" +
+                        "Ainsi débuta un combat légendaire… pour l'honneur d'un Magicarpe."));
 
         long seed = getSeed(playMenu.getSeedField().getText());
 
@@ -65,12 +66,12 @@ public class OkButton extends TButton {
         Player playerOne = new Player(playerOneName, new Monster[]{
                 generateRandomMonster(random),
                 generateRandomMonster(random),
-                generateRandomMonster(random)}, new Consumable[0]);
+                generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
         Player playerTwo = new Player(playerTwoName, new Monster[]{
                 generateRandomMonster(random),
                 generateRandomMonster(random),
-                generateRandomMonster(random)}, new Consumable[0]);
+                generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
         Game game = new Game(seed, random, playerOne, playerTwo);
         Terminal.getInstance().show(new GameView(game));

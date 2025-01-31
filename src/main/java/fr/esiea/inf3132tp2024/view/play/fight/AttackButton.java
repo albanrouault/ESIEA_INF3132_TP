@@ -9,7 +9,9 @@ import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttackFactory;
 import fr.esiea.inf3132tp2024.model.fight.Fight;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
+import fr.esiea.inf3132tp2024.view.play.chooseAttack.ChooseAttackView;
 
 public class AttackButton extends TButton {
     private final FightView fightView;
@@ -32,7 +34,10 @@ public class AttackButton extends TButton {
     public void execute() {
         Attack attack = null;
 
-        // TODO : Ajouter le traitement de l'attaque en passant l'attaque
+        ChooseAttackView chooseAttackView = new ChooseAttackView(monster, monster.getAttacks());
+
+        Terminal.getInstance().show(chooseAttackView);
+
         AttackProcessor.processAttack(fightView.getFight().getRandom(), monster, attack, opponentMonster, terrain);
 
         // Effet spécial
