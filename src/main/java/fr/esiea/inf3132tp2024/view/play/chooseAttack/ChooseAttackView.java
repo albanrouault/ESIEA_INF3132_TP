@@ -1,5 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.chooseAttack;
 
+import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
@@ -19,8 +20,8 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
      *
      * @param attacks la liste des attaques disponibles
      */
-    public ChooseAttackView(Monster monster, Attack[] attacks) {
-        super(0, 0, "Choisir une attaque");
+    public ChooseAttackView(Player player, Monster monster, Attack[] attacks) {
+        super(0, 0, player.getName() + " - " + monster.getName() + " - Choisir une attaque");
 
         // Initialisation du panneau pour les boutons d'attaque
         attackPanel = new TPanel(0, 0);

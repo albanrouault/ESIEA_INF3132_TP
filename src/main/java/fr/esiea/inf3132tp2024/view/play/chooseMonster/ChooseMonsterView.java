@@ -8,14 +8,12 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.play.fight.FightView;
 
 /**
  * Vue de sélection du monstre qui doit combattre.
  * Cette vue est accessible depuis la GameView via un bouton.
  */
 public class ChooseMonsterView extends TFrame implements DisplayableComponent {
-    private final FightView fightView;
     private final TPanel monstersPanel;
     private final TChoices monstersChoices;
     private final Player currentPlayer;
@@ -24,11 +22,10 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
     /**
      * Constructeur de la vue de sélection du monstre.
      *
-     * @param fightView la vue de la partie en cours à laquelle on revient après la sélection
+     * @param currentPlayer le joueur qui veut choisir un monstre
      */
-    public ChooseMonsterView(FightView fightView, Player currentPlayer) {
-        super(0, 0, "Choisir un monstre");
-        this.fightView = fightView;
+    public ChooseMonsterView(Player currentPlayer) {
+        super(0, 0, currentPlayer.getName() + " - Choisir un monstre");
         this.currentPlayer = currentPlayer;
 
         // Initialisation du panneau vertical pour lister les monstres disponibles
