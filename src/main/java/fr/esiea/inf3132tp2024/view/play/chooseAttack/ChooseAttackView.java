@@ -27,9 +27,9 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
         attackChoices = new TChoices(Orientation.VERTICAL, 1);
 
         // Création d'un bouton pour chaque attaque
-        for (Attack attack2 : attacks) {
-            AttackButton btn = new AttackButton(monster, attack2);
-            attackChoices.getComponents().add(btn);
+        for (Attack attack : attacks) {
+            AttackButton btn = new AttackButton(monster, attack);
+            attackChoices.add(btn);
         }
 
         // Ajout du bouton de retour

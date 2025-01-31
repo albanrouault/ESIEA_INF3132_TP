@@ -1,17 +1,14 @@
 package fr.esiea.inf3132tp2024.view.play.chooseMonster;
 
 import fr.esiea.inf3132tp2024.model.Player;
-import fr.esiea.inf3132tp2024.model.fight.Fight;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;
-import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.play.fight.FightView;
-import fr.esiea.inf3132tp2024.view.play.game.GameView;
-import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 
 /**
  * Vue de sélection du monstre qui doit combattre.
@@ -20,6 +17,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 public class ChooseMonsterView extends TFrame implements DisplayableComponent {
     private final FightView fightView;
     private final TPanel monstersPanel;
+    private final TChoices monstersChoices;
     private final Player currentPlayer;
     private boolean display = true;
 
@@ -34,7 +32,8 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
         this.currentPlayer = currentPlayer;
 
         // Initialisation du panneau vertical pour lister les monstres disponibles
-        monstersPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 1);
+        monstersPanel = new TPanel(0, 0);
+        monstersChoices = new TChoices(Orientation.VERTICAL, 1);
 
         // Récupérer le joueur courant à partir de la GameView
         // On suppose que la méthode getCurrentPlayer() existe dans la classe Game.
@@ -42,9 +41,19 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
         for (Monster monster : currentPlayer.getMonsters()) {
             if (monster.isAlive()) {
                 MonsterButton b = new MonsterButton(monster);
-                monstersPanel.getComponents().add(b);
+                monstersChoices.add(b);
             }
         }
+
+        // Ajout du bouton de retour
+        ReturnButton returnBtn = new ReturnButton();
+        monstersChoices.getComponents().add(returnBtn);
+        monstersChoices.autoResize();
+
+        // Ajout du panneau de choix de monstre au panneau principal
+        monstersPanel.getComponents().add(monstersChoices);
+        monstersPanel.autoResize();
+
         // Ajout du panneau au content pane
         this.getContentPane().getComponents().add(monstersPanel);
     }
@@ -83,6 +92,20 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
             currentPlayer.setCurrentMonster(monster);
 
             // Arrêter le mode looping pour clore cette vue
+            stopLoopingMode();
+        }
+    }
+
+    /**
+     * Bouton interne pour revenir à la vue précédente.
+     */
+    private class ReturnButton extends TButton {
+        public ReturnButton() {
+            super("Retour");
+        }
+
+        @Override
+        public void execute() {
             stopLoopingMode();
         }
     }
