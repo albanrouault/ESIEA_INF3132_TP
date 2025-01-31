@@ -88,7 +88,6 @@ public class GameView extends TFrame implements DisplayableComponent {
             return;
         }
         super.onKeyPressed(event);
-        gameActions.onKeyPressed(event);
     }
 
     @Override
