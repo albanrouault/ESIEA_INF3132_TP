@@ -2,9 +2,11 @@ package fr.esiea.inf3132tp2024.model;
 
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
-import fr.esiea.inf3132tp2024.view.play.game.Game;
+
+import java.util.Random;
 
 public class Fight {
+    private final Random random;
     private final Game game;
     private final Terrain terrain;
     private final Player playerOne;
@@ -14,10 +16,15 @@ public class Fight {
     private FightState state = FightState.STARTING;
 
     public Fight(Game game) {
+        this.random = game.getRandom();
         this.game = game;
         this.terrain = game.getTerrain();
         this.playerOne = game.getPlayerOne();
         this.playerTwo = game.getPlayerTwo();
+    }
+
+    public Random getRandom() {
+        return random;
     }
 
     public Game getGame() {
