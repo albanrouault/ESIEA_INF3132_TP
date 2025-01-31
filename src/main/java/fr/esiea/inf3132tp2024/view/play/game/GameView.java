@@ -100,7 +100,7 @@ public class GameView extends TFrame implements DisplayableComponent {
     public boolean isInLoopingMode() {
         if (game.getPlayerOne().hasLost() || game.getPlayerTwo().hasLost()) {
             stopLoopingMode();
-            Terminal.getInstance().show(new FinishMenu(this, false));
+            Terminal.getInstance().show(new FinishMenu(this));
         }
         return display;
     }

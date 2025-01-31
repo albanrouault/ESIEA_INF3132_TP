@@ -18,48 +18,58 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
     private TTextField nameField1, nameField2;
     private boolean display = true;
 
-    public FinishMenu(GameView gameView, boolean won) {
+    /**
+     * Constructeur adapté pour indiquer le joueur gagnant.
+     * 
+     * @param gameView      La vue de la partie en cours.
+     * @param winningPlayer Le numéro du joueur gagnant (1 ou 2).
+     */
+    public FinishMenu(GameView gameView) {
         super(0, 0, "Fin de la partie");
 
-        // Texte de résultat
+        // Message de résultat adapté en fonction du joueur gagnant
         TLabel result;
-        if (won) {
-            result = new TLabel("Bravo !\n \nVous avez réussi à sortir du château !");
+        if (gameView.getGame().getPlayerTwo().hasLost()) {
+            result = new TLabel("Bravo !\n\nLe joueur " + gameView.getGame().getPlayerOne().getName() + " a gagné !");
+            result.getColors().add(TColor.BRIGHT_GREEN);
+        } else if (gameView.getGame().getPlayerOne().hasLost()) {
+            result = new TLabel("Bravo !\n\nLe joueur " + gameView.getGame().getPlayerTwo().getName() + " a gagné !");
             result.getColors().add(TColor.BRIGHT_GREEN);
         } else {
-            result = new TLabel("Dommage !\n \nVous êtes morts !");
+            result = new TLabel("Dommage !\n\nAucun joueur n'a gagné !");
             result.getColors().add(TColor.RED);
         }
         result.getColors().add(TColor.BOLD);
         this.getContentPane().getComponents().add(result);
 
-        // Statistiques
+        // Calcul et affichage (éventuel) des statistiques
         GameStatistic gameStatistic = gameView.getGame().getGameStatistic();
-//        gameStatistic.setXX();
         gameStatistic.calculScore();
-        //this.getContentPane().getComponents().add(gameStatistic);
+        // Vous pouvez ajouter ici l'affichage des statistiques si nécessaire.
+        // this.getContentPane().getComponents().add(gameStatistic);
 
-        // Boutons
+        // Création des boutons
         this.buttons = new TChoices(1);
 
-        // Vérification du mode triche pour changer de nom
+        // Si le mode triche n'est pas activé, proposer la saisie de pseudos pour modifier les noms des joueurs.
         if (!gameView.getGame().getGameStatistic().isCheatModeActivated()) {
-            // Label et champs pour le joueur 1
-            this.nameLabel1 = new TLabel("Entrez un pseudo pour Joueur 1:");
+            // Joueur 1
+            this.nameLabel1 = new TLabel("Entrez un pseudo pour Joueur 1 :");
             this.getContentPane().getComponents().add(nameLabel1);
             this.nameField1 = new TTextField("Pseudo Joueur 1", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getGame().getPlayerOne().getName());
             buttons.add(nameField1);
 
-            // Label et champs pour le joueur 2
-            this.nameLabel2 = new TLabel("Entrez un pseudo pour Joueur 2:");
+            // Joueur 2
+            this.nameLabel2 = new TLabel("Entrez un pseudo pour Joueur 2 :");
             this.getContentPane().getComponents().add(nameLabel2);
             this.nameField2 = new TTextField("Pseudo Joueur 2", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getGame().getPlayerTwo().getName());
             buttons.add(nameField2);
 
-            // Bouton de sauvegarde des stats
+            // Bouton de sauvegarde des statistiques
             buttons.add(new SaveStatsButton(gameView, this));
         }
 
+        // Bouton pour quitter la partie
         this.quitButton = new TQuitComponentButton(this, "Quitter la partie");
         buttons.add(quitButton);
         this.getContentPane().getComponents().add(buttons);
