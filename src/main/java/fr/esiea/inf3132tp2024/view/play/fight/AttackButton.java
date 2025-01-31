@@ -32,11 +32,11 @@ public class AttackButton extends TButton {
 
     @Override
     public void execute() {
-        Attack attack = null;
 
         ChooseAttackView chooseAttackView = new ChooseAttackView(monster, monster.getAttacks());
 
         Terminal.getInstance().show(chooseAttackView);
+        Attack attack = monster.getCurrentAttack();
 
         AttackProcessor.processAttack(fightView.getFight().getRandom(), monster, attack, opponentMonster, terrain);
 
