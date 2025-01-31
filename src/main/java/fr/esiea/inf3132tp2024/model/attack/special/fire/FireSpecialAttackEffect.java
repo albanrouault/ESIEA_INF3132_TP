@@ -17,7 +17,7 @@ public class FireSpecialAttackEffect implements SpecialAttackEffect {
     @Override
     public boolean apply(Random random, Terrain terrain, Monster monster, Monster opponentMonster) {
         if (monster instanceof FireMonster fireMonster && monster.isAlive()) {
-            BurntState burntState = new BurntState(Integer.MAX_VALUE);
+            BurntState burntState = new BurntState();
             try {
                 opponentMonster.setState(burntState);
                 return true;

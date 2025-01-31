@@ -17,7 +17,7 @@ public class NatureInsectSpecialAttackEffect implements SpecialAttackEffect {
     @Override
     public boolean apply(Random random, Terrain terrain, Monster monster, Monster opponentMonster) {
         if (monster instanceof InsectMonster insectMonster && monster.isAlive()) {
-            PoisonedState poisonedState = new PoisonedState(Integer.MAX_VALUE);
+            PoisonedState poisonedState = new PoisonedState();
             try {
                 opponentMonster.setState(poisonedState);
                 return true;
