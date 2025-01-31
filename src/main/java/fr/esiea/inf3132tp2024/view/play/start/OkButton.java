@@ -43,13 +43,13 @@ public class OkButton extends TButton {
         Terminal.getInstance().show(new TInfoDialog(DialogType.HISTORY,
                 playerOneName + " et " + playerTwoName + " marchaient tranquillement sur la route 42 quand soudain, un Magicarpe surgit hors d'un étang… pour s'écraser misérablement sur le sol.\n\n" +
                 playerOneName + " éclata de rire :\n" +
-                "— HA ! Magicarpe est vraiment le Pokémon le plus inutile !\n\n" +
+                "- HA ! Magicarpe est vraiment le Pokémon le plus inutile !\n\n" +
                 playerTwoName + ", rouge de colère, pointa un doigt accusateur :\n" +
-                "— Retire immédiatement ce blasphème ! Magicarpe deviendra un puissant Léviator !\n\n" +
+                "- Retire immédiatement ce blasphème ! Magicarpe deviendra un puissant Léviator !\n\n" +
                 playerOneName + " croisa les bras en haussant un sourcil :\n" +
-                "— Ouais, bah en attendant, il fait juste des plouf.\n\n" +
+                "- Ouais, bah en attendant, il fait juste des plouf.\n\n" +
                 playerTwoName + " dégaina une Poké Ball, furieux :\n" +
-                "— Tu vas payer cet affront !\n\n" +
+                "- Tu vas payer cet affront !\n\n" +
                 "Ainsi débuta un combat légendaire… pour l'honneur d'un Magicarpe."));
 
         long seed = getSeed(playMenu.getSeedField().getText());
