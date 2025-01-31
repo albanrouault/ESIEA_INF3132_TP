@@ -45,7 +45,7 @@ public class GameView extends TFrame implements DisplayableComponent {
 
         // Panel gauche - Stats Joueur 1
         this.leftPanel = new TPanel(0, 0);
-        this.playerOneStats = new PlayerStats(game.getPlayerOne());
+        this.playerOneStats = new PlayerStats(game.getPlayerOne(), false);
         leftPanel.getComponents().add(playerOneStats);
 
         // Panel central - Actions du jeu
@@ -56,7 +56,7 @@ public class GameView extends TFrame implements DisplayableComponent {
 
         // Panel droit - Stats Joueur 2
         this.rightPanel = new TPanel(0, 0);
-        this.playerTwoStats = new PlayerStats(game.getPlayerTwo());
+        this.playerTwoStats = new PlayerStats(game.getPlayerTwo(), false);
         rightPanel.getComponents().add(playerTwoStats);
 
         // Ajout des panels au contentPane
@@ -77,7 +77,7 @@ public class GameView extends TFrame implements DisplayableComponent {
 
     private void updateGameActions() {
         gameActions.removeAll();
-        gameActions.add(new NextRoundButton());
+        gameActions.add(new NextRoundButton(this));
         gameActions.autoResize();
     }
 
@@ -115,27 +115,20 @@ public class GameView extends TFrame implements DisplayableComponent {
     public void setLength(int length) {
         super.setLength(length);
         int contentWidth = length - 2;
-        leftPanel.setLength(contentWidth / 3);
-        centerPanel.setLength(contentWidth / 3);
-        rightPanel.setLength(contentWidth / 3);
-        gameActions.setLength(contentWidth / 3);
+        leftPanel.setLength((int) (contentWidth * 0.4));
+        centerPanel.setLength((int) (contentWidth * 0.2));
+        gameActions.setLength((int) (contentWidth * 0.2));
+        rightPanel.setLength((int) (contentWidth * 0.4));
     }
 
     @Override
     public void setHeight(int height) {
         super.setHeight(height);
-        int contentHeight = height - 2;
+        int contentHeight = height - 6;
         leftPanel.setHeight(contentHeight);
         centerPanel.setHeight(contentHeight);
         rightPanel.setHeight(contentHeight);
     }
-
-    // Méthodes d'actions
-    private void startFight() { /* Implémentation combat */ }
-
-    private void openInventory() { /* Implémentation inventaire */ }
-
-    private void switchMonster() { /* Implémentation changement monstre */ }
 
     public Game getGame() {
         return game;
