@@ -31,7 +31,7 @@ EndMonster
 
 Monster
     Name        Bulbizarre
-    Type        Grass
+    Type        Nature_Plant
     HP          120 151
     Speed       100 131
     Attack      80  111
@@ -81,7 +81,7 @@ EndMonster
 
 Monster
     Name        LeafWhisper
-    Type        Grass
+    Type        Nature_Plant
     HP          115 145
     Speed       90  120
     Attack      80  110
@@ -91,7 +91,7 @@ EndMonster
 
 Monster
     Name        BugBite
-    Type        Insect
+    Type        Nature_Insect
     HP          105 135
     Speed       85  115
     Attack      75  105
@@ -141,7 +141,7 @@ EndMonster
 
 Monster
     Name        VineCreeper
-    Type        Grass
+    Type        Nature_Plant
     HP          120 150
     Speed       85  115
     Attack      85  115
@@ -151,7 +151,7 @@ EndMonster
 
 Monster
     Name        BeetleSting
-    Type        Insect
+    Type        Nature_Insect
     HP          110 140
     Speed       80  110
     Attack      70  100
@@ -201,7 +201,7 @@ EndMonster
 
 Monster
     Name        MewInsect
-    Type        Insect
+    Type        Nature_Insect
     HP          100 130
     Speed       120 150
     Attack      110 140
@@ -210,8 +210,8 @@ Monster
 EndMonster
 
 Monster
-    Name        MewGrass
-    Type        Grass
+    Name        MewNature_Plant
+    Type        Nature_Plant
     HP          100 130
     Speed       120 150
     Attack      110 140

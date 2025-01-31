@@ -118,8 +118,6 @@ Attack
     Fail    0.05
 EndAttack
 
-// ... existing code ...
-
 Attack
     Name    Thunderbolt
     Type    Electric

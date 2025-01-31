@@ -2,6 +2,7 @@ package fr.esiea.inf3132tp2024.controller;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
+import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplateException;
 
 import java.io.*;
 import java.net.JarURLConnection;
@@ -19,8 +20,11 @@ public class MonstreManager {
     }
 
     private MonstreManager() {
-        loadExternalMonstres();
-        loadInternalMonstres();
+        try {
+            loadExternalMonstres();
+            loadInternalMonstres();
+        } catch (MonsterTemplateException e) {
+        }
     }
 
     private final List<MonsterTemplate> monstres = new LinkedList<>();
@@ -32,7 +36,7 @@ public class MonstreManager {
      * @param file Le fichier contenant les monstres.
      * @return La liste des monstres chargés depuis le fichier.
      */
-    private List<MonsterTemplate> loadMonstres(File file) {
+    private List<MonsterTemplate> loadMonstres(File file) throws MonsterTemplateException {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return parseMonstres(reader);
         } catch (IOException e) {
@@ -41,7 +45,7 @@ public class MonstreManager {
         }
     }
 
-    private List<MonsterTemplate> loadMonstresFromStream(InputStream is) {
+    private List<MonsterTemplate> loadMonstresFromStream(InputStream is) throws MonsterTemplateException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
             return parseMonstres(reader);
         } catch (IOException e) {
@@ -50,7 +54,7 @@ public class MonstreManager {
         }
     }
 
-    private List<MonsterTemplate> parseMonstres(BufferedReader reader) throws IOException {
+    private List<MonsterTemplate> parseMonstres(BufferedReader reader) throws IOException, MonsterTemplateException {
         List<MonsterTemplate> loadedMonsters = new ArrayList<>();
         String line;
         List<String[]> currentMonsterProperties = new ArrayList<>();
@@ -66,6 +70,7 @@ public class MonstreManager {
                     String[][] propertiesArray = currentMonsterProperties.toArray(new String[0][]);
                     MonsterTemplate monster = new MonsterTemplate(propertiesArray);
                     loadedMonsters.add(monster);
+
                 }
                 isMonsterBlock = false;
             } else if (isMonsterBlock && !line.isEmpty()) {
@@ -78,7 +83,7 @@ public class MonstreManager {
         return loadedMonsters;
     }
 
-    public void loadExternalMonstres() {
+    public void loadExternalMonstres() throws MonsterTemplateException {
         File externalDir = new File("game/monster");
         if (externalDir.exists() && externalDir.isDirectory()) {
             File[] files = externalDir.listFiles((dir, name) -> name.endsWith(".txt"));
@@ -92,7 +97,7 @@ public class MonstreManager {
         }
     }
 
-    public void loadInternalMonstres() {
+    public void loadInternalMonstres() throws MonsterTemplateException {
         try {
             List<String> internalFiles = getResourceFiles("game/monster");
             for (String filename : internalFiles) {
@@ -174,7 +179,8 @@ public class MonstreManager {
     /**
      * Méthode pour obtenir un modèle de monstre aléatoire.
      *
-     * @return Un modèle de monstre aléatoire, ou null si aucun modèle n'est disponible.
+     * @return Un modèle de monstre aléatoire, ou null si aucun modèle n'est
+     *         disponible.
      */
     public MonsterTemplate getRandomMonstreModel(Random random) {
         if (monstres.isEmpty()) {
@@ -187,7 +193,8 @@ public class MonstreManager {
      * Méthode pour obtenir un modèle de monstre aléatoire du type spécifié.
      *
      * @param type Le type de monstre.
-     * @return Un monstre aléatoire du type spécifié, ou null si aucun monstre n'est disponible.
+     * @return Un monstre aléatoire du type spécifié, ou null si aucun monstre n'est
+     *         disponible.
      */
     public MonsterTemplate getRandomMonstreModelByType(Random random, Types type) {
         List<MonsterTemplate> filteredMonstres = getMonstresModelsByType(type);

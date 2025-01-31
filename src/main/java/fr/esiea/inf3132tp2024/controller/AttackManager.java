@@ -2,6 +2,7 @@ package fr.esiea.inf3132tp2024.controller;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.file.AttackTemplate;
+import fr.esiea.inf3132tp2024.model.attack.file.AttackTemplateException;
 
 import java.io.*;
 import java.net.JarURLConnection;
@@ -25,7 +26,7 @@ public class AttackManager {
     private final List<AttackTemplate> attacks = new LinkedList<>();
     private final Map<File, List<AttackTemplate>> fileToAttacksMap = new HashMap<>();
 
-    private List<AttackTemplate> loadAttacks(File file) {
+    private List<AttackTemplate> loadAttacks(File file) throws AttackTemplateException {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return parseAttacks(reader);
         } catch (IOException e) {
@@ -34,7 +35,7 @@ public class AttackManager {
         }
     }
 
-    private List<AttackTemplate> loadAttacksFromStream(InputStream is) {
+    private List<AttackTemplate> loadAttacksFromStream(InputStream is) throws AttackTemplateException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
             return parseAttacks(reader);
         } catch (IOException e) {
@@ -43,7 +44,7 @@ public class AttackManager {
         }
     }
 
-    private List<AttackTemplate> parseAttacks(BufferedReader reader) throws IOException {
+    private List<AttackTemplate> parseAttacks(BufferedReader reader) throws IOException, AttackTemplateException {
         List<AttackTemplate> loadedAttacks = new ArrayList<>();
         String line;
         List<String[]> currentAttackProperties = new ArrayList<>();
@@ -71,7 +72,7 @@ public class AttackManager {
         return loadedAttacks;
     }
 
-    public void loadExternalAttacks() {
+    public void loadExternalAttacks() throws AttackTemplateException {
         File externalDir = new File("game/attack");
         if (externalDir.exists() && externalDir.isDirectory()) {
             File[] files = externalDir.listFiles((dir, name) -> name.endsWith(".txt"));
@@ -85,7 +86,7 @@ public class AttackManager {
         }
     }
 
-    public void loadInternalAttacks() {
+    public void loadInternalAttacks() throws AttackTemplateException {
         try {
             List<String> internalFiles = getResourceFiles("game/attack");
             for (String filename : internalFiles) {
