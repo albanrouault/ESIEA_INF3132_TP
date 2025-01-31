@@ -1,15 +1,15 @@
 package fr.esiea.inf3132tp2024.controller;
 
 import fr.esiea.inf3132tp2024.model.audio.Music;
-import fr.esiea.inf3132tp2024.controller.game.Game;
-import fr.esiea.inf3132tp2024.controller.game.StatisticsManager;
+import fr.esiea.inf3132tp2024.controller.play.game.Game;
+import fr.esiea.inf3132tp2024.controller.play.game.StatisticsManager;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.common.dialog.DialogType;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TErrorDialog;
-import fr.esiea.inf3132tp2024.view.main.SplashScreen;
-import fr.esiea.inf3132tp2024.view.main.menu.MainMenu;
+import fr.esiea.inf3132tp2024.controller.main.SplashScreen;
+import fr.esiea.inf3132tp2024.controller.main.menu.MainMenu;
 
 import java.io.File;
 import java.io.IOException;
