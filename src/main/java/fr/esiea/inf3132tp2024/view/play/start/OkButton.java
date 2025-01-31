@@ -41,12 +41,16 @@ public class OkButton extends TButton {
         String playerTwoName = getPlayerName(playMenu.getPlayerTwoNameField().getText());
 
         Terminal.getInstance().show(new TInfoDialog(DialogType.HISTORY,
-                "Après une soirée bien arrosée dans un camping avec des inconnus, " + playerOneName + " et " + playerTwoName + " " +
-                        "se réveillent, avec un léger mal de crâne dans un lieu totalement inconnu. \n \n " +
-                        "Ils pensent alors à une farce et se rendent très rapidement compte qu'ils ne peuvent\npas sortir.\n \n" +
-                        "En fouillant, ils trouvent dans la pièce un bout de papier et un stylo qui leur \npermettra de dessiner les lieux " +
-                        "au fur et à mesure de leur avancée ! \n \n" +
-                        "Leur talent de joueurs leur permet de déduire que si une autre sortie existe,\nelle est sûrement sur le toit !"));
+                playerOneName + " et " + playerTwoName + " marchaient tranquillement sur la route 42 quand soudain, un Magicarpe surgit hors d'un étang… pour s'écraser misérablement sur le sol.\n\n" +
+                playerOneName + " éclata de rire :\n" +
+                "— HA ! Magicarpe est vraiment le Pokémon le plus inutile !\n\n" +
+                playerTwoName + ", rouge de colère, pointa un doigt accusateur :\n" +
+                "— Retire immédiatement ce blasphème ! Magicarpe deviendra un puissant Léviator !\n\n" +
+                playerOneName + " croisa les bras en haussant un sourcil :\n" +
+                "— Ouais, bah en attendant, il fait juste des plouf.\n\n" +
+                playerTwoName + " dégaina une Poké Ball, furieux :\n" +
+                "— Tu vas payer cet affront !\n\n" +
+                "Ainsi débuta un combat légendaire… pour l'honneur d'un Magicarpe."));
 
         long seed = getSeed(playMenu.getSeedField().getText());
 
