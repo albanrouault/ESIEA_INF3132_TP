@@ -1,220 +1,1509 @@
 Monster
-    Name        Pikachu
-    Type        Electric
+    Name        Bulbasaur
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Ivysaur
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Venusaur
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Charmander
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Charmeleon
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Charizard
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Squirtle
+    Type        WATER
     HP          110 141
     Speed       110 141
-    Attack      75  106
-    Defense     50  82
-    Paralysis   0.2
-EndMonster
-
-Monster
-    Name        Cerapuca
-    Type        Water
-    HP          119 150
-    Attack      68   99
-    Speed       63  94
-    Defense     85  116
-    Flood       0.25
-    Fall        0.35
-EndMonster
-
-Monster
-    Name        Salamander
-    Type        Fire
-    HP          120 151
-    Speed       100 131
-    Attack      80  111
-    Defense     55  86
-    Burn        0.2
-EndMonster
-
-Monster
-    Name        Bulbizarre
-    Type        Nature_Plant
-    HP          120 151
-    Speed       100 131
-    Attack      80  111
-    Defense     55  86
-    Paralysis   0.2
-EndMonster
-
-Monster
-    Name        Thunderbolt
-    Type        Electric
-    HP          100 130
-    Speed       120 150
-    Attack      90  120
-    Defense     60  90
-    Paralysis   0.3
-EndMonster
-
-Monster
-    Name        Earthquake
-    Type        Earth
-    HP          130 160
-    Speed       70  100
-    Attack      100 130
-    Defense     90  120
-    Hide        0.25
-EndMonster
-
-Monster
-    Name        AquaSplash
-    Type        Water
-    HP          110 140
-    Speed       80  110
-    Attack      85  115
-    Defense     70  100
-    Fall        0.2
-EndMonster
-
-Monster
-    Name        FlameTail
-    Type        Fire
-    HP          120 150
-    Speed       100 130
-    Attack      95  125
-    Defense     65  95
-    Burn        0.3
-EndMonster
-
-Monster
-    Name        LeafWhisper
-    Type        Nature_Plant
-    HP          115 145
-    Speed       90  120
-    Attack      80  110
-    Defense     75  105
-    Health      0.2
-EndMonster
-
-Monster
-    Name        BugBite
-    Type        Nature_Insect
-    HP          105 135
-    Speed       85  115
-    Attack      75  105
-    Defense     60  90
-    Poison      0.25
-EndMonster
-
-Monster
-    Name        ElectricStrike
-    Type        Electric
-    HP          95  125
-    Speed       130 160
-    Attack      85  115
-    Defense     55  85
-    Paralysis   0.35
-EndMonster
-
-Monster
-    Name        StoneGuard
-    Type        Earth
-    HP          140 170
-    Speed       60  90
-    Attack      110 140
-    Defense     100 130
-    Hide        0.3
-EndMonster
-
-Monster
-    Name        WaterWave
-    Type        Water
-    HP          115 145
-    Speed       75  105
-    Attack      90  120
-    Defense     80  110
+    Attack      75 106
+    Defense     50 82
     Fall        0.25
 EndMonster
 
 Monster
-    Name        EmberFlare
-    Type        Fire
-    HP          125 155
-    Speed       95  125
-    Attack      100 130
-    Defense     70  100
-    Burn        0.35
+    Name        Wartortle
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
 EndMonster
 
 Monster
-    Name        VineCreeper
-    Type        Nature_Plant
-    HP          120 150
-    Speed       85  115
-    Attack      85  115
-    Defense     80  110
-    Health      0.25
+    Name        Blastoise
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
 EndMonster
 
 Monster
-    Name        BeetleSting
-    Type        Nature_Insect
+    Name        Caterpie
+    Type        NATURE_INSECT
     HP          110 140
-    Speed       80  110
-    Attack      70  100
-    Defense     65  95
-    Poison      0.3
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
 EndMonster
 
 Monster
-    Name        MewFire
-    Type        Fire
-    HP          100 130
-    Speed       120 150
-    Attack      110 140
-    Defense     90  120
-    Burn        0.35
+    Name        Metapod
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
 EndMonster
 
 Monster
-    Name        MewWater
-    Type        Water
-    HP          100 130
-    Speed       120 150
-    Attack      110 140
-    Defense     90  120
-    Fall        0.35
+    Name        Butterfree
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
 EndMonster
 
 Monster
-    Name        MewEarth
-    Type        Earth
-    HP          100 130
-    Speed       120 150
-    Attack      110 140
-    Defense     90  120
-    Hide        0.35
+    Name        Weedle
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
 EndMonster
 
 Monster
-    Name        MewElectric
-    Type        Electric
-    HP          100 130
-    Speed       120 150
-    Attack      110 140
-    Defense     90  120
-    Paralysis   0.35
+    Name        Kakuna
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
 EndMonster
 
 Monster
-    Name        MewInsect
-    Type        Nature_Insect
-    HP          100 130
-    Speed       120 150
-    Attack      110 140
-    Defense     90  120
-    Poison      0.35
+    Name        Beedrill
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
 EndMonster
 
 Monster
-    Name        MewNature_Plant
-    Type        Nature_Plant
+    Name        Pidgey
+    Type        ELECTRIC
     HP          100 130
     Speed       120 150
-    Attack      110 140
-    Defense     90  120
-    Health      0.35
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Pidgeotto
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Pidgeot
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Rattata
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Raticate
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Spearow
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Fearow
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Ekans
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Arbok
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Pikachu
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Raichu
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Sandshrew
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Sandslash
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Nidoran♀
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Nidorina
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Nidoqueen
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Nidoran♂
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Nidorino
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Nidoking
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Clefairy
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Clefable
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Vulpix
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Ninetales
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Jigglypuff
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Wigglytuff
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Zubat
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Golbat
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Oddish
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Gloom
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Vileplume
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Paras
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Parasect
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Venonat
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Venomoth
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Diglett
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Dugtrio
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Meowth
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Persian
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Psyduck
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Golduck
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Mankey
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Primeape
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Growlithe
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Arcanine
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Poliwag
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Poliwhirl
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Poliwrath
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Abra
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Kadabra
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Alakazam
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Machop
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Machoke
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Machamp
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Bellsprout
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Weepinbell
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Victreebel
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Tentacool
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Tentacruel
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Geodude
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Graveler
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Golem
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Ponyta
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Rapidash
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Slowpoke
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Slowbro
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Magnemite
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Magneton
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Farfetch'd
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Doduo
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Dodrio
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Seel
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Dewgong
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Grimer
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Muk
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Shellder
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Cloyster
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Gastly
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Haunter
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Gengar
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Onix
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Drowzee
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Hypno
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Krabby
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Kingler
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Voltorb
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Electrode
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Exeggcute
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Exeggutor
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Cubone
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Marowak
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Hitmonlee
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Hitmonchan
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Lickitung
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Koffing
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Weezing
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Rhyhorn
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Rhydon
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Chansey
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Tangela
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Kangaskhan
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Horsea
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Seadra
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Goldeen
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Seaking
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Staryu
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Starmie
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Mr. Mime
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Scyther
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Jynx
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Electabuzz
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Magmar
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Pinsir
+    Type        NATURE_INSECT
+    HP          110 140
+    Speed       80 110
+    Attack      70 100
+    Defense     65 95
+    Poison      0.30
+EndMonster
+
+Monster
+    Name        Tauros
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Magikarp
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Gyarados
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Lapras
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Ditto
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Eevee
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Vaporeon
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Jolteon
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Flareon
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Porygon
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Omanyte
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Omastar
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Kabuto
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Kabutops
+    Type        EARTH
+    HP          130 160
+    Speed       70 100
+    Attack      100 130
+    Defense     90 120
+    Hide        0.25
+EndMonster
+
+Monster
+    Name        Aerodactyl
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Snorlax
+    Type        NATURE_PLANT
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Health      0.20
+EndMonster
+
+Monster
+    Name        Articuno
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Zapdos
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Moltres
+    Type        FIRE
+    HP          120 151
+    Speed       100 131
+    Attack      80 111
+    Defense     55 86
+    Burn        0.30
+EndMonster
+
+Monster
+    Name        Dratini
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Dragonair
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Dragonite
+    Type        WATER
+    HP          110 141
+    Speed       110 141
+    Attack      75 106
+    Defense     50 82
+    Fall        0.25
+EndMonster
+
+Monster
+    Name        Mewtwo
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
+EndMonster
+
+Monster
+    Name        Mew
+    Type        ELECTRIC
+    HP          100 130
+    Speed       120 150
+    Attack      90 120
+    Defense     60 90
+    Paralysis   0.30
 EndMonster

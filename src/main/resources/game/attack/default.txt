@@ -1,46 +1,14 @@
 Attack
     Name    Eclair
-    Type    Electric
+    Type    ELECTRIC
     Power   40
     NbUse   10
     Fail    0.07
 EndAttack
 
 Attack
-    Name    Charge
-    Type    Normal
-    Power   35
-    NbUse   15
-    Fail    0.03
-EndAttack
-
-Attack
-    Name    Flamethrower
-    Type    Fire
-    Power   90
-    NbUse   5
-    Fail    0.1
-EndAttack
-
-Attack
-    Name    Tackle
-    Type    Normal
-    Power   40
-    NbUse   30
-    Fail    0.05
-EndAttack
-
-Attack
-    Name    WaterGun
-    Type    Water
-    Power   40
-    NbUse   25
-    Fail    0.05
-EndAttack
-
-Attack
     Name    ThunderShock
-    Type    Electric
+    Type    ELECTRIC
     Power   50
     NbUse   15
     Fail    0.05
@@ -48,31 +16,143 @@ EndAttack
 
 Attack
     Name    Spark
-    Type    Electric
+    Type    ELECTRIC
     Power   60
     NbUse   20
     Fail    0.08
 EndAttack
 
 Attack
+    Name    LightningStrike
+    Type    ELECTRIC
+    Power   55
+    NbUse   10
+    Fail    0.08
+EndAttack
+
+Attack
+    Name    Tackle
+    Type    NORMAL
+    Power   40
+    NbUse   35
+    Fail    0.05
+EndAttack
+
+Attack
     Name    QuickAttack
-    Type    Normal
+    Type    NORMAL
     Power   40
     NbUse   30
     Fail    0.02
 EndAttack
 
 Attack
+    Name    BodySlam
+    Type    NORMAL
+    Power   85
+    NbUse   15
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    DoubleEdge
+    Type    NORMAL
+    Power   120
+    NbUse   10
+    Fail    0.15
+EndAttack
+
+Attack
     Name    HyperBeam
-    Type    Normal
+    Type    NORMAL
     Power   150
     NbUse   5
-    Fail    0.2
+    Fail    0.20
+EndAttack
+
+Attack
+    Name    Scratch
+    Type    NORMAL
+    Power   20
+    NbUse   35
+    Fail    0.03
+EndAttack
+
+Attack
+    Name    Pound
+    Type    NORMAL
+    Power   30
+    NbUse   40
+    Fail    0.04
+EndAttack
+
+Attack
+    Name    MegaPunch
+    Type    NORMAL
+    Power   75
+    NbUse   15
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    MegaKick
+    Type    NORMAL
+    Power   85
+    NbUse   10
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    Bite
+    Type    NORMAL
+    Power   50
+    NbUse   20
+    Fail    0.07
+EndAttack
+
+Attack
+    Name    Slam
+    Type    NORMAL
+    Power   60
+    NbUse   15
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    WingAttack
+    Type    NORMAL
+    Power   50
+    NbUse   25
+    Fail    0.06
+EndAttack
+
+Attack
+    Name    Peck
+    Type    NORMAL
+    Power   35
+    NbUse   30
+    Fail    0.04
+EndAttack
+
+Attack
+    Name    SkyAttack
+    Type    NORMAL
+    Power   90
+    NbUse   5
+    Fail    0.15
+EndAttack
+
+Attack
+    Name    Flamethrower
+    Type    FIRE
+    Power   90
+    NbUse   5
+    Fail    0.10
 EndAttack
 
 Attack
     Name    FireBlast
-    Type    Fire
+    Type    FIRE
     Power   110
     NbUse   5
     Fail    0.15
@@ -80,7 +160,39 @@ EndAttack
 
 Attack
     Name    Ember
-    Type    Fire
+    Type    FIRE
+    Power   40
+    NbUse   25
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    FireSpin
+    Type    FIRE
+    Power   35
+    NbUse   25
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    FirePunch
+    Type    FIRE
+    Power   65
+    NbUse   15
+    Fail    0.08
+EndAttack
+
+Attack
+    Name    HeatWave
+    Type    FIRE
+    Power   95
+    NbUse   10
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    WaterGun
+    Type    WATER
     Power   40
     NbUse   25
     Fail    0.05
@@ -88,7 +200,7 @@ EndAttack
 
 Attack
     Name    HydroPump
-    Type    Water
+    Type    WATER
     Power   110
     NbUse   5
     Fail    0.15
@@ -96,104 +208,368 @@ EndAttack
 
 Attack
     Name    Surf
-    Type    Water
+    Type    WATER
     Power   90
     NbUse   15
-    Fail    0.1
-EndAttack
-
-Attack
-    Name    Earthquake
-    Type    Earth
-    Power   100
-    NbUse   10
-    Fail    0.1
-EndAttack
-
-Attack
-    Name    MudSlap
-    Type    Earth
-    Power   20
-    NbUse   30
-    Fail    0.05
-EndAttack
-
-Attack
-    Name    Thunderbolt
-    Type    Electric
-    Power   90
-    NbUse   10
-    Fail    0.1
-EndAttack
-
-Attack
-    Name    VoltSwitch
-    Type    Electric
-    Power   70
-    NbUse   20
-    Fail    0.07
-EndAttack
-
-Attack
-    Name    BodySlam
-    Type    Normal
-    Power   85
-    NbUse   15
-    Fail    0.1
-EndAttack
-
-Attack
-    Name    DoubleEdge
-    Type    Normal
-    Power   120
-    NbUse   10
-    Fail    0.15
-EndAttack
-
-Attack
-    Name    Flamethrower
-    Type    Fire
-    Power   90
-    NbUse   15
-    Fail    0.1
-EndAttack
-
-Attack
-    Name    FireSpin
-    Type    Fire
-    Power   35
-    NbUse   25
-    Fail    0.05
+    Fail    0.10
 EndAttack
 
 Attack
     Name    Waterfall
-    Type    Water
+    Type    WATER
     Power   80
     NbUse   15
-    Fail    0.1
+    Fail    0.10
 EndAttack
 
 Attack
     Name    AquaJet
-    Type    Water
+    Type    WATER
     Power   40
     NbUse   20
     Fail    0.05
 EndAttack
 
 Attack
+    Name    BubbleBeam
+    Type    WATER
+    Power   65
+    NbUse   20
+    Fail    0.07
+EndAttack
+
+Attack
+    Name    Whirlpool
+    Type    WATER
+    Power   75
+    NbUse   10
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    Earthquake
+    Type    EARTH
+    Power   100
+    NbUse   10
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    MudSlap
+    Type    EARTH
+    Power   20
+    NbUse   30
+    Fail    0.05
+EndAttack
+
+Attack
     Name    RockSlide
-    Type    Earth
+    Type    EARTH
     Power   75
     NbUse   15
-    Fail    0.1
+    Fail    0.10
 EndAttack
 
 Attack
     Name    SandTomb
-    Type    Earth
+    Type    EARTH
     Power   35
     NbUse   20
     Fail    0.08
+EndAttack
+
+Attack
+    Name    StoneEdge
+    Type    EARTH
+    Power   90
+    NbUse   10
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    Fissure
+    Type    EARTH
+    Power   120
+    NbUse   5
+    Fail    0.20
+EndAttack
+
+Attack
+    Name    VineWhip
+    Type    NATURE_PLANT
+    Power   45
+    NbUse   25
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    RazorLeaf
+    Type    NATURE_PLANT
+    Power   55
+    NbUse   20
+    Fail    0.07
+EndAttack
+
+Attack
+    Name    SolarBeam
+    Type    NATURE_PLANT
+    Power   100
+    NbUse   5
+    Fail    0.15
+EndAttack
+
+Attack
+    Name    LeafBlade
+    Type    NATURE_PLANT
+    Power   70
+    NbUse   15
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    PetalDance
+    Type    NATURE_PLANT
+    Power   80
+    NbUse   10
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    PoisonPowder
+    Type    NATURE_INSECT
+    Power   40
+    NbUse   20
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    BugBuzz
+    Type    NATURE_INSECT
+    Power   85
+    NbUse   10
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    XScissor
+    Type    NATURE_INSECT
+    Power   70
+    NbUse   15
+    Fail    0.08
+EndAttack
+
+Attack
+    Name    SignalBeam
+    Type    NATURE_INSECT
+    Power   60
+    NbUse   20
+    Fail    0.07
+EndAttack
+
+Attack
+    Name    SilverWind
+    Type    NATURE_INSECT
+    Power   55
+    NbUse   15
+    Fail    0.06
+EndAttack
+
+Attack
+    Name    SleepPowder
+    Type    NATURE_INSECT
+    Power   0
+    NbUse   20
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    MegaDrain
+    Type    NORMAL
+    Power   60
+    NbUse   15
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    Absorb
+    Type    NORMAL
+    Power   40
+    NbUse   25
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    PsychoCut
+    Type    NORMAL
+    Power   70
+    NbUse   15
+    Fail    0.08
+EndAttack
+
+Attack
+    Name    DragonClaw
+    Type    NORMAL
+    Power   80
+    NbUse   10
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    ThunderPunch
+    Type    ELECTRIC
+    Power   65
+    NbUse   15
+    Fail    0.08
+EndAttack
+
+Attack
+    Name    BlazeKick
+    Type    FIRE
+    Power   85
+    NbUse   10
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    AquaTail
+    Type    WATER
+    Power   75
+    NbUse   10
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    LeafStorm
+    Type    NATURE_PLANT
+    Power   110
+    NbUse   5
+    Fail    0.20
+EndAttack
+
+Attack
+    Name    BugBite
+    Type    NATURE_INSECT
+    Power   50
+    NbUse   20
+    Fail    0.07
+EndAttack
+
+Attack
+    Name    MeteorMash
+    Type    NORMAL
+    Power   100
+    NbUse   10
+    Fail    0.15
+EndAttack
+
+Attack
+    Name    SolarFlare
+    Type    NATURE_PLANT
+    Power   95
+    NbUse   8
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    ElectroBall
+    Type    ELECTRIC
+    Power   80
+    NbUse   10
+    Fail    0.09
+EndAttack
+
+Attack
+    Name    Blizzard
+    Type    WATER
+    Power   100
+    NbUse   5
+    Fail    0.15
+EndAttack
+
+Attack
+    Name    RockBlast
+    Type    EARTH
+    Power   85
+    NbUse   10
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    GigaImpact
+    Type    NORMAL
+    Power   140
+    NbUse   5
+    Fail    0.25
+EndAttack
+
+Attack
+    Name    AerialAce
+    Type    NORMAL
+    Power   60
+    NbUse   20
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    CrossChop
+    Type    NORMAL
+    Power   80
+    NbUse   15
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    DragonPulse
+    Type    NORMAL
+    Power   90
+    NbUse   10
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    FeatherDance
+    Type    NORMAL
+    Power   0
+    NbUse   20
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    AquaRing
+    Type    WATER
+    Power   0
+    NbUse   20
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    SkullBash
+    Type    NORMAL
+    Power   90
+    NbUse   10
+    Fail    0.12
+EndAttack
+
+Attack
+    Name    DrainPunch
+    Type    NORMAL
+    Power   65
+    NbUse   15
+    Fail    0.10
+EndAttack
+
+Attack
+    Name    VenomDrench
+    Type    NATURE_INSECT
+    Power   0
+    NbUse   20
+    Fail    0.05
+EndAttack
+
+Attack
+    Name    EarthPower
+    Type    EARTH
+    Power   80
+    NbUse   15
+    Fail    0.10
 EndAttack
