@@ -1,11 +1,10 @@
 package fr.esiea.inf3132tp2024.controller;
 
 import fr.esiea.inf3132tp2024.model.audio.Music;
-import fr.esiea.inf3132tp2024.view.play.game.Game;
 import fr.esiea.inf3132tp2024.utils.audio.AudioPlayer;
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
-import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.common.dialog.DialogType;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TErrorDialog;
 import fr.esiea.inf3132tp2024.view.main.SplashScreen;
 import fr.esiea.inf3132tp2024.view.main.menu.MainMenu;
@@ -20,15 +19,14 @@ public class App {
         return INSTANCE;
     }
 
-    private Game currentGame;
-
     /**
      * Méthode permettant de démarrer l'application.
      */
     public void start() {
+        // Initialiser le terminal
         Terminal terminal = Terminal.getInstance();
 
-        // Load app settings
+        // Charger les paramètres
         File settingsFile = new File(AppSettings.DEFAULT_FILE_PATH);
         if (settingsFile.exists()) {
             try {
@@ -38,9 +36,20 @@ public class App {
             }
         }
 
+        // En cas de problème quelconque, afficher le message d'erreur
         try {
+            // Afficher l'écran de démarrage
             terminal.show(new SplashScreen());
+
+            // Charger les statistiques
             StatisticsManager.getInstance().loadStatistics();
+
+            // Charger les monstres
+            //MonstreManager.getInstance().addFile();
+
+            // Charger les attaques
+
+            // Afficher le menu principal
             MainMenu mainMenu = new MainMenu();
             terminal.show(mainMenu);
             terminal.finalClear(true);
@@ -57,13 +66,5 @@ public class App {
             terminal.show(new TErrorDialog(DialogType.EXCEPTION, lines));
             terminal.finalClear(false);
         }
-    }
-
-    public Game getCurrentGame() {
-        return currentGame;
-    }
-
-    public void setCurrentGame(Game currentGame) {
-        this.currentGame = currentGame;
     }
 }
