@@ -9,7 +9,7 @@ public class AppSettings {
         return INSTANCE;
     }
 
-    public static final int CONSOLE_MIN_LENGTH = 80;
+    public static final int CONSOLE_MIN_LENGTH = 130;
     public static final int CONSOLE_MIN_HEIGHT = 25;
     public static final int MUSIC_DEFAULT_VOLUME = 50;
     public static final int SOUND_DEFAULT_VOLUME = 25;
