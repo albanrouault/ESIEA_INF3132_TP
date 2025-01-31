@@ -98,11 +98,7 @@ public class GameView extends TFrame implements DisplayableComponent {
         if (game.getPlayerOne().hasLost() || game.getPlayerTwo().hasLost()) {
             stopLoopingMode();
 
-            AudioTrack deathAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.DEATH);
-            deathAudioTrack.setLoop(true);
-            deathAudioTrack.play();
             Terminal.getInstance().show(new FinishMenu(this, false));
-            deathAudioTrack.stop();
         }
 
         return display;
@@ -171,10 +167,6 @@ public class GameView extends TFrame implements DisplayableComponent {
 
     public Game getGame() {
         return game;
-    }
-
-    public AudioTrack getGameAudioTrack() {
-        return gameAudioTrack;
     }
 
     public GameStatistic getStatistic() {

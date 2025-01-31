@@ -3,61 +3,28 @@ package fr.esiea.inf3132tp2024.controller;
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.JarURLConnection;
+import java.net.URL;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
 public class MonstreManager {
     private static final MonstreManager INSTANCE = new MonstreManager();
 
-    /**
-     * Méthode permettant de récupérer l'instance unique de la classe.
-     */
     public static MonstreManager getInstance() {
         return INSTANCE;
     }
 
-    // Bloquer l'instanciation de la classe (pattern Singleton)
     private MonstreManager() {
+        loadExternalMonstres();
+        loadInternalMonstres();
     }
 
     private final List<MonsterTemplate> monstres = new LinkedList<>();
     private final Map<File, List<MonsterTemplate>> fileToMonstresMap = new HashMap<>();
-
-    /**
-     * Méthode permettant d'ajouter un fichier de monstres dans le répertoire resources/game/monster.
-     *
-     * @param file Le fichier à ajouter.
-     */
-    public void addFile(File file) {
-        if (isFileValid(file)) {
-            // Ajout le fichier dans le répertoire resources/game/monster
-            File monsterFolder = new File("src/main/resources/game/monster");
-            if (!monsterFolder.exists()) {
-                monsterFolder.mkdirs();
-            }
-            File newFile = new File(monsterFolder, file.getName());
-            file.renameTo(newFile);
-        } else {
-            System.out.println("Fichier invalide: " + file.getName());
-        }
-    }
-
-    /**
-     * Méthode permettant de supprimer un fichier de monstres dans le répertoire resources/game/monster.
-     *
-     * @param file Le fichier à supprimer.
-     */
-    public void removeFile(File file) {
-        if (file.exists()) {
-            file.delete();
-        } else {
-            System.out.println("Fichier inexistant: " + file.getName());
-        }
-    }
 
     /**
      * Méthode permettant de charger les monstres à partir d'un fichier.
@@ -66,45 +33,118 @@ public class MonstreManager {
      * @return La liste des monstres chargés depuis le fichier.
      */
     private List<MonsterTemplate> loadMonstres(File file) {
-        List<MonsterTemplate> loadedMonsters = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            List<String[]> currentMonsterProperties = new ArrayList<>();
-            boolean isMonsterBlock = false;
+            return parseMonstres(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (line.equalsIgnoreCase("Monster")) {
-                    isMonsterBlock = true;
-                    currentMonsterProperties = new ArrayList<>();
-                } else if (line.equalsIgnoreCase("EndMonster")) {
-                    if (isMonsterBlock && !currentMonsterProperties.isEmpty()) {
-                        // Convert List<String[]> to String[][]
-                        String[][] propertiesArray = currentMonsterProperties.toArray(new String[0][]);
-                        MonsterTemplate monster = new MonsterTemplate(propertiesArray);
-                        loadedMonsters.add(monster);
-                    }
-                    isMonsterBlock = false;
-                } else if (isMonsterBlock && !line.isEmpty()) {
-                    // Split the line by whitespace, en tenant compte des valeurs groupées
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 2) {
-                        currentMonsterProperties.add(parts);
+    private List<MonsterTemplate> loadMonstresFromStream(InputStream is) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            return parseMonstres(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    private List<MonsterTemplate> parseMonstres(BufferedReader reader) throws IOException {
+        List<MonsterTemplate> loadedMonsters = new ArrayList<>();
+        String line;
+        List<String[]> currentMonsterProperties = new ArrayList<>();
+        boolean isMonsterBlock = false;
+
+        while ((line = reader.readLine()) != null) {
+            line = line.trim();
+            if (line.equalsIgnoreCase("Monster")) {
+                isMonsterBlock = true;
+                currentMonsterProperties = new ArrayList<>();
+            } else if (line.equalsIgnoreCase("EndMonster")) {
+                if (isMonsterBlock && !currentMonsterProperties.isEmpty()) {
+                    String[][] propertiesArray = currentMonsterProperties.toArray(new String[0][]);
+                    MonsterTemplate monster = new MonsterTemplate(propertiesArray);
+                    loadedMonsters.add(monster);
+                }
+                isMonsterBlock = false;
+            } else if (isMonsterBlock && !line.isEmpty()) {
+                String[] parts = line.split("\\s+");
+                if (parts.length >= 2) {
+                    currentMonsterProperties.add(parts);
+                }
+            }
+        }
+        return loadedMonsters;
+    }
+
+    public void loadExternalMonstres() {
+        File externalDir = new File("game/monster");
+        if (externalDir.exists() && externalDir.isDirectory()) {
+            File[] files = externalDir.listFiles((dir, name) -> name.endsWith(".txt"));
+            if (files != null) {
+                for (File file : files) {
+                    List<MonsterTemplate> loaded = loadMonstres(file);
+                    monstres.addAll(loaded);
+                    fileToMonstresMap.put(file, loaded);
+                }
+            }
+        }
+    }
+
+    public void loadInternalMonstres() {
+        try {
+            List<String> internalFiles = getResourceFiles("game/monster");
+            for (String filename : internalFiles) {
+                File externalFile = new File("game/monster", filename);
+                if (!externalFile.exists()) {
+                    InputStream is = getClass().getClassLoader().getResourceAsStream("game/monster/" + filename);
+                    if (is != null) {
+                        List<MonsterTemplate> loaded = loadMonstresFromStream(is);
+                        monstres.addAll(loaded);
                     }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return loadedMonsters;
     }
 
-    /**
-     * Méthode permettant de vérifier que le fichier est au bon format.
-     *
-     * @param file Le fichier à vérifier.
-     * @return true si le fichier est au bon format, false sinon.
-     */
+    private List<String> getResourceFiles(String path) throws IOException {
+        List<String> filenames = new ArrayList<>();
+        Enumeration<URL> urls = getClass().getClassLoader().getResources(path);
+        while (urls.hasMoreElements()) {
+            URL url = urls.nextElement();
+            if (url.getProtocol().equals("jar")) {
+                JarURLConnection jarConn = (JarURLConnection) url.openConnection();
+                try (JarFile jar = jarConn.getJarFile()) {
+                    Enumeration<JarEntry> entries = jar.entries();
+                    while (entries.hasMoreElements()) {
+                        JarEntry entry = entries.nextElement();
+                        String name = entry.getName();
+                        if (name.startsWith(path) && !name.equals(path + "/")) {
+                            String entryName = name.substring(path.length() + 1);
+                            if (!entryName.contains("/")) {
+                                filenames.add(entryName);
+                            }
+                        }
+                    }
+                }
+            } else {
+                File dir = new File(url.getPath());
+                if (dir.isDirectory()) {
+                    File[] files = dir.listFiles();
+                    if (files != null) {
+                        for (File f : files) {
+                            filenames.add(f.getName());
+                        }
+                    }
+                }
+            }
+        }
+        return filenames;
+    }
+
     public boolean isFileValid(File file) {
         // Vérifier l'extension du fichier
         return file.exists() && file.isFile() && file.canRead() && file.getName().endsWith(".txt");

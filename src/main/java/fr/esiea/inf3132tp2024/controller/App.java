@@ -51,10 +51,13 @@ public class App {
             // Charger les statistiques
             StatisticsManager.getInstance().loadStatistics();
 
-            // Charger les monstres
-            //MonstreManager.getInstance().addFile();
-
             // Charger les attaques
+            AttackManager.getInstance().loadInternalAttacks();
+            AttackManager.getInstance().loadExternalAttacks();
+
+            // Charger les monstres
+            MonstreManager.getInstance().loadInternalMonstres();
+            MonstreManager.getInstance().loadExternalMonstres();
 
             // Afficher le menu principal
             MainMenu mainMenu = new MainMenu();

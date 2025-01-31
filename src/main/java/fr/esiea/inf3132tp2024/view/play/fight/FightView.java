@@ -17,7 +17,6 @@ import java.util.List;
 
 public class FightView extends TFrame implements DisplayableComponent {
     private final Fight fight;
-    private AudioTrack fightAudioTrack;
     private boolean display = true;
     private boolean over = false;
 
@@ -65,10 +64,6 @@ public class FightView extends TFrame implements DisplayableComponent {
         footer.getComponents().add(logs);
 
         this.setFooter(footer);
-
-        this.fightAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.FIGHT);
-        fightAudioTrack.setLoop(true);
-        fightAudioTrack.play();
     }
 
     @Override
@@ -88,9 +83,6 @@ public class FightView extends TFrame implements DisplayableComponent {
     @Override
     public void stopLoopingMode() {
         display = false;
-        if (fightAudioTrack != null) {
-            fightAudioTrack.stop();
-        }
     }
 
     public void updateMenuButtons() {

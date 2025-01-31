@@ -3,11 +3,12 @@ package fr.esiea.inf3132tp2024.controller;
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.file.AttackTemplate;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.JarURLConnection;
+import java.net.URL;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
 public class AttackManager {
@@ -24,57 +25,117 @@ public class AttackManager {
     private final List<AttackTemplate> attacks = new LinkedList<>();
     private final Map<File, List<AttackTemplate>> fileToAttacksMap = new HashMap<>();
 
-    public void addFile(File file) {
-        if (isFileValid(file)) {
-            File attackFolder = new File("src/main/resources/game/attack");
-            if (!attackFolder.exists()) {
-                attackFolder.mkdirs();
-            }
-            File newFile = new File(attackFolder, file.getName());
-            file.renameTo(newFile);
-        } else {
-            System.out.println("Fichier invalide: " + file.getName());
-        }
-    }
-
-    public void removeFile(File file) {
-        if (file.exists()) {
-            file.delete();
-        } else {
-            System.out.println("Fichier inexistant: " + file.getName());
-        }
-    }
-
     private List<AttackTemplate> loadAttacks(File file) {
-        List<AttackTemplate> loadedAttacks = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            List<String[]> currentAttackProperties = new ArrayList<>();
-            boolean isAttackBlock = false;
+            return parseAttacks(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (line.equalsIgnoreCase("Attack")) {
-                    isAttackBlock = true;
-                    currentAttackProperties = new ArrayList<>();
-                } else if (line.equalsIgnoreCase("EndAttack")) {
-                    if (isAttackBlock && !currentAttackProperties.isEmpty()) {
-                        String[][] propertiesArray = currentAttackProperties.toArray(new String[0][]);
-                        AttackTemplate attack = new AttackTemplate(propertiesArray);
-                        loadedAttacks.add(attack);
-                    }
-                    isAttackBlock = false;
-                } else if (isAttackBlock && !line.isEmpty()) {
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 2) {
-                        currentAttackProperties.add(parts);
+    private List<AttackTemplate> loadAttacksFromStream(InputStream is) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            return parseAttacks(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    private List<AttackTemplate> parseAttacks(BufferedReader reader) throws IOException {
+        List<AttackTemplate> loadedAttacks = new ArrayList<>();
+        String line;
+        List<String[]> currentAttackProperties = new ArrayList<>();
+        boolean isAttackBlock = false;
+
+        while ((line = reader.readLine()) != null) {
+            line = line.trim();
+            if (line.equalsIgnoreCase("Attack")) {
+                isAttackBlock = true;
+                currentAttackProperties = new ArrayList<>();
+            } else if (line.equalsIgnoreCase("EndAttack")) {
+                if (isAttackBlock && !currentAttackProperties.isEmpty()) {
+                    String[][] propertiesArray = currentAttackProperties.toArray(new String[0][]);
+                    AttackTemplate attack = new AttackTemplate(propertiesArray);
+                    loadedAttacks.add(attack);
+                }
+                isAttackBlock = false;
+            } else if (isAttackBlock && !line.isEmpty()) {
+                String[] parts = line.split("\\s+");
+                if (parts.length >= 2) {
+                    currentAttackProperties.add(parts);
+                }
+            }
+        }
+        return loadedAttacks;
+    }
+
+    public void loadExternalAttacks() {
+        File externalDir = new File("game/attack");
+        if (externalDir.exists() && externalDir.isDirectory()) {
+            File[] files = externalDir.listFiles((dir, name) -> name.endsWith(".txt"));
+            if (files != null) {
+                for (File file : files) {
+                    List<AttackTemplate> loaded = loadAttacks(file);
+                    attacks.addAll(loaded);
+                    fileToAttacksMap.put(file, loaded);
+                }
+            }
+        }
+    }
+
+    public void loadInternalAttacks() {
+        try {
+            List<String> internalFiles = getResourceFiles("game/attack");
+            for (String filename : internalFiles) {
+                File externalFile = new File("game/attack", filename);
+                if (!externalFile.exists()) {
+                    InputStream is = getClass().getClassLoader().getResourceAsStream("game/attack/" + filename);
+                    if (is != null) {
+                        List<AttackTemplate> loaded = loadAttacksFromStream(is);
+                        attacks.addAll(loaded);
                     }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return loadedAttacks;
+    }
+
+    private List<String> getResourceFiles(String path) throws IOException {
+        List<String> filenames = new ArrayList<>();
+        Enumeration<URL> urls = getClass().getClassLoader().getResources(path);
+        while (urls.hasMoreElements()) {
+            URL url = urls.nextElement();
+            if (url.getProtocol().equals("jar")) {
+                JarURLConnection jarConn = (JarURLConnection) url.openConnection();
+                try (JarFile jar = jarConn.getJarFile()) {
+                    Enumeration<JarEntry> entries = jar.entries();
+                    while (entries.hasMoreElements()) {
+                        JarEntry entry = entries.nextElement();
+                        String name = entry.getName();
+                        if (name.startsWith(path) && !name.equals(path + "/")) {
+                            String entryName = name.substring(path.length() + 1);
+                            if (!entryName.contains("/")) {
+                                filenames.add(entryName);
+                            }
+                        }
+                    }
+                }
+            } else {
+                File dir = new File(url.getPath());
+                if (dir.isDirectory()) {
+                    File[] files = dir.listFiles();
+                    if (files != null) {
+                        for (File f : files) {
+                            filenames.add(f.getName());
+                        }
+                    }
+                }
+            }
+        }
+        return filenames;
     }
 
     public boolean isFileValid(File file) {

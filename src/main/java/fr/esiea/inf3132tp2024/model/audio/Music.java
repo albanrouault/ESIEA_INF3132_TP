@@ -1,12 +1,10 @@
 package fr.esiea.inf3132tp2024.model.audio;
 
 public enum Music {
-    MENU("Stranger Things 3 - The Game Soundtrack - Hess Farm.wav"),
-    GAME("Stranger Things 3 - The Game Soundtrack - Russian Farm Base.wav"),
-    FIGHT("Final Fantasy 10 - Battle Theme.wav"),
-    DEATH("Risitas, meme Original.wav"),
+    MENU("Menu-Bourg-Palette-Pokemon-Lets-Go-PikachuLets-Go-evoli-OST.wav"),
+    GAME("Fight-Pokemon-Lets-Go-Pikachu-and-Lets-Go-Eevee.wav"),
     ERROR("Curb your enthusiasm - Credits + Theme Song.wav"),
-    WIN("I Will Survive.wav"),
+    WIN("Victory_-_Pokemon-Lets-Go-Pikachu-and-Lets-Go-Eevee-OST-_Gamerip_.wav"),
     CHEAT("Microsoft Windows XP Shutdown Sound.wav");
 
     private static final String basePath = "/assets/music/";
