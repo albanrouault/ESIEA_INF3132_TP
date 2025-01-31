@@ -2,13 +2,15 @@ package fr.esiea.inf3132tp2024.model.attack.processor;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
+import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttackEffect;
+import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttackFactory;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 
-public class AttackProcessor {
-    private final SpecialEffectStrategyFactory strategyFactory = new SpecialEffectStrategyFactory();
+import java.util.Random;
 
-    public void processAttack(Monster attacker, Attack attack, Monster defender, Terrain terrain) {
+public class AttackProcessor {
+    public static void processAttack(Random random, Monster attacker, Attack attack, Monster defender, Terrain terrain) {
         if (!attack.isUsable()) return;
 
         // Calcul des dégâts
@@ -18,11 +20,11 @@ public class AttackProcessor {
 
         // Gestion des effets spéciaux
         if (attack.getType() != Types.NORMAL) {
-            applySpecialEffect(attacker, defender, terrain);
+            applySpecialEffect(random, attacker, defender, terrain);
         }
     }
 
-    private int calculateDamage(Monster attacker, Attack attack, Monster defender) {
+    private static int calculateDamage(Monster attacker, Attack attack, Monster defender) {
         float advantage = calculateTypeAdvantage(attack.getType(), defender.getType());
         float coef = 0.85f + (float) Math.random() * 0.15f;
 
@@ -33,19 +35,16 @@ public class AttackProcessor {
         return (int) Math.round(baseDamage);
     }
 
-    private float calculateTypeAdvantage(Types attackType, Types defenderType) {
+    private static float calculateTypeAdvantage(Types attackType, Types defenderType) {
         if (attackType.isStrongAgainst(defenderType)) return 2.0f;
         if (attackType.isWeakAgainst(defenderType)) return 0.5f;
         return 1.0f;
     }
 
-    private void applySpecialEffect(Monster attacker, Monster defender, Terrain terrain) {
-        if (Math.random() > attacker.getSpecialCapacityChance()) return;
-
-        SpecialEffectStrategy strategy = strategyFactory.getStrategy(attacker.getType());
-        if (strategy != null) {
-            strategy.applyEffect(attacker, defender, terrain);
+    private static void applySpecialEffect(Random random, Monster attacker, Monster defender, Terrain terrain) {
+        SpecialAttackEffect specialAttackEffect = SpecialAttackFactory.getSpecialAttackEffect(attacker.getType());
+        if (specialAttackEffect != null) {
+            specialAttackEffect.apply(random, terrain, attacker, defender);
         }
     }
-
 }
