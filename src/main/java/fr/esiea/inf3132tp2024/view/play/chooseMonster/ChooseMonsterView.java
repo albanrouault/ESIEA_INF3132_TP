@@ -47,7 +47,7 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
 
         // Ajout du bouton de retour
         ReturnButton returnBtn = new ReturnButton();
-        monstersChoices.getComponents().add(returnBtn);
+        monstersChoices.add(returnBtn);
         monstersChoices.autoResize();
 
         // Ajout du panneau de choix de monstre au panneau principal

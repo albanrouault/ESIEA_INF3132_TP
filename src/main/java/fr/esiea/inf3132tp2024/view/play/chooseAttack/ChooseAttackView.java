@@ -34,7 +34,7 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
 
         // Ajout du bouton de retour
         ReturnButton returnBtn = new ReturnButton();
-        attackChoices.getComponents().add(returnBtn);
+        attackChoices.add(returnBtn);
         attackChoices.autoResize();
 
         // Ajout du panneau de choix d'attaque au panneau principal
