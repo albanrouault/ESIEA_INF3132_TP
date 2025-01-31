@@ -279,7 +279,7 @@ Monster
 EndMonster
 
 Monster
-    Name        Nidoran♀
+    Name        Nidoran
     Type        NATURE_INSECT
     HP          110 140
     Speed       80 110
@@ -309,7 +309,7 @@ Monster
 EndMonster
 
 Monster
-    Name        Nidoran♂
+    Name        Nidoran
     Type        NATURE_INSECT
     HP          110 140
     Speed       80 110
