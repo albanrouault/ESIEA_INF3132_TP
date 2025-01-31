@@ -1,6 +1,7 @@
-package fr.esiea.inf3132tp2024.model.attack.special;
+package fr.esiea.inf3132tp2024.model.attack.special.fire;
 
 import fr.esiea.inf3132tp2024.model.Types;
+import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttack;
 
 public class FireSpecialAttack extends SpecialAttack {
     public FireSpecialAttack() {

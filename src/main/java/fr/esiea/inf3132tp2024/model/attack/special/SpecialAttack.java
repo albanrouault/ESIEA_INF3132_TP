@@ -1,15 +1,24 @@
 package fr.esiea.inf3132tp2024.model.attack.special;
 
 import fr.esiea.inf3132tp2024.model.Types;
-import fr.esiea.inf3132tp2024.model.attack.Attack;
 
-public abstract class SpecialAttack extends Attack {
-    private String description;
+public abstract class SpecialAttack {
+    private final Types type;
+    private final String name;
+    private final String description;
 
     protected SpecialAttack(Types type, String name, String description) {
-        super(type, name);
-
+        this.type = type;
+        this.name = name;
         this.description = description;
+    }
+
+    public Types getType() {
+        return type;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {

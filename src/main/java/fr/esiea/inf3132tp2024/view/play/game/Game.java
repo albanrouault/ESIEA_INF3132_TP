@@ -19,8 +19,11 @@ import fr.esiea.inf3132tp2024.view.play.PlayerStats;
 import fr.esiea.inf3132tp2024.view.play.escape.EscapeMenu;
 import fr.esiea.inf3132tp2024.view.play.finish.FinishMenu;
 
+import java.util.Random;
+
 public class Game extends TFrame implements DisplayableComponent {
     private final long seed;
+    private final Random random;
     private final Player playerOne;
     private final Player playerTwo;
     private final Terrain terrain;
@@ -41,6 +44,7 @@ public class Game extends TFrame implements DisplayableComponent {
         super(0, 0);
 
         this.seed = seed;
+        this.random = new Random(seed);
 
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;

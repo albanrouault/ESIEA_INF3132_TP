@@ -2,7 +2,6 @@ package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
-import fr.esiea.inf3132tp2024.model.attack.special.NaturePlantSpecialAttack;
 
 public class PlantMonster extends NatureMonster {
     private final float healAfterAttackChance;
@@ -16,11 +15,10 @@ public class PlantMonster extends NatureMonster {
      * @param speed
      * @param defense
      * @param healAfterAttackChance
-     * @param specialCapacityChance
      * @param attacks
      */
-    public PlantMonster(String name, int health, int attack, int speed, int defense, float healAfterAttackChance, float specialCapacityChance, Attack[] attacks) throws MonsterTooManyAttacks {
-        super(Types.NATURE_PLANT, name, health, attack, speed, defense, new NaturePlantSpecialAttack(), specialCapacityChance, attacks);
+    public PlantMonster(String name, int health, int attack, int speed, int defense, float healAfterAttackChance, Attack[] attacks) throws MonsterTooManyAttacks {
+        super(Types.NATURE_PLANT, name, health, attack, speed, defense, attacks);
 
         this.healAfterAttackChance = healAfterAttackChance;
     }

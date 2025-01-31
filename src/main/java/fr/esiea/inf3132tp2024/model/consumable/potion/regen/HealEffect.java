@@ -13,7 +13,10 @@ public class HealEffect implements ConsumableEffect {
 
     @Override
     public boolean apply(Terrain terrain, Monster monster) {
-        monster.heal(life);
-        return true;
+        if (monster.isAlive()) {
+            monster.heal(life);
+            return true;
+        }
+        return false;
     }
 }

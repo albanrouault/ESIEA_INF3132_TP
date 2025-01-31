@@ -1,6 +1,7 @@
-package fr.esiea.inf3132tp2024.model.attack.special;
+package fr.esiea.inf3132tp2024.model.attack.special.water;
 
 import fr.esiea.inf3132tp2024.model.Types;
+import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttack;
 
 public class WaterSpecialAttack extends SpecialAttack {
     public WaterSpecialAttack() {

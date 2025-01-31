@@ -10,10 +10,6 @@ public class Attack {
 
     private int nbUses;
 
-    protected Attack(Types type, String name) {
-        this(type, name, 0, 0, 0);
-    }
-
     /***
      * Constructeur d'une attaque
      *

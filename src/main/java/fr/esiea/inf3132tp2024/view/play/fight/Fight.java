@@ -1,7 +1,7 @@
 package fr.esiea.inf3132tp2024.view.play.fight;
 
-import fr.esiea.inf3132tp2024.view.play.game.Game;
 import fr.esiea.inf3132tp2024.model.FightState;
+import fr.esiea.inf3132tp2024.model.Game;
 import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.audio.Music;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
@@ -51,7 +51,7 @@ public class Fight extends TFrame implements DisplayableComponent {
         this.terrain = game.getTerrain();
         this.playerOne = game.getPlayerOne();
         this.playerTwo = game.getPlayerTwo();
-        this.random = new Random();
+        this.random = game.getRandom();
 
         this.getContentPane().setRenderingMainPadding(false);
         this.getContentPane().setRenderingOrientation(Orientation.HORIZONTAL);

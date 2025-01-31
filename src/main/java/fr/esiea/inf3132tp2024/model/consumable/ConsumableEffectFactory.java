@@ -12,6 +12,10 @@ import fr.esiea.inf3132tp2024.model.consumable.potion.regen.HealEffect;
 import fr.esiea.inf3132tp2024.model.consumable.potion.regen.RegenPotion;
 
 public class ConsumableEffectFactory {
+    // Bloquer l'instanciation de la classe
+    private ConsumableEffectFactory() {
+    }
+
     public static ConsumableEffect createEffect(Consumable consumable) {
         // CAT : Médicaments
         if (consumable instanceof Medicine medicine) {

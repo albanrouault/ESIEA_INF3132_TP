@@ -1,14 +1,14 @@
 package fr.esiea.inf3132tp2024.controller;
 
+import fr.esiea.inf3132tp2024.model.Types;
+import fr.esiea.inf3132tp2024.model.monster.file.FileMonster;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import fr.esiea.inf3132tp2024.model.monster.file.FileMonster;
-import fr.esiea.inf3132tp2024.model.Types;
 
 public class MonstreManager {
     private final List<FileMonster> monstres = new ArrayList<>();
@@ -23,8 +23,13 @@ public class MonstreManager {
         return INSTANCE;
     }
 
+    // Bloquer l'instanciation de la classe (pattern Singleton)
+    private MonstreManager() {
+    }
+
     /**
      * Méthode permettant d'ajouter un fichier de monstres dans le répertoire resources/game/monster.
+     *
      * @param file Le fichier à ajouter.
      */
     public void addFile(File file) {
@@ -33,7 +38,7 @@ public class MonstreManager {
             File monsterFolder = new File("src/main/resources/game/monster");
             if (!monsterFolder.exists()) {
                 monsterFolder.mkdirs();
-            } 
+            }
             File newFile = new File(monsterFolder, file.getName());
             file.renameTo(newFile);
         } else {
@@ -43,6 +48,7 @@ public class MonstreManager {
 
     /**
      * Méthode permettant de supprimer un fichier de monstres dans le répertoire resources/game/monster.
+     *
      * @param file Le fichier à supprimer.
      */
     public void removeFile(File file) {
@@ -55,6 +61,7 @@ public class MonstreManager {
 
     /**
      * Méthode permettant de charger les monstres à partir d'un fichier.
+     *
      * @param file Le fichier contenant les monstres.
      * @return La liste des monstres chargés depuis le fichier.
      */
@@ -94,6 +101,7 @@ public class MonstreManager {
 
     /**
      * Méthode permettant de vérifier que le fichier est au bon format.
+     *
      * @param file Le fichier à vérifier.
      * @return true si le fichier est au bon format, false sinon.
      */
@@ -104,6 +112,7 @@ public class MonstreManager {
 
     /**
      * Méthode permettant de récupérer tous les monstres.
+     *
      * @return La liste de tous les monstres.
      */
     public List<FileMonster> getMonstres() {
@@ -112,6 +121,7 @@ public class MonstreManager {
 
     /**
      * Méthode pour récupérer les monstres par type.
+     *
      * @param type Le type de monstre recherché.
      * @return La liste des monstres correspondant au type spécifié.
      */
@@ -123,6 +133,7 @@ public class MonstreManager {
 
     /**
      * Méthode pour obtenir un monstre aléatoire.
+     *
      * @return Un monstre choisi aléatoirement, ou null si aucun monstre n'est disponible.
      */
     public FileMonster getRandomMonstre() {
@@ -135,6 +146,7 @@ public class MonstreManager {
 
     /**
      * Méthode pour obtenir un monstre aléatoire par type.
+     *
      * @param type Le type de monstre.
      * @return Un monstre aléatoire du type spécifié, ou null si aucun monstre de ce type n'est disponible.
      */
@@ -149,6 +161,7 @@ public class MonstreManager {
 
     /**
      * Méthode pour obtenir tous les types de monstres disponibles.
+     *
      * @return Un ensemble contenant tous les types de monstres présents.
      */
     public Set<Types> getAllTypes() {

@@ -2,7 +2,6 @@ package fr.esiea.inf3132tp2024.model.monster;
 
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.model.attack.Attack;
-import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttack;
 import fr.esiea.inf3132tp2024.model.monster.state.MonsterState;
 
 /**
@@ -12,8 +11,6 @@ public abstract class Monster {
     private final Types type;
     private final String name;
     private final int maxHealth;
-    private final SpecialAttack specialAttack;
-    private final float specialCapacityChance;
     private final Attack[] attacks;
 
     private MonsterState state;
@@ -31,11 +28,9 @@ public abstract class Monster {
      * @param attack
      * @param speed
      * @param defense
-     * @param specialAttack
-     * @param specialCapacityChance
      * @param attacks
      */
-    protected Monster(Types type, String name, int health, int attack, int speed, int defense, SpecialAttack specialAttack, float specialCapacityChance, Attack... attacks) throws MonsterTooManyAttacks {
+    protected Monster(Types type, String name, int health, int attack, int speed, int defense, Attack... attacks) throws MonsterTooManyAttacks {
         this.type = type;
         this.name = name;
         this.health = health;
@@ -43,8 +38,6 @@ public abstract class Monster {
         this.attack = attack;
         this.speed = speed;
         this.defense = defense;
-        this.specialAttack = specialAttack;
-        this.specialCapacityChance = specialCapacityChance;
         this.attacks = attacks;
         // Limit the number of attacks to 4
         if (attacks.length > 4) {
@@ -116,24 +109,6 @@ public abstract class Monster {
     }
 
     /**
-     * Getter for the special capacity of the monster
-     *
-     * @return the special capacity of the monster
-     */
-    public SpecialAttack getSpecialCapacity() {
-        return specialAttack;
-    }
-
-    /**
-     * Getter for the special capacity chance of the monster
-     *
-     * @return the special capacity chance of the monster
-     */
-    public float getSpecialCapacityChance() {
-        return specialCapacityChance;
-    }
-
-    /**
      * Getter for the attacks of the monster
      *
      * @return the attacks of the monster
@@ -189,6 +164,15 @@ public abstract class Monster {
      */
     public void heal(int health) {
         this.health = Math.min(this.health + health, maxHealth);
+    }
+
+    /**
+     * Damage the monster
+     *
+     * @param damage the amount of damage to deal
+     */
+    public void damage(int damage) {
+        health = Math.max(health - damage, 0);
     }
 
     /**

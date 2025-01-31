@@ -22,8 +22,10 @@ public class AppSettings {
 
     /**
      * Méthode permettant de définir les paramètres de l'application.
+     * <p>
+     * Bloquer l'instanciation de la classe (pattern Singleton)
      */
-    public AppSettings() {
+    private AppSettings() {
         String detectedConsoleLengthStr = System.getProperty("COLUMNS");
         if (detectedConsoleLengthStr != null) {
             int detectedConsoleLength = Integer.parseInt(detectedConsoleLengthStr);

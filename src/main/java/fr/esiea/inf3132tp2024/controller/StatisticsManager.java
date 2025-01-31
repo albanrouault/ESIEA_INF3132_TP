@@ -15,6 +15,10 @@ public class StatisticsManager {
         return INSTANCE;
     }
 
+    // Bloquer l'instanciation de la classe (pattern Singleton)
+    private StatisticsManager() {
+    }
+
     private final List<GameStatistic> gameStatistics = new ArrayList<>();
 
     /**

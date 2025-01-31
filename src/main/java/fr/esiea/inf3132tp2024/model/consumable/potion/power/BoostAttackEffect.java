@@ -13,7 +13,10 @@ public class BoostAttackEffect implements ConsumableEffect {
 
     @Override
     public boolean apply(Terrain terrain, Monster monster) {
-        monster.strengthen(power);
-        return true;
+        if (monster.isAlive()) {
+            monster.strengthen(power);
+            return true;
+        }
+        return false;
     }
 }

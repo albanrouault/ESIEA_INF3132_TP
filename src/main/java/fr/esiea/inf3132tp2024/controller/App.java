@@ -19,6 +19,10 @@ public class App {
         return INSTANCE;
     }
 
+    // Bloquer l'instanciation de la classe (pattern Singleton)
+    private App() {
+    }
+
     /**
      * Méthode permettant de démarrer l'application.
      */
