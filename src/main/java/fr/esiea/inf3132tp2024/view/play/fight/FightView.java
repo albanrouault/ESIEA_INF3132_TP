@@ -59,18 +59,26 @@ public class FightView extends TFrame implements DisplayableComponent {
         this.terrainStats = new TerrainStats(fight.getTerrain());
         centerPanel.getComponents().add(terrainStats);
         this.gameActions = new TChoices(Orientation.VERTICAL, 1);
-        SelectableComponent attackButtonPlayerOne = new AttackButton(this, fight, fight.getPlayerOne(), fight.getPlayerTwo(), fight.getPlayerOne().getCurrentMonster(), fight.getPlayerTwo().getCurrentMonster());
-        gameActions.add(attackButtonPlayerOne);
-        playerButtons.get(fight.getPlayerOne()).add(attackButtonPlayerOne);
-        SelectableComponent attackButtonPlayerTwo = new AttackButton(this, fight, fight.getPlayerTwo(), fight.getPlayerOne(), fight.getPlayerTwo().getCurrentMonster(), fight.getPlayerOne().getCurrentMonster());
-        gameActions.add(attackButtonPlayerTwo);
-        playerButtons.get(fight.getPlayerTwo()).add(attackButtonPlayerTwo);
-        SelectableComponent changeMonsterButtonPlayerOne = new ChangeMonsterButton(this, fight.getPlayerOne(), fight.getPlayerTwo());
-        gameActions.add(changeMonsterButtonPlayerOne);
-        playerButtons.get(fight.getPlayerOne()).add(changeMonsterButtonPlayerOne);
-        SelectableComponent changeMonsterButtonPlayerTwo = new ChangeMonsterButton(this, fight.getPlayerTwo(), fight.getPlayerOne());
-        gameActions.add(changeMonsterButtonPlayerTwo);
-        playerButtons.get(fight.getPlayerTwo()).add(changeMonsterButtonPlayerTwo);
+        if (fight.getPlayerOne().getCurrentMonster().isAlive()) {
+            SelectableComponent attackButtonPlayerOne = new AttackButton(this, fight, fight.getPlayerOne(), fight.getPlayerTwo(), fight.getPlayerOne().getCurrentMonster(), fight.getPlayerTwo().getCurrentMonster());
+            gameActions.add(attackButtonPlayerOne);
+            playerButtons.get(fight.getPlayerOne()).add(attackButtonPlayerOne);
+        }
+        if (fight.getPlayerTwo().getCurrentMonster().isAlive()) {
+            SelectableComponent attackButtonPlayerTwo = new AttackButton(this, fight, fight.getPlayerTwo(), fight.getPlayerOne(), fight.getPlayerTwo().getCurrentMonster(), fight.getPlayerOne().getCurrentMonster());
+            gameActions.add(attackButtonPlayerTwo);
+            playerButtons.get(fight.getPlayerTwo()).add(attackButtonPlayerTwo);
+        }
+        if (fight.getPlayerOne().getMonsters().length > 1) {
+            SelectableComponent changeMonsterButtonPlayerOne = new ChangeMonsterButton(this, fight.getPlayerOne(), fight.getPlayerTwo());
+            gameActions.add(changeMonsterButtonPlayerOne);
+            playerButtons.get(fight.getPlayerOne()).add(changeMonsterButtonPlayerOne);
+        }
+        if (fight.getPlayerTwo().getMonsters().length > 1) {
+            SelectableComponent changeMonsterButtonPlayerTwo = new ChangeMonsterButton(this, fight.getPlayerTwo(), fight.getPlayerOne());
+            gameActions.add(changeMonsterButtonPlayerTwo);
+            playerButtons.get(fight.getPlayerTwo()).add(changeMonsterButtonPlayerTwo);
+        }
         SelectableComponent useItemButtonPlayerOne = new UseItemButton(this, fight, fight.getPlayerOne(), fight.getPlayerOne().getCurrentMonster());
         gameActions.add(useItemButtonPlayerOne);
         playerButtons.get(fight.getPlayerOne()).add(useItemButtonPlayerOne);
