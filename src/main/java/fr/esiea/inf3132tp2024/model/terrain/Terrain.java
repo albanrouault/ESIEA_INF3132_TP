@@ -30,7 +30,7 @@ public class Terrain {
      * @throws TerrainHasAlreadyAnEffect si un effet est déjà actif
      */
     public void setEffect(TerrainEffect effect) throws TerrainHasAlreadyAnEffect {
-        if (effect != null && this.effect.getTurnsLeft() > 0) {
+        if (effect != null && this.effect != null && this.effect.getTurnsLeft() > 0) {
             throw new TerrainHasAlreadyAnEffect("Le terrain a déjà un effet actif");
         }
         this.effect = effect;
