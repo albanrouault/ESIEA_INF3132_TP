@@ -10,6 +10,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.model.Types;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import java.util.LinkedList;
 import fr.esiea.inf3132tp2024.controller.MonstreManager;
 
@@ -22,7 +23,7 @@ public class ChooseMonstersView extends TFrame implements DisplayableComponent {
     private TLabel monsterLabelThree;
     private TLabel monsterLabelFour;
     private ChooseMonstersButtonCancel cancelButton;
-    private LinkedList<ChooseMonsterButton> monsterButtons;
+    private LinkedList<ChooseMonsterButton> monsterButtons = new LinkedList<>();
     private DisplayableComponent previousView;
     private boolean display = true;
 
@@ -65,10 +66,30 @@ public class ChooseMonstersView extends TFrame implements DisplayableComponent {
 
         // On crée un bouton pour chaque monstre dans la liste monsters
         for (MonsterTemplate monster : monsters) {
-            this.monsterButtons.add(new ChooseMonsterButton(this, selectedMonsters, monster));
+            this.monsterButtons.add(new ChooseMonsterButton(previousView, selectedMonsters, monster));
         }
 
         // On construit la page
+        // On récup le panneau principal et on le met en ligne
+        TPanel mainPanel = this.getContentPane();
+        // Les textes des monstres
+        TPanel textMonsters = new TPanel(100,4);
+        textMonsters.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        textMonsters.setRenderingOrientation(Orientation.HORIZONTAL);
+        textMonsters.getComponents().add(monsterLabelOne);
+        textMonsters.getComponents().add(monsterLabelTwo);
+        textMonsters.getComponents().add(monsterLabelThree);
+        textMonsters.getComponents().add(monsterLabelFour);
+        mainPanel.getComponents().add(textMonsters);
+
+        // Les choix de types
+        TChoices choices = new TChoices(1);
+        choices.add(cancelButton);
+        choices.getComponents().add(new TLabel(""));
+        mainPanel.getComponents().add(choices);
+        for (ChooseMonsterButton monsterButton : monsterButtons) {
+            choices.add(monsterButton);
+        }
     }
 
     public void addMonster(MonsterTemplate monster) {

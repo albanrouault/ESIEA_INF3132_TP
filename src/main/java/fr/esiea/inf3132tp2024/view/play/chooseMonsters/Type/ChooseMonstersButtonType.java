@@ -7,16 +7,38 @@ import java.util.ArrayList;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.play.chooseMonsters.Monster.ChooseMonstersView;
+import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
 
 public class ChooseMonstersButtonType extends TButton {
     private ArrayList<MonsterTemplate> selectedMonsters;
     private DisplayableComponent previousView;
     private Types typeMonster;
     public ChooseMonstersButtonType(ArrayList<MonsterTemplate> selectedMonsters, DisplayableComponent previousView, Types typeMonster) {
-        super("Choisir un monstre");
+        super(typeMonster.toString());
         this.selectedMonsters = selectedMonsters;
         this.previousView = previousView;
         this.typeMonster = typeMonster;
+
+        switch (typeMonster) {
+            case FIRE:
+                this.getColors().add(TColor.RED);
+                break;
+            case WATER:
+                this.getColors().add(TColor.BLUE);
+                break;
+            case EARTH:
+                this.getColors().add(TColor.YELLOW);
+                break;
+            case ELECTRIC:
+                this.getColors().add(TColor.BRIGHT_CYAN);
+                break;
+            case NATURE_PLANT:
+                this.getColors().add(TColor.GREEN);
+                break;
+            case NATURE_INSECT:
+                this.getColors().add(TColor.BRIGHT_MAGENTA);
+                break;
+        }
     }
 
     @Override
