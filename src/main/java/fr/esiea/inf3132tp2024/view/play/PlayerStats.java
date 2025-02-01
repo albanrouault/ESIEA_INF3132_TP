@@ -54,9 +54,9 @@ public class PlayerStats extends TPanel {
             monstersPanel.getComponents().add(stats);
         }
 
-        // Cas d'aucun monstre valide
+        // Cas d'aucun monstre sélectionné
         if (orderedMonsters.isEmpty()) {
-            TLabel emptyLabel = new TLabel("Aucun monstre valide !");
+            TLabel emptyLabel = new TLabel("Aucun monstre sélectionné");
             emptyLabel.getColors().add(TColor.RED);
             monstersPanel.getComponents().add(emptyLabel);
         }

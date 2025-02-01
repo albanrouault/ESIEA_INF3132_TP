@@ -87,12 +87,12 @@ public class OkButton extends TButton {
         // Choose default monster
         // Player one
         do {
-            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerOne, false);
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerOne, playerTwo, false);
             Terminal.getInstance().show(chooseMonsterView);
         } while (playerOne.getCurrentMonster() == null);
         // Player two
         do {
-            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerTwo, false);
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerTwo, playerTwo, false);
             Terminal.getInstance().show(chooseMonsterView);
         } while (playerTwo.getCurrentMonster() == null);
 
