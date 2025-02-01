@@ -9,7 +9,7 @@ import fr.esiea.inf3132tp2024.model.terrain.Terrain;
 public class CureBurnEffect implements ConsumableEffect {
     @Override
     public boolean apply(Terrain terrain, Monster monster) {
-        if (monster.getState() instanceof BurntState) {
+        if (monster.isAlive() && monster.getState() instanceof BurntState) {
             try {
                 monster.setState(null);
             } catch (MonsterHasAlreadyAState e) {

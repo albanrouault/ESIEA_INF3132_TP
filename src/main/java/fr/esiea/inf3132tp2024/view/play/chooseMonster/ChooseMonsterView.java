@@ -4,59 +4,94 @@ import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
+import fr.esiea.inf3132tp2024.view.play.MonsterStats;
+import fr.esiea.inf3132tp2024.view.play.PlayerStats;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Vue de sélection du monstre qui doit combattre.
  * Cette vue est accessible depuis la GameView via un bouton.
  */
 public class ChooseMonsterView extends TFrame implements DisplayableComponent {
-    private final TPanel monstersPanel;
+    private final TPanel leftPanel;
+    private final TPanel centerPanel;
+    private final TPanel rightPanel;
+    private final PlayerStats currentPlayerStats;
+    private final PlayerStats opponentStats;
     private final TChoices monstersChoices;
+    private final List<MonsterStats> otherMonstersStats = new LinkedList<>();
     private final Player currentPlayer;
+    private final Player opponent;
     private boolean display = true;
     private boolean choiceMade = false;
 
-    /**
-     * Constructeur de la vue de sélection du monstre.
-     *
-     * @param currentPlayer le joueur qui veut choisir un monstre
-     * @param back          true si un bouton de retour doit être affiché
-     */
-    public ChooseMonsterView(Player currentPlayer, boolean back) {
+    public ChooseMonsterView(Player currentPlayer, Player opponent, boolean back) {
         super(0, 0, currentPlayer.getName() + " - Choisir un monstre");
         this.currentPlayer = currentPlayer;
+        this.opponent = opponent;
 
-        // Initialisation du panneau vertical pour lister les monstres disponibles
-        monstersPanel = new TPanel(0, 0);
+        // Configuration du contentPane
+        this.getContentPane().setRenderingOrientation(Orientation.HORIZONTAL);
+        this.getContentPane().setRenderingMainPadding(true);
+
+        leftPanel = new TPanel(0, 0);
+        centerPanel = new TPanel(0, 0);
+        rightPanel = new TPanel(0, 0);
+
+        // Panel gauche - Stats joueur actuel + sélection
+        currentPlayerStats = new PlayerStats(currentPlayer, true);
+        leftPanel.getComponents().add(currentPlayerStats);
+
+        // Choix des monstres
         monstersChoices = new TChoices(Orientation.VERTICAL, 1);
+        populateMonsterChoices();
+        if (back) {
+            monstersChoices.add(new ReturnButton());
+        }
+        leftPanel.getComponents().add(monstersChoices);
 
-        // Récupérer le joueur courant à partir de la GameView
-        // On suppose que la méthode getCurrentPlayer() existe dans la classe Game.
-        // Pour chaque monstre non vaincu, créer un bouton de sélection
+        // Panel centre - Stats autres monstres non sélectionnés
+        refreshOtherMonsters();
+
+        // Panel droit - Stats adversaire
+        opponentStats = new PlayerStats(opponent, false);
+        rightPanel.getComponents().add(opponentStats);
+
+        // Assemblage
+        this.getContentPane().getComponents().add(leftPanel);
+        this.getContentPane().getComponents().add(centerPanel);
+        this.getContentPane().getComponents().add(rightPanel);
+    }
+
+    private void populateMonsterChoices() {
         for (Monster monster : currentPlayer.getMonsters()) {
-            if (monster.isAlive()) {
-                MonsterButton b = new MonsterButton(monster);
-                monstersChoices.add(b);
+            if (monster.isAlive() && monster != currentPlayer.getCurrentMonster()) {
+                MonsterButton btn = new MonsterButton(monster);
+                monstersChoices.add(btn);
             }
         }
+        monstersChoices.autoResize();
+    }
 
-        // Ajout du bouton de retour
-        if (back) {
-            ReturnButton returnBtn = new ReturnButton();
-            monstersChoices.add(returnBtn);
-            monstersChoices.autoResize();
+    private void refreshOtherMonsters() {
+        centerPanel.getComponents().clear();
+        otherMonstersStats.clear();
+
+        for (Monster monster : currentPlayer.getMonsters()) {
+            if (monster != currentPlayer.getCurrentMonster() && monster.isAlive()) {
+                MonsterStats stats = new MonsterStats(monster);
+                otherMonstersStats.add(stats);
+                centerPanel.getComponents().add(stats);
+            }
         }
-
-        // Ajout du panneau de choix de monstre au panneau principal
-        monstersPanel.getComponents().add(monstersChoices);
-        monstersPanel.autoResize();
-
-        // Ajout du panneau au content pane
-        this.getContentPane().getComponents().add(monstersPanel);
+        centerPanel.autoResize();
     }
 
     @Override
@@ -74,41 +109,54 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
         display = false;
     }
 
+    @Override
+    public void setLength(int length) {
+        super.setLength(length);
+        int contentWidth = length - 2;
+        leftPanel.setLength((int) (contentWidth * 0.3));
+        centerPanel.setLength((int) (contentWidth * 0.4));
+        rightPanel.setLength((int) (contentWidth * 0.3));
+        currentPlayerStats.setLength((int) (contentWidth * 0.3));
+        opponentStats.setLength((int) (contentWidth * 0.3));
+        for (MonsterStats stats : otherMonstersStats) {
+            stats.setLength((int) (contentWidth * 0.4));
+        }
+    }
+
+    @Override
+    public void setHeight(int height) {
+        super.setHeight(height);
+        int contentHeight = height - 4;
+        leftPanel.setHeight(contentHeight);
+        centerPanel.setHeight(contentHeight);
+        rightPanel.setHeight(contentHeight);
+    }
+
     public boolean isChoiceMade() {
         return choiceMade;
     }
 
-    /**
-     * Bouton interne représentant un monstre sélectionnable.
-     */
     private class MonsterButton extends TButton {
         private final Monster monster;
 
         public MonsterButton(Monster monster) {
-            // Le texte du bouton affiche le nom et quelques stats (ATQ/VIT/DEF)
-            super(monster.getName() + " | ATQ:" + monster.getAttack() + " VIT:" + monster.getSpeed() + " DEF:" + monster.getDefense());
+            super(monster.getName());
             this.monster = monster;
         }
 
         @Override
         public void execute() {
-            // Lors de la sélection, on informe la GameView du choix effectué.
-            // On suppose que GameView dispose d'une méthode selectMonster(Monster monster)
             currentPlayer.setCurrentMonster(monster);
-
             choiceMade = true;
-
-            // Arrêter le mode looping pour clore cette vue
+            refreshOtherMonsters();
             stopLoopingMode();
         }
     }
 
-    /**
-     * Bouton interne pour revenir à la vue précédente.
-     */
     private class ReturnButton extends TButton {
         public ReturnButton() {
             super("Retour");
+            this.getColors().add(TColor.RED);
         }
 
         @Override

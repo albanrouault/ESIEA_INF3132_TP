@@ -9,7 +9,7 @@ import fr.esiea.inf3132tp2024.model.terrain.effect.FloodTerrainEffect;
 public class DryTerrainEffect implements ConsumableEffect {
     @Override
     public boolean apply(Terrain terrain, Monster monster) {
-        if (terrain.getEffect() instanceof FloodTerrainEffect) {
+        if (monster.isAlive() && terrain.getEffect() instanceof FloodTerrainEffect) {
             try {
                 terrain.setEffect(null);
             } catch (TerrainHasAlreadyAnEffect e) {

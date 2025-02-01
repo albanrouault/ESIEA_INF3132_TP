@@ -16,15 +16,17 @@ import fr.esiea.inf3132tp2024.view.play.chooseAttack.ChooseAttackView;
 public class AttackButton extends TButton {
     private final FightView fightView;
     private final Player player;
+    private final Player opponent;
     private final Terrain terrain;
     private final Monster monster;
     private final Monster opponentMonster;
 
-    public AttackButton(FightView fightView, Fight fight, Player player, Monster monster, Monster opponentMonster) {
+    public AttackButton(FightView fightView, Fight fight, Player player, Player opponent, Monster monster, Monster opponentMonster) {
         super(player.getName() + "\nAttaquer");
 
         this.fightView = fightView;
         this.player = player;
+        this.opponent = opponent;
         this.terrain = fight.getTerrain();
         this.monster = monster;
         this.opponentMonster = opponentMonster;
@@ -32,7 +34,7 @@ public class AttackButton extends TButton {
 
     @Override
     public void execute() {
-        ChooseAttackView chooseAttackView = new ChooseAttackView(player, monster, monster.getAttacks());
+        ChooseAttackView chooseAttackView = new ChooseAttackView(player, opponent, monster, monster.getAttacks());
 
         Terminal.getInstance().show(chooseAttackView);
 
