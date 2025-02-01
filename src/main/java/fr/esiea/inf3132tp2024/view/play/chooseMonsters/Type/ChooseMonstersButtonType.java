@@ -14,7 +14,7 @@ public class ChooseMonstersButtonType extends TButton {
     private DisplayableComponent previousView;
     private Types typeMonster;
     public ChooseMonstersButtonType(ArrayList<MonsterTemplate> selectedMonsters, DisplayableComponent previousView, Types typeMonster) {
-        super(typeMonster.toString());
+        super(typeMonster.getName());
         this.selectedMonsters = selectedMonsters;
         this.previousView = previousView;
         this.typeMonster = typeMonster;
