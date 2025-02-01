@@ -20,6 +20,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TInfoDialog;
 import fr.esiea.inf3132tp2024.view.main.menu.MainMenu;
+import fr.esiea.inf3132tp2024.view.play.chooseMonster.ChooseMonsterView;
 import fr.esiea.inf3132tp2024.view.play.game.GameView;
 
 import java.util.Random;
@@ -56,10 +57,6 @@ public class OkButton extends TButton {
         long seed = getSeed(playMenu.getSeedField().getText());
 
         playMenu.stopLoopingMode();
-        AudioTrack menuAudioTrack = mainMenu.getMenuAudioTrack();
-        if (menuAudioTrack != null) {
-            menuAudioTrack.stop();
-        }
 
         Random random = new Random(seed);
 
@@ -74,8 +71,29 @@ public class OkButton extends TButton {
                 generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
         Game game = new Game(seed, random, playerOne, playerTwo);
+
+        // Choose default monster
+        // Player one
+        do {
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerOne, false);
+            Terminal.getInstance().show(chooseMonsterView);
+        } while (playerOne.getCurrentMonster() == null);
+        // Player two
+        do {
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerTwo, false);
+            Terminal.getInstance().show(chooseMonsterView);
+        } while (playerTwo.getCurrentMonster() == null);
+
+        // Stop menu music
+        AudioTrack menuAudioTrack = mainMenu.getMenuAudioTrack();
+        if (menuAudioTrack != null) {
+            menuAudioTrack.stop();
+        }
+
+        // Start game
         Terminal.getInstance().show(new GameView(game));
 
+        // Restart menu music
         if (menuAudioTrack != null) {
             menuAudioTrack.setVolume(AppSettings.getInstance().getMusicVolume());
             menuAudioTrack.restart();
