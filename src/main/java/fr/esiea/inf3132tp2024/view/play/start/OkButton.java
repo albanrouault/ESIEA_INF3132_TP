@@ -73,12 +73,16 @@ public class OkButton extends TButton {
                     generateRandomMonster(random),
                     generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
+        } else {
+            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]), new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+        }
+
+        if (listMonstrePlayerTwo.isEmpty()) {
             playerTwo = new Player(playerTwoName, new Monster[]{
                     generateRandomMonster(random),
                     generateRandomMonster(random),
                     generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         } else {
-            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]), new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
             playerTwo = new Player(playerTwoName, listMonstrePlayerTwo.toArray(new Monster[0]), new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         }
 

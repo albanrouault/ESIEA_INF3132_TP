@@ -11,7 +11,7 @@ public class ChooseMonstersButtonCancel extends TButton {
     private DisplayableComponent previousView;
 
     public ChooseMonstersButtonCancel(ArrayList<MonsterTemplate> selectedMonsters, DisplayableComponent previousView) {
-        super("Annuler");
+        super("Abandonner");
         this.selectedMonsters = selectedMonsters;
         this.previousView = previousView;
     }

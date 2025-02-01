@@ -11,6 +11,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.model.Types;
 import fr.esiea.inf3132tp2024.view.play.chooseMonsters.Type.ChooseMonstersButtonType;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 
 public class ChooseMonstersTypeView extends TFrame implements DisplayableComponent {
     private ArrayList<MonsterTemplate> selectedMonsters;
@@ -44,27 +45,36 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
         this.cancelButton = new ChooseMonstersButtonCancel(selectedMonsters, previousView);
 
         // Création des boutons de choix de type de monstre
-        this.chooseMonstersButtonTypeElectric = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.ELECTRIC);
+        this.chooseMonstersButtonTypeElectric = new ChooseMonstersButtonType(selectedMonsters, previousView,
+                Types.ELECTRIC);
         this.chooseMonstersButtonTypeEarth = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.EARTH);
         this.chooseMonstersButtonTypeFire = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.FIRE);
         this.chooseMonstersButtonTypeWater = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.WATER);
-        this.chooseMonstersButtonTypeNaturePlant = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.NATURE_PLANT);
-        this.chooseMonstersButtonTypeNatureInsect = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.NATURE_INSECT);
+        this.chooseMonstersButtonTypeNaturePlant = new ChooseMonstersButtonType(selectedMonsters, previousView,
+                Types.NATURE_PLANT);
+        this.chooseMonstersButtonTypeNatureInsect = new ChooseMonstersButtonType(selectedMonsters, previousView,
+                Types.NATURE_INSECT);
 
-        // Pour chaque monstre dans la liste on change le label en fonction du type de monstre
-        // S'il y a un élément à la position 0, on change le label en fonction du type de monstre
+        // Pour chaque monstre dans la liste on change le label en fonction du type de
+        // monstre
+        // S'il y a un élément à la position 0, on change le label en fonction du type
+        // de monstre
         if (selectedMonsters.size() > 0) {
             this.monsterLabelOne.setText(selectedMonsters.get(0).getName() + "\n" + selectedMonsters.get(0).getName());
         }
-        // S'il y a un élément à la position 1, on change le label en fonction du type de monstre
+        // S'il y a un élément à la position 1, on change le label en fonction du type
+        // de monstre
         if (selectedMonsters.size() > 1) {
             this.monsterLabelTwo.setText(selectedMonsters.get(1).getName() + "\n" + selectedMonsters.get(1).getName());
         }
-        // S'il y a un élément à la position 2, on change le label en fonction du type de monstre
+        // S'il y a un élément à la position 2, on change le label en fonction du type
+        // de monstre
         if (selectedMonsters.size() > 2) {
-            this.monsterLabelThree.setText(selectedMonsters.get(2).getName() + "\n" + selectedMonsters.get(2).getName());
+            this.monsterLabelThree
+                    .setText(selectedMonsters.get(2).getName() + "\n" + selectedMonsters.get(2).getName());
         }
-        // S'il y a un élément à la position 3, on change le label en fonction du type de monstre
+        // S'il y a un élément à la position 3, on change le label en fonction du type
+        // de monstre
         if (selectedMonsters.size() > 3) {
             this.monsterLabelFour.setText(selectedMonsters.get(3).getName() + "\n" + selectedMonsters.get(3).getName());
         }
@@ -75,6 +85,35 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
         }
 
         // On construit la page
+
+        // On récup le panneau principal et on le met en ligne
+        TPanel mainPanel = this.getContentPane();
+        // Les textes des monstres
+        TPanel textMonsters = new TPanel(100, 4);
+        textMonsters.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        textMonsters.setRenderingOrientation(Orientation.HORIZONTAL);
+        textMonsters.getComponents().add(monsterLabelOne);
+        textMonsters.getComponents().add(monsterLabelTwo);
+        textMonsters.getComponents().add(monsterLabelThree);
+        textMonsters.getComponents().add(monsterLabelFour);
+        mainPanel.getComponents().add(textMonsters);
+
+        // Les choix de types
+        TChoices choices = new TChoices(1);
+        choices.add(cancelButton);
+        if (selectedMonsters.size() == 4) {
+            choices.add(validateButton);
+        } else {
+            choices.getComponents().add(new TLabel(""));
+            choices.add(chooseMonstersButtonTypeElectric);
+            choices.add(chooseMonstersButtonTypeEarth);
+            choices.add(chooseMonstersButtonTypeFire);
+            choices.add(chooseMonstersButtonTypeWater);
+            choices.add(chooseMonstersButtonTypeNaturePlant);
+            choices.add(chooseMonstersButtonTypeNatureInsect);
+        }
+
+        mainPanel.getComponents().add(choices);
 
     }
 
