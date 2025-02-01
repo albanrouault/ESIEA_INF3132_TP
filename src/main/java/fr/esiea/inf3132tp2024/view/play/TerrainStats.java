@@ -26,15 +26,16 @@ public class TerrainStats extends TPanel {
         if (terrain.hasEffect()) {
             state.append(terrain.getEffect().getName());
             if (terrain.getEffect().isPermanent()) {
-                state.append(" (permanent)");
+                state.append("\n(permanent)");
             } else {
-                state.append(" (").append(terrain.getEffect().getTurnsLeft()).append(" tours)");
+                state.append("\n(").append(terrain.getEffect().getTurnsLeft()).append(" tours)");
             }
         } else {
             state.append("Normal");
         }
         this.stateLabel = new TLabel("État: " + state);
         this.stateLabel.getColors().add(TColor.YELLOW);
+        this.stateLabel.setHeight(2);
 
         // Assemblage
         this.head = new TPanel(0, 0, Orientation.VERTICAL, true);
@@ -55,9 +56,9 @@ public class TerrainStats extends TPanel {
         if (terrain.hasEffect()) {
             state.append(terrain.getEffect().getName());
             if (terrain.getEffect().isPermanent()) {
-                state.append(" (permanent)");
+                state.append("\n(permanent)");
             } else {
-                state.append(" (").append(terrain.getEffect().getTurnsLeft()).append(" tours)");
+                state.append("\n(").append(terrain.getEffect().getTurnsLeft()).append(" tours)");
             }
         } else {
             state.append("Normal");
