@@ -103,7 +103,11 @@ public class GameView extends TFrame implements DisplayableComponent {
     public boolean isInLoopingMode() {
         if (game.getPlayerOne().hasLost() || game.getPlayerTwo().hasLost()) {
             stopLoopingMode();
+
+            AudioTrack winAudioTrack = AudioPlayer.getInstance().createAudioTrack(Music.WIN);
+            winAudioTrack.play();
             Terminal.getInstance().show(new FinishMenu(this));
+            winAudioTrack.stop();
         }
         return display;
     }

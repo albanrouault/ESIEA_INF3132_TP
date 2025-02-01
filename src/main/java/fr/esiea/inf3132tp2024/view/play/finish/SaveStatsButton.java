@@ -28,8 +28,8 @@ public class SaveStatsButton extends TButton {
         StatisticsManager.getInstance().addStatistic(gameStatistic);
 
         // Suppression des composants liés à la sauvegarde
-        finishMenu.getContentPane().getComponents().remove(finishMenu.getNameLabel1());
-        finishMenu.getContentPane().getComponents().remove(finishMenu.getNameLabel2());
+        finishMenu.getButtons().getComponents().remove(finishMenu.getNameLabel1());
+        finishMenu.getButtons().getComponents().remove(finishMenu.getNameLabel2());
         finishMenu.getButtons().remove(nameFieldPlayer1);
         finishMenu.getButtons().remove(nameFieldPlayer2);
         finishMenu.getButtons().remove(this);
