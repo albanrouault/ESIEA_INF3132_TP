@@ -68,20 +68,18 @@ public class OkButton extends TButton {
         Player playerTwo;
 
         if (listMonstrePlayerOne.isEmpty() || listMonstrePlayerTwo.isEmpty()) {
-        
+            playerOne = new Player(playerOneName, new Monster[]{
+                    generateRandomMonster(random),
+                    generateRandomMonster(random),
+                    generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
-        playerOne = new Player(playerOneName, new Monster[]{
-                generateRandomMonster(random),
-                generateRandomMonster(random),
-                generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
-
-        playerTwo = new Player(playerTwoName, new Monster[]{
-                generateRandomMonster(random),
-                generateRandomMonster(random),
-                generateRandomMonster(random)}, new Consumable[0]);
+            playerTwo = new Player(playerTwoName, new Monster[]{
+                    generateRandomMonster(random),
+                    generateRandomMonster(random),
+                    generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         } else {
-            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]),  new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
-            playerTwo = new Player(playerTwoName, listMonstrePlayerTwo.toArray(new Monster[0]),  new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]), new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+            playerTwo = new Player(playerTwoName, listMonstrePlayerTwo.toArray(new Monster[0]), new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         }
 
         Game game = new Game(seed, random, playerOne, playerTwo);
