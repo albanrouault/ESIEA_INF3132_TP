@@ -23,6 +23,7 @@ import fr.esiea.inf3132tp2024.view.main.menu.MainMenu;
 import fr.esiea.inf3132tp2024.view.play.chooseMonster.ChooseMonsterView;
 import fr.esiea.inf3132tp2024.view.play.game.GameView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class OkButton extends TButton {
@@ -30,11 +31,15 @@ public class OkButton extends TButton {
 
     private final MainMenu mainMenu;
     private final PlayMenu playMenu;
+    private ArrayList<MonsterTemplate> listMonstrePlayerOne;
+    private ArrayList<MonsterTemplate> listMonstrePlayerTwo;
 
-    public OkButton(MainMenu mainMenu, PlayMenu playMenu) {
+    public OkButton(MainMenu mainMenu, PlayMenu playMenu, ArrayList<MonsterTemplate> listMonstrePlayerOne, ArrayList<MonsterTemplate> listMonstrePlayerTwo) {
         super("Lancer la partie");
         this.mainMenu = mainMenu;
         this.playMenu = playMenu;
+        this.listMonstrePlayerOne = listMonstrePlayerOne;
+        this.listMonstrePlayerTwo = listMonstrePlayerTwo;
     }
 
     @Override
@@ -59,16 +64,25 @@ public class OkButton extends TButton {
         playMenu.stopLoopingMode();
 
         Random random = new Random(seed);
+        Player playerOne;
+        Player playerTwo;
 
-        Player playerOne = new Player(playerOneName, new Monster[]{
+        if (listMonstrePlayerOne.isEmpty() || listMonstrePlayerTwo.isEmpty()) {
+        
+
+        playerOne = new Player(playerOneName, new Monster[]{
                 generateRandomMonster(random),
                 generateRandomMonster(random),
                 generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
-        Player playerTwo = new Player(playerTwoName, new Monster[]{
+        playerTwo = new Player(playerTwoName, new Monster[]{
                 generateRandomMonster(random),
                 generateRandomMonster(random),
-                generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+                generateRandomMonster(random)}, new Consumable[0]);
+        } else {
+            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]),  new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+            playerTwo = new Player(playerTwoName, listMonstrePlayerTwo.toArray(new Monster[0]),  new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+        }
 
         Game game = new Game(seed, random, playerOne, playerTwo);
 
