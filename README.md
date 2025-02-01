@@ -167,7 +167,6 @@ Pour les attaques, il faut mettre les types des attaques, ils sont :
 Nous vous prions de nous excuser pour le projet. Nous n’avons pas pu le finaliser ni retravailler le code comme prévu. Plutôt que de trouver des excuses, nous admettons avoir sous-estimé la complexité du projet et avoir été débordés par d’autres priorités. Nous espérons tout de même que vous apprécierez le travail que nous avons fait. Bon jeu !
 Ce qui ne fonctionne pas et que nous sommes au courant :
 - Le scroll dans le choix des monstres (il fonctionne partiellement)
-- Un petit problème avec les doublons dans le choix des monstres
 ---
 
 ## Auteurs
