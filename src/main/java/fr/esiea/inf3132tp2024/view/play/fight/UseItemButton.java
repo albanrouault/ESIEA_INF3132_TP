@@ -15,9 +15,8 @@ public class UseItemButton extends TButton {
     private final Terrain terrain;
     private final Consumable consumable;
     private final Monster monster;
-    private final Monster opponentMonster;
 
-    public UseItemButton(FightView fightView, Fight fight, Player player, Consumable consumable, Monster monster, Monster opponentMonster) {
+    public UseItemButton(FightView fightView, Fight fight, Player player, Consumable consumable, Monster monster) {
         super(player.getName() + " utilise\n" + consumable.getName());
 
         this.fightView = fightView;
@@ -25,7 +24,6 @@ public class UseItemButton extends TButton {
         this.terrain = fight.getTerrain();
         this.consumable = consumable;
         this.monster = monster;
-        this.opponentMonster = opponentMonster;
     }
 
     @Override

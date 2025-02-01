@@ -1,40 +1,38 @@
 package fr.esiea.inf3132tp2024.view.play.chooseMonster;
 
 import fr.esiea.inf3132tp2024.model.Player;
-import fr.esiea.inf3132tp2024.model.fight.Fight;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
+import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
+import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.api.common.component.HorizontalAlignment;
-import fr.esiea.inf3132tp2024.utils.direction.Orientation;
-import fr.esiea.inf3132tp2024.view.play.fight.FightView;
-import fr.esiea.inf3132tp2024.view.play.game.GameView;
-import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 
 /**
  * Vue de sélection du monstre qui doit combattre.
  * Cette vue est accessible depuis la GameView via un bouton.
  */
 public class ChooseMonsterView extends TFrame implements DisplayableComponent {
-    private final FightView fightView;
     private final TPanel monstersPanel;
+    private final TChoices monstersChoices;
     private final Player currentPlayer;
     private boolean display = true;
+    private boolean choiceMade = false;
 
     /**
      * Constructeur de la vue de sélection du monstre.
      *
-     * @param fightView la vue de la partie en cours à laquelle on revient après la sélection
+     * @param currentPlayer le joueur qui veut choisir un monstre
+     * @param back          true si un bouton de retour doit être affiché
      */
-    public ChooseMonsterView(FightView fightView, Player currentPlayer) {
-        super(0, 0, "Choisir un monstre");
-        this.fightView = fightView;
+    public ChooseMonsterView(Player currentPlayer, boolean back) {
+        super(0, 0, currentPlayer.getName() + " - Choisir un monstre");
         this.currentPlayer = currentPlayer;
 
         // Initialisation du panneau vertical pour lister les monstres disponibles
-        monstersPanel = new TPanel(HorizontalAlignment.CENTER, Orientation.VERTICAL, 1);
+        monstersPanel = new TPanel(0, 0);
+        monstersChoices = new TChoices(Orientation.VERTICAL, 1);
 
         // Récupérer le joueur courant à partir de la GameView
         // On suppose que la méthode getCurrentPlayer() existe dans la classe Game.
@@ -42,9 +40,21 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
         for (Monster monster : currentPlayer.getMonsters()) {
             if (monster.isAlive()) {
                 MonsterButton b = new MonsterButton(monster);
-                monstersPanel.getComponents().add(b);
+                monstersChoices.add(b);
             }
         }
+
+        // Ajout du bouton de retour
+        if (back) {
+            ReturnButton returnBtn = new ReturnButton();
+            monstersChoices.add(returnBtn);
+            monstersChoices.autoResize();
+        }
+
+        // Ajout du panneau de choix de monstre au panneau principal
+        monstersPanel.getComponents().add(monstersChoices);
+        monstersPanel.autoResize();
+
         // Ajout du panneau au content pane
         this.getContentPane().getComponents().add(monstersPanel);
     }
@@ -62,6 +72,10 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
     @Override
     public void stopLoopingMode() {
         display = false;
+    }
+
+    public boolean isChoiceMade() {
+        return choiceMade;
     }
 
     /**
@@ -82,7 +96,23 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
             // On suppose que GameView dispose d'une méthode selectMonster(Monster monster)
             currentPlayer.setCurrentMonster(monster);
 
+            choiceMade = true;
+
             // Arrêter le mode looping pour clore cette vue
+            stopLoopingMode();
+        }
+    }
+
+    /**
+     * Bouton interne pour revenir à la vue précédente.
+     */
+    private class ReturnButton extends TButton {
+        public ReturnButton() {
+            super("Retour");
+        }
+
+        @Override
+        public void execute() {
             stopLoopingMode();
         }
     }

@@ -9,7 +9,9 @@ import fr.esiea.inf3132tp2024.model.attack.special.SpecialAttackFactory;
 import fr.esiea.inf3132tp2024.model.fight.Fight;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.terrain.Terrain;
+import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
+import fr.esiea.inf3132tp2024.view.play.chooseAttack.ChooseAttackView;
 
 public class AttackButton extends TButton {
     private final FightView fightView;
@@ -30,19 +32,24 @@ public class AttackButton extends TButton {
 
     @Override
     public void execute() {
-        Attack attack = null;
+        ChooseAttackView chooseAttackView = new ChooseAttackView(player, monster, monster.getAttacks());
 
-        // TODO : Ajouter le traitement de l'attaque en passant l'attaque
-        AttackProcessor.processAttack(fightView.getFight().getRandom(), monster, attack, opponentMonster, terrain);
+        Terminal.getInstance().show(chooseAttackView);
 
-        // Effet spécial
-        if (attack != null && attack.getType() != Types.NORMAL && attack.getType() == monster.getType()) {
-            SpecialAttackEffect effect = SpecialAttackFactory.getSpecialAttackEffect(monster.getType());
-            if (effect != null) {
-                effect.apply(fightView.getFight().getRandom(), terrain, monster, opponentMonster);
+        if (chooseAttackView.isChoiceMade()) {
+            Attack attack = monster.getCurrentAttack();
+
+            AttackProcessor.processAttack(fightView.getFight().getRandom(), monster, attack, opponentMonster, terrain);
+
+            // Effet spécial
+            if (attack != null && attack.getType() != Types.NORMAL && attack.getType() == monster.getType()) {
+                SpecialAttackEffect effect = SpecialAttackFactory.getSpecialAttackEffect(monster.getType());
+                if (effect != null) {
+                    effect.apply(fightView.getFight().getRandom(), terrain, monster, opponentMonster);
+                }
             }
-        }
 
-        fightView.removeButtons(player);
+            fightView.removeButtons(player);
+        }
     }
 }

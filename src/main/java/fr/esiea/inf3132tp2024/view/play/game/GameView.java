@@ -88,7 +88,6 @@ public class GameView extends TFrame implements DisplayableComponent {
             return;
         }
         super.onKeyPressed(event);
-        gameActions.onKeyPressed(event);
     }
 
     @Override
@@ -116,9 +115,11 @@ public class GameView extends TFrame implements DisplayableComponent {
         super.setLength(length);
         int contentWidth = length - 2;
         leftPanel.setLength((int) (contentWidth * 0.4));
+        playerOneStats.setLength((int) (contentWidth * 0.4));
         centerPanel.setLength((int) (contentWidth * 0.2));
         gameActions.setLength((int) (contentWidth * 0.2));
         rightPanel.setLength((int) (contentWidth * 0.4));
+        playerTwoStats.setLength((int) (contentWidth * 0.4));
     }
 
     @Override

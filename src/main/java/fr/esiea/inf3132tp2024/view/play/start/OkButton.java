@@ -10,6 +10,7 @@ import fr.esiea.inf3132tp2024.model.attack.Attack;
 import fr.esiea.inf3132tp2024.model.attack.file.AttackFactory;
 import fr.esiea.inf3132tp2024.model.attack.file.AttackTemplate;
 import fr.esiea.inf3132tp2024.model.consumable.Consumable;
+import fr.esiea.inf3132tp2024.model.consumable.ConsumableGen;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.model.monster.file.GlobalMonsterFactory;
 import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
@@ -19,6 +20,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.dialog.TInfoDialog;
 import fr.esiea.inf3132tp2024.view.main.menu.MainMenu;
+import fr.esiea.inf3132tp2024.view.play.chooseMonster.ChooseMonsterView;
 import fr.esiea.inf3132tp2024.view.play.game.GameView;
 
 import java.util.ArrayList;
@@ -47,23 +49,19 @@ public class OkButton extends TButton {
 
         Terminal.getInstance().show(new TInfoDialog(DialogType.HISTORY,
                 playerOneName + " et " + playerTwoName + " marchaient tranquillement sur la route 42 quand soudain, un Magicarpe surgit hors d'un étang… pour s'écraser misérablement sur le sol.\n\n" +
-                playerOneName + " éclata de rire :\n" +
-                "- HA ! Magicarpe est vraiment le Pokémon le plus inutile !\n\n" +
-                playerTwoName + ", rouge de colère, pointa un doigt accusateur :\n" +
-                "- Retire immédiatement ce blasphème ! Magicarpe deviendra un puissant Léviator !\n\n" +
-                playerOneName + " croisa les bras en haussant un sourcil :\n" +
-                "- Ouais, bah en attendant, il fait juste des plouf.\n\n" +
-                playerTwoName + " dégaina une Poké Ball, furieux :\n" +
-                "- Tu vas payer cet affront !\n\n" +
-                "Ainsi débuta un combat légendaire… pour l'honneur d'un Magicarpe."));
+                        playerOneName + " éclata de rire :\n" +
+                        "- HA ! Magicarpe est vraiment le Pokémon le plus inutile !\n\n" +
+                        playerTwoName + ", rouge de colère, pointa un doigt accusateur :\n" +
+                        "- Retire immédiatement ce blasphème ! Magicarpe deviendra un puissant Léviator !\n\n" +
+                        playerOneName + " croisa les bras en haussant un sourcil :\n" +
+                        "- Ouais, bah en attendant, il fait juste des plouf.\n\n" +
+                        playerTwoName + " dégaina une Poké Ball, furieux :\n" +
+                        "- Tu vas payer cet affront !\n\n" +
+                        "Ainsi débuta un combat légendaire… pour l'honneur d'un Magicarpe."));
 
         long seed = getSeed(playMenu.getSeedField().getText());
 
         playMenu.stopLoopingMode();
-        AudioTrack menuAudioTrack = mainMenu.getMenuAudioTrack();
-        if (menuAudioTrack != null) {
-            menuAudioTrack.stop();
-        }
 
         Random random = new Random(seed);
         Player playerOne;
@@ -75,20 +73,41 @@ public class OkButton extends TButton {
         playerOne = new Player(playerOneName, new Monster[]{
                 generateRandomMonster(random),
                 generateRandomMonster(random),
-                generateRandomMonster(random)}, new Consumable[0]);
+                generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
         playerTwo = new Player(playerTwoName, new Monster[]{
                 generateRandomMonster(random),
                 generateRandomMonster(random),
                 generateRandomMonster(random)}, new Consumable[0]);
         } else {
-            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]), new Consumable[0]);
-            playerTwo = new Player(playerTwoName, listMonstrePlayerTwo.toArray(new Monster[0]), new Consumable[0]);
+            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]),  new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+            playerTwo = new Player(playerTwoName, listMonstrePlayerTwo.toArray(new Monster[0]),  new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         }
 
         Game game = new Game(seed, random, playerOne, playerTwo);
+
+        // Choose default monster
+        // Player one
+        do {
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerOne, false);
+            Terminal.getInstance().show(chooseMonsterView);
+        } while (playerOne.getCurrentMonster() == null);
+        // Player two
+        do {
+            ChooseMonsterView chooseMonsterView = new ChooseMonsterView(playerTwo, false);
+            Terminal.getInstance().show(chooseMonsterView);
+        } while (playerTwo.getCurrentMonster() == null);
+
+        // Stop menu music
+        AudioTrack menuAudioTrack = mainMenu.getMenuAudioTrack();
+        if (menuAudioTrack != null) {
+            menuAudioTrack.stop();
+        }
+
+        // Start game
         Terminal.getInstance().show(new GameView(game));
 
+        // Restart menu music
         if (menuAudioTrack != null) {
             menuAudioTrack.setVolume(AppSettings.getInstance().getMusicVolume());
             menuAudioTrack.restart();

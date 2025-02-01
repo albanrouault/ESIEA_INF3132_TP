@@ -10,7 +10,6 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
-import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.view.play.PlayerStats;
 
 import java.util.HashMap;
@@ -57,7 +56,30 @@ public class FightView extends TFrame implements DisplayableComponent {
         // Panel central - Actions du jeu
         this.centerPanel = new TPanel(0, 0);
         this.gameActions = new TChoices(Orientation.VERTICAL, 1);
-        updateGameActions();
+        SelectableComponent attackButtonPlayerOne = new AttackButton(this, fight, fight.getPlayerOne(), fight.getPlayerOne().getCurrentMonster(), fight.getPlayerTwo().getCurrentMonster());
+        gameActions.add(attackButtonPlayerOne);
+        playerButtons.get(fight.getPlayerOne()).add(attackButtonPlayerOne);
+        SelectableComponent attackButtonPlayerTwo = new AttackButton(this, fight, fight.getPlayerTwo(), fight.getPlayerTwo().getCurrentMonster(), fight.getPlayerOne().getCurrentMonster());
+        gameActions.add(attackButtonPlayerTwo);
+        playerButtons.get(fight.getPlayerTwo()).add(attackButtonPlayerTwo);
+        SelectableComponent changeMonsterButtonPlayerOne = new ChangeMonsterButton(this, fight, fight.getPlayerOne());
+        gameActions.add(changeMonsterButtonPlayerOne);
+        playerButtons.get(fight.getPlayerOne()).add(changeMonsterButtonPlayerOne);
+        SelectableComponent changeMonsterButtonPlayerTwo = new ChangeMonsterButton(this, fight, fight.getPlayerTwo());
+        gameActions.add(changeMonsterButtonPlayerTwo);
+        playerButtons.get(fight.getPlayerTwo()).add(changeMonsterButtonPlayerTwo);
+        for (Consumable consumable : fight.getPlayerOne().getConsumables()) {
+            SelectableComponent useItemButtonPlayerOne = new UseItemButton(this, fight, fight.getPlayerOne(), consumable, fight.getPlayerOne().getCurrentMonster());
+            gameActions.add(useItemButtonPlayerOne);
+            playerButtons.get(fight.getPlayerOne()).add(useItemButtonPlayerOne);
+        }
+        for (Consumable consumable : fight.getPlayerTwo().getConsumables()) {
+            SelectableComponent useItemButtonPlayerTwo = new UseItemButton(this, fight, fight.getPlayerTwo(), consumable, fight.getPlayerTwo().getCurrentMonster());
+            gameActions.add(useItemButtonPlayerTwo);
+            playerButtons.get(fight.getPlayerTwo()).add(useItemButtonPlayerTwo);
+        }
+        gameActions.add(new EndFightButton(this));
+        //gameActions.autoResize();
         centerPanel.getComponents().add(gameActions);
 
         // Panel droit - Stats Joueur 2
@@ -69,34 +91,6 @@ public class FightView extends TFrame implements DisplayableComponent {
         this.getContentPane().getComponents().add(leftPanel);
         this.getContentPane().getComponents().add(centerPanel);
         this.getContentPane().getComponents().add(rightPanel);
-    }
-
-    private void updateGameActions() {
-        gameActions.removeAll();
-        SelectableComponent attackButtonPlayerOne = new AttackButton(this, fight, fight.getPlayerOne(), fight.getMonsterPlayerOne(), fight.getMonsterPlayerTwo());
-        gameActions.add(attackButtonPlayerOne);
-        playerButtons.get(fight.getPlayerOne()).add(attackButtonPlayerOne);
-        SelectableComponent attackButtonPlayerTwo = new AttackButton(this, fight, fight.getPlayerTwo(), fight.getMonsterPlayerTwo(), fight.getMonsterPlayerOne());
-        gameActions.add(attackButtonPlayerTwo);
-        playerButtons.get(fight.getPlayerTwo()).add(attackButtonPlayerTwo);
-        for (Consumable consumable : fight.getPlayerOne().getConsumables()) {
-            SelectableComponent useItemButtonPlayerOne = new UseItemButton(this, fight, fight.getPlayerOne(), consumable, fight.getMonsterPlayerOne(), fight.getMonsterPlayerTwo());
-            gameActions.add(useItemButtonPlayerOne);
-            playerButtons.get(fight.getPlayerOne()).add(useItemButtonPlayerOne);
-        }
-        for (Consumable consumable : fight.getPlayerTwo().getConsumables()) {
-            SelectableComponent useItemButtonPlayerTwo = new UseItemButton(this, fight, fight.getPlayerTwo(), consumable, fight.getMonsterPlayerTwo(), fight.getMonsterPlayerOne());
-            gameActions.add(useItemButtonPlayerTwo);
-            playerButtons.get(fight.getPlayerTwo()).add(useItemButtonPlayerTwo);
-        }
-        gameActions.add(new EndFightButton(this));
-        gameActions.autoResize();
-    }
-
-    @Override
-    public void onKeyPressed(KeyPressedEvent event) {
-        super.onKeyPressed(event);
-        gameActions.onKeyPressed(event);
     }
 
     @Override
@@ -119,9 +113,11 @@ public class FightView extends TFrame implements DisplayableComponent {
         super.setLength(length);
         int contentWidth = length - 2;
         leftPanel.setLength((int) (contentWidth * 0.4));
+        playerOneStats.setLength((int) (contentWidth * 0.4));
         centerPanel.setLength((int) (contentWidth * 0.2));
         gameActions.setLength((int) (contentWidth * 0.2));
         rightPanel.setLength((int) (contentWidth * 0.4));
+        playerTwoStats.setLength((int) (contentWidth * 0.4));
     }
 
     @Override
@@ -137,10 +133,6 @@ public class FightView extends TFrame implements DisplayableComponent {
         return fight;
     }
 
-    public void removeButton(SelectableComponent button) {
-        gameActions.remove(button);
-    }
-
     public void removeButtons(Player player) {
         List<SelectableComponent> buttons = playerButtons.get(player);
         if (buttons != null) {
@@ -148,5 +140,7 @@ public class FightView extends TFrame implements DisplayableComponent {
                 gameActions.remove(button);
             }
         }
+        gameActions.autoResize();
+        setLength(getLength());
     }
 }
