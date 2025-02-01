@@ -56,13 +56,13 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
         if (!gameView.getGame().getGameStatistic().isCheatModeActivated()) {
             // Joueur 1
             this.nameLabel1 = new TLabel("Entrez un pseudo pour Joueur 1 :");
-            this.getContentPane().getComponents().add(nameLabel1);
+            buttons.getComponents().add(nameLabel1);
             this.nameField1 = new TTextField("Pseudo Joueur 1", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getGame().getPlayerOne().getName());
             buttons.add(nameField1);
 
             // Joueur 2
             this.nameLabel2 = new TLabel("Entrez un pseudo pour Joueur 2 :");
-            this.getContentPane().getComponents().add(nameLabel2);
+            buttons.getComponents().add(nameLabel2);
             this.nameField2 = new TTextField("Pseudo Joueur 2", AppSettings.CONSOLE_MIN_LENGTH - 10, gameView.getGame().getPlayerTwo().getName());
             buttons.add(nameField2);
 
