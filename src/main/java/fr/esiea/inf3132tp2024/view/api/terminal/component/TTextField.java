@@ -14,6 +14,7 @@ public class TTextField extends TComponent implements SelectableComponent, KeyLi
     private String text;
     private String hint;
     private int pointer;
+    private boolean editable = true;
 
     public TTextField(int length) {
         this(HorizontalAlignment.CENTER, length);
@@ -196,5 +197,9 @@ public class TTextField extends TComponent implements SelectableComponent, KeyLi
 
     public void setHint(String hint) {
         this.hint = hint;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 }
