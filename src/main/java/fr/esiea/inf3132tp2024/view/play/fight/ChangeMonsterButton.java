@@ -11,7 +11,7 @@ public class ChangeMonsterButton extends TButton {
     private final Player player;
 
     public ChangeMonsterButton(FightView fightView, Fight fight, Player player) {
-        super(player.getName() + "\nchanger de monstre");
+        super(player.getName() + "\nChanger de monstre");
 
         this.fightView = fightView;
         this.player = player;

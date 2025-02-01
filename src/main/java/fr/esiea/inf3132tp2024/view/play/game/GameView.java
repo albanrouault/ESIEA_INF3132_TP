@@ -138,4 +138,8 @@ public class GameView extends TFrame implements DisplayableComponent {
     public Game getGame() {
         return game;
     }
+
+    public AudioTrack getGameAudioTrack() {
+        return gameAudioTrack;
+    }
 }

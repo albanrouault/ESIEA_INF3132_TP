@@ -1,7 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.fight;
 
 import fr.esiea.inf3132tp2024.model.Player;
-import fr.esiea.inf3132tp2024.model.consumable.Consumable;
 import fr.esiea.inf3132tp2024.model.fight.Fight;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
@@ -72,16 +71,12 @@ public class FightView extends TFrame implements DisplayableComponent {
         SelectableComponent changeMonsterButtonPlayerTwo = new ChangeMonsterButton(this, fight, fight.getPlayerTwo());
         gameActions.add(changeMonsterButtonPlayerTwo);
         playerButtons.get(fight.getPlayerTwo()).add(changeMonsterButtonPlayerTwo);
-        for (Consumable consumable : fight.getPlayerOne().getConsumables()) {
-            SelectableComponent useItemButtonPlayerOne = new UseItemButton(this, fight, fight.getPlayerOne(), consumable, fight.getPlayerOne().getCurrentMonster());
-            gameActions.add(useItemButtonPlayerOne);
-            playerButtons.get(fight.getPlayerOne()).add(useItemButtonPlayerOne);
-        }
-        for (Consumable consumable : fight.getPlayerTwo().getConsumables()) {
-            SelectableComponent useItemButtonPlayerTwo = new UseItemButton(this, fight, fight.getPlayerTwo(), consumable, fight.getPlayerTwo().getCurrentMonster());
-            gameActions.add(useItemButtonPlayerTwo);
-            playerButtons.get(fight.getPlayerTwo()).add(useItemButtonPlayerTwo);
-        }
+        SelectableComponent useItemButtonPlayerOne = new UseItemButton(this, fight, fight.getPlayerOne(), fight.getPlayerOne().getCurrentMonster());
+        gameActions.add(useItemButtonPlayerOne);
+        playerButtons.get(fight.getPlayerOne()).add(useItemButtonPlayerOne);
+        SelectableComponent useItemButtonPlayerTwo = new UseItemButton(this, fight, fight.getPlayerTwo(), fight.getPlayerTwo().getCurrentMonster());
+        gameActions.add(useItemButtonPlayerTwo);
+        playerButtons.get(fight.getPlayerTwo()).add(useItemButtonPlayerTwo);
         gameActions.add(new EndFightButton(this));
         //gameActions.autoResize();
         centerPanel.getComponents().add(gameActions);

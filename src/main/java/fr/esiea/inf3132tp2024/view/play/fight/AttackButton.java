@@ -21,7 +21,7 @@ public class AttackButton extends TButton {
     private final Monster opponentMonster;
 
     public AttackButton(FightView fightView, Fight fight, Player player, Monster monster, Monster opponentMonster) {
-        super(player.getName() + " attaque");
+        super(player.getName() + "\nAttaquer");
 
         this.fightView = fightView;
         this.player = player;

@@ -1,9 +1,9 @@
-package fr.esiea.inf3132tp2024.view.settings.menu;
+package fr.esiea.inf3132tp2024.view.main.menu.settings.menu;
 
 import fr.esiea.inf3132tp2024.utils.audio.AudioTrack;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
-import fr.esiea.inf3132tp2024.view.settings.audio.music.ConfigureMusicFrame;
+import fr.esiea.inf3132tp2024.view.main.menu.settings.audio.music.ConfigureMusicFrame;
 
 public class ConfigureMusicButton extends TButton {
     private final AudioTrack menuAudioTrack;

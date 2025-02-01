@@ -7,6 +7,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
 import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
+import fr.esiea.inf3132tp2024.view.main.menu.SettingsButton;
 import fr.esiea.inf3132tp2024.view.main.menu.information.InfoButton;
 import fr.esiea.inf3132tp2024.view.play.game.GameView;
 
@@ -20,6 +21,7 @@ public class EscapeMenu extends TFrame implements DisplayableComponent {
         choices.add(new TQuitComponentButton(this, "Reprendre la partie"));
         choices.add(new InfoButton());
         choices.add(new CheatButton(gameView, this));
+        choices.add(new SettingsButton(gameView.getGameAudioTrack()));
         choices.add(new QuitGameButton(this, gameView));
 
         this.getContentPane().getComponents().add(choices);

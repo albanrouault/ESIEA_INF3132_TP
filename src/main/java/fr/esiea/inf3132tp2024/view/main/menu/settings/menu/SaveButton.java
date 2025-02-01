@@ -1,4 +1,4 @@
-package fr.esiea.inf3132tp2024.view.settings.menu;
+package fr.esiea.inf3132tp2024.view.main.menu.settings.menu;
 
 import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;

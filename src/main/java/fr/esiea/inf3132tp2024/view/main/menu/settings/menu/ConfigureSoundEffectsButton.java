@@ -1,8 +1,8 @@
-package fr.esiea.inf3132tp2024.view.settings.menu;
+package fr.esiea.inf3132tp2024.view.main.menu.settings.menu;
 
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
-import fr.esiea.inf3132tp2024.view.settings.audio.soundeffects.ConfigureSoundEffectsFrame;
+import fr.esiea.inf3132tp2024.view.main.menu.settings.audio.soundeffects.ConfigureSoundEffectsFrame;
 
 public class ConfigureSoundEffectsButton extends TButton {
     public ConfigureSoundEffectsButton() {

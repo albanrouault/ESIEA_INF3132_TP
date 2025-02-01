@@ -82,9 +82,6 @@ public class ChooseAttackView extends TFrame implements DisplayableComponent {
 
         @Override
         public void execute() {
-            // Ici, vous pouvez ajouter la logique nécessaire pour lancer l'attaque
-            // Pour l'exemple, on affiche simplement un message dans la console
-            // On arrête le mode looping après la sélection
             this.monster.setCurrentAttack(this.attack);
             choiceMade = true;
             stopLoopingMode();

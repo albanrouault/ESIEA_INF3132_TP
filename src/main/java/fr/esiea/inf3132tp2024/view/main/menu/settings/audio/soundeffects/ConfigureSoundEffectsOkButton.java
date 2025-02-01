@@ -1,4 +1,4 @@
-package fr.esiea.inf3132tp2024.view.settings.audio.soundeffects;
+package fr.esiea.inf3132tp2024.view.main.menu.settings.audio.soundeffects;
 
 import fr.esiea.inf3132tp2024.controller.AppSettings;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TSlider;
