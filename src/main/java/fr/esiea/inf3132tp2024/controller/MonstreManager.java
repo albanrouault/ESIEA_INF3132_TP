@@ -110,8 +110,6 @@ public class MonstreManager {
                         for (MonsterTemplate monster : loaded) {
                             if (!isDuplicate(monster)) {
                                 monstres.add(monster);
-                            } else {
-                                System.out.println("Doublon ignoré pour le monstre : " + monster.getName());
                             }
                         }
                     }
