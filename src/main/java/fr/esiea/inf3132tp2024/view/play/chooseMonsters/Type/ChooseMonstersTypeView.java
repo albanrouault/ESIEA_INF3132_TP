@@ -58,18 +58,17 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
         // S'il y a un élément à la position 0, on change le label en fonction du type
         // de monstre
         if (selectedMonsters.size() > 0) {
-            this.monsterLabelOne.setText(selectedMonsters.get(0).getName() + "\n" + selectedMonsters.get(0).getName());
+            this.monsterLabelOne.setText("Monstre 1\n" + selectedMonsters.get(0).getName());
         }
         // S'il y a un élément à la position 1, on change le label en fonction du type
         // de monstre
         if (selectedMonsters.size() > 1) {
-            this.monsterLabelTwo.setText(selectedMonsters.get(1).getName() + "\n" + selectedMonsters.get(1).getName());
+            this.monsterLabelTwo.setText("Monstre 2\n" + selectedMonsters.get(1).getName());
         }
         // S'il y a un élément à la position 2, on change le label en fonction du type
         // de monstre
         if (selectedMonsters.size() > 2) {
-            this.monsterLabelThree
-                    .setText(selectedMonsters.get(2).getName() + "\n" + selectedMonsters.get(2).getName());
+            this.monsterLabelThree.setText("Monstre 3\n" + selectedMonsters.get(2).getName());
         }
         // Bouton validation visible si tous les monstres sont sélectionnés
         if (selectedMonsters.size() == 3) {
