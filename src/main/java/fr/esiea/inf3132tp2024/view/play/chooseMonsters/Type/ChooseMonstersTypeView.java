@@ -44,14 +44,14 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
 
         // Création des boutons de choix de type de monstre
         this.chooseMonstersButtonTypeElectric = new ChooseMonstersButtonType(selectedMonsters, previousView,
-                Types.ELECTRIC);
-        this.chooseMonstersButtonTypeEarth = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.EARTH);
-        this.chooseMonstersButtonTypeFire = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.FIRE);
-        this.chooseMonstersButtonTypeWater = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.WATER);
+                Types.ELECTRIC, this);
+        this.chooseMonstersButtonTypeEarth = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.EARTH, this);
+        this.chooseMonstersButtonTypeFire = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.FIRE, this);
+        this.chooseMonstersButtonTypeWater = new ChooseMonstersButtonType(selectedMonsters, previousView, Types.WATER, this);
         this.chooseMonstersButtonTypeNaturePlant = new ChooseMonstersButtonType(selectedMonsters, previousView,
-                Types.NATURE_PLANT);
+                Types.NATURE_PLANT, this);
         this.chooseMonstersButtonTypeNatureInsect = new ChooseMonstersButtonType(selectedMonsters, previousView,
-                Types.NATURE_INSECT);
+                Types.NATURE_INSECT, this);
 
         // Pour chaque monstre dans la liste on change le label en fonction du type de
         // monstre

@@ -60,7 +60,7 @@ public class ChooseMonstersView extends TFrame implements DisplayableComponent {
 
         // On crée un bouton pour chaque monstre dans la liste monsters
         for (MonsterTemplate monster : monsters) {
-            this.monsterButtons.add(new ChooseMonsterButton(previousView, selectedMonsters, monster));
+            this.monsterButtons.add(new ChooseMonsterButton(previousView, selectedMonsters, monster, this));
         }
 
         // On construit la page

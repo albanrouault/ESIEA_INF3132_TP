@@ -13,11 +13,13 @@ public class ChooseMonstersButtonType extends TButton {
     private ArrayList<MonsterTemplate> selectedMonsters;
     private DisplayableComponent previousView;
     private Types typeMonster;
-    public ChooseMonstersButtonType(ArrayList<MonsterTemplate> selectedMonsters, DisplayableComponent previousView, Types typeMonster) {
+    private DisplayableComponent currentView;
+    public ChooseMonstersButtonType(ArrayList<MonsterTemplate> selectedMonsters, DisplayableComponent previousView, Types typeMonster, DisplayableComponent currentView) {
         super(typeMonster.getName());
         this.selectedMonsters = selectedMonsters;
         this.previousView = previousView;
         this.typeMonster = typeMonster;
+        this.currentView = currentView;
 
         switch (typeMonster) {
             case FIRE:
@@ -44,6 +46,7 @@ public class ChooseMonstersButtonType extends TButton {
     @Override
     public void execute() {
         // Aller sur la vue de choix de monstre pour le joueur 2
+        this.currentView.stopLoopingMode();
         Terminal.getInstance().show(new ChooseMonstersView(previousView, selectedMonsters, typeMonster));
     }
 }
