@@ -143,7 +143,7 @@ public abstract class Monster {
      * @param state the state of the monster
      */
     public void setState(MonsterState state) throws MonsterHasAlreadyAState {
-        if (state != null && this.state.getTurnsLeft() > 0) {
+        if (state != null && this.state != null && this.state.getTurnsLeft() > 0) {
             throw new MonsterHasAlreadyAState("Le monstre a déjà un état");
         }
         this.state = state;
