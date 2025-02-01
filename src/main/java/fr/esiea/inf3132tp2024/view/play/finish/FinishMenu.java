@@ -1,7 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.finish;
 
 import fr.esiea.inf3132tp2024.controller.AppSettings;
-import fr.esiea.inf3132tp2024.view.play.game.GameView;
 import fr.esiea.inf3132tp2024.model.GameStatistic;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
@@ -10,6 +9,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TTextField;
+import fr.esiea.inf3132tp2024.view.play.game.GameView;
 
 public class FinishMenu extends TFrame implements DisplayableComponent {
     private final TChoices buttons;
@@ -20,7 +20,7 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
 
     /**
      * Constructeur adapté pour indiquer le joueur gagnant.
-     * 
+     *
      * @param gameView      La vue de la partie en cours.
      * @param winningPlayer Le numéro du joueur gagnant (1 ou 2).
      */
@@ -44,6 +44,7 @@ public class FinishMenu extends TFrame implements DisplayableComponent {
 
         // Calcul et affichage (éventuel) des statistiques
         GameStatistic gameStatistic = gameView.getGame().getGameStatistic();
+        gameView.getGame().getGameStatistic().setRound(gameView.getGame().getRound());
         gameStatistic.calculScore();
         // Vous pouvez ajouter ici l'affichage des statistiques si nécessaire.
         // this.getContentPane().getComponents().add(gameStatistic);

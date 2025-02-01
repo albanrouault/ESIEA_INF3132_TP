@@ -53,6 +53,7 @@ public class StatisticsManager {
                         token.nextToken(),
                         token.nextToken(),
                         Integer.parseInt(token.nextToken()),
+                        Integer.parseInt(token.nextToken()),
                         Long.parseLong(token.nextToken())));
 
                 ligne = in.readLine();
@@ -81,6 +82,7 @@ public class StatisticsManager {
                 out.println("" +
                         stat.getPlayerOneName() + ";" +
                         stat.getPlayerTwoName() + ";" +
+                        stat.getRound() + ";" +
                         stat.getScore() + ";" +
                         stat.getSeed());
                 compteur++;

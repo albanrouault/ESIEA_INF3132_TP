@@ -13,6 +13,7 @@ import fr.esiea.inf3132tp2024.view.api.terminal.component.TLabel;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TPanel;
 import fr.esiea.inf3132tp2024.view.api.terminal.event.key.KeyPressedEvent;
 import fr.esiea.inf3132tp2024.view.play.PlayerStats;
+import fr.esiea.inf3132tp2024.view.play.TerrainStats;
 import fr.esiea.inf3132tp2024.view.play.escape.EscapeMenu;
 import fr.esiea.inf3132tp2024.view.play.finish.FinishMenu;
 
@@ -24,6 +25,7 @@ public class GameView extends TFrame implements DisplayableComponent {
     // Composants graphiques
     private final PlayerStats playerOneStats;
     private final PlayerStats playerTwoStats;
+    private final TerrainStats terrainStats;
     private final TChoices gameActions;
     private final TPanel leftPanel;
     private final TPanel centerPanel;
@@ -48,8 +50,10 @@ public class GameView extends TFrame implements DisplayableComponent {
         this.playerOneStats = new PlayerStats(game.getPlayerOne(), false);
         leftPanel.getComponents().add(playerOneStats);
 
-        // Panel central - Actions du jeu
+        // Panel central - Stats Terrain x Actions du jeu
         this.centerPanel = new TPanel(0, 0);
+        this.terrainStats = new TerrainStats(game.getTerrain());
+        centerPanel.getComponents().add(terrainStats);
         this.gameActions = new TChoices(Orientation.VERTICAL, 1);
         updateGameActions();
         centerPanel.getComponents().add(gameActions);
