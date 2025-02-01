@@ -2,8 +2,8 @@ package fr.esiea.inf3132tp2024.view.play.start;
 
 import fr.esiea.inf3132tp2024.model.monster.file.MonsterTemplate;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
+import fr.esiea.inf3132tp2024.view.play.chooseMonsters.Type.ChooseMonstersTypeView;
 import fr.esiea.inf3132tp2024.view.api.terminal.Terminal;
-import fr.esiea.inf3132tp2024.view.play.chooseMonsters.ChooseMonstersView;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
 import java.util.ArrayList;
 
@@ -20,6 +20,6 @@ public class PlayerTwoMonsterButton extends TButton {
     @Override
     public void execute() {
         // Aller sur la vue de choix de monstre pour le joueur 2
-        Terminal.getInstance().show(new ChooseMonstersView(previousView, listMonstrePlayerTwo));
+        Terminal.getInstance().show(new ChooseMonstersTypeView(previousView, listMonstrePlayerTwo));
     }
 }
