@@ -1,5 +1,6 @@
 package fr.esiea.inf3132tp2024.view.play.fight;
 
+import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 
 public class EndFightButton extends TButton {
@@ -8,6 +9,7 @@ public class EndFightButton extends TButton {
     public EndFightButton(FightView fightView) {
         super("Fin du round");
 
+        this.getColors().add(TColor.RED);
         this.fightView = fightView;
     }
 

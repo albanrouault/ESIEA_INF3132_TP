@@ -4,6 +4,7 @@ import fr.esiea.inf3132tp2024.model.Player;
 import fr.esiea.inf3132tp2024.model.monster.Monster;
 import fr.esiea.inf3132tp2024.utils.direction.Orientation;
 import fr.esiea.inf3132tp2024.view.api.common.component.DisplayableComponent;
+import fr.esiea.inf3132tp2024.view.api.terminal.TColor;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TButton;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TChoices;
 import fr.esiea.inf3132tp2024.view.api.terminal.component.TFrame;
@@ -155,6 +156,7 @@ public class ChooseMonsterView extends TFrame implements DisplayableComponent {
     private class ReturnButton extends TButton {
         public ReturnButton() {
             super("Retour");
+            this.getColors().add(TColor.RED);
         }
 
         @Override
