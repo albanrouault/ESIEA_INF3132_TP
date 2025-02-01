@@ -18,7 +18,6 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
     private TLabel monsterLabelOne;
     private TLabel monsterLabelTwo;
     private TLabel monsterLabelThree;
-    private TLabel monsterLabelFour;
     private ChooseMonstersButtonValidate validateButton;
     private ChooseMonstersButtonCancel cancelButton;
     private DisplayableComponent previousView;
@@ -39,10 +38,9 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
         this.monsterLabelOne = new TLabel("Monstre 1\nNon Sélectionné");
         this.monsterLabelTwo = new TLabel("Monstre 2\nNon Sélectionné");
         this.monsterLabelThree = new TLabel("Monstre 3\nNon Sélectionné");
-        this.monsterLabelFour = new TLabel("Monstre 4\nNon Sélectionné");
 
         // Création des boutons de validation, de retour et de choix de monstre
-        this.cancelButton = new ChooseMonstersButtonCancel(selectedMonsters, previousView);
+        this.cancelButton = new ChooseMonstersButtonCancel(selectedMonsters, previousView, this);
 
         // Création des boutons de choix de type de monstre
         this.chooseMonstersButtonTypeElectric = new ChooseMonstersButtonType(selectedMonsters, previousView,
@@ -73,15 +71,9 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
             this.monsterLabelThree
                     .setText(selectedMonsters.get(2).getName() + "\n" + selectedMonsters.get(2).getName());
         }
-        // S'il y a un élément à la position 3, on change le label en fonction du type
-        // de monstre
-        if (selectedMonsters.size() > 3) {
-            this.monsterLabelFour.setText(selectedMonsters.get(3).getName() + "\n" + selectedMonsters.get(3).getName());
-        }
-
         // Bouton validation visible si tous les monstres sont sélectionnés
-        if (selectedMonsters.size() == 4) {
-            this.validateButton = new ChooseMonstersButtonValidate(previousView);
+        if (selectedMonsters.size() == 3) {
+            this.validateButton = new ChooseMonstersButtonValidate(previousView, this);
         }
 
         // On construit la page
@@ -95,15 +87,15 @@ public class ChooseMonstersTypeView extends TFrame implements DisplayableCompone
         textMonsters.getComponents().add(monsterLabelOne);
         textMonsters.getComponents().add(monsterLabelTwo);
         textMonsters.getComponents().add(monsterLabelThree);
-        textMonsters.getComponents().add(monsterLabelFour);
         mainPanel.getComponents().add(textMonsters);
 
         // Les choix de types
         TChoices choices = new TChoices(1);
-        choices.add(cancelButton);
-        if (selectedMonsters.size() == 4) {
+        if (selectedMonsters.size() == 3) {
             choices.add(validateButton);
-        } else {
+        }
+        choices.add(cancelButton);
+        if (selectedMonsters.size() != 3) {
             choices.getComponents().add(new TLabel(""));
             choices.add(chooseMonstersButtonTypeElectric);
             choices.add(chooseMonstersButtonTypeEarth);

@@ -21,8 +21,8 @@ public class PlayMenu extends TFrame implements DisplayableComponent {
     private boolean display = true;
 
     // arraylist de 4 monstres
-    private ArrayList<MonsterTemplate> listMonstrePlayerOne = new ArrayList<>(4);
-    private ArrayList<MonsterTemplate> listMonstrePlayerTwo = new ArrayList<>(4);
+    private ArrayList<MonsterTemplate> listMonstrePlayerOne = new ArrayList<>(3);
+    private ArrayList<MonsterTemplate> listMonstrePlayerTwo = new ArrayList<>(3);
 
     public PlayMenu(MainMenu mainMenu) {
         super(0, 0, "Créer une partie");

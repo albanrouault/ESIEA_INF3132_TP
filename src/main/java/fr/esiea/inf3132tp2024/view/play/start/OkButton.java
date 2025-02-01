@@ -67,14 +67,34 @@ public class OkButton extends TButton {
         Player playerOne;
         Player playerTwo;
 
-        if (listMonstrePlayerOne.isEmpty() || listMonstrePlayerTwo.isEmpty()) {
+        if (listMonstrePlayerOne.isEmpty()) {
             playerOne = new Player(playerOneName, new Monster[]{
                     generateRandomMonster(random),
                     generateRandomMonster(random),
                     generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
 
         } else {
-            playerOne = new Player(playerOneName, listMonstrePlayerOne.toArray(new Monster[0]), new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+            playerOne = new Player(playerOneName, 
+            new Monster[]{
+                GlobalMonsterFactory.createMonster(random, listMonstrePlayerOne.get(0), new Attack[]{
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(0).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(0).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(0).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(0).getType())
+                }),
+                GlobalMonsterFactory.createMonster(random, listMonstrePlayerOne.get(1), new Attack[]{
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(1).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(1).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(1).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(1).getType())
+                }),
+                GlobalMonsterFactory.createMonster(random, listMonstrePlayerOne.get(2), new Attack[]{
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(2).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(2).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(2).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerOne.get(2).getType())
+                })
+            }, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         }
 
         if (listMonstrePlayerTwo.isEmpty()) {
@@ -83,7 +103,27 @@ public class OkButton extends TButton {
                     generateRandomMonster(random),
                     generateRandomMonster(random)}, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         } else {
-            playerTwo = new Player(playerTwoName, listMonstrePlayerTwo.toArray(new Monster[0]), new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
+            playerTwo = new Player(playerTwoName, 
+            new Monster[]{
+                GlobalMonsterFactory.createMonster(random, listMonstrePlayerTwo.get(0), new Attack[]{
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(0).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(0).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(0).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(0).getType())
+                }),
+                GlobalMonsterFactory.createMonster(random, listMonstrePlayerTwo.get(1), new Attack[]{
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(1).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(1).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(1).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(1).getType())
+                }),
+                GlobalMonsterFactory.createMonster(random, listMonstrePlayerTwo.get(2), new Attack[]{
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(2).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(2).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(2).getType()),
+                    generateRandomAttackNormalOrType(random, listMonstrePlayerTwo.get(2).getType())
+                })
+            }, new Consumable[]{ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random), ConsumableGen.getRandomConsumable(random)});
         }
 
         Game game = new Game(seed, random, playerOne, playerTwo);
