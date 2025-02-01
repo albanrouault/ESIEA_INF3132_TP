@@ -100,13 +100,20 @@ public class MonstreManager {
     public void loadInternalMonstres() throws MonsterTemplateException {
         try {
             List<String> internalFiles = getResourceFiles("game/monster");
-            for (String filename : internalFiles) {
+            Set<String> uniqueFiles = new HashSet<>(internalFiles);
+            for (String filename : uniqueFiles) {
                 File externalFile = new File("game/monster", filename);
                 if (!externalFile.exists()) {
                     InputStream is = getClass().getClassLoader().getResourceAsStream("game/monster/" + filename);
                     if (is != null) {
                         List<MonsterTemplate> loaded = loadMonstresFromStream(is);
-                        monstres.addAll(loaded);
+                        for (MonsterTemplate monster : loaded) {
+                            if (!isDuplicate(monster)) {
+                                monstres.add(monster);
+                            } else {
+                                System.out.println("Doublon ignoré pour le monstre : " + monster.getName());
+                            }
+                        }
                     }
                 }
             }
@@ -213,5 +220,14 @@ public class MonstreManager {
         return monstres.stream()
                 .map(MonsterTemplate::getType)
                 .collect(Collectors.toSet());
+    }
+
+    private boolean isDuplicate(MonsterTemplate monster) {
+        for (MonsterTemplate m : monstres) {
+            if (m.getName().equals(monster.getName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
